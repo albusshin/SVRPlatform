@@ -1,4 +1,4 @@
 SVRPlatform
 ===========
 
-Software Vulnerabilities Ranking Platform
+SVRPlatform is short for Software Vulnerabilities Ranking Platform
