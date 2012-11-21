@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.objectFactory" value="spring"/>
+    <constant name="struts.serve.static.browserCache" value="false"/>
+    <constant name="struts.configuration.xml.reload" value="true"/>
+
+    <package name="default" namespace="/" extends="struts-default">
+
+        <default-action-ref name="index" />
+
+        <global-results>
+            <result name="error">/error.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+        <action name="index">
+            <result type="redirect">
+                /login.jsp
+            </result>
+        </action>
+        
+        <action name="login" class="loginAction">
+        	<result name="success">/login.jsp</result>
+        </action>
+        <action name="loginer">
+        	<result type="redirect">
+        		/index.html
+        	</result>
+        </action>
+    </package>
+
+    <!--include file="example.xml"/-->
+
+    <!-- Add packages here -->
+
+</struts>
+
