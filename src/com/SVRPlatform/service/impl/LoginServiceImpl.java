@@ -12,17 +12,12 @@ public class LoginServiceImpl implements LoginService{
 
 	@Override
 	public boolean canLogin(String username, String password) {
-		// TODO Auto-generated method stub
-		String pass = this.userDAO.getPasswordByUsername(username);
-		System.out.println(pass+" "+password);
-		try {
-		System.out.println(pass.compareTo(password));
+		String psswrd = this.userDAO.getPasswordByUsername(username);
 		
-			if(pass.compareTo(password)==0)
-				return true;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		if (psswrd.compareTo(password) == 0) {
+			return true;
 		}
+		
 		return false;
 	}
 
