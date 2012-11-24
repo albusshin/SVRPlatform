@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+	<string id="welcome">欢迎来到SVRPlatform</string>
+	<string id="search">搜索</string>
+	<string id="bugs">错误</string>
+	<string id="vulnerabilities">漏洞</string>
+	<string id="exploits">溢出代码</string>
+	<string id="about">关于</string>
+	<string id="contact">联络</string>
+	<string id="svrphome">SVRP 首页</string>
+	<string id="bugpage">错误 首页</string>
+	<string id="comments">评论</string>
+	<string id="solutions">解决办法</string>
+	<string id="normaluser">普通用户</string>
+	<string id="advanceduser">高阶用户</string>
+	<string id="developer">开发者</string>
+	<string id="termsofservice">服务条款</string>
+	<string id="licenseofdevelopment">开发协议</string>
+	<string id="privacy">隐私声明</string>
+	<string id="bugdetails">错误详情</string>
+	<string id="publishdate">公布时间</string>
+	<string id="bugrating">错误排名</string>
+	<string id="svrbscore">错误分数</string>
+	<string id="usabilityimpact">可用性影响</string>
+	<string id="dataimpact">数据影响</string>
+	<string id="privacyimpact">隐私影响</string>
+	<string id="availabilityimpact">主机影响</string>
+	<string id="frequency">触发频率</string>
+	<string id="none">无</string>
+	<string id="partial">部分</string>
+	<string id="complete">完全</string>
+	<string id="merely">基本不</string>
+	<string id="sometimes">有时</string>
+	<string id="always">经常</string>
+	<string id="bugscreenshots">错误截图</string>
+</strings>

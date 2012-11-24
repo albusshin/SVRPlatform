@@ -14,6 +14,8 @@
     <bean id="loginAction" scope="prototype" class="com.SVRPlatform.action.LoginAction">
     	<property name="loginService" ref="loginService"></property>
     </bean>
+    
+   
     <bean id="userDAO" class="com.SVRPlatform.dao.impl.UserDAOImpl"></bean>
     
 </beans> 

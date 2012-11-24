@@ -22,22 +22,23 @@
         <global-exception-mappings>
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
-
-        <action name="index">
-            <result type="redirect">
-                /login.jsp
-            </result>
+        
+        <action name="login" class="loginAction" method="execute">
+        	<result name="success">/home.html</result>
+        	<result name="FAIL">/signin.jsp</result>
         </action>
         
-        <action name="login" class="loginAction">
-        	<result name="success">/login.jsp</result>
+
+        
+         <action name="index" class="com.SVRPlatform.action.Index" method="execute">
+        	<result name="success">/home.html</result>
+        	<result name="Login">/WEB-INF/index.html</result>
+        	<result name="FAIL">/signin.jsp</result>
         </action>
-        <action name="loginer">
-        	<result type="redirect">
-        		/index.html
-        	</result>
-        </action>
+
     </package>
+    
+
 
     <!--include file="example.xml"/-->
 
