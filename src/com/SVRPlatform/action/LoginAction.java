@@ -35,7 +35,7 @@ public class LoginAction extends ActionSupport{
 	public String execute() throws Exception{
 //		System.out.println(this.username);
 //		System.out.println(this.password);
-		boolean is = this.loginService.canLogin(this.username, this.password);
+		boolean is = this.loginService.login(this.username, this.password);
 		System.out.println(is);
 		if(is)
 			message = "success";
