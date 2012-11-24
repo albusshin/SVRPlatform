@@ -2,23 +2,42 @@ package Junit.test.Jingxuan;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.SVRPlatform.dao.UserDAO;
+import com.SVRPlatform.model.Users;
 
 public class TestForHibernate {
-
+	static UserDAO userDAO;
+	static AbstractApplicationContext ctx;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		ctx = new ClassPathXmlApplicationContext( "applicationContext-hibernate.xml", "Junit/test/Jingxuan/testBeans.xml" );
+		userDAO = (UserDAO)ctx.getBean("userDAO");
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
+		ctx.close();
 	}
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		userDAO.addUser(new Users("1234","fdsafda",new Date(),0 ));
+		
+	}
+	@Test public void testIf() {
+		assertTrue(userDAO.ifEmailExists("fdsafda"));
+	}
+	
+	@Test public void testGet(){
+		System.out.println(userDAO.getPasswordByEmail("fdsafda"));
 	}
 
 }
