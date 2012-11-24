@@ -24,7 +24,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
 	private Cookie cookie;
 	private HttpServletResponse response;  
     private HttpServletRequest request;  
-    
+    private boolean have;
     
 	public String getMessage() {
 		return message;
@@ -56,7 +56,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
  		System.out.println(this.email);
  		System.out.println(this.password);
  		System.out.println(this.remember);
- 		boolean info = this.loginService.canLogin(this.email, this.password);
+ 		boolean info = this.loginService.login(this.email, this.password);
  		System.out.println(info);
  		if(!info)
  		{	
@@ -65,14 +65,68 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
  		}
  		else	
  		{
- 			if(remember!=null)
- 			{
- 				Cookie cemail = new Cookie("email",this.email) ;
- 				Cookie cpassword = new Cookie("password", this.password) ;
- 				cemail.setMaxAge(60*60*24*7);
- 				cpassword.setMaxAge(60*60*24*7);
- 				response.addCookie(cookie); 			
+ 			
+ 				
+ 				 Cookie[] cookies = request.getCookies();
+			       
+				  for (int i = 0; i < cookies.length; i++) {
+				        System.out.println("sb");
+			            System.out.println(cookies[i].getName());
+			        	if (cookies[i].getName().equals("email")) {
+			        		cookies[i].setValue(this.email);
+			        		response.addCookie(cookies[i]);
+ 			        		if(remember!=null)
+ 	 		 		 		{
+ 	 			        		cookies[i].setMaxAge(60*60*24*7);
+ 	 				 				
+ 	 		 		 		}
+ 	 		 			    else
+ 	 		 			    {
+ 	 		 			    	cookies[i].setMaxAge(-1);
+ 	 		 			    }
+ 			        		have=true;
+			        	}
+			            
+			            
+			        	if (cookies[i].getName().equals("password")) {
+			        	cookies[i].setValue(this.password);
+			        	response.addCookie(cookies[i]);
+			        		if(remember!=null)
+	 		 		 		{
+	 			        		cookies[i].setMaxAge(60*60*24*7);
+	 				 				
+	 		 		 		}
+	 		 			    else
+	 		 			    {
+	 		 			    	cookies[i].setMaxAge(-1);
+	 		 			    }
+			        	}
+			        	
  			}
+				  if (have==false){
+			        	System.out.println("2");
+		 				Cookie cemail = new Cookie("email",this.email) ;
+		 				Cookie cpassword = new Cookie("password", this.password) ;
+		 				System.out.println("3");
+		 				cemail.setMaxAge(60*60*24*7);
+		 				cpassword.setMaxAge(60*60*24*7);
+		 				System.out.println("4");
+		 				response.addCookie(cemail);
+		 				response.addCookie(cpassword);
+		 				System.out.println("5");
+		 				if(remember!=null)
+ 		 		 		{
+		 					cemail.setMaxAge(60*60*24*7);
+		 					cpassword.setMaxAge(60*60*24*7);
+ 				 				
+ 		 		 		}
+ 		 			    else
+ 		 			    {
+ 		 			    	cemail.setMaxAge(-1);
+ 		 			    	cpassword.setMaxAge(-1);
+ 		 			    }
+			        } 
+
  	        return SUCCESS;
 		}
 	}
