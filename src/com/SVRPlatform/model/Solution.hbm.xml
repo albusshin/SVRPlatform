@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-11-24 21:57:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.SVRPlatform.model.Solution" table="solution" catalog="svrplatform_database">
+        <id name="solutionId" type="java.lang.Integer">
+            <column name="solutionID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="user" class="com.SVRPlatform.model.User" fetch="select">
+            <column name="userID" />
+        </many-to-one>
+        <many-to-one name="bug" class="com.SVRPlatform.model.Bug" fetch="select">
+            <column name="bugID" />
+        </many-to-one>
+        <property name="datetime" type="timestamp">
+            <column name="datetime" length="19" />
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="65535" />
+        </property>
+        <property name="up" type="java.lang.Integer">
+            <column name="up" />
+        </property>
+        <property name="down" type="java.lang.Integer">
+            <column name="down" />
+        </property>
+    </class>
+</hibernate-mapping>

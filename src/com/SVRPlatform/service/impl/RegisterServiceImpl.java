@@ -39,7 +39,9 @@ public class RegisterServiceImpl implements RegisterService{
 		
 		//if both email and password are OK, then register
 		if (response.email == Response.Email.email_ok && response.password == Response.Password.password_ok) {
-			User user = new User(password, email, new Date(), 0);
+			User user = new User(password, email);
+			user.setDate(new Date());
+			user.setCredit(0);
 			userDAO.addUser(user);
 		}
 		
