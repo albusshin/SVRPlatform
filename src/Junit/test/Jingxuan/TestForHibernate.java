@@ -29,7 +29,7 @@ public class TestForHibernate {
 
 	@Test
 	public void test() {
-		userDAO.addUser(new User("1234","fdsafda",new Date(),0 ));
+		userDAO.addUser(new User("1234","fdsafda"));
 		
 	}
 	@Test public void testIf() {
