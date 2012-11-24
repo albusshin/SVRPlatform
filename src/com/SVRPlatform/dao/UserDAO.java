@@ -1,6 +1,6 @@
 package com.SVRPlatform.dao;
 
-import com.SVRPlatform.model.Users;
+import com.SVRPlatform.model.User;
 
 public interface UserDAO {
 	
@@ -8,5 +8,5 @@ public interface UserDAO {
 	
 	public boolean ifEmailExists(String email);
 	
-	public void addUser(Users user);
+	public void addUser(User user);
 }

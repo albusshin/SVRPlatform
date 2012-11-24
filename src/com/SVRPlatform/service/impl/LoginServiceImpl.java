@@ -11,14 +11,14 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
-	public boolean canLogin(String email, String password) {
+	public boolean login(String email, String password) {
 		email = email.toLowerCase();
+		
+		if (!userDAO.ifEmailExists(email)) return false;
+		
 		String psswrd = this.userDAO.getPasswordByEmail(email);
-		
-		if (psswrd.compareTo(password) == 0) {
+		if (psswrd.compareTo(password) == 0)
 			return true;
-		}
-		
-		return false;
+		else return false;
 	}
 }
