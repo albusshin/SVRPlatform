@@ -2,6 +2,5 @@ package com.SVRPlatform.service;
 
 public interface LoginService {
 	
-	public boolean canLogin(String username, String password);
-
+	public boolean login(String email, String password);
 }

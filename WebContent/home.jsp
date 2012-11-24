@@ -1,24 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="utf-8"%>
+
 <!DOCTYPE HTML>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>SVRPlatform Sign In</title>
+	<title>SVRPlatform Home</title>
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js"></script>
 </head>
 
 <body>
-
-	<style type="text/css">
-			/* ------- Body ------- */
-		
-		body {
-			background: #eeeeee url(images/bg.jpg) top left repeat;
-		}
-
-	</style>
 	<div align="right">
             <div id="menu2" class="menu">
                 <ul>
@@ -31,44 +23,28 @@
                     <li><a href="javascript:;">Contact</a></li>
                     <div class="searchinput" align="right">
                     	<form>
-							<input type="search" placeholder="Search">
+							<input type="search" placeholder="搜索">
 						</form>
                     </div>
                 </ul>
             </div>
         <hr/>
+        <h1 class="msblack20"><a href="#" id="usersname" class="steelbluefont"> ${email} </a>，Welcome to SVRPlatform.</h1>
+	
         <br />
         <br />
 	</div>
-     ${message }
-  
-    		<div id="container">
-			<form action="/SVRPlatform/login" class="loginform" method="post">
-				<div class="login">SIGN IN</div>
-				<div class="username-text">Email:</div>
-				<div class="password-text">Password:</div>
-				<div class="username-field">
-					<input type="text" name="email"/>
-				</div>
-				<div class="password-field">
-					<input type="password" name="password"/>
-				</div>
-				<input type="checkbox" name="remember" id="remember-me" value="remembered" /><label for="remember-me">Remember me</label>
-				<div class="forgot-usr-pwd">Forgot password? <a href='#'>Retrieve it...</a></div>
-				<input type="submit" id="signingo" name="submit" value="GO" />
-			</form>
-		</div>
-        
-      
-		   
+    
+    
+    
+    
     
         <div id="footer" align="center">
-            <p align="center">Copyright � www.SVRPlatform.com</p>
+            <p align="center">Copyright © www.SVRPlatform.com</p>
             <p> <a href="javascript:;">Terms of Service</a></p>
             <p> <a href="javascript:;">License of Development</a></p>
             <p> <a href="javascript:;">Privacy</a></p>
         	<img src="images/SVRPlatform.png" width=200px align="middle"/>
-    </div>
- 
+    	</div>
 </body>
 </html>

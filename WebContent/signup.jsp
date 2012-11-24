@@ -53,7 +53,7 @@
 				<div class="password-field">
 					<input type="password" name="password"/>
 				</div>
-				<input type="checkbox" name="remember-me" id="remember-me" value="remembered"/><label for="remember-me">Remember me</label>
+				<input type="checkbox" name="remember" id="remember-me" value="remembered"/><label for="remember-me">Remember me</label>
 				<div class="forgot-usr-pwd">First time using <a href='home.html'>SVRPlatform</a>?</div>
 				<input type="submit" name="submit" id="signingo" value="GO" />
 			</form>

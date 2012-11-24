@@ -15,6 +15,12 @@
     	<property name="loginService" ref="loginService"></property>
     </bean>
     
+     <bean id="registerService" class="com.SVRPlatform.service.impl.RegisterServiceImpl">
+    	<property name="userDAO" ref="userDAO"></property>
+    </bean>
+     <bean id="signUp"   scope="prototype"  class="com.SVRPlatform.action.SignUp">
+    	<property name="registerService" ref="registerService"></property>
+    </bean>
    
     <bean id="userDAO" class="com.SVRPlatform.dao.impl.UserDAOImpl"></bean>
     
