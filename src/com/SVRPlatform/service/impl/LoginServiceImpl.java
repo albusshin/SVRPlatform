@@ -11,8 +11,9 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
-	public boolean canLogin(String username, String password) {
-		String psswrd = this.userDAO.getPasswordByUsername(username);
+	public boolean canLogin(String email, String password) {
+		email = email.toLowerCase();
+		String psswrd = this.userDAO.getPasswordByEmail(email);
 		
 		if (psswrd.compareTo(password) == 0) {
 			return true;
@@ -20,5 +21,4 @@ public class LoginServiceImpl implements LoginService{
 		
 		return false;
 	}
-
 }
