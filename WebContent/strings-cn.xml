@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <strings>
+	
 	<string id="welcome">欢迎来到SVRPlatform</string>
 	<string id="search">搜索</string>
 	<string id="bugs">错误</string>
