@@ -2,8 +2,6 @@
  
 import java.io.Serializable;
 
-import javax.annotation.Resource;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.SVRPlatform.dao.UserDAO;
+import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.User;
 @Transactional
 @Repository("userDAO") 
@@ -65,5 +64,23 @@ public class UserDAOImpl implements UserDAO {
 		Session s = this.sessionFactory.openSession();
 		return (User) s.get(User.class, id);
  	}
+
+	@Override
+	public Serializable getSoftwareByName(String softwareName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Serializable getUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Serializable addBug(Bug bug) {
+		// TODO Auto-generated method stub
+		return null;
+	}
  
  }
