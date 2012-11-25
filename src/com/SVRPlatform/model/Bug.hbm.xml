@@ -8,14 +8,13 @@
             <column name="bugID" />
             <generator class="identity" />
         </id>
-        <version name="version" type="string">
+        <property name="version" type="string">
             <column name="version" />
-        </version>
-        <many-to-one name="software" class="com.SVRPlatform.model.Software" fetch="select">
+        </property>
+        <!-- many-to-one name="software" class="com.SVRPlatform.model.Software" fetch="select">
             <column name="softwareID" />
-        </many-to-one>
-        <many-to-one name="user" class="com.SVRPlatform.model.User" fetch="select">
-            <column name="userID" />
+        </many-to-one-->
+        <many-to-one name="user" class="com.SVRPlatform.model.User" column="userID" fetch="select">
         </many-to-one>
         <property name="level" type="java.lang.Integer">
             <column name="level" />
@@ -62,7 +61,7 @@
         <property name="bugNumber" type="string">
             <column name="bugNumber" length="65535" />
         </property>
-        <set name="rankings" table="ranking" inverse="true" lazy="true" fetch="select">
+        <!-- set name="rankings" table="ranking" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="bugID" not-null="true" unique="true" />
             </key>
@@ -73,20 +72,18 @@
                 <column name="bugID" />
             </key>
             <one-to-many class="com.SVRPlatform.model.Solution" />
-        </set>
+        </set-->
         <set name="users" table="watching" inverse="false" lazy="true" fetch="select">
             <key>
-                <column name="bugID" not-null="true" />
+                <column name="bugID"/>
             </key>
-            <many-to-many entity-name="com.SVRPlatform.model.User">
-                <column name="userID" not-null="true" />
-            </many-to-many>
+            <many-to-many class="com.SVRPlatform.model.User" column="userID"/>
         </set>
-        <set name="comments" table="comment" inverse="true" lazy="true" fetch="select">
+        <!-- set name="comments" table="comment" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="bugID" />
             </key>
             <one-to-many class="com.SVRPlatform.model.Comment" />
-        </set>
+        </set-->
     </class>
 </hibernate-mapping>
