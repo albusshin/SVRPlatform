@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -211,7 +213,7 @@
 				<img id="uploadscreenshotbutton" type='image' src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="uploadPressed()"/>
 				
 				
-				<img id="uploadscreenshot" src="images/screenshot.png"/>
+				<img id="uploadscreenshot" src="${uploadPath}"/>
 			</td>
 		</tr>
 		<tr>
@@ -251,7 +253,7 @@
 	    
         </form>
     </div>
-    
+ 
     
     
         <div id="footer" align="center">

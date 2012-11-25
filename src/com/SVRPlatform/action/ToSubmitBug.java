@@ -8,11 +8,8 @@ import com.SVRPlatform.util.CheckCookie;
 import com.SVRPlatform.service.LoginService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class index extends ActionSupport implements ServletRequestAware,ServletResponseAware{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class ToSubmitBug extends ActionSupport implements ServletRequestAware,ServletResponseAware {
+
 	private HttpServletRequest request;  
     public void setLoginService(LoginService loginService) {
 	}
@@ -25,6 +22,7 @@ public class index extends ActionSupport implements ServletRequestAware,ServletR
 
 	@Override
 	public void setServletResponse(HttpServletResponse response) {
+		
 	}
 
 	@Override
@@ -34,3 +32,4 @@ public class index extends ActionSupport implements ServletRequestAware,ServletR
 	}
 	
 }
+
