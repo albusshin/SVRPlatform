@@ -28,7 +28,7 @@
         	<result name="FAIL">/WEB-INF/signin.jsp</result>
         </action>
         
-		<action name="signup" class="signUp" method="execute">
+		<action name="signup" class="signup" method="execute">
         	<result name="success"   type="redirect">/home.jsp</result>
         	<result name="FAIL">/WEB-INF/signup.jsp</result>
         </action>
