@@ -13,8 +13,8 @@
     <param-name>contextConfigLocation</param-name>  
     <param-value>  
         classpath:applicationContext.xml
-        ,applicationContext-hibernate.xml
-    </param-value>
+        <!--,applicationContext-hibernate.xml-->
+    </param-value>  
   </context-param>
 
     <filter>
