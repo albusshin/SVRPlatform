@@ -1,5 +1,7 @@
  package com.SVRPlatform.dao.impl;
  
+import java.io.Serializable;
+
 import javax.annotation.Resource;
 
 import org.hibernate.Session;
@@ -10,10 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.model.User;
-
-@Repository("userDAO") @Transactional
+@Transactional
+@Repository("userDAO") 
 public class UserDAOImpl implements UserDAO {
-	@Resource
+	//@Resource
 	private SessionFactory sessionFactory;
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {
@@ -34,10 +36,12 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void addUser(User user) {
+	public Serializable addUser(User user) {
 		// TODO Auto-generated method stub
 		Session s = this.sessionFactory.openSession();
-		s.save(user);
+		Serializable id = s.save(user);
+		s.close();
+		return id;
 	}
 //	protected functions
 	protected User getUserByName(String email) {

@@ -1,5 +1,7 @@
 package com.SVRPlatform.dao;
 
+import java.io.Serializable;
+
 import com.SVRPlatform.model.User;
 
 public interface UserDAO {
@@ -8,5 +10,5 @@ public interface UserDAO {
 	
 	public boolean ifEmailExists(String email);
 	
-	public void addUser(User user);
+	public Serializable addUser(User user);
 }

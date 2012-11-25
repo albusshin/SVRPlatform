@@ -56,7 +56,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,Se
  		System.out.println(this.email);
  		System.out.println(this.password);
  		System.out.println(this.remember);
- 		boolean info = this.loginService.canLogin(this.email, this.password);
+ 		boolean info = this.loginService.login(this.email, this.password);
  		System.out.println(info);
  		if(!info)
  		{	
