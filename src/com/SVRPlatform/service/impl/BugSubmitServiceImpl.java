@@ -15,11 +15,13 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 	
 	@Override
 	public Map<String, String> bugSubmit(int level, String graphAddress,
-			String description, String version, String software,
-			String bugDigest, String user, int usabilityImpact, int dataImpact,
-			int privacyImpact, int availability, int frequency, int score,
-			String language, String bugNumber) {
+						String description, String version, String software,
+						String bugDigest, String user, int usabilityImpact, int dataImpact,
+						int privacyImpact, int availability, int frequency, int score,
+						String language, String bugNumber) {
 		Map<String, String> map = new HashMap<String, String>();
+		map.put("level", "OK");
+		map.get("level");
 		
 		if ()
 

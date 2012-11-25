@@ -34,7 +34,7 @@
         </action>
     
          <action name="index" class="com.SVRPlatform.action.Index" method="execute">
-        	<result name="success">/home.jsp</result>
+        	<result name="success" type="redirect">/home.jsp</result>
         	<result name="Login">/WEB-INF/index.html</result>
         	<result name="FAIL">/WEB-INF/signin.jsp</result>
         </action>
