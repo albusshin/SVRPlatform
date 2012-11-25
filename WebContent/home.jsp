@@ -29,7 +29,7 @@
                 </ul>
             </div>
         <hr/>
-        <h1 class="msblack20"><a href="#" id="usersname" class="steelbluefont"> ${email} </a>，Welcome to SVRPlatform.</h1>
+        <h1 class="msblack20"><a href="#" id="usersname" class="steelbluefont"> ${cookie.email.value}  </a>，Welcome to SVRPlatform.</h1>
 	
         <br />
         <br />

@@ -10,6 +10,10 @@ import com.SVRPlatform.service.LoginService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Index extends ActionSupport implements ServletRequestAware,ServletResponseAware{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private LoginService loginService;
 	private HttpServletResponse response;  
     private HttpServletRequest request;  
@@ -23,11 +27,14 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
 	
 	public String execute()
 	{
+		System.out.println("ININININ");
 		Cookie[] cookies = request.getCookies();	
         if (cookies != null) {
-        	System.out.println("aaaaa");
+        	
           for (int i = 0; i < cookies.length; i++) {
+            System.out.println(cookies[i].getName() +"/////");
             
+            System.out.println(cookies[i].getValue() );
         	  if (cookies[i].getName().equals("email")) {
         		  cookieEmail= cookies[i].getValue();
             }
@@ -39,20 +46,21 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
             
           }
         }
-        
-//		boolean info = this.loginService.canLogin(cookieEmail, cookiePassword);
-//		System.out.println(info);
-//		if(!info)
-//		{	
-//			message = "failed";
-//			return "FAIL";
-//		}
-		System.out.println("execute come on");
+        System.out.println("---------------------");
+
         if ((cookieEmail== null)&&(cookiePassword==null)) {
           return "Login";
         }
         else
         {
+    		boolean info = this.loginService.login(cookieEmail, cookiePassword);
+    		System.out.println(info);
+    		if(!info)
+    		{	
+    			message = "failed";
+    			return "FAIL";
+    		}
+    		System.out.println("execute come on");
         	return SUCCESS;
         }
 	}
