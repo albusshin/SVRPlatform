@@ -4,10 +4,14 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
     
     <!--****************************************************************************************-->  
     <!-- Set the data source --> 
@@ -28,15 +32,24 @@
     		<props>                
     			<prop key="hibernate.show_sql">true</prop>                
     			<prop key="hibernate.format_sql">true</prop>                
-    			<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>             
+    			<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+    			<prop key="hibernate.cache.use_second_level_cache">true</prop> 
+    			<prop key="hibernate.cache.use_query_cache">true</prop> 
+    			<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>       
     		</props>        
     	</property>                  
    		<!-- 映射文件 -->         
    		<property name="mappingResources">             
    			<list>               
-   				<value>
-   					com/SVRPlatform/model/Users.hbm.xml
-   				</value>             
+   				<value>com/SVRPlatform/model/User.hbm.xml</value>
+   				<value>com/SVRPlatform/model/Bug.hbm.xml</value>
+   				<!-- value>com/SVRPlatform/model/Solution.hbm.xml</value> 
+   				<value>com/SVRPlatform/model/Bug.hbm.xml</value>  
+   				<value>com/SVRPlatform/model/Comment.hbm.xml</value>
+   				<value>com/SVRPlatform/model/Ranking.hbm.xml</value>
+   				<value>com/SVRPlatform/model/Software.hbm.xml</value>
+   				<value>com/SVRPlatform/model/Usertype.hbm.xml</value-->
+   				         
    			</list>         
    		</property>     
     </bean>

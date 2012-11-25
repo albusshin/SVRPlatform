@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>      
+     <diskStore path="D:/ehcache"/><!--如果缓存中的对象存储超过指定的缓存数量的对象存储的磁盘地址-->
+     <!--全部默认的配置
+     maxElementsInMemory在內存中最多存放多少个对象
+     eternal对象是不是永远不变的，一般都是false
+     timeToLiveSeconds如果这个对象超过了这个时间，就会从缓存中清除
+       -->
+     <defaultCache
+     maxElementsInMemory="1000"
+     eternal="false"
+     timeToIdleSeconds="120"
+     timeToLiveSeconds="120"
+     overflowToDisk="true"
+     />
+
+     <!-- 针对指定的对象使用的缓存配置
+      name表示的是缓存的类对象的全路径名 
+     <cache name="com.hibernate.Student"
+     maxElementsInMemory="500"
+     eternal="false"
+     timeToIdleSeconds="50"
+     timeToLiveSeconds="50"
+     overflowToDisk="true"
+     />-->
+ </ehcache>

@@ -12,6 +12,12 @@
     <!--****************************************************************************************-->  
     
     <!--****************************************************************************************-->  
-    <context:annotation-config/>
-    <context:component-scan base-package="com.SVRPlatform.dao.impl"/>
+    <!-- context:annotation-config/>
+    <context:component-scan base-package="com.SVRPlatform.dao.impl"/>-->
+    <bean id="userDAO" class="com.SVRPlatform.dao.impl.UserDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="bugDAO" class="com.SVRPlatform.dao.impl.BugDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
 </beans>
