@@ -49,7 +49,7 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
         System.out.println("---------------------");
 
         if ((cookieEmail== null)&&(cookiePassword==null)) {
-          return "Login";
+          return "CookieNotFound";
         }
         else
         {
@@ -58,10 +58,10 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
     		if(!info)
     		{	
     			message = "failed";
-    			return "FAIL";
+    			return "NotAuthenticated";
     		}
     		System.out.println("execute come on");
-        	return SUCCESS;
+        	return "LoggedIn";
         }
 	}
 

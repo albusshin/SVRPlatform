@@ -23,29 +23,28 @@
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
         
-        <action name="login" class="loginAction" method="execute">
+        <action name="signin" class="signin" method="execute">
         	<result name="success"  type="redirect">/home.jsp</result>
-        	<result name="FAIL">/WEB-INF/signin.jsp</result>
+        	<result name="fail">/WEB-INF/signin.jsp</result>
         </action>
         
 		<action name="signup" class="signup" method="execute">
-        	<result name="success"   type="redirect">/home.jsp</result>
-        	<result name="FAIL">/WEB-INF/signup.jsp</result>
+        	<result name="success" type="redirect">/home.jsp</result>
+        	<result name="fail">/WEB-INF/signup.jsp</result>
         </action>
     
          <action name="index" class="com.SVRPlatform.action.Index" method="execute">
-        	<result name="success">/home.jsp</result>
-        	<result name="Login">/WEB-INF/index.html</result>
-        	<result name="FAIL">/WEB-INF/signin.jsp</result>
+        	<result name="LoggedIn" type="redirect">/home.jsp</result>
+        	<result name="CookieNotFound">/WEB-INF/index.html</result>
+        	<result name="NotAuthenticated">/WEB-INF/signin.jsp</result>
         </action>
-
         
-         <action name="Tosignin">    
-		 <result >/WEB-INF/signin.jsp</result>    
+         <action name="SigningIn">    
+		 	<result >/WEB-INF/signin.jsp</result>    
 		 </action>   
 		 
-         <action name="Tosignup">    
-		 <result >/WEB-INF/signup.jsp</result>    
+         <action name="SigningUp">    
+		 	<result >/WEB-INF/signup.jsp</result>    
 		 </action> 
          
     </package>

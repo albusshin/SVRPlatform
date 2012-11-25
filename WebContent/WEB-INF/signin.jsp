@@ -43,7 +43,7 @@
      ${message }
   
     		<div id="container">
-			<form action="/SVRPlatform/login" class="loginform" method="post">
+			<form action="/SVRPlatform/signin" class="loginform" method="post">
 				<div class="login">SIGN IN</div>
 				<div class="username-text">Email:</div>
 				<div class="password-text">Password:</div>
