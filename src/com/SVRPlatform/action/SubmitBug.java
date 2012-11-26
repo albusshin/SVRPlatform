@@ -180,9 +180,9 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 		System.out.println(software);
 		System.out.println(language);
 		
-		map=bugsubmitService.bugSubmit(graphaddress, description,version, software,
-				digest, email, usabilityimpact, dataimpact,
-				 privacyimpact, availabilityimpact, frequency, language);
+//		map=bugsubmitService.bugSubmit(graphaddress, description,version, software,
+//				digest, email, usabilityimpact, dataimpact,
+//				 privacyimpact, availabilityimpact, frequency, language);
 
 		message=map.get("description")+ map.get("version") + map.get("software")
 					+map.get("bugDigest") + map.get("language");
