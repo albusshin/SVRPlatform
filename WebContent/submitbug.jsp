@@ -105,12 +105,12 @@
 			}	
 		}
 	</script>
-    	<form id="submitbug" action="#" method="post">
+    	<form id="submitbug" action="/SVRPlatform/submitbug" method="post">
         	<div class="submitbugdigest">
             	<table class="submitbugtable">
                 <tr>
                 	<td class="submitbugkey">
-                    	<label for="digest"> Digest </label>
+                    	<label for="digest" > Digest </label>
                     </td>
                     <td class="submitbugvalue">
                     	<textarea id="digest" name="digest" type="text" maxlength="300" tabindex="100" class="inputdigestvalue" placeholder="Bug digest should include software name, version and the symptom when it's triggered."></textarea>
@@ -121,7 +121,8 @@
 			    <label for="Score"> Score </label>
 		    </td>
 		    <td class="submitbugvalue">
-			    <label id="Score"> 7.5 </label>
+			  <label id="Score"> 7.5 </label>
+
 		    </td>
 	    </tr>
 	    <tr>
@@ -129,7 +130,7 @@
 			    <label for="Usability"> Usability Impact </label>
 		    </td>
 		    <td class="submitbugvalue">
-			<select id="sel0" onChange="selectionChanged()">
+			<select id="sel0" name="usabilityimpact" onChange="selectionChanged()">
  				 <option value ="Complete">Complete</option>
 				 <option value ="Partial" selected="selected">Partial</option>
 				 <option value="Little">Little</option>
@@ -142,7 +143,7 @@
 			    <label for="Data"> Data Impact </label>
 		    </td>
 		    <td class="submitbugvalue">
-			<select id="sel1" onChange="selectionChanged()">
+			<select id="sel1"  name="dataimpact" onChange="selectionChanged()">
  				 <option value ="Complete">Complete</option>
 				 <option value ="Partial" selected="selected">Partial</option>
 				 <option value="Little">Little</option>
@@ -155,7 +156,7 @@
 			    <label for="Privacy"> Privacy Impact </label>
 		    </td>
 		    <td class="submitbugvalue">
-			<select id="sel2" onChange="selectionChanged()">
+			<select id="sel2"  name="privacyimpact" onChange="selectionChanged()">
  				 <option value ="Complete">Complete</option>
 				 <option value ="Partial" selected="selected">Partial</option>
 				 <option value="Little">Little</option>
@@ -168,7 +169,7 @@
 			    <label for="Availability"> Availability Impact </label>
 		    </td>
 		    <td class="submitbugvalue">
-			<select id="sel3" onChange="selectionChanged()"> 
+			<select id="sel3" name="availabilityimpact" onChange="selectionChanged()"> 
  				 <option value ="Complete">Complete</option>
 				 <option value ="Partial" selected="selected">Partial</option>
 				 <option value="Little">Little</option>
@@ -181,7 +182,7 @@
 			    <label for="Frequency"> Frequency </label>
 		    </td>
 		    <td class="submitbugvalue">
-			<select id="sel4" onChange="selectionChanged()">
+			<select id="sel4"  name="frequency" onChange="selectionChanged()">
  				 <option value ="Always">Always</option>
 				 <option value ="Often" selected="selected">Often</option>
 				 <option value="Sometimes">Sometimes</option>
@@ -213,7 +214,7 @@
 				<img id="uploadscreenshotbutton" type='image' src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="uploadPressed()"/>
 				
 				
-				<img id="uploadscreenshot" src="${uploadPath}"/>
+				<img id="uploadscreenshot" name="graphaddress" src="${uploadPath}"/>
 			</td>
 		</tr>
 		<tr>
@@ -254,7 +255,7 @@
         </form>
     </div>
  
-    
+    ${message	}
     
         <div id="footer" align="center">
             <p align="center">Copyright © www.SVRPlatform.com</p>

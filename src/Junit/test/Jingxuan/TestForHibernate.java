@@ -3,7 +3,6 @@ package Junit.test.Jingxuan;
 import static org.junit.Assert.*;
 
 import java.util.Date;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

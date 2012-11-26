@@ -48,17 +48,20 @@
 		 </action>
          
 		 <action name="tosubmitbug" class="com.SVRPlatform.action.ToSubmitBug" method="execute">
-        	<result name="LoggedIn" type="redirect">/WEB-INF/submitbug.html</result>
+        	<result name="LoggedIn" type="redirect">/WEB-INF/submitbug.jsp</result>
         	<result name="CookieNotFound" >/WEB-INF/index.html</result>
         	<result name="NotAuthenticated">/WEB-INF/signin.jsp</result>
         </action>
-         
 
-		 
          <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph">  
-	            <result name="success">/WEB-INF/page/hello.jsp</result>  
+	            <result name="success">/WEB-INF/index.html</result>  
 	            <result name="input">/upload.jsp</result>  
        		</action>  
+         
+         <action name="submitbug" class="submitbug" method="execute">
+	 		<result name="BugSubmitSuccess">/WEB-INF/index.html</result>
+	 		<result name="BugSubmitFailed">/WEB-INF/submitbug.jsp</result>  
+        </action>
          
          
     </package>

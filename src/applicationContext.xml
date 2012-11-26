@@ -22,6 +22,14 @@
     	<property name="registerService" ref="registerService"></property>
     </bean>
     
+    <bean id="bugsubmitService" class="com.SVRPlatform.service.impl.BugSubmitServiceImpl">
+    	<property name="userDAO" ref="userDAO"></property>
+    </bean>
+    <bean id="submitbug" scope="prototype" class="com.SVRPlatform.action.SubmitBug">
+    	<property name="bugsubmitService" ref="bugsubmitService"></property>
+    </bean>
+    
+    
     
     <bean id="userDAO" class="com.SVRPlatform.dao.impl.UserDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
