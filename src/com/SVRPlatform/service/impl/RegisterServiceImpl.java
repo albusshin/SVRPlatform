@@ -25,7 +25,9 @@ public class RegisterServiceImpl implements RegisterService{
 		
 		//check if email is against the rule or exists
 		if (emailPattern.matcher(email).matches())
-			if (userDAO.ifEmailExists(email))
+			if (email.length()>100) 
+				response.email = Response.Email.email_against_rule;
+			else if (userDAO.ifEmailExists(email))
 				response.email = Response.Email.email_exists;
 			else response.email = Response.Email.email_ok;
 		else response.email = Response.Email.email_against_rule;
