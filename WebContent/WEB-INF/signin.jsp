@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html;  charset=utf-8"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
 <html>
@@ -10,14 +10,12 @@
 </head>
 
 <body>
-
 	<style type="text/css">
 			/* ------- Body ------- */
 		
 		body {
-			background: #eeeeee url(images/bg.jpg) top left repeat;
+			background: #eeeeee url(images/sgbg.jpg) top left no-repeat;
 		}
-
 	</style>
 	<div align="right">
             <div id="menu2" class="menu">
@@ -36,12 +34,13 @@
                     </div>
                 </ul>
             </div>
-        <hr/>
         <br />
         <br />
 	</div>
-     ${message }
-  
+-	
+-    ${message }
+    
+    
     		<div id="container">
 			<form action="/SVRPlatform/signin" class="loginform" method="post">
 				<div class="login">SIGN IN</div>
@@ -53,22 +52,28 @@
 				<div class="password-field">
 					<input type="password" name="password"/>
 				</div>
-				<input type="checkbox" name="remember" id="remember-me" value="remembered" /><label for="remember-me">Remember me</label>
+				<input type="checkbox" name="remember" id="remember-me" value="remembered"/><label for="remember-me">Remember me</label>
 				<div class="forgot-usr-pwd">Forgot password? <a href='#'>Retrieve it...</a></div>
 				<input type="submit" id="signingo" name="submit" value="GO" />
 			</form>
 		</div>
         
-      
+        
 		   
     
-        <div id="footer" align="center">
-            <p align="center">Copyright © www.SVRPlatform.com</p>
-            <p> <a href="javascript:;">Terms of Service</a></p>
-            <p> <a href="javascript:;">License of Development</a></p>
-            <p> <a href="javascript:;">Privacy</a></p>
-        	<img src="images/SVRPlatform.png" width=200px align="middle"/>
-    </div>
- 
+
+    	<div id="footer" align="center">
+            <p align="center" style="color:#000">Copyright Â© www.SVRPlatform.com</p>
+            <p> <a class="footer" style="color:#000" href="javascript:;">Terms of Service</a></p>
+            <p> <a class="footer" style="color:#000" href="javascript:;">License of Development</a></p>
+            <p> <a class="footer" style="color:#000" href="javascript:;">Privacy</a></p>
+        	<img src="images/SVRPlatformPUR.png" width=400px align="middle"/>
+    	</div>
+    <script type="text/javascript">
+	    function showWrongMessage(){
+		    document.getElementById("wrongmessage").style.display="block";
+	    }
+    </script>
+	<div id="wrongmessage" style="display:none">dfsdaflksdajf;as</div>
 </body>
 </html>

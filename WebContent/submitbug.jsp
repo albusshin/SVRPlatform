@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html;  charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -27,7 +27,20 @@
                     </div>
                 </ul>
             </div>
-        <hr/>
+        <div id="upbar">
+            <div id="userbar">
+                     <img id="userbaravatar" src="http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe?s=45&d=identicon&r=PG" align="left"/>
+                     <div id="userbarelse">
+                        <div id="usersname">albus shin</div>
+                        <img class="seperator" src="images/seperator.png" align="middle"/>
+                        <div id="userbarcredit">1,023</div>
+                        <img class="seperator" src="images/seperator.png" align="middle"/>
+                        <img id="userbarusericon" src="images/usericon.png" onmouseover="this.src='images/usericonpressed.png'" onmouseout="this.src='images/usericon.png'" onclick="javascript:;"/>
+                        <img id="userbarwatching" src="images/watching.png" onmouseover="this.src='images/watchingpressed.png'" onmouseout="this.src='images/watching.png'" onclick="javascript:;"/>
+                        <img id="userbarlogout" src="images/logout.png" onmouseover="this.src='images/logoutpressed.png'" onmouseout="this.src='images/logout.png'" onclick="javascript:;"/>
+                     </div>
+            </div>
+        </div>
         <br />
         <br />
 	</div>
@@ -121,8 +134,7 @@
 			    <label for="Score"> Score </label>
 		    </td>
 		    <td class="submitbugvalue">
-			  <label id="Score"> 7.5 </label>
-
+			    <label id="Score"> 7.5 </label>
 		    </td>
 	    </tr>
 	    <tr>
@@ -143,7 +155,7 @@
 			    <label for="Data"> Data Impact </label>
 		    </td>
 		    <td class="submitbugvalue">
-			<select id="sel1"  name="dataimpact" onChange="selectionChanged()">
+			<select id="sel1" name="dataimpact" onChange="selectionChanged()">
  				 <option value ="Complete">Complete</option>
 				 <option value ="Partial" selected="selected">Partial</option>
 				 <option value="Little">Little</option>
@@ -156,7 +168,7 @@
 			    <label for="Privacy"> Privacy Impact </label>
 		    </td>
 		    <td class="submitbugvalue">
-			<select id="sel2"  name="privacyimpact" onChange="selectionChanged()">
+			<select id="sel2" name="privacyimpact" onChange="selectionChanged()">
  				 <option value ="Complete">Complete</option>
 				 <option value ="Partial" selected="selected">Partial</option>
 				 <option value="Little">Little</option>
@@ -182,7 +194,7 @@
 			    <label for="Frequency"> Frequency </label>
 		    </td>
 		    <td class="submitbugvalue">
-			<select id="sel4"  name="frequency" onChange="selectionChanged()">
+			<select id="sel4" name="frequency" onChange="selectionChanged()">
  				 <option value ="Always">Always</option>
 				 <option value ="Often" selected="selected">Often</option>
 				 <option value="Sometimes">Sometimes</option>
@@ -254,15 +266,16 @@
 	    
         </form>
     </div>
- 
+    
     ${message	}
     
-        <div id="footer" align="center">
+
+    	<div id="footer" align="center">
             <p align="center">Copyright © www.SVRPlatform.com</p>
-            <p> <a href="javascript:;">Terms of Service</a></p>
-            <p> <a href="javascript:;">License of Development</a></p>
-            <p> <a href="javascript:;">Privacy</a></p>
-        	<img src="images/SVRPlatform.png" width=200px align="middle"/>
+            <p> <a class="footer" href="javascript:;">Terms of Service</a></p>
+            <p> <a class="footer" href="javascript:;">License of Development</a></p>
+            <p> <a class="footer" href="javascript:;">Privacy</a></p>
+        	<img src="images/SVRPlatform.png" width=400px align="middle"/>
     	</div>
 </body>
 </html>
