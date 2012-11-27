@@ -1,27 +1,27 @@
-package com.SVRPlatform.action;
+package com.SVRPlatform.util;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.ServletResponseAware;
-import com.SVRPlatform.service.LoginService;
-import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ActionContext;
 
-public class Index extends ActionSupport implements ServletRequestAware,ServletResponseAware{
+public class CheckCookie {
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private HttpServletRequest request;  
-	private String cookieEmail = null;	
-	private String cookiePassword = null;
-	private LoginService loginService;
 
-	
-	public String execute()
+
+	public static String check(HttpServletRequest request)								//For redirection Check email & password  
 	{
-		System.out.println("In Index");
+		String cookieEmail = null;	
+		String cookiePassword = null;
+		String sessionEmail = null;
+		String sessionPassword = null;
+		boolean info = false;
+		
+		
+		System.out.println("checking");
 		Cookie[] cookies = request.getCookies();		
 		System.out.println("getcookie");
         if (cookies != null) {
@@ -46,8 +46,17 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
         {
             System.out.println(cookieEmail);
             System.out.println(cookiePassword);
-            boolean info = this.loginService.login(cookieEmail, cookiePassword);
-            if(!info)
+
+            sessionEmail = (String) request.getAttribute("email");
+            sessionPassword = (String) request.getAttribute("password");
+            
+            System.out.println(sessionEmail);
+            System.out.println(sessionPassword);
+            
+            if(sessionEmail.equals(cookieEmail) && sessionPassword.equals(cookiePassword))			
+            	info=true;
+            
+    		if(!info)
     		{	
     			return "NotAuthenticated";
     		}
@@ -57,22 +66,13 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
 	}
 
 
-	public void setLoginService(LoginService loginService) {
-		this.loginService = loginService;
-	}
 
 
-	@Override
-	public void setServletRequest(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		this.request=request;
-	}
-
-
-	@Override
-	public void setServletResponse(HttpServletResponse arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }
+
+
+
+	
+    
+    
