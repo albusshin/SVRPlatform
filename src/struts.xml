@@ -24,17 +24,17 @@
         </global-exception-mappings>
         
         <action name="signin" class="signin" method="execute">
-        	<result name="success"  type="redirect">/home.jsp</result>
+        	<result name="success" >/WEB-INF/home.jsp</result>
         	<result name="fail">/WEB-INF/signin.jsp</result>
         </action>
         
 		<action name="signup" class="signup" method="execute">
-        	<result name="success" type="redirect">/home.jsp</result>
+        	<result name="success" >/WEB-INF/home.jsp</result>
         	<result name="fail">/WEB-INF/signup.jsp</result>
         </action>
     
          <action name="index" class="com.SVRPlatform.action.Index" method="execute">
-        	<result name="LoggedIn" type="redirect">/home.jsp</result>
+        	<result name="LoggedIn" >/WEB-INF/home.jsp</result>
         	<result name="CookieNotFound" >/WEB-INF/index.html</result>
         	<result name="NotAuthenticated">/WEB-INF/signin.jsp</result>
         </action>
