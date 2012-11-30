@@ -8,6 +8,11 @@
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd  
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">  
     <!-- Action -->  
+    
+    <bean id="index" scope="prototype" class="com.SVRPlatform.action.Index">
+    	<property name="loginService" ref="loginService"></property>
+    </bean>
+    
     <bean id="loginService" class="com.SVRPlatform.service.impl.LoginServiceImpl">
     	<property name="userDAO" ref="userDAO"></property>
     </bean>
@@ -28,10 +33,8 @@
     <bean id="submitbug" scope="prototype" class="com.SVRPlatform.action.SubmitBug">
     	<property name="bugsubmitService" ref="bugsubmitService"></property>
     </bean>
-    <bean id="checkcookie" scope="prototype" class="com.SVRPlatform.util.CheckCookie">
-    	<property name="loginService" ref="loginService"></property>
-    </bean>
-    
+
+
     
     <bean id="userDAO" class="com.SVRPlatform.dao.impl.UserDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
