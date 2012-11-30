@@ -2,7 +2,7 @@
     <wb-module deploy-name="SVRPlatform">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="SVRPlatform"/>
         <property name="java-output-path" value="/SVRPlatform/build/classes"/>
+        <property name="context-root" value="/"/>
     </wb-module>
 </project-modules>
