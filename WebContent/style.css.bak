@@ -1,0 +1,853 @@
+body {
+	font-size: 14px;
+	line-height: 1.6;
+}
+#content {
+	width: 950px;
+	margin: 50px auto;
+	padding: 20px;
+	background: #FFF;	
+	border: 1px solid #CCC;
+	border-radius:50px;
+}
+
+a{
+	color:#000;
+	text-decoration:none;
+	border-bottom:thin;
+	border-bottom-style:dotted;
+	border-bottom-color:#666;
+}
+/*css used in submit bug page   Albus Shin*/
+form#submitbug{
+	padding-top:30px;
+	margin:50px auto;
+	outline:none;
+}
+table.submitbugtable{
+	margin: auto;
+	font-size:22px;
+	line-height: 2.0;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
+}
+td.submitbugkey{
+	text-shadow: grey 1px 1px 1px;
+	text-align:left;
+	padding-right:30px;
+	vertical-align:top;
+}
+td.submitbugvalue{
+}
+textarea#digest{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	width:700px;
+	height:100px;
+	font-size:22px;
+	line-height: 2.0;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 11px;
+	border-color:#000;
+	padding:5px;
+	line-height: 1.6;
+	background:#FC9;
+}
+textarea#description{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	width:700px;
+	height:350px;
+	font-size:22px;
+	line-height: 2.0;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 11px;
+	border-color:#ccc;
+	padding:5px;
+	line-height: 1.6;
+}
+
+
+/*css used in the user profile page  Albus Shin*/
+div.userprofile{
+	clear:both;
+	margin:auto;
+	padding-top: 10px;
+	width:900px;
+}
+div.userprofiletitle{
+	padding-left:40px;
+	font-size:22px;
+	line-height: 2.0;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	text-shadow: grey 1px 1px 1px;
+	border-bottom-style:double;
+	border-bottom-color:#888;
+	font-weight:bold;
+}
+div.userprofiledigest{
+	width:inherit;
+	margin-top:40px;
+	border-bottom:thin;
+	padding-bottom:40px;
+	margin-bottom:40px;
+	border-bottom-style:solid;
+	border-bottom-color:#ddd;
+}
+img.userprofiledigestavatar{
+	margin-left:60px;
+	margin-right:60px;
+	border-radius: 11px;
+	width:200px;
+	float:left;
+}
+td.userprofiledigestleft{
+	text-align:left;
+	vertical-align:text-top;
+	color:#bbb;
+	font-size:12px;
+	font-style:italic;
+	font-family:Verdana, Geneva, sans-serif;
+	margin-right:20px;
+	padding-right:40px;
+}
+td.userprofiledigestmiddle{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-variant:small-caps;
+	line-height:14px;
+	font-size:15px;
+	padding-right:40px;
+}
+td.userprofiledigestright{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	line-height:14px;
+	font-size:15px;
+}
+p#memberfor,p#seen{
+	color:#36C;
+}
+table#userprofiledetails{
+	width:inherit;
+	margin-top:20px;
+}
+tr.userprofiledetailstitle{
+	font-size:20px;
+	line-height: 2.0;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	text-shadow: grey 1px 1px 1px;
+	border-bottom:thin;
+	border-bottom-style:solid;
+	border-bottom-color:#aaa;
+}
+.userprofiledetailstitle td{
+	padding-left:20px;
+	margin-left:20px;
+	font-weight:bold;
+}
+tr.userprofiledetailscontent{
+	font-size:16px;
+	line-height: 2.0;
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+.userprofiledetailscontent td{
+	font-size:15px;
+	padding-top:30px;
+	padding-bottom:10px;
+	padding-left:20px;
+	margin-left:20px;
+}
+div.userprofiledigesttable{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	line-height:0.2px;
+	float:left;
+}
+div.userprofiledigesttextname{
+	text-shadow: grey 1px 1px 1px;
+	font-weight:bold;
+}
+div.userprofiledigesttextemail{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
+}
+div.userprofiledigesttextcredits{
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+/*css used in the bug comments page and solution page  Albus Shin*/
+div.comments {
+	clear: both;
+	margin:auto;
+	padding-top: 10px;
+	width:900px;
+}
+
+div.commentstitle{
+	padding-left:40px;
+	font-size:22px;
+	line-height: 1.6;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	text-shadow: grey 1px 1px 1px;
+	border-bottom-style:double;
+	border-bottom-color:#888;
+	font-weight:bold;
+}
+div.comment{
+	margin:auto;
+	width:700px;
+	padding-top:30px;
+	padding-left:60px;
+	border-bottom:thin;
+	border-bottom-color:#ccc;
+	border-bottom-style:inset;
+	padding-bottom:30px;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+}
+/* css style used in the solution page */
+table.solution{
+	margin:auto;
+	width:700px;
+	margin-top:30px;
+	padding-left:30px;
+	border-bottom:thin;
+	border-bottom-color:#ccc;
+	border-bottom-style:inset;
+	margin-bottom:30px;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+}
+td.leftbar{
+	margin:auto;
+	width:150px;
+	height:250px;
+}
+img.leftbarup{
+	padding-left:50px;
+	height:50px;
+}
+div.leftbarsum{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:35px;
+	font-weight:bold;
+}
+img.leftbardown{
+	padding-left:50px;
+	height:50px;
+}
+img.leftbarbestofficial{
+	padding-top:30px;
+	padding-left:50px;
+	height:50px;
+}
+td.rightcontent{
+}
+div.commenttitle{
+	font-size:18px;
+	font-weight:bold;
+	line-height: 3.0;
+	text-shadow: grey 1px 1px 1px;
+}
+div.commenttext{
+	font-size:16px;
+	line-height: 1.6;
+}
+div.commentfooter{
+	height:80px;
+	clear:both;
+	width:inherit;
+}
+
+div.commentfooterdate{
+	text-align:left;
+	margin-top:50px;
+	float:left;
+	color:#aaa;
+}
+div.commentfooterauthor{
+	margin-top:30px;
+	margin-right:30px;
+	font-weight:bold;
+	float:right;
+}
+div.commentfooterauthorname{
+	font-weight:bold;
+	text-shadow: grey 1px 1px 1px;
+}
+div.commentfooterauthorcredit{
+	color:#666;
+}
+img.commentfooteravatar{
+	float:right;
+	margin-right:20px;
+	border-radius: 11px;
+}
+img.commentsfooterleft{
+	height:50px;
+	float:left;
+}
+img.commentsfooterright{
+	height:50px;
+	float:left;
+}
+a.commentsfooterlink{
+	padding-top:8px;
+	padding-left:5px;
+	padding-right:5px;
+	float:left;
+	font-size:16px;
+	line-height: 1.6;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	color:#444;
+	border-bottom:none;
+	text-decoration:underline;
+}
+a.commentsfooternow{
+	padding-top:8px;
+	padding-left:5px;
+	padding-right:5px;
+	float:left;
+	font-size:16px;
+	line-height: 1.6;
+	border-bottom:none;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+}
+div.commentssubmit{
+	margin:auto;
+	width:700px;
+	padding-top:30px;
+	border-bottom:thin;
+	border-bottom-color:#ccc;
+	border-bottom-style:inset;
+	padding-bottom:30px;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+}
+form#commentssubmitform{
+	padding-top:30px;
+	margin:auto;
+	outline:none;
+}
+input#submitbutton{
+	width:160px;
+}
+table.commentssubmittable{
+	margin: auto;
+	font-size:22px;
+	line-height: 2.0;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
+}
+td.commentssubmitkey{
+	padding-top:10px;
+	text-shadow: grey 1px 1px 1px;
+	text-align:left;
+	padding-right:30px;
+	vertical-align:top;
+}
+td.commentssubmitvalue{
+	padding-top:10px;
+}
+textarea#commentssubmittitle{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	width:600px;
+	height:40px;;
+	font-size:20px;
+	line-height: 2.0;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 11px;
+	border-color:#ccc;
+	padding:5px;
+	line-height: 1.6;
+}
+textarea#commentssubmittext{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	width:600px;
+	height:350px;
+	font-size:20px;
+	line-height: 2.0;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 11px;
+	border-color:#ccc;
+	padding:5px;
+	line-height: 1.6;
+}
+
+
+/* css used in the bug and vulnerability index page  Albus Shin*/
+p.bugvulid {
+	padding-left:20px;
+	font-size:16px;
+	line-height: 1.6;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	background:#eee;
+}
+
+img.bugvulscreenshot{
+	width:900px;
+}
+/* css3 代码 实现圆角矩形  Albus Shin */
+div.bugvuldigest {
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 11px;
+	padding:5px;
+	font-size:14px;
+	line-height: 1.6;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	text-shadow: grey 1px 1px 1px;
+	background:#FC9;
+}
+div.date{
+	color:#666;
+}
+
+table.bugvultable{
+	font-size:14px;
+	margin: auto 30px;
+	line-height: 2.0;
+	width:auto;
+	clear:both;
+}
+.tableleft{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	padding-right:40px;
+	padding-left:100px;
+}
+.tablemiddlegreen{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	color:green;
+}
+.tablemiddleorange{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	color:orange;
+}
+.tablemiddlered{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	color:red;
+}
+table.productstable{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-size:18px;
+	margin: auto;
+	line-height: 2.0;
+	clear:both;
+}
+.tableright{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	padding-left:60px;
+	color:#666;
+}
+.score{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-weight:bold;
+	background:#f00;
+}
+p.bugvulsubtitle {
+	padding-left:20px;
+	font-size:15px;
+	line-height: 1.5;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	background:#CCC;
+}
+p.bugvultext{
+	font-size:14px;
+	margin: auto 30px;
+	line-height: 2.0;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+}
+
+hr {
+	border: none;
+	height: 1px; line-height: 1px;
+	background: #CCC;	
+	margin-bottom: 20px;
+	padding: 0;
+}
+
+p {
+	margin: 0;	
+	padding: 7px 0;
+}
+
+		.msblack20{
+			font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+			text-shadow: grey 1px 1px 1px;
+			font-size: 20px;
+			line-height: 1.6;
+			margin: 0;
+		}
+		div#footer{
+			background: #eeeeee url(images/bg.jpg) top left repeat;
+			clear:both;
+			font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+			text-shadow: grey 1px 1px 1px;
+			font-size: 12px;
+			padding-top:50px;
+			padding-bottom:50px;
+		}
+		.steelbluefont{
+			text-shadow: black 1px 1px 1px;
+			color: SteelBlue;
+			border-bottom:thin;
+			border-bottom-style:dotted;
+			border-bottom-color:#666;
+		}
+		/* menu bar copied from the Internet Albus Shin*/
+		.menu { 
+			height: 60px;
+			display: block;
+		}
+
+		.menu ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.menu ul li {
+			/* width and height of the menu items */  
+			float: left;
+			overflow: hidden;
+			position: relative;
+			text-align: center;
+			line-height: 60px;
+		}
+
+		.menu ul li a {
+			/* must be postioned relative  */ 
+			position: relative;
+			display: block;
+			width: 140px;
+			height: 60px;
+			font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+			font-size: 12px;
+			font-weight: bold;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			text-decoration: none;
+			cursor: pointer;
+			border-bottom:none;
+		}
+
+		.menu ul li a span {
+			/* all layers will be absolute positioned */
+			position: absolute;
+			left: 0;
+			width: 140px;
+			border-bottom:none;	
+		}
+
+		.menu ul li a span.out {
+			top: 0px;
+		}
+
+		.menu ul li a span.over,
+		.menu ul li a span.bg {
+			/* hide */  
+			top: -60px;
+			border-bottom:none;
+		}
+
+		/** 1st example **/
+
+		#menu {
+			background: #fff;
+		}
+
+		#menu ul li a {
+			color: #000;
+			border-bottom:none;
+		}
+
+		#menu ul li a span.over {
+			border-bottom:none;
+			color: #FFF;
+		}
+
+		#menu ul li span.bg {
+			/* height of the menu items */  
+			height: 60px;
+			background: url('bg_over.gif') center center no-repeat;
+		}
+		
+		/** 2nd example **/
+
+		#menu2 {
+			background: #000;		
+		}
+		
+		#menu2 ul li a {
+			border-bottom:none;
+			color: #FFF;
+		}
+
+		#menu2 ul li a span.over {
+			border-bottom:none;
+			background: #FFF;
+			color: #000;
+		}
+		/* input search bar from the Internet Albus Shin*/
+		input {
+			outline: none;
+		}
+		input[type=search] {
+			-webkit-appearance: textfield;
+			-webkit-box-sizing: content-box;
+			font: 85%/140% "微软雅黑", "黑体", "新宋体", "宋体";
+			font-size: 100%;
+		}
+		input::-webkit-search-decoration,
+		input::-webkit-search-cancel-button {
+			display: none; /* remove the search and cancel icon */
+		}
+		
+		/* search input field */
+		input[type=search] {
+			background: #ededed url(search-icon.png) no-repeat 9px center;
+			border: solid 1px #ccc;
+			padding: 9px 10px 9px 32px;
+			width: 55px;
+			
+			-webkit-border-radius: 10em;
+			-moz-border-radius: 10em;
+			border-radius: 10em;
+			
+			-webkit-transition: all .5s;
+			-moz-transition: all .5s;
+			transition: all .5s;
+		}
+		input[type=search]:focus {
+			width: 130px;
+			background-color: #fff;
+			border-color: #6dcff6;
+			
+			-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+			-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+			box-shadow: 0 0 5px rgba(109,207,246,.5);
+		}
+		
+		/* placeholder */
+		input:-moz-placeholder {
+			color: #999;
+		}
+		input::-webkit-input-placeholder {
+			color: #999;
+		}
+		.searchinput{
+			padding-top:8px;
+			padding-right:40px;
+		}
+		
+		/* Register and Login css file copied from the Internet Albus Shin */
+		
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* ------- Remove Chrome's border around active fields ------- */
+
+*:focus {
+	outline: none;
+}
+
+/* ------- Disable background and border for input fields ------- */
+
+input {
+	background: transparent;
+	border: 0;
+}
+
+
+
+/* --------------------------------------------------------------- */
+
+
+
+/* ------- Container ------- */
+
+#container {
+	margin: auto;
+	margin-top: 180px;
+	width: 524px;
+	height: 262px;
+	text-align: left;
+	font-family: Verdana, Arial;
+	font-weight: normal;
+	font-size: 12px;
+	color: #ffffff;
+}
+
+
+/* ------- Login Form ------- */
+
+form.loginform, .welcome {
+	background: url(images/form-bg.png) top left no-repeat;
+	width: 524px;
+	height: 262px;
+	padding-top: 1px;
+}
+
+.login, .welcome-user {
+	width: 470px;
+	float: left;
+	margin-top: 33px;
+	margin-left: 40px;
+	font-size: 20px;
+}
+
+.username-text {
+	width: 190px;
+	float: left;
+	margin-top: 50px;
+	margin-left: 40px;
+}
+
+.password-text {
+	width: 290px;
+	float: left;
+	margin-top: 50px;
+	margin-left: 0px;
+}
+
+.welcome-text {
+	width: 360px;
+	float: left;
+	margin-top: 50px;
+	margin-left: 40px;
+	line-height: 16px;
+}
+
+.username-field {
+	width: 168px;
+	height: 38px;
+	float:left;
+	margin-top: 10px;
+	margin-left: 35px;
+	background: url(images/username-field.png) center left no-repeat;
+}
+
+.username-field:hover {
+	background: url(images/username-field-hover.png) center left no-repeat;
+}
+
+.password-field {
+	width: 280px;
+	height: 38px;
+	float:left;
+	margin-top: 10px;
+	margin-left: 22px;
+	background: url(images/password-field.png) center left no-repeat;
+}
+
+.password-field:hover {
+	background: url(images/password-field-hover.png) center left no-repeat;	
+}
+
+input[type="text"], input[type="password"] {
+	width: 120px;
+	height: 16px;
+	margin-top: 10px;
+	margin-left: 10px;
+	font-family: Verdana, Arial;
+	font-size: 16px;
+	color: #2d2d2d;
+}
+
+/* ------------ Custom Checkbox ------------------------------- */
+
+/* Works for browsers with CSS3 support (with or without Javascript) */
+/* Works for Internet Explorer 6-8 (without CSS3 support) with Javascript */
+/* If Javascript isn't available this doesn't work for Internet Explorer 6-8 */
+
+input[type="checkbox"] {
+	position: absolute;
+	left: -999px;
+}
+
+input[type="checkbox"] + label {
+	width: 132px;
+	height: 24px;
+	float: left;
+	margin-top: 26px;
+	margin-left: 37px;
+	padding-left: 28px;
+	display: block;
+	position: relative;
+	line-height: 24px;
+	background: url(images/checkbox-off.png) top left no-repeat;
+}
+
+input[type="checkbox"]:checked + label {
+	background: url(images/checkbox-on.png) top left no-repeat;
+}
+
+input[type="checkbox"]:checked:hover + label, input[type="checkbox"]:checked:focus + label {
+	background: url(images/checkbox-on-hover.png) top left no-repeat;
+}
+
+input[type="checkbox"]:not(:checked):hover + label, input[type="checkbox"]:not(:checked):focus + label {
+	background: url(images/checkbox-off-hover.png) top left no-repeat;
+}
+
+/* -------------------------------------------------------------------------- */
+
+.forgot-usr-pwd {
+	width: 220px;
+	float: left;
+	margin-top: 26px;
+	margin-left: 0;
+	color: #cccccc;
+	line-height: 24px;
+}
+
+.forgot-usr-pwd a {
+	color: #cccccc;
+	text-decoration: none;
+	font-style: italic;
+}
+
+.forgot-usr-pwd a:hover, .forgot-usr-pwd a:focus {
+	text-decoration: underline;
+}
+
+input#signingo {
+	width: 95px;
+	height: 73px;
+	float: left;
+	margin-top: 12px;
+	margin-left: 2px;
+	font-family: Verdana, Arial;
+	font-size: 26px;
+	color: #ffffff;
+	
+}
+
+input#signingo[type="submit"]:hover, input#signingo[type="submit"]:focus {
+	background: url(images/go-hover.png) top left no-repeat;
+}
+
+
+.home {
+	width: 70px;
+	height: 73px;
+	float: left;
+	margin-top: 122px;
+	margin-left: 21px;
+	font-size: 20px;
+	padding: 25px 0 0 15px;
+}
+
+.home:hover, .home:focus {
+	background: url(images/go-hover.png) top left no-repeat;
+}
+
+.home a, .home a:hover, .home a:focus {
+	color: #ffffff;
+	text-decoration: none;
+}

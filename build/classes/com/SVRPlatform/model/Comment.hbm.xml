@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-11-24 21:57:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.SVRPlatform.model.Comment" table="comment" catalog="svrplatform_database">
+        <composite-id name="id" class="com.SVRPlatform.model.CommentId">
+            <key-property name="bugId" type="java.lang.Integer">
+                <column name="bugID" />
+            </key-property>
+            <key-property name="userId" type="java.lang.Integer">
+                <column name="userID" />
+            </key-property>
+            <key-property name="datetime" type="timestamp">
+                <column name="datetime" length="19" />
+            </key-property>
+            <key-property name="content" type="string">
+                <column name="content" length="65535" />
+            </key-property>
+            <key-property name="commentTitle" type="string">
+                <column name="commentTitle" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="user" class="com.SVRPlatform.model.User" update="false" insert="false" fetch="select">
+            <column name="userID" />
+        </many-to-one>
+        <many-to-one name="bug" class="com.SVRPlatform.model.Bug" update="false" insert="false" fetch="select">
+            <column name="bugID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
