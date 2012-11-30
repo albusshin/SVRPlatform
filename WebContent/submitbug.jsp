@@ -65,7 +65,7 @@
 			for(var i=0; i<5; i++){
 				str = "sel" + i;
 				var selection = document.getElementById(str).selectedIndex;
-				var nowscore;
+				var nowscore = 0;
 				switch (selection){
 					case 0:
 						nowscore = 10.0;
@@ -126,7 +126,7 @@
                     	<label for="digest" > Digest </label>
                     </td>
                     <td class="submitbugvalue">
-                    	<textarea id="digest" name="digest" type="text" maxlength="300" tabindex="100" class="inputdigestvalue" placeholder="Bug digest should include software name, version and the symptom when it's triggered."></textarea>
+                    	<textarea id="digest" name="digest" maxlength="300" tabindex="100" class="inputdigestvalue" placeholder="Bug digest should include software name, version and the symptom when it's triggered."></textarea>
                     </td>
 	    </tr>
 	    <tr>
@@ -207,34 +207,17 @@
                     	<label for="description"> Description </label>
                     </td>
                     <td class="submitbugvalue">
-                    	<textarea id="description" name="description" type="text" maxlength="300" tabindex="100" class="inputdigestvalue" placeholder="Bug description should be very specific about the bug itself, including software versions, software company, platform of running the software, and so on."></textarea>
+                    	<textarea id="description" name="description" maxlength="300" tabindex="100" class="inputdigestvalue" placeholder="Bug description should be very specific about the bug itself, including software versions, software company, platform of running the software, and so on."></textarea>
                     </td>
                 </tr>
 
-		<tr>
-			<td class="submitbugkey">
-				<label for="Screenshot"> Screenshot </label>
-			</td>
-			<td class="submitugvalue">
-				<script type="text/javascript">
-					function uploadPressed()
-					{
-						document.getElementById("uploadscreenshotbutton").style.display="none";
-						document.getElementById("uploadscreenshot").style.display="block"
-					}
-				</script>
-				<img id="uploadscreenshotbutton" type='image' src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="uploadPressed()"/>
-				
-				
-				<img id="uploadscreenshot" name="graphaddress" src="${uploadPath}"/>
-			</td>
-		</tr>
+		
 		<tr>
 			<td class="submitbugkey">
 				<label for="Software"> Software </label>
 			</td>
 			<td class="submitbugvalue">
-				<textarea id="software" name="software" type="text" maxlength="100" tabindex="100" class="inputdigestvalue" placeholder="Input the name of the buggy software"></textarea>
+				<textarea id="software" name="software" maxlength="100" tabindex="100" class="inputdigestvalue" placeholder="Input the name of the buggy software"></textarea>
 			</td>
 		</tr>	
 		<tr>
@@ -242,7 +225,7 @@
 				<label for="Version"> Version </label>
 			</td>
 			<td class="submitbugvalue">
-				<textarea id="version" name="version" type="text" maxlength="100" tabindex="100" class="inputdigestvalue" placeholder="Input the version of the buggy software"></textarea>
+				<textarea id="version" name="version" maxlength="100" tabindex="100" class="inputdigestvalue" placeholder="Input the version of the buggy software"></textarea>
 			</td>
 		</tr>
 		<tr>
@@ -250,7 +233,7 @@
 				<label for="Language"> Language </label>
 			</td>
 			<td class="submitbugvalue">
-				<textarea id="language" name="language" type="text" maxlength="100" tabindex="100" class="inputdigestvalue" placeholder="Input the language of the software"></textarea>
+				<textarea id="language" name="language" maxlength="100" tabindex="100" class="inputdigestvalue" placeholder="Input the language of the software"></textarea>
 			</td>
 		</tr>
 		<tr>
@@ -262,9 +245,39 @@
 			</td>
 		</tr>
                 </table>
+                
             </div>
 	    
         </form>
+        <form id="uploadScreenshotForm" action="upload.jsp" method="post" enctype="multipart/form-data" target="hiddenFrame">
+	        <table class="submitbugtable">
+	        <tr>
+				<td class="submitbugkey">
+					<label for="Screenshot"> Screenshot </label>
+				</td>
+				<td class="submitbugvalue">
+					<script type="text/javascript">
+						function uploadPressed() {
+							document.getElementById("uploadfilebutton").click();
+						}
+						function changeScreenshot() {
+							document.getElementById("uploadscreenshotbutton").style.display="none";
+							document.getElementById("uploadScreenshotForm").submit();
+						}
+						function callback(msg) {
+							document.getElementById("uploadscreenshot").value=msg;
+							document.getElementById("uploadscreenshot").src=msg;
+							document.getElementById("uploadscreenshot").style.display="block";
+						}
+					</script>
+					<img id="uploadscreenshotbutton" src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="uploadPressed()"/>
+					<input id="uploadfilebutton" name="file" type="file" style="visibility:hidden" onchange="changeScreenshot()">
+					<img id="uploadscreenshot" name="graphaddress" src="/"/>
+				</td>
+			</tr>
+			</table>
+		</form>
+		<iframe id="hiddenFrame" name="hiddenFrame" style="display:none"></iframe>
     </div>
     
     ${message	}
