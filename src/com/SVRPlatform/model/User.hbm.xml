@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2012-11-24 21:57:05 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2012-11-30 16:34:59 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.SVRPlatform.model.User" table="user" catalog="svrplatform_database">
-    	<cache usage="read-write"/>	
         <id name="userId" type="java.lang.Integer">
             <column name="userID" />
             <generator class="identity" />
@@ -39,37 +38,32 @@
         <property name="profileViews" type="java.lang.Integer">
             <column name="profileViews" />
         </property>
-        <!--set name="solutions" table="solution" inverse="true" lazy="true" fetch="select">
+        <!-- set name="solutions" table="solution" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="userID" />
             </key>
             <one-to-many class="com.SVRPlatform.model.Solution" />
         </set-->
-        <set name="bugs" table="watching" inverse="true" lazy="true">
+        <set name="hasBugs" table="bug" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="userID" />
             </key>
-            <many-to-many class="com.SVRPlatform.model.Bug" column="bugID"/>
+            <one-to-many class="com.SVRPlatform.model.Bug" />
         </set>
         <!-- set name="comments" table="comment" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="userID" />
             </key>
             <one-to-many class="com.SVRPlatform.model.Comment" />
-        </set>
-        <set name="usertypes" table="usertype" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="userID" not-null="true" unique="true" />
-            </key>
-            <one-to-many class="com.SVRPlatform.model.Usertype" />
         </set-->
-        <!--set name="bugs_1" table="watching" inverse="true" lazy="true" fetch="select">
+        <!-- one-to-one name="usertype" class="com.SVRPlatform.model.Usertype"></one-to-one-->
+        <set name="watchingBugs" table="watching" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="userID" not-null="true" />
             </key>
             <many-to-many entity-name="com.SVRPlatform.model.Bug">
                 <column name="bugID" not-null="true" />
             </many-to-many>
-        </set-->
+        </set>
     </class>
 </hibernate-mapping>

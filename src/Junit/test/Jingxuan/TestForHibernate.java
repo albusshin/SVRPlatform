@@ -34,7 +34,7 @@ public class TestForHibernate {
 	static Session session;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		ctx = new ClassPathXmlApplicationContext( "applicationContext-hibernate.xml", "Junit/test/Jingxuan/testBeans.xml" );
+		ctx = new ClassPathXmlApplicationContext( "Junit/test/Jingxuan/testBeans-hibernate.xml", "Junit/test/Jingxuan/testBeans.xml" );
 		userDAO = (UserDAO)ctx.getBean("userDAO");
 		bugDAO = (BugDAOImpl)ctx.getBean("bugDAO");
 		sessionFactory = (SessionFactory) ctx.getBean("sessionFactory");
@@ -56,7 +56,7 @@ public class TestForHibernate {
 
 	@Test
 	public void test() {
-		userDAO.addUser(new User("1234","fdsafdadddd"));
+		userDAO.add(new User("1234","fdsafdadddd"));
 		
 	}
 	@Test public void testIf() { 
@@ -86,7 +86,7 @@ public class TestForHibernate {
 		userDAO.addUser(u3);
 		userDAO.addUser(u4);
 		
-		bugDAO.addBug(b);
+		bugDAO.add(b);
 		
 		bugDAO.bugWatched(b, u3);
 	}
@@ -130,12 +130,15 @@ public class TestForHibernate {
 		Bug b = new Bug();
 		Software s = new Software();
 		s.setCompany("qq");
-		softwareDAO.addSoftware(s);
+		softwareDAO.add(s);
 		b.setSoftware(s);
-		bugDAO.addBug(b);
+		bugDAO.add(b);
 		
-		Bug b2 = bugDAO.getBugbyId(7);
-		System.out.println(b2.getSoftware().getCompany());
 		//sessionFactory.getCurrentSession().close();
+	}
+	
+	@Test public void testBug() {
+		Bug b = new Bug();
+		bugDAO.add(b);
 	}
 }

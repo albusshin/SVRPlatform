@@ -25,6 +25,27 @@
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    
+    <filter>  
+    	<description>处理Hibernate的懒加载问题</description>  
+    	<filter-name>openSessionInViewFilter</filter-name>  
+    	<filter-class>  
+        	org.springframework.orm.hibernate4.support.OpenSessionInViewFilter  
+    	</filter-class>  
+    	<init-param>  
+        	<description>  
+           		 默认情况下，这个Filter会在Spring的bean池中找一个叫做sessionFactory的bean。如果使用了其他名字的SessionFactory，则应该在这里  
+           		 指定这个名字。  
+        	</description>  
+        	<param-name>sessionFactoryBeanName</param-name>  
+        	<param-value>sessionFactory</param-value>  
+    	</init-param>  
+    	<init-param>  
+        	<description></description>  
+        	<param-name>singleSession</param-name>  
+        	<param-value>true</param-value>
+    	</init-param>  
+	</filter>
 
     <welcome-file-list>
         <welcome-file>/SVRPlatform/index</welcome-file>

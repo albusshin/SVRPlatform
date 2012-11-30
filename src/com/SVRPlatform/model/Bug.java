@@ -1,6 +1,6 @@
 package com.SVRPlatform.model;
 
-// Generated 2012-11-24 21:57:04 by Hibernate Tools 3.4.0.CR1
+// Generated 2012-11-30 16:34:58 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -15,39 +15,37 @@ public class Bug implements java.io.Serializable {
 	private String version;
 	private Software software;
 	private User user;
-	private Integer level;
 	private String graphAddress;
 	private Date datetime;
 	private String description;
 	private Integer bestSolutionId;
 	private Integer officialSolutionId;
 	private String bugDigest;
-	private Byte usabilityImpact;
-	private Byte dataImpact;
-	private Byte privacyImpact;
-	private Byte availabilityImpact;
-	private Byte frequency;
-	private Byte score;
+	private Float usabilityImpact;
+	private Float dataImpact;
+	private Float privacyImpact;
+	private Float availabilityImpact;
+	private Float frequency;
+	private Float score;
 	private String language;
 	private String bugNumber;
-	private Set rankings = new HashSet(0);
+	private Ranking ranking;
 	private Set solutions = new HashSet(0);
-	private Set<User> users = new HashSet<User>(0);
+	private Set users = new HashSet(0);
 	private Set comments = new HashSet(0);
 
 	public Bug() {
 	}
 
-	public Bug(Software software, User user, Integer level,
-			String graphAddress, Date datetime, String description,
-			Integer bestSolutionId, Integer officialSolutionId,
-			String bugDigest, Byte usabilityImpact, Byte dataImpact,
-			Byte privacyImpact, Byte availabilityImpact, Byte frequency,
-			Byte score, String language, String bugNumber, Set rankings,
-			Set solutions, Set users, Set comments) {
+	public Bug(Software software, User user, String graphAddress,
+			Date datetime, String description, Integer bestSolutionId,
+			Integer officialSolutionId, String bugDigest,
+			Float usabilityImpact, Float dataImpact, Float privacyImpact,
+			Float availabilityImpact, Float frequency, Float score,
+			String language, String bugNumber, Ranking ranking, Set solutions,
+			Set users, Set comments) {
 		this.software = software;
 		this.user = user;
-		this.level = level;
 		this.graphAddress = graphAddress;
 		this.datetime = datetime;
 		this.description = description;
@@ -62,7 +60,7 @@ public class Bug implements java.io.Serializable {
 		this.score = score;
 		this.language = language;
 		this.bugNumber = bugNumber;
-		this.rankings = rankings;
+		this.ranking = ranking;
 		this.solutions = solutions;
 		this.users = users;
 		this.comments = comments;
@@ -98,14 +96,6 @@ public class Bug implements java.io.Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public Integer getLevel() {
-		return this.level;
-	}
-
-	public void setLevel(Integer level) {
-		this.level = level;
 	}
 
 	public String getGraphAddress() {
@@ -156,51 +146,51 @@ public class Bug implements java.io.Serializable {
 		this.bugDigest = bugDigest;
 	}
 
-	public Byte getUsabilityImpact() {
+	public Float getUsabilityImpact() {
 		return this.usabilityImpact;
 	}
 
-	public void setUsabilityImpact(Byte usabilityImpact) {
+	public void setUsabilityImpact(Float usabilityImpact) {
 		this.usabilityImpact = usabilityImpact;
 	}
 
-	public Byte getDataImpact() {
+	public Float getDataImpact() {
 		return this.dataImpact;
 	}
 
-	public void setDataImpact(Byte dataImpact) {
+	public void setDataImpact(Float dataImpact) {
 		this.dataImpact = dataImpact;
 	}
 
-	public Byte getPrivacyImpact() {
+	public Float getPrivacyImpact() {
 		return this.privacyImpact;
 	}
 
-	public void setPrivacyImpact(Byte privacyImpact) {
+	public void setPrivacyImpact(Float privacyImpact) {
 		this.privacyImpact = privacyImpact;
 	}
 
-	public Byte getAvailabilityImpact() {
+	public Float getAvailabilityImpact() {
 		return this.availabilityImpact;
 	}
 
-	public void setAvailabilityImpact(Byte availabilityImpact) {
+	public void setAvailabilityImpact(Float availabilityImpact) {
 		this.availabilityImpact = availabilityImpact;
 	}
 
-	public Byte getFrequency() {
+	public Float getFrequency() {
 		return this.frequency;
 	}
 
-	public void setFrequency(Byte frequency) {
+	public void setFrequency(Float frequency) {
 		this.frequency = frequency;
 	}
 
-	public Byte getScore() {
+	public Float getScore() {
 		return this.score;
 	}
 
-	public void setScore(Byte score) {
+	public void setScore(Float score) {
 		this.score = score;
 	}
 
@@ -220,12 +210,12 @@ public class Bug implements java.io.Serializable {
 		this.bugNumber = bugNumber;
 	}
 
-	public Set getRankings() {
-		return this.rankings;
+	public Ranking getRanking() {
+		return this.ranking;
 	}
 
-	public void setRankings(Set rankings) {
-		this.rankings = rankings;
+	public void setRanking(Ranking ranking) {
+		this.ranking = ranking;
 	}
 
 	public Set getSolutions() {
