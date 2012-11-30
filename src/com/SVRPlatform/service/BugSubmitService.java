@@ -6,7 +6,7 @@ public interface BugSubmitService {
 
 	public Map<String, String> bugSubmit(String graphAddress, String description,
 										 String version, String softwareName, String bugDigest,
-										 String email, int usabilityImpact, int dataImpact,
-										 int privacyImpact, int availability, int frequency,
-										 int score, String language);
+										 String email, String usabilityImpact, String dataImpact,
+										 String privacyImpact, String availability, 
+										 String frequency, String language);
 }

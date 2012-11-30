@@ -23,7 +23,7 @@ public class User implements java.io.Serializable {
 	private Date seen;
 	private Integer profileViews;
 	private Set solutions = new HashSet(0);
-	private Set bugs = new HashSet(0);
+	private Set<Bug> bugs = new HashSet<Bug>(0);
 	private Set comments = new HashSet(0);
 	private Set usertypes = new HashSet(0);
 	private Set bugs_1 = new HashSet(0);

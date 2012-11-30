@@ -38,9 +38,12 @@ public class UserDAOImpl implements UserDAO {
 	public Serializable addUser(User user) {
 		// TODO Auto-generated method stub
 		Session s = this.sessionFactory.openSession();
-		Serializable id = s.save(user);
-		s.close();
-		return id;
+		try {
+			return s.save(user);
+		}finally {
+			if(s!=null)
+				s.close();
+		}
 	}
 //	protected functions
 	protected User getUserByName(String email) {
@@ -76,11 +79,4 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public Serializable addBug(Bug bug) {
-		// TODO Auto-generated method stub
-		return null;
-	}
- 
  }
