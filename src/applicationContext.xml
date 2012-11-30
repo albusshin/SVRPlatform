@@ -28,7 +28,9 @@
     <bean id="submitbug" scope="prototype" class="com.SVRPlatform.action.SubmitBug">
     	<property name="bugsubmitService" ref="bugsubmitService"></property>
     </bean>
-    
+    <bean id="checkcookie" scope="prototype" class="com.SVRPlatform.util.CheckCookie">
+    	<property name="loginService" ref="loginService"></property>
+    </bean>
     
     
     <bean id="userDAO" class="com.SVRPlatform.dao.impl.UserDAOImpl">

@@ -8,7 +8,7 @@ import com.SVRPlatform.util.CheckCookie;
 import com.SVRPlatform.service.LoginService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class index extends ActionSupport implements ServletRequestAware,ServletResponseAware{
+public class Index extends ActionSupport implements ServletRequestAware,ServletResponseAware{
 	/**
 	 * 
 	 */

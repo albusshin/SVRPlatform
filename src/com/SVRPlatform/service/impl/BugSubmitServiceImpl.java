@@ -21,9 +21,10 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 	@Override
 	public Map<String, String> bugSubmit(String graphAddress,String description,
 										String version, String softwareName,String bugDigest,
-										String email, int usabilityImpact, int dataImpact,
-										int privacyImpact, int availabilityImpact, int frequency,
-										int score,	String language) {
+										String email, String usabilityImpact, String dataImpact,
+										String privacyImpact, String availabilityImpact, 
+										String frequency, String language) {
+		//score
 		Map<String, String> map = new HashMap<String, String>();
 		
 		//check if bug information is complete
@@ -72,12 +73,12 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			bug.setSoftware(software);
 			bug.setBugDigest(bugDigest);
 			bug.setUser(user);
-			bug.setUsabilityImpact(Byte.valueOf((byte)usabilityImpact));
-			bug.setDataImpact(Byte.valueOf((byte)dataImpact));
-			bug.setPrivacyImpact(Byte.valueOf((byte)privacyImpact));
-			bug.setAvailabilityImpact(Byte.valueOf((byte)availabilityImpact));
-			bug.setFrequency(Byte.valueOf((byte)frequency));
-			bug.setScore(Byte.valueOf((byte)score));
+//			bug.setUsabilityImpact(Byte.valueOf((byte)usabilityImpact));
+//			bug.setDataImpact(Byte.valueOf((byte)dataImpact));
+//			bug.setPrivacyImpact(Byte.valueOf((byte)privacyImpact));
+//			bug.setAvailabilityImpact(Byte.valueOf((byte)availabilityImpact));
+//			bug.setFrequency(Byte.valueOf((byte)frequency));
+//			bug.setScore(Byte.valueOf((byte)score));
 			bug.setLanguage(language);
 			
 			Bug bugAdded = (Bug) userDAO.addBug(bug);
