@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+    
+    <!--****************************************************************************************-->  
+    <!-- Set the data source --> 
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">   
+    	<property name="driverClass" value="org.gjt.mm.mysql.Driver" />    
+    	<property name="jdbcUrl" value="jdbc:mysql:///SVRPlatform_database" />     
+    	<property name="user" value="root" />     
+    	<property name="password" value="12345678" />    
+    </bean>     
+    <!-- hibernate.cfg.xml Spring config -->      
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> 
+    	<!-- connection -->         
+    	<property name="dataSource">             
+    		<ref local="dataSource"/>         
+    	</property>                 
+    	<!-- hibernate自身属性  -->         
+    	<property name="hibernateProperties">             
+    		<props>                
+    			<prop key="hibernate.show_sql">true</prop>                
+    			<prop key="hibernate.format_sql">true</prop>                
+    			<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+    			<prop key="hibernate.cache.use_second_level_cache">true</prop> 
+    			<prop key="hibernate.cache.use_query_cache">true</prop> 
+    			<!--prop key="hibernate.hbm2ddl.auto">create</prop-->
+    			<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>       
+    		</props>        
+    	</property>                  
+   		<!-- 映射文件 -->         
+   		<property name="mappingResources">             
+   			<list>               
+   				<value>com/SVRPlatform/model/User.hbm.xml</value>
+   				<value>com/SVRPlatform/model/Bug.hbm.xml</value>
+   				<value>com/SVRPlatform/model/Software.hbm.xml</value>
+   				<!-- value>com/SVRPlatform/model/Solution.hbm.xml</value> 
+   				<value>com/SVRPlatform/model/Bug.hbm.xml</value>  
+   				<value>com/SVRPlatform/model/Comment.hbm.xml</value>
+   				<value>com/SVRPlatform/model/Ranking.hbm.xml</value>
+   				<value>com/SVRPlatform/model/Software.hbm.xml</value>
+   				<value>com/SVRPlatform/model/Usertype.hbm.xml</value-->
+   				         
+   			</list>         
+   		</property>     
+    </bean>
+    
+    <!-- advice -->     
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">         
+    	<property name="sessionFactory">            
+    		<ref local="sessionFactory"/>         
+    	</property>     
+    </bean>
+    <bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">         
+    	<property name="transactionManager">            
+    		<ref local="transactionManager"/>        
+    	</property>         
+    	<property name="transactionAttributes">            
+    		<props>               
+    			<prop key="register">PROPAGATION_REQUIRED</prop>                              
+    			<!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->                
+    			<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>               
+    			<prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>               
+    			<prop key="select*">PROPAGATION_REQUIRED,readOnly</prop>               
+    			<prop key="query*">PROPAGATION_REQUIRED,readOnly</prop>                               
+    			<prop key="sync*">PROPAGATION_REQUIRED</prop>               
+    			<prop key="finish*">PROPAGATION_REQUIRED</prop>               
+    			<prop key="add*">PROPAGATION_REQUIRED</prop>               
+    			<prop key="insert*">PROPAGATION_REQUIRED</prop>               
+    			<prop key="edit*">PROPAGATION_REQUIRED</prop>               
+    			<prop key="update*">PROPAGATION_REQUIRED</prop>               
+    			<prop key="save*">PROPAGATION_REQUIRED</prop>               
+    			<prop key="remove*">PROPAGATION_REQUIRED</prop>
+    			<prop key="delete*">PROPAGATION_REQUIRED</prop>               
+    			<prop key="*">PROPAGATION_REQUIRED,-java.lang.Exception</prop>                
+    		</props>         
+    	</property>     
+    </bean> 
+    <!--****************************************************************************************-->
+</beans>

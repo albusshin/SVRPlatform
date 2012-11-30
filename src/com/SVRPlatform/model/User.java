@@ -1,6 +1,6 @@
 package com.SVRPlatform.model;
 
-// Generated 2012-11-24 21:57:04 by Hibernate Tools 3.4.0.CR1
+// Generated 2012-11-30 16:34:58 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -23,10 +23,10 @@ public class User implements java.io.Serializable {
 	private Date seen;
 	private Integer profileViews;
 	private Set solutions = new HashSet(0);
-	private Set<Bug> bugs = new HashSet<Bug>(0);
+	private Set hasBugs = new HashSet(0);
 	private Set comments = new HashSet(0);
-	private Set usertypes = new HashSet(0);
-	private Set bugs_1 = new HashSet(0);
+	private Usertype usertype;
+	private Set watchingBugs = new HashSet(0);
 
 	public User() {
 	}
@@ -39,7 +39,7 @@ public class User implements java.io.Serializable {
 	public User(String password, String email, Date date, Integer credit,
 			String realName, String website, String location, Integer age,
 			Date seen, Integer profileViews, Set solutions, Set bugs,
-			Set comments, Set usertypes, Set bugs_1) {
+			Set comments, Usertype usertype, Set watchingBugs) {
 		this.password = password;
 		this.email = email;
 		this.date = date;
@@ -51,10 +51,10 @@ public class User implements java.io.Serializable {
 		this.seen = seen;
 		this.profileViews = profileViews;
 		this.solutions = solutions;
-		this.bugs = bugs;
+		this.hasBugs = bugs;
 		this.comments = comments;
-		this.usertypes = usertypes;
-		this.bugs_1 = bugs_1;
+		this.usertype = usertype;
+		this.watchingBugs = watchingBugs;
 	}
 
 	public Integer getUserId() {
@@ -153,12 +153,12 @@ public class User implements java.io.Serializable {
 		this.solutions = solutions;
 	}
 
-	public Set getBugs() {
-		return this.bugs;
+	public Set getHasBugs() {
+		return this.hasBugs;
 	}
 
-	public void setBugs(Set bugs) {
-		this.bugs = bugs;
+	public void setHasBugs(Set hasBugs) {
+		this.hasBugs = hasBugs;
 	}
 
 	public Set getComments() {
@@ -169,20 +169,20 @@ public class User implements java.io.Serializable {
 		this.comments = comments;
 	}
 
-	public Set getUsertypes() {
-		return this.usertypes;
+	public Usertype getUsertype() {
+		return this.usertype;
 	}
 
-	public void setUsertypes(Set usertypes) {
-		this.usertypes = usertypes;
+	public void setUsertype(Usertype usertype) {
+		this.usertype = usertype;
 	}
 
-	public Set getBugs_1() {
-		return this.bugs_1;
+	public Set getWatchingBugs() {
+		return this.watchingBugs;
 	}
 
-	public void setBugs_1(Set bugs_1) {
-		this.bugs_1 = bugs_1;
+	public void setWatchingBugs(Set watchingBugs) {
+		this.watchingBugs = watchingBugs;
 	}
 
 }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public interface basicDAO {
 	public Serializable add(Object obj);
-	public Serializable update(Object obj);
-	public Serializable delete(Object obj);
-	public Serializable getByID(Serializable ID);
+	public void update(Object obj);
+	public void delete(Object obj);
+	public Object getByID(Serializable ID);
 }

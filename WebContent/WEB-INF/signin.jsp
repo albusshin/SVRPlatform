@@ -37,8 +37,8 @@
         <br />
         <br />
 	</div>
--	
--    ${message }
+	
+    ${message }
     
     
     		<div id="container">

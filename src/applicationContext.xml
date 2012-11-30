@@ -34,9 +34,17 @@
     	<property name="bugsubmitService" ref="bugsubmitService"></property>
     </bean>
 
-
-    
+	<!-- ************************************************************************ -->
+    <!-- DAOImpls beans definition -->
     <bean id="userDAO" class="com.SVRPlatform.dao.impl.UserDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <bean id="bugDAO" class="com.SVRPlatform.dao.impl.BugDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <bean id="softwareDAO" class="com.SVRPlatform.dao.impl.SoftwareDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     
