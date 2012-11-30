@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.SVRPlatform.dao.BugDAO;
+import com.SVRPlatform.dao.SoftwareDAO;
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Software;
@@ -15,6 +16,7 @@ import com.SVRPlatform.service.BugSubmitService;
 public class BugSubmitServiceImpl implements BugSubmitService{
 	private UserDAO userDAO;
 	private BugDAO bugDAO;
+	private SoftwareDAO softwareDAO;
 	
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
@@ -22,6 +24,10 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 	
 	public void setBugDAO(BugDAO bugDAO) {
 		this.bugDAO = bugDAO;
+	}
+	
+	public void setSoftwareDAO(SoftwareDAO softwareDAO) {
+		this.softwareDAO = softwareDAO;
 	}
 	
 	@Override
@@ -67,10 +73,18 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 		if (map.get("description") == "OK" && map.get("version") == "OK" && 
 			map.get("software") == "OK" && map.get("bugDigest") == "OK" && 
 			map.get("language") == "OK") {
-			Bug bug = new Bug();
-			Software software = (Software) userDAO.getSoftwareByName(softwareName);
+			Bug bug = new Bug();			
 			User user = (User) userDAO.getUserByEmail(email);
 			double ui, di, pi, ai, fr, sc;
+			
+			//check if software exists
+			Software software;
+			if (softwareDAO.getByName(softwareName) == null) {
+				software = new Software();
+				software.setName(softwareName);
+				softwareDAO.addSoftware(software);
+			}
+			software = (Software)softwareDAO.getByName(softwareName);
 			
 			switch (usabilityImpact) {
 			case "Complete": ui = 10;  break;
@@ -125,11 +139,11 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			bug.setScore(sc);
 			bug.setLanguage(language);
 			
-			Integer bugID = (Integer)bugDAO.addBug(bug);
+			//set the bugNumber to year for now, hibernate layer will fix it later.
 			int year = Calendar.getInstance().get(Calendar.YEAR);
-			String bugNumber = Integer.toString(year) + bugID;
+			String bugNumber = Integer.toString(year);
 			bug.setBugNumber(bugNumber);
-			bugDAO.update(bug);
+			bugDAO.addBug(bug);
 		}
 
 		return map;

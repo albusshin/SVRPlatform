@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.SVRPlatform.model.Bug;
 
-public interface BugDAO {
+public interface BugDAO extends basicDAO{
 
 	public Serializable addBug(Bug bug);
 

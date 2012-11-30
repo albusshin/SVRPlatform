@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.User;
 
-public interface UserDAO {
+public interface UserDAO extends basicDAO{
 	
 	public String getPasswordByEmail(String email);
 	

@@ -46,7 +46,7 @@ public class CheckCookie {
         {
             System.out.println(cookieEmail);
             System.out.println(cookiePassword);
-
+            
             sessionEmail = (String) request.getAttribute("email");
             sessionPassword = (String) request.getAttribute("password");
             
