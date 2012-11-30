@@ -21,10 +21,15 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
 	
 	public String execute()
 	{
-		System.out.println("In Index");
+		System.out.println("In Index");				
+		
+    	request.getSession().setMaxInactiveInterval(60 * 60 * 24 * 7);			//store in new session as tourist ,modify later 
+		request.getSession().setAttribute("email", "tourist");
+		request.getSession().setAttribute("password", "tourist");
+		
 		Cookie[] cookies = request.getCookies();		
 		System.out.println("getcookie");
-        if (cookies != null) {
+        if (cookies != null) {												//get email and password in cookie 
           for (int i = 0; i < cookies.length; i++) {									
             System.out.println(cookies[i].getName() +"/////");
             System.out.println(cookies[i].getValue() );
@@ -39,23 +44,26 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
         }
        
 
-        if ((cookieEmail== null)&&(cookiePassword==null)) {
-          return "CookieNotFound";
+        if ((cookieEmail== null)&&(cookiePassword==null)) {											//cookie does not exist ~ tourist
+        	return "CookieNotFound"; 
         }
-        else
-        {
+        else							
+        {																//cookie exists
             System.out.println(cookieEmail);
             System.out.println(cookiePassword);
-            boolean info = this.loginService.login(cookieEmail, cookiePassword);
+            boolean info = this.loginService.login(cookieEmail, cookiePassword); 
             if(!info)
     		{	
-    			return "NotAuthenticated";
-    		}
-    		System.out.println("execute come on");
-        	return "LoggedIn";
+            	return "NotAuthenticated"; 								//Invalid email and password,	need login
+            }
+            else{
+            	request.getSession().setAttribute("email", cookieEmail);
+            	request.getSession().setAttribute("password", cookiePassword);
+            	return "LoggedIn";											//Valid email and password
+            }
+	
         }
 	}
-
 
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
