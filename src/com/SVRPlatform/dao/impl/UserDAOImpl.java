@@ -76,11 +76,4 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public Serializable addBug(Bug bug) {
-		// TODO Auto-generated method stub
-		return null;
-	}
- 
  }

@@ -16,6 +16,4 @@ public interface UserDAO {
 	public Serializable getUserByEmail(String email);
 	
 	public Serializable addUser(User user);
-	
-	public Serializable addBug(Bug bug);
 }

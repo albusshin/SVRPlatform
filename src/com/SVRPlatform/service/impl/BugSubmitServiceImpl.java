@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Software;
@@ -13,9 +14,14 @@ import com.SVRPlatform.service.BugSubmitService;
 
 public class BugSubmitServiceImpl implements BugSubmitService{
 	private UserDAO userDAO;
+	private BugDAO bugDAO;
 	
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
+	}
+	
+	public void setBugDAO(BugDAO bugDAO) {
+		this.bugDAO = bugDAO;
 	}
 	
 	@Override
@@ -24,7 +30,6 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 										String email, String usabilityImpact, String dataImpact,
 										String privacyImpact, String availabilityImpact, 
 										String frequency, String language) {
-		//score
 		Map<String, String> map = new HashMap<String, String>();
 		
 		//check if bug information is complete
@@ -65,6 +70,45 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			Bug bug = new Bug();
 			Software software = (Software) userDAO.getSoftwareByName(softwareName);
 			User user = (User) userDAO.getUserByEmail(email);
+			double ui, di, pi, ai, fr, sc;
+			
+			switch (usabilityImpact) {
+			case "Complete": ui = 10;  break;
+			case "Partial":  ui = 7.5; break;
+			case "Little":	 ui = 5;   break;
+			case "None":     ui = 1;   break;
+			}
+			
+			switch (dataImpact) {
+			case "Complete": di = 10;  break;
+			case "Partial":  di = 7.5; break;
+			case "Little":	 di = 5;   break;
+			case "None":     di = 1;   break;
+			}
+			
+			switch (privacyImpact) {
+			case "Complete": pi = 10;  break;
+			case "Partial":  pi = 7.5; break;
+			case "Little":	 pi = 5;   break;
+			case "None":     pi = 1;   break;
+			}
+			
+			switch (availabilityImpact) {
+			case "Complete": ai = 10;  break;
+			case "Partial":  ai = 7.5; break;
+			case "Little":	 ai = 5;   break;
+			case "None":     ai = 1;   break;
+			}
+			
+			switch (frequency) {
+			case "Always":		fr = 10;	break;
+			case "Often":		fr = 7.5;	break;
+			case "Sometimes":	fr = 5;		break;
+			case "Merely":		fr = 1;		break;
+			}
+			
+			sc = ui + di*3 + pi*5 + ai*4 + fr*2;
+			sc /= 15;
 			
 			bug.setGraphAddress(graphAddress);
 			bug.setDatetime(new Date());
@@ -73,18 +117,19 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			bug.setSoftware(software);
 			bug.setBugDigest(bugDigest);
 			bug.setUser(user);
-//			bug.setUsabilityImpact(Byte.valueOf((byte)usabilityImpact));
-//			bug.setDataImpact(Byte.valueOf((byte)dataImpact));
-//			bug.setPrivacyImpact(Byte.valueOf((byte)privacyImpact));
-//			bug.setAvailabilityImpact(Byte.valueOf((byte)availabilityImpact));
-//			bug.setFrequency(Byte.valueOf((byte)frequency));
-//			bug.setScore(Byte.valueOf((byte)score));
+			bug.setUsabilityImpact(ui);
+			bug.setDataImpact(di);
+			bug.setPrivacyImpact(pi);
+			bug.setAvailabilityImpact(ai);
+			bug.setFrequency(fr);
+			bug.setScore(sc);
 			bug.setLanguage(language);
 			
-			Bug bugAdded = (Bug) userDAO.addBug(bug);
+			Integer bugID = (Integer)bugDAO.addBug(bug);
 			int year = Calendar.getInstance().get(Calendar.YEAR);
-			String bugNumber = Integer.toString(year) + bugAdded.getBugId();
+			String bugNumber = Integer.toString(year) + bugID;
 			bug.setBugNumber(bugNumber);
+			bugDAO.update(bug);
 		}
 
 		return map;
