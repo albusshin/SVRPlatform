@@ -45,7 +45,7 @@
             </key>
             <one-to-many class="com.SVRPlatform.model.Solution" />
         </set-->
-        <set name="bugs" table="watching" inverse="true" lazy="true" fetch="select">
+        <set name="bugs" table="watching" inverse="true" lazy="true">
             <key>
                 <column name="userID" />
             </key>

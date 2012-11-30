@@ -32,7 +32,7 @@ public class Bug implements java.io.Serializable {
 	private String bugNumber;
 	private Set rankings = new HashSet(0);
 	private Set solutions = new HashSet(0);
-	private Set users = new HashSet(0);
+	private Set<User> users = new HashSet<User>(0);
 	private Set comments = new HashSet(0);
 
 	public Bug() {

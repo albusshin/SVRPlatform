@@ -17,9 +17,9 @@
     <!-- Set the data source --> 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">   
     	<property name="driverClass" value="org.gjt.mm.mysql.Driver" />    
-    	<property name="jdbcUrl" value="jdbc:mysql:///SVRPlatform_database" />     
-    	<property name="user" value="root" />     
-    	<property name="password" value="12345678" />    
+    	<property name="jdbcUrl" value="jdbc:mysql://10.60.41.61:3306/SVRPlatform_database" />     
+    	<property name="user" value="nbgroup" />     
+    	<property name="password" value="MROFTALprvs" />    
     </bean>     
     <!-- hibernate.cfg.xml Spring config -->      
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> 
@@ -32,9 +32,10 @@
     		<props>                
     			<prop key="hibernate.show_sql">true</prop>                
     			<prop key="hibernate.format_sql">true</prop>                
-    			<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+    			<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
     			<prop key="hibernate.cache.use_second_level_cache">true</prop> 
     			<prop key="hibernate.cache.use_query_cache">true</prop> 
+    			<!--prop key="hibernate.hbm2ddl.auto">create</prop-->
     			<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>       
     		</props>        
     	</property>                  
@@ -43,6 +44,7 @@
    			<list>               
    				<value>com/SVRPlatform/model/User.hbm.xml</value>
    				<value>com/SVRPlatform/model/Bug.hbm.xml</value>
+   				<value>com/SVRPlatform/model/Software.hbm.xml</value>
    				<!-- value>com/SVRPlatform/model/Solution.hbm.xml</value> 
    				<value>com/SVRPlatform/model/Bug.hbm.xml</value>  
    				<value>com/SVRPlatform/model/Comment.hbm.xml</value>
