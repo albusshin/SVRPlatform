@@ -17,9 +17,9 @@
     <!-- Set the data source --> 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">   
     	<property name="driverClass" value="org.gjt.mm.mysql.Driver" />    
-    	<property name="jdbcUrl" value="jdbc:mysql:///SVRPlatform_database" />     
-    	<property name="user" value="root" />     
-    	<property name="password" value="12345678" />    
+    	<property name="jdbcUrl" value="jdbc:mysql://10.60.41.61:3306/SVRPlatform_database" />     
+    	<property name="user" value="nbgroup" />     
+    	<property name="password" value="MROFTALprvs" />    
     </bean>     
     <!-- hibernate.cfg.xml Spring config -->      
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> 
