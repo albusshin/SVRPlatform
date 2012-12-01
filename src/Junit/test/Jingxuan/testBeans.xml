@@ -23,4 +23,7 @@
     <bean id="softwareDAO" class="com.SVRPlatform.dao.impl.SoftwareDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+    <bean id="commentDAO" class="com.SVRPlatform.dao.impl.CommentDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
 </beans>
