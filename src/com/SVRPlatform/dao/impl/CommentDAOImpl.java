@@ -19,6 +19,7 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 	/* (non-Javadoc)
 	 * @see com.SVRPlatform.dao.impl.CommentDAO#getByUserIdAndBugId(com.SVRPlatform.model.User, com.SVRPlatform.model.Bug)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Comment> getByUserIdAndBugId(User user, Bug bug){
 //		Session s = this.sessionFactory.openSession();

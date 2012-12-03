@@ -16,6 +16,7 @@ public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements S
 		return this.sessionFactory.openSession().get(Solution.class, ID);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Solution> getByUserIdAndBugId(User user, Bug bug) {
 		// TODO Auto-generated method stub
