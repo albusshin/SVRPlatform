@@ -27,7 +27,7 @@ public class RegisterServiceImpl implements RegisterService{
 		if (emailPattern.matcher(email).matches())
 			if (email.length()>100) 
 				response.email = Response.Email.email_against_rule;
-			else if (userDAO.ifEmailExists(email))
+			else if (userDAO.getUserByEmail(email) != null)
 				response.email = Response.Email.email_exists;
 			else response.email = Response.Email.email_ok;
 		else response.email = Response.Email.email_against_rule;
@@ -44,7 +44,7 @@ public class RegisterServiceImpl implements RegisterService{
 			User user = new User(password, email);
 			user.setDate(new Date());
 			user.setCredit(0);
-			userDAO.addUser(user);
+			userDAO.add(user);
 		}
 		return response;
 	}

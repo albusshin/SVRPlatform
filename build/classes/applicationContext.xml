@@ -13,27 +13,33 @@
     	<property name="loginService" ref="loginService"></property>
     </bean>
     
-    <bean id="loginService" class="com.SVRPlatform.service.impl.LoginServiceImpl">
-    	<property name="userDAO" ref="userDAO"></property>
-    </bean>
     <bean id="signin" scope="prototype" class="com.SVRPlatform.action.SignIn">
     	<property name="loginService" ref="loginService"></property>
+    </bean>
+    
+    <bean id="signup" scope="prototype" class="com.SVRPlatform.action.SignUp">
+    	<property name="registerService" ref="registerService"></property>
+    </bean>
+    
+    <bean id="submitbug" scope="prototype" class="com.SVRPlatform.action.SubmitBug">
+    	<property name="bugsubmitService" ref="bugsubmitService"></property>
+    </bean>
+    
+	<!-- ************************************************************************ -->
+    <!-- ServiceImpls beans definition -->
+    <bean id="loginService" class="com.SVRPlatform.service.impl.LoginServiceImpl">
+    	<property name="userDAO" ref="userDAO"></property>
     </bean>
     
      <bean id="registerService" class="com.SVRPlatform.service.impl.RegisterServiceImpl">
     	<property name="userDAO" ref="userDAO"></property>
     </bean>
-    <bean id="signup" scope="prototype" class="com.SVRPlatform.action.SignUp">
-    	<property name="registerService" ref="registerService"></property>
-    </bean>
     
     <bean id="bugsubmitService" class="com.SVRPlatform.service.impl.BugSubmitServiceImpl">
     	<property name="userDAO" ref="userDAO"></property>
+    	<property name="bugDAO" ref="bugDAO"></property>
+    	<property name="softwareDAO" ref="softwareDAO"></property>
     </bean>
-    <bean id="submitbug" scope="prototype" class="com.SVRPlatform.action.SubmitBug">
-    	<property name="bugsubmitService" ref="bugsubmitService"></property>
-    </bean>
-
 	<!-- ************************************************************************ -->
     <!-- DAOImpls beans definition -->
     <bean id="userDAO" class="com.SVRPlatform.dao.impl.UserDAOImpl">

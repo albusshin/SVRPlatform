@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.model.Bug;
-import com.SVRPlatform.model.User;
 @Transactional
 public class BugDAOImpl extends BasicDAOImpl implements BugDAO{
 	
@@ -19,26 +18,11 @@ public class BugDAOImpl extends BasicDAOImpl implements BugDAO{
 		c.add(Restrictions.eq("bugNumber", bugNumber));
 		return (Bug) c.uniqueResult();
 	}
-	
-	@SuppressWarnings("unchecked")
-	public void bugWatched(Bug b, User u){
-		Session s = this.sessionFactory.openSession();
-		Transaction tx;
-		try {
-			b.getUsers().add(u);
-			tx=s.beginTransaction();
-			s.update(b);
-			tx.commit();
-		}finally {
-			if(s!=null)
-				s.close();
-		}
-	}
 
 	@Override
 	public Object getByID(Serializable ID) {
 		// TODO Auto-generated method stub
-		return sessionFactory.getCurrentSession().get(Bug.class, ID);
+		return sessionFactory.openSession().get(Bug.class, ID);
 	}
 
 	@Override
