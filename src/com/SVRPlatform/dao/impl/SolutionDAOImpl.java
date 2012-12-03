@@ -18,9 +18,10 @@ public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements S
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Solution> getByUserIdAndBugId(User user, Bug bug) {
+	public List<Solution> getByUserIdAndBugId(User user, Bug bug, int fetchSize,
+			int firstResult) {
 		// TODO Auto-generated method stub
-		return (List<Solution>) getByUserOrBugId(Solution.class, -1, -1, bug, user);
+		return (List<Solution>) getByUserOrBugId(Solution.class, fetchSize, firstResult, bug, user);
 	}
 
 	@SuppressWarnings("unchecked")
