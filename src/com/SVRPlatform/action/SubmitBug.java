@@ -169,10 +169,10 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 		}
 		
 		System.out.println(digest);
-		System.out.println( usabilityimpact);
-		System.out.println( dataimpact);
-		System.out.println( privacyimpact);
-		System.out.println( availabilityimpact);
+		System.out.println(usabilityimpact);
+		System.out.println(dataimpact);
+		System.out.println(privacyimpact);
+		System.out.println(availabilityimpact);
 		System.out.println(frequency);
 		System.out.println(description);
 		System.out.println(graphaddress);
@@ -180,9 +180,9 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 		System.out.println(software);
 		System.out.println(language);
 		
-//		map=bugsubmitService.bugSubmit(graphaddress, description,version, software,
-//				digest, email, usabilityimpact, dataimpact,
-//				 privacyimpact, availabilityimpact, frequency, language);
+		map=bugsubmitService.bugSubmit(graphaddress, description,version, software,
+				digest, email, usabilityimpact, dataimpact,
+				 privacyimpact, availabilityimpact, frequency, language);
 
 		message=map.get("description")+ map.get("version") + map.get("software")
 					+map.get("bugDigest") + map.get("language");

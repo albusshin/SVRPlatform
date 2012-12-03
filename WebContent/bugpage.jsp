@@ -12,7 +12,14 @@
 </head>
 
 <body>
-	
+<%--
+<% 	String email=(String)request.getSession().getAttribute("email"); %>
+<% 	if (email.equals("tourist")){ %>
+	<jsp:include page="header.html" flush="true"/>
+<%	}else{  %>
+
+<% 		}%>
+--%>
     <div id="content">
     <div id="menu" class="menu">
                 <ul>
