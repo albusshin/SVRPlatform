@@ -1,6 +1,6 @@
 package com.SVRPlatform.model;
 
-// Generated 2012-11-24 21:57:04 by Hibernate Tools 3.4.0.CR1
+// Generated 2012-11-30 16:34:58 by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;

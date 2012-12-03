@@ -3,33 +3,25 @@ package com.SVRPlatform.dao.impl;
 import java.io.Serializable;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
-import com.SVRPlatform.model.Bug;
+import com.SVRPlatform.dao.SoftwareDAO;
 import com.SVRPlatform.model.Software;
 
-public class SoftwareDAOImpl {
-	
-	private SessionFactory sessionFactory;
-	
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+public class SoftwareDAOImpl extends BasicDAOImpl implements SoftwareDAO{
+
+	@Override
+	public Object getByID(Serializable ID) {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().get(Software.class, ID);
 	}
 
-	public Serializable addSoftware(Software software){
-		Session s = null;
-		Transaction tx;
-		try{
-			s = sessionFactory.openSession();
-			tx = s.beginTransaction();
-			Serializable se = s.save(software);
-			tx.commit();
-			return se;
-		} finally {
-			if(s != null)
-				s.close();
-		}
+	@Override
+	public Software getSoftwareByName(String name) {
+		// TODO Auto-generated method stub
+		Session s = this.sessionFactory.openSession();
+		org.hibernate.Criteria c = s.createCriteria(Software.class);
+		c.add(Restrictions.eq("name", name));
+		return (Software) c.uniqueResult();
 	}
-
 }

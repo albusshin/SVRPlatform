@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache>      
-     <diskStore path="D:/ehcache"/><!--如果缓存中的对象存储超过指定的缓存数量的对象存储的磁盘地址-->
+     <diskStore path="java.io.tmpdir"/><!--如果缓存中的对象存储超过指定的缓存数量的对象存储的磁盘地址-->
      <!--全部默认的配置
      maxElementsInMemory在內存中最多存放多少个对象
      eternal对象是不是永远不变的，一般都是false

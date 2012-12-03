@@ -75,48 +75,48 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			map.get("language") == "OK") {
 			Bug bug = new Bug();			
 			User user = (User) userDAO.getUserByEmail(email);
-			double ui, di, pi, ai, fr, sc;
+			float ui = 0, di = 0, pi = 0, ai = 0, fr = 0, sc = 0;
 			
 			//check if software exists
 			Software software;
-			if (softwareDAO.getByName(softwareName) == null) {
+			if (softwareDAO.getSoftwareByName(softwareName) == null) {
 				software = new Software();
 				software.setName(softwareName);
-				softwareDAO.addSoftware(software);
+				softwareDAO.add(software);
 			}
-			software = (Software)softwareDAO.getByName(softwareName);
+			software = (Software)softwareDAO.getSoftwareByName(softwareName);
 			
 			switch (usabilityImpact) {
 			case "Complete": ui = 10;  break;
-			case "Partial":  ui = 7.5; break;
+			case "Partial":  ui = 7.5f; break;
 			case "Little":	 ui = 5;   break;
 			case "None":     ui = 1;   break;
 			}
 			
 			switch (dataImpact) {
 			case "Complete": di = 10;  break;
-			case "Partial":  di = 7.5; break;
+			case "Partial":  di = 7.5f; break;
 			case "Little":	 di = 5;   break;
 			case "None":     di = 1;   break;
 			}
 			
 			switch (privacyImpact) {
 			case "Complete": pi = 10;  break;
-			case "Partial":  pi = 7.5; break;
+			case "Partial":  pi = 7.5f; break;
 			case "Little":	 pi = 5;   break;
 			case "None":     pi = 1;   break;
 			}
 			
 			switch (availabilityImpact) {
 			case "Complete": ai = 10;  break;
-			case "Partial":  ai = 7.5; break;
+			case "Partial":  ai = 7.5f; break;
 			case "Little":	 ai = 5;   break;
 			case "None":     ai = 1;   break;
 			}
 			
 			switch (frequency) {
 			case "Always":		fr = 10;	break;
-			case "Often":		fr = 7.5;	break;
+			case "Often":		fr = 7.5f;	break;
 			case "Sometimes":	fr = 5;		break;
 			case "Merely":		fr = 1;		break;
 			}
@@ -143,7 +143,7 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			int year = Calendar.getInstance().get(Calendar.YEAR);
 			String bugNumber = Integer.toString(year);
 			bug.setBugNumber(bugNumber);
-			bugDAO.addBug(bug);
+			bugDAO.add(bug);
 		}
 
 		return map;

@@ -3,6 +3,7 @@ package Junit.test.Jingxuan;
 import static org.junit.Assert.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
@@ -20,8 +21,10 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.dao.impl.BugDAOImpl;
+import com.SVRPlatform.dao.impl.CommentDAOImpl;
 import com.SVRPlatform.dao.impl.SoftwareDAOImpl;
 import com.SVRPlatform.model.Bug;
+import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Software;
 import com.SVRPlatform.model.User;
 
@@ -32,9 +35,10 @@ public class TestForHibernate {
 	static SessionFactory sessionFactory;
 	static SoftwareDAOImpl softwareDAO;
 	static Session session;
+	static CommentDAOImpl commentDAO;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		ctx = new ClassPathXmlApplicationContext( "applicationContext-hibernate.xml", "Junit/test/Jingxuan/testBeans.xml" );
+		ctx = new ClassPathXmlApplicationContext( "Junit/test/Jingxuan/testBeans-hibernate.xml", "Junit/test/Jingxuan/testBeans.xml" );
 		userDAO = (UserDAO)ctx.getBean("userDAO");
 		bugDAO = (BugDAOImpl)ctx.getBean("bugDAO");
 		sessionFactory = (SessionFactory) ctx.getBean("sessionFactory");
@@ -42,6 +46,7 @@ public class TestForHibernate {
 		Session s = sessionFactory.openSession();  
 		TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(s));
 		softwareDAO = (SoftwareDAOImpl) ctx.getBean("softwareDAO");
+		commentDAO = (CommentDAOImpl) ctx.getBean("commentDAO");
 	}
 
 	@AfterClass
@@ -56,41 +61,9 @@ public class TestForHibernate {
 
 	@Test
 	public void test() {
-		userDAO.addUser(new User("1234","fdsafdadddd"));
+		userDAO.add(new User("1234","fdsafdadddd"));
 		
 	}
-	@Test public void testIf() { 
-		assertTrue(userDAO.ifEmailExists("fdsafda"));
-	}
-	
-	@Test public void testGet(){
-		System.out.println(userDAO.getPasswordByEmail("fdsafda"));
-	}
-	@Test public void test2() {
-		User u1 = new User("154655","my1");
-		User u2 = new User("154655","my2");
-		User u3 = new User("154655","my3");
-		User u4 = new User("154655","my4");
-		Set<User> su = new HashSet<User>();
-		su.add(u1);
-		su.add(u2);
-		su.add(u3);
-		su.add(u4);
-		
-		Bug b = new Bug();
-		b.setUser(u1);
-		//b.setUsers(su);
-		
-		userDAO.addUser(u1);
-		userDAO.addUser(u2);
-		userDAO.addUser(u3);
-		userDAO.addUser(u4);
-		
-		bugDAO.addBug(b);
-		
-		bugDAO.bugWatched(b, u3);
-	}
-	
 	@Test public void test3() {
 		Session s = null;
 		Transaction tx = null;
@@ -130,12 +103,42 @@ public class TestForHibernate {
 		Bug b = new Bug();
 		Software s = new Software();
 		s.setCompany("qq");
-		softwareDAO.addSoftware(s);
+		softwareDAO.add(s);
 		b.setSoftware(s);
-		bugDAO.addBug(b);
+		bugDAO.add(b);
 		
-		Bug b2 = bugDAO.getBugbyId(7);
-		System.out.println(b2.getSoftware().getCompany());
 		//sessionFactory.getCurrentSession().close();
+	}
+	
+	@Test public void testBug() {
+		Bug b = new Bug();
+		bugDAO.add(b);
+	}
+	
+	@Test public void testAddComment(){
+		Bug bug = (Bug) bugDAO.getByID(new Integer(1));
+		User user = (User) userDAO.getByID(new Integer(1));
+		Comment[] c = new Comment[20];
+		for(int i=0; i<20; i++){
+			c[i] = new Comment();
+			c[i].setBug(bug);
+			c[i].setUser(user);
+			commentDAO.add(c[i]);
+		}
+		System.out.println("finished add comments 10");
+	}
+	@Test public void testFindComment(){
+//		Bug bug = (Bug) bugDAO.getByID(new Integer(1));
+		User user = (User) userDAO.getByID(new Integer(1));
+//		System.out.println(User.class.getSimpleName());
+//		System.out.println(User.class.getCanonicalName());
+		List<Comment> list = commentDAO.getByUserId(user, 10, 10);
+		for(Comment c: list){
+			System.out.println(c.getCommentId());
+		}
+//		List<Comment> list2 = commentDAO.getByBugId(bug, 10, 10);
+//		for(Comment c: list2){
+//			System.out.println(c.getCommentId());
+//		}
 	}
 }
