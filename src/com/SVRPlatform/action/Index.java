@@ -17,54 +17,8 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
 	private String cookieEmail = null;	
 	private String cookiePassword = null;
 	private LoginService loginService;
-
 	
-	public String execute()
-	{
-		System.out.println("In Index");				
-		
-    	request.getSession().setMaxInactiveInterval(60 * 60 * 24 * 7);			//store in new session as tourist ,modify later 
-		request.getSession().setAttribute("email", "tourist");
-		request.getSession().setAttribute("password", "tourist");
-		
-		Cookie[] cookies = request.getCookies();		
-		System.out.println("getcookie");
-        if (cookies != null) {												//get email and password in cookie 
-          for (int i = 0; i < cookies.length; i++) {									
-            System.out.println(cookies[i].getName() +"/////");
-            System.out.println(cookies[i].getValue() );
-        	  if (cookies[i].getName().equals("email")) {
-        		  cookieEmail= cookies[i].getValue();
-            }
-             
-        	  if (cookies[i].getName().equals("password")) {
-                  cookiePassword = cookies[i].getValue();
-            }
-          }
-        }
-       
-
-        if ((cookieEmail== null)&&(cookiePassword==null)) {											//cookie does not exist ~ tourist
-        	return "CookieNotFound"; 
-        }
-        else							
-        {																//cookie exists
-            System.out.println(cookieEmail);
-            System.out.println(cookiePassword);
-            boolean info = this.loginService.login(cookieEmail, cookiePassword); 
-            if(!info)
-    		{	
-            	return "NotAuthenticated"; 								//Invalid email and password,	need login
-            }
-            else{
-            	request.getSession().setAttribute("email", cookieEmail);
-            	request.getSession().setAttribute("password", cookiePassword);
-            	return "LoggedIn";											//Valid email and password
-            }
 	
-        }
-	}
-
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
 	}
@@ -82,5 +36,58 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
 		// TODO Auto-generated method stub
 		
 	}
+	
+
+	
+	public String execute()
+	{
+		System.out.println("In Index");				
+		
+    	request.getSession().setMaxInactiveInterval(60 * 60 * 24 * 7);								//store in new session as tourist ,modify later 
+		request.getSession().setAttribute("email", "tourist");
+		request.getSession().setAttribute("password", "tourist");
+		
+		Cookie[] cookies = request.getCookies();		
+		System.out.println("getcookie");
+        if (cookies != null) {																		//get email and password in cookie 
+        	System.out.println("cookies is not null");
+        	for (int i = 0; i < cookies.length; i++) {									
+            System.out.println(cookies[i].getName() +"/////");
+            System.out.println(cookies[i].getValue() );
+        	if (cookies[i].getName().equals("email")) {
+        		cookieEmail= cookies[i].getValue();
+            }
+            if (cookies[i].getName().equals("password")) {
+                cookiePassword = cookies[i].getValue();
+            }
+          }
+        }
+
+        if ((cookieEmail== null)&&(cookiePassword==null)) {											//cookie does not exist ~ tourist
+        	return "CookieNotFound"; 
+        }
+        else							
+        {																							//cookie exists
+            System.out.println(cookieEmail);
+            System.out.println(cookiePassword);
+            System.out.println("a");
+            System.out.println(this.loginService);
+            boolean info = this.loginService.login(cookieEmail, cookiePassword); 
+            System.out.println("b");
+            if(!info)
+    		{	
+            	return "NotAuthenticated"; 															//Invalid email and password,	need login
+            }
+            else{
+            	System.out.println("valid email");
+                request.getSession().setAttribute("email", cookieEmail);
+                request.getSession().setAttribute("password", cookiePassword);
+                return "LoggedIn";																	//Valid email and password
+            }
+	
+        }
+	}
+
+
 	
 }

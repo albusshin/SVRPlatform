@@ -33,7 +33,7 @@
         	<result name="fail">/WEB-INF/signup.jsp</result>
         </action>
     
-         <action name="index" class="com.SVRPlatform.action.Index" method="execute">
+         <action name="index" class="index" method="execute">
         	<result name="LoggedIn" >/WEB-INF/home.jsp</result>
         	<result name="CookieNotFound" >/WEB-INF/index.html</result>
         	<result name="NotAuthenticated">/WEB-INF/signin.jsp</result>
@@ -46,12 +46,6 @@
          <action name="SigningUp">    
 		 	<result >/WEB-INF/signup.jsp</result>    
 		 </action>
-         
-		 <action name="tosubmitbug" class="com.SVRPlatform.action.ToSubmitBug" method="execute">
-        	<result name="LoggedIn" type="redirect">/WEB-INF/submitbug.jsp</result>
-        	<result name="CookieNotFound" >/WEB-INF/index.html</result>
-        	<result name="NotAuthenticated">/WEB-INF/signin.jsp</result>
-        </action>
 
          <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph">  
 	            <result name="success">/WEB-INF/index.html</result>  
