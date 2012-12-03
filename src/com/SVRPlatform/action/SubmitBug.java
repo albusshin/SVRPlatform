@@ -156,17 +156,7 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 
 	public String execute()
 	{ 
-		//进入此页面已确定cookie中有正确的email存在
-		
-		Cookie[] cookies = request.getCookies();
-
-		for (int i = 0; i < cookies.length; i++) {
-			System.out.println("FindEmail");
-			System.out.println(cookies[i].getName());
-			if (cookies[i].getName().equals("email")) {
-				email=cookies[i].getValue();
-			}
-		}
+		email=(String)request.getSession().getAttribute("email");
 		
 		System.out.println(digest);
 		System.out.println(usabilityimpact);
@@ -187,9 +177,11 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 		message=map.get("description")+ map.get("version") + map.get("software")
 					+map.get("bugDigest") + map.get("language");
 		
-		if (map.get("description") == "OK" && map.get("version") == "OK" && 
-				map.get("software") == "OK" && map.get("bugDigest") == "OK" && 
-				map.get("language") == "OK") {
+		System.out.println(message);
+		
+		if (map.get("description").equals("OK") && map.get("version").equals("OK") && 
+				map.get("software").equals("OK") && map.get("bugDigest").equals("OK") && 
+				map.get("language").equals("OK")) {
 		return "BugSubmitSuccess";}
 		else  return "BugSubmitFailed";
 	}

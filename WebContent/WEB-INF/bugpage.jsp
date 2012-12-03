@@ -15,11 +15,12 @@
 <%--
 <% 	String email=(String)request.getSession().getAttribute("email"); %>
 <% 	if (email.equals("tourist")){ %>
-	<jsp:include page="header.html" flush="true"/>
+	<jsp:include page="/Tourist.jsp" flush="true"/>
 <%	}else{  %>
-
+	<jsp:include page="/headerSignedIn.jsp" flush="true"/>
 <% 		}%>
 --%>
+	<jsp:include page="/headerSignedIn.jsp" flush="true"/>
     <div id="content">
     <div id="menu" class="menu">
                 <ul>
@@ -128,12 +129,6 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In posuere felis nec tortor. Pellentesque faucibus. Ut accumsan ultricies elit. Maecenas at justo id velit placerat molestie. Donec dictum lectus non odio. Cras a ante vitae enim iaculis aliquam. Mauris nunc quam, venenatis nec, euismod sit amet, egestas placerat, est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras id elit. Integer quis urna. Ut ante enim, dapibus malesuada, fringilla eu, condimentum quis, tellus. Aenean porttitor eros vel dolor. Donec convallis pede venenatis nibh. Duis quam. Nam eget lacus. Aliquam erat volutpat. Quisque dignissim congue leo.
 		</p>
     </div>
-    	<div id="footer" align="center">
-            <p align="center">Copyright Â© www.SVRPlatform.com</p>
-            <p> <a class="footer" href="javascript:;">Terms of Service</a></p>
-            <p> <a class="footer" href="javascript:;">License of Development</a></p>
-            <p> <a class="footer" href="javascript:;">Privacy</a></p>
-        	<img src="images/SVRPlatform.png" width=400px align="middle"/>
-    	</div>
+    	<jsp:include page="footer.html" flush="true"/>
 </body>
 </html>

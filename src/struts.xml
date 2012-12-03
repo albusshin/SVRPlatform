@@ -53,8 +53,8 @@
        		</action>  
          
          <action name="submitbug" class="submitbug" method="execute">
-	 		<result name="BugSubmitSuccess">/WEB-INF/index.html</result>
-	 		<result name="BugSubmitFailed">/WEB-INF/submitbug.jsp</result>  
+	 		<result name="BugSubmitSuccess">/WEB-INF/bugpage.jsp</result>
+	 		<result name="BugSubmitFailed">/submitbug.jsp</result>  
         </action>
          
          

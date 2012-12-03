@@ -45,12 +45,6 @@
 	<div id="content">
 		infsda
 	</div>
-    <div id="footer" align="center">
-            <p align="center">Copyright © www.SVRPlatform.com</p>
-            <p> <a href="javascript:;">Terms of Service</a></p>
-            <p> <a href="javascript:;">License of Development</a></p>
-            <p> <a href="javascript:;">Privacy</a></p>
-        	<img src="images/SVRPlatform.png" width=400px align="middle"/>
-    	</div>
+    <jsp:include page="/footer.html" flush="true"/>
 </body>
 </html>
