@@ -20,7 +20,7 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 	 * @see com.SVRPlatform.dao.impl.CommentDAO#getByUserIdAndBugId(com.SVRPlatform.model.User, com.SVRPlatform.model.Bug)
 	 */
 	@Override
-	public Comment getByUserIdAndBugId(User user, Bug bug){
+	public List<Comment> getByUserIdAndBugId(User user, Bug bug){
 //		Session s = this.sessionFactory.openSession();
 //		try{
 //			org.hibernate.Criteria c = s.createCriteria(Comment.class);
@@ -31,7 +31,7 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 //			if(s!=null)
 //				s.close();
 //		}
-		return (Comment) getByUserOrBugId(Comment.class, -1, -1, bug, user).get(0);
+		return (List<Comment>) getByUserOrBugId(Comment.class, -1, -1, bug, user);
 	}
 	
 	/* (non-Javadoc)

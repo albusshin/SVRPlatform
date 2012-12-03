@@ -7,7 +7,7 @@ import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.model.User;
 
 public interface SolutionDAO extends basicDAO {
-	public Solution getByUserIdAndBugId(User user, Bug bug);
+	public List<Solution> getByUserIdAndBugId(User user, Bug bug);
 
 	public List<Solution> getByBugId(Bug bug, int fetchSize,
 			int firstResult);

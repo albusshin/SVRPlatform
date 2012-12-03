@@ -13,8 +13,8 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public boolean login(String email, String password) {
 		email = email.toLowerCase();
-		if (!userDAO.ifEmailExists(email)) return false;
-		String psswrd = this.userDAO.getPasswordByEmail(email);
+		if (userDAO.getUserByEmail(email) == null) return false;
+		String psswrd = this.userDAO.getUserByEmail(email).getPassword();
 		if (psswrd.compareTo(password) == 0)
 			return true;
 		else return false;
