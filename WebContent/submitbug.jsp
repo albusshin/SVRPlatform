@@ -10,41 +10,8 @@
 </head>
 
 <body>
-	<div align="right">
-            <div id="menu2" class="menu">
-                <ul>
-                	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp </li>
-                    <li><a href="javascript:;"><image src="images/logowhite.png" width="54px" margin="10px"></image>SVRP HOME</a></li>
-                    <li><a href="javascript:;">Bugs</a></li>
-                    <li><a href="javascript:;">Vulnerabilities</a></li>
-                    <li><a href="javascript:;">Exploits</a></li>
-                    <li><a href="javascript:;">About</a></li>
-                    <li><a href="javascript:;">Contact</a></li>
-                    <div class="searchinput" align="right">
-                    	<form>
-							<input type="search" placeholder="搜索">
-						</form>
-                    </div>
-                </ul>
-            </div>
-        <div id="upbar">
-            <div id="userbar">
-                     <img id="userbaravatar" src="http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe?s=45&d=identicon&r=PG" align="left"/>
-                     <div id="userbarelse">
-                        <div id="usersname">albus shin</div>
-                        <img class="seperator" src="images/seperator.png" align="middle"/>
-                        <div id="userbarcredit">1,023</div>
-                        <img class="seperator" src="images/seperator.png" align="middle"/>
-                        <img id="userbarusericon" src="images/usericon.png" onmouseover="this.src='images/usericonpressed.png'" onmouseout="this.src='images/usericon.png'" onclick="javascript:;"/>
-                        <img id="userbarwatching" src="images/watching.png" onmouseover="this.src='images/watchingpressed.png'" onmouseout="this.src='images/watching.png'" onclick="javascript:;"/>
-                        <img id="userbarlogout" src="images/logout.png" onmouseover="this.src='images/logoutpressed.png'" onmouseout="this.src='images/logout.png'" onclick="javascript:;"/>
-                     </div>
-            </div>
-        </div>
-        <br />
-        <br />
-	</div>
-    
+
+ 		<jsp:include page="/headerSignedIn.jsp" flush="true"/>
     <div id="content">
 	<div class="commentstitle" style="padding-top:30px;">
 		Submit New Bug Information
