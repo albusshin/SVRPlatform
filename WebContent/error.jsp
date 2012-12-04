@@ -4,9 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+	<link rel="stylesheet" href="style.css" />
+	<script type="text/javascript" src="jquery.min.js"></script>
+<title>Error page</title>
 </head>
 <body>
-error
+ 		<jsp:include page="/headerTourist.jsp" flush="true"/>
+<div id="content">
+	<div class="commentstitle" style="padding-top:30px;">
+	There's an error occured while processing your request.
+	</div>
+</div>
+
+ 		<jsp:include page="/footer.html" flush="true"/>
 </body>
 </html>
