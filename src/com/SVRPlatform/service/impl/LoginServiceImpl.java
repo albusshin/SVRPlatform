@@ -15,7 +15,8 @@ public class LoginServiceImpl implements LoginService{
 		email = email.toLowerCase();
 		if (userDAO.getUserByEmail(email) == null) return false;
 		String psswrd = this.userDAO.getUserByEmail(email).getPassword();
-		if (psswrd.compareTo(password) == 0)
+		String encodedPassword = PasswordEncoder.EncoderByMd5(password);
+		if (psswrd.compareTo(encodedPassword) == 0)
 			return true;
 		else return false;
 	}
