@@ -21,9 +21,14 @@
     	<property name="registerService" ref="registerService"></property>
     </bean>
     
+    <!-- <bean id="retrievepassword" scope="prototype" class="com.SVRPlatform.action.RetrievePassword">
+    	<property name="bugsubmitService" ref="bugsubmitService"></property>
+    </bean> -->
+    
     <bean id="submitbug" scope="prototype" class="com.SVRPlatform.action.SubmitBug">
     	<property name="bugsubmitService" ref="bugsubmitService"></property>
     </bean>
+    
     
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->

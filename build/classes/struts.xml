@@ -23,32 +23,37 @@
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
         
-        <action name="signin" class="signin" method="execute">
-        	<result name="success" >/WEB-INF/home.jsp</result>
-        	<result name="fail">/WEB-INF/signin.jsp</result>
+        <action name="SigningIn" class="signin" method="execute">
+        	<result name="success" type="redirect" >/home.jsp</result>
+        	<result name="fail">/signin.jsp</result>
         </action>
         
-		<action name="signup" class="signup" method="execute">
-        	<result name="success" >/WEB-INF/home.jsp</result>
-        	<result name="fail">/WEB-INF/signup.jsp</result>
+		<action name="SigningUp" class="signup" method="execute">
+        	<result name="success" type="redirect" >/home.jsp</result>
+        	<result name="fail">/signup.jsp</result>
         </action>
     
          <action name="index" class="index" method="execute">
-        	<result name="LoggedIn" >/WEB-INF/home.jsp</result>
+        	<result name="LoggedIn" type="redirect" >/home.jsp</result>
         	<result name="CookieNotFound" >/WEB-INF/index.jsp</result>
-        	<result name="NotAuthenticated">/WEB-INF/signin.jsp</result>
+        	<result name="NotAuthenticated" type="redirect">/signin.jsp</result>
         </action>
          	
-         <action name="SigningIn">    
-		 	<result >/WEB-INF/signin.jsp</result>    
+         <!-- <action name="SigningIn">    
+		 	<result >/signin.jsp</result>    
 		 </action>   
 		 
          <action name="SigningUp">    
-		 	<result >/WEB-INF/signup.jsp</result>    
+		 	<result >/signup.jsp</result>    
 		 </action>
-
+ 		-->
+		<action name="RetrievePassword" class="com.SVRPlatform.action.RetrievePassword" method="execute">
+        	<result name="success" >/WEB-INF/emailSent.jsp</result>
+        	<result name="fail">/WEB-INF/emailNotSent.jsp</result>
+        </action>
+        
          <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph">  
-	            <result name="success">/WEB-INF/index.html</result>  
+	            <result name="success">/WEB-INF/index.jsp</result>  
 	            <result name="input">/upload.jsp</result>  
        		</action>  
          
