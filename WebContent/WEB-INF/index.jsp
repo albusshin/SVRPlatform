@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>SVRPlatform Tourist</title>
+	<title>Welcome to SVRPlatform</title>
 	<link rel="stylesheet" href="style.css" />
 	<style>
 		div#contains{
@@ -37,27 +39,7 @@
 	<script type="text/javascript" src="jquery.min.js"></script>
 </head>
 <body>
-	<div align="right">
-            <div id="menu2" class="menu">
-                <ul>
-                	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp </li>
-                    <li><a href="javascript:;"><image src="images/logowhite.png" width="54px" margin="10px"></image>SVRP HOME</a></li>
-                    <li><a href="javascript:;">Bugs</a></li>
-                    <li><a href="javascript:;">Vulnerabilities</a></li>
-                    <li><a href="javascript:;">Exploits</a></li>
-                    <li><a href="javascript:;">About</a></li>
-                    <li><a href="javascript:;">Contact</a></li>
-                    <div class="searchinput" align="right">
-                    	<form>
-							<input type="search" placeholder="搜索">
-						</form>
-                    </div>
-                </ul>
-            </div>
-        <h1 class="msblack20"><a class="steelbluefont">Tourist</a>，Welcome to SVRPlatform.</h1>
-        <br />
-        <br />
-	</div>
+	<jsp:include page="headerTourist.jsp" flush="true"/>
     <div id="contains">
         <div id="biglogo">
             <a href="javascript:;" style="border-bottom:none"><img src="images/SVRPlatform.png" width="600px"/></a>
@@ -88,15 +70,6 @@
             Some description
         </div>
     </div>
-    
-
-
-    	<div id="footer" align="center">
-            <p align="center">Copyright © www.SVRPlatform.com</p>
-            <p> <a class="footer" href="javascript:;">Terms of Service</a></p>
-            <p> <a class="footer" href="javascript:;">License of Development</a></p>
-            <p> <a class="footer" href="javascript:;">Privacy</a></p>
-        	<img src="images/SVRPlatform.png" width=400px align="middle"/>
-    	</div>
+    <jsp:include page="footer.jsp" flush="true"/>
 </body>
 </html>

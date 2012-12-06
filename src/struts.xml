@@ -16,7 +16,7 @@
         <default-action-ref name="index" />
 
         <global-results>
-            <result name="error">/error.jsp</result>
+            <result name="error">/WEB-INF/error.jsp</result>
         </global-results>
 
         <global-exception-mappings>
@@ -33,9 +33,9 @@
         	<result name="fail">/WEB-INF/signup.jsp</result>
         </action>
     
-         <action name="index" class="com.SVRPlatform.action.Index" method="execute">
+         <action name="index" class="index" method="execute">
         	<result name="LoggedIn" >/WEB-INF/home.jsp</result>
-        	<result name="CookieNotFound" >/WEB-INF/index.html</result>
+        	<result name="CookieNotFound" >/WEB-INF/index.jsp</result>
         	<result name="NotAuthenticated">/WEB-INF/signin.jsp</result>
         </action>
          	
@@ -46,12 +46,6 @@
          <action name="SigningUp">    
 		 	<result >/WEB-INF/signup.jsp</result>    
 		 </action>
-         
-		 <action name="tosubmitbug" class="com.SVRPlatform.action.ToSubmitBug" method="execute">
-        	<result name="LoggedIn" type="redirect">/WEB-INF/submitbug.jsp</result>
-        	<result name="CookieNotFound" >/WEB-INF/index.html</result>
-        	<result name="NotAuthenticated">/WEB-INF/signin.jsp</result>
-        </action>
 
          <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph">  
 	            <result name="success">/WEB-INF/index.html</result>  
@@ -59,18 +53,11 @@
        		</action>  
          
          <action name="submitbug" class="submitbug" method="execute">
-	 		<result name="BugSubmitSuccess">/WEB-INF/index.html</result>
-	 		<result name="BugSubmitFailed">/WEB-INF/submitbug.jsp</result>  
+	 		<result name="BugSubmitSuccess">/WEB-INF/bugpage.jsp</result>
+	 		<result name="BugSubmitFailed">/submitbug.jsp</result>  
         </action>
          
          
     </package>
-    
-
-
-    <!--include file="example.xml"/-->
-
-    <!-- Add packages here -->
-
 </struts>
 

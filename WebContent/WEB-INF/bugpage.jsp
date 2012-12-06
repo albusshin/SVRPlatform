@@ -1,4 +1,7 @@
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html;  charset=utf-8"
+    pageEncoding="utf-8"%>
+   
+   <!DOCTYPE HTML>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -9,51 +12,15 @@
 </head>
 
 <body>
-	<div id="credittipsy" class="tipsy tipsy-n" style="top: 210px; right: 372px; visibility:visible; display:none; opacity:0.8; ">
-		<div class="tipsy-arrow tipsy-arrow-n"></div>
-		<div class="tipsy-inner">My credits</div>
-	</div>
-	<div id="signinicontipsy" class="tipsy tipsy-n" style="top: 210px; right: 258px; visibility:visible; display:none; opacity:0.8; ">
-		<div class="tipsy-arrow tipsy-arrow-n"></div>
-		<div class="tipsy-inner">Sign In</div>
-	</div>
-
-	<div id="signupicontipsy" class="tipsy tipsy-n" style="top: 210px; right: 142px; visibility:visible; display:none; opacity:0.8; ">
-		<div class="tipsy-arrow tipsy-arrow-n"></div>
-		<div class="tipsy-inner">Sign UP as a Normal User</div>
-	</div>
-	<div align="right">
-            <div id="menu2" class="menu">
-                <ul>
-                	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
-                    <li><a href="javascript:;"><image src="images/logowhite.png" width="54px" margin="10px"></image>SVRP HOME</a></li>
-                    <li><a href="javascript:;">Bugs</a></li>
-                    <li><a href="javascript:;">Vulnerabilities</a></li>
-                    <li><a href="javascript:;">Exploits</a></li>
-                    <li><a href="javascript:;">About</a></li>
-                    <li><a href="javascript:;">Contact</a></li>
-                    <div class="searchinput" align="right">
-                    	<form>
-							<input type="search" placeholder="Search">
-						</form>
-                    </div>
-                </ul>
-            </div>
-        <div id="upbar">
-            <div id="userbar">
-                     <img id="userbaravatar" src="http://www.gravatar.com/avatar/http://www.gravatar.com/avatar/<HASH>?s=45" align="left"/>
-                     <div id="userbarelse">
-                        <div id="username">Tourist</div>
-                        <img class="seperator" src="images/seperator.png" align="middle"/>
-                        <div id="userbarcredit" onMouseOver="document.getElementById('credittipsy').style.display='block'" onmouseout="document.getElementById('credittipsy').style.display='none'">0</div>
-                        <img class="seperator" src="images/seperator.png" align="middle"/>
-                        <img id="signinicon" src="images/signinicon.png" onmouseover="this.src='images/signiniconpressed.png';document.getElementById('signinicontipsy').style.display='block'" onmouseout="this.src='images/signinicon.png';document.getElementById('signinicontipsy').style.display='none'" onclick="javascript:;"/>
-                        <img id="signupicon" src="images/signupicon.png" onmouseover="this.src='images/signupiconpressed.png';document.getElementById('signupicontipsy').style.display='block'" onmouseout="this.src='images/signupicon.png';document.getElementById('signupicontipsy').style.display='none'" onclick="javascript:;"/>
-                     </div>
-            </div>
-        </div>
-		</div>
-    
+<%--
+<% 	String email=(String)request.getSession().getAttribute("email"); %>
+<% 	if (email.equals("tourist")){ %>
+	<jsp:include page="/Tourist.jsp" flush="true"/>
+<%	}else{  %>
+	<jsp:include page="/headerSignedIn.jsp" flush="true"/>
+<% 		}%>
+--%>
+	<jsp:include page="headerSignedIn.jsp" flush="true"/>
     <div id="content">
     <div id="menu" class="menu">
                 <ul>
@@ -70,7 +37,7 @@
         <div class="bugvuldigest">
          The QQ Program is a mother-fucking copy of MSN!!! This is the biggest bug in the world.
          <br>
-         A.K.A. 到了社会上也能抄。
+         A.K.A. å°äºç¤¾ä¼ä¸ä¹è½æã
          <br>
          <div class="date">Publish Date: 2012-11-16</div>
         </div>
@@ -162,12 +129,6 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In posuere felis nec tortor. Pellentesque faucibus. Ut accumsan ultricies elit. Maecenas at justo id velit placerat molestie. Donec dictum lectus non odio. Cras a ante vitae enim iaculis aliquam. Mauris nunc quam, venenatis nec, euismod sit amet, egestas placerat, est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras id elit. Integer quis urna. Ut ante enim, dapibus malesuada, fringilla eu, condimentum quis, tellus. Aenean porttitor eros vel dolor. Donec convallis pede venenatis nibh. Duis quam. Nam eget lacus. Aliquam erat volutpat. Quisque dignissim congue leo.
 		</p>
     </div>
-    	<div id="footer" align="center">
-            <p align="center">Copyright © www.SVRPlatform.com</p>
-            <p> <a class="footer" href="javascript:;">Terms of Service</a></p>
-            <p> <a class="footer" href="javascript:;">License of Development</a></p>
-            <p> <a class="footer" href="javascript:;">Privacy</a></p>
-        	<img src="images/SVRPlatform.png" width=400px align="middle"/>
-    	</div>
+    	<jsp:include page="footer.jsp" flush="true"/>
 </body>
 </html>

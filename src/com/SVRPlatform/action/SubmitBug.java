@@ -156,23 +156,13 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 
 	public String execute()
 	{ 
-		//进入此页面已确定cookie中有正确的email存在
-		
-		Cookie[] cookies = request.getCookies();
-
-		for (int i = 0; i < cookies.length; i++) {
-			System.out.println("FindEmail");
-			System.out.println(cookies[i].getName());
-			if (cookies[i].getName().equals("email")) {
-				email=cookies[i].getValue();
-			}
-		}
+		email=(String)request.getSession().getAttribute("email");
 		
 		System.out.println(digest);
-		System.out.println( usabilityimpact);
-		System.out.println( dataimpact);
-		System.out.println( privacyimpact);
-		System.out.println( availabilityimpact);
+		System.out.println(usabilityimpact);
+		System.out.println(dataimpact);
+		System.out.println(privacyimpact);
+		System.out.println(availabilityimpact);
 		System.out.println(frequency);
 		System.out.println(description);
 		System.out.println(graphaddress);
@@ -180,16 +170,18 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 		System.out.println(software);
 		System.out.println(language);
 		
-//		map=bugsubmitService.bugSubmit(graphaddress, description,version, software,
-//				digest, email, usabilityimpact, dataimpact,
-//				 privacyimpact, availabilityimpact, frequency, language);
+		map=bugsubmitService.bugSubmit(graphaddress, description,version, software,
+				digest, email, usabilityimpact, dataimpact,
+				 privacyimpact, availabilityimpact, frequency, language);
 
 		message=map.get("description")+ map.get("version") + map.get("software")
 					+map.get("bugDigest") + map.get("language");
 		
-		if (map.get("description") == "OK" && map.get("version") == "OK" && 
-				map.get("software") == "OK" && map.get("bugDigest") == "OK" && 
-				map.get("language") == "OK") {
+		System.out.println(message);
+		
+		if (map.get("description").equals("OK") && map.get("version").equals("OK") && 
+				map.get("software").equals("OK") && map.get("bugDigest").equals("OK") && 
+				map.get("language").equals("OK")) {
 		return "BugSubmitSuccess";}
 		else  return "BugSubmitFailed";
 	}

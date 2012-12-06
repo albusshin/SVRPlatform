@@ -46,7 +46,6 @@ public class RegisterServiceImpl implements RegisterService{
 			user.setCredit(0);
 			userDAO.add(user);
 		}
-		
 		return response;
 	}
 }

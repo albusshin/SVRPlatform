@@ -29,7 +29,7 @@
             <div id="userbar">
                      <img id="userbaravatar" src="http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe?s=45&d=identicon&r=PG" align="left"/>
                      <div id="userbarelse">
-                        <div id="usersname">albus shin</div>
+                        <div id="usersname">${sessionScope.email}</div>
                         <img class="seperator" src="images/seperator.png" align="middle"/>
                         <div id="userbarcredit">1,023</div>
                         <img class="seperator" src="images/seperator.png" align="middle"/>
@@ -45,12 +45,6 @@
 	<div id="content">
 		infsda
 	</div>
-    <div id="footer" align="center">
-            <p align="center">Copyright © www.SVRPlatform.com</p>
-            <p> <a href="javascript:;">Terms of Service</a></p>
-            <p> <a href="javascript:;">License of Development</a></p>
-            <p> <a href="javascript:;">Privacy</a></p>
-        	<img src="images/SVRPlatform.png" width=400px align="middle"/>
-    	</div>
+    <jsp:include page="/footer.html" flush="true"/>
 </body>
 </html>

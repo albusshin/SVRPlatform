@@ -1,26 +1,15 @@
-<%@ page language="java" contentType="text/html;  charset=utf-8"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>SVRPlatform Sign UP!</title>
-	<link rel="stylesheet" href="style.css" />
-	<script type="text/javascript" src="jquery.min.js"></script>
-</head>
 <script type="text/javascript">
 	/**
 	* Albus Shin
 	* Up background bar
 	*/
-	function loadbackgroundname(){
-		var strallbg = "url(images/sgbg";
-		var ran = parseInt(Math.random()*9+1);
-		strallbg += ran;
-		strallbg += ".jpg) left top no-repeat";
-		
-		document.body.style.background=strallbg;
-	}
+		function loadbarname(){
+			var strupbar = "url(images/upbar";
+			var ran = parseInt(Math.random()*5+1);
+			strupbar += ran;
+			strupbar += ".png) left top no-repeat";
+			document.getElementById("upbar").style.background=strupbar;
+		}
 
 	/**
 	*	Albus Shin 
@@ -31,7 +20,7 @@
 		  var animating = false;
 		  
 	$(document).ready(function(){
-		loadbackgroundname();
+		loadbarname();
 	  $("#userbaravatar").click(function(){
 		  if (status == "Out"){
 			  $("#userbar").animate({width:100},"slow");
@@ -49,7 +38,6 @@
 
 </script>
 
-<body>
 <div id="credittipsy" class="tipsy tipsy-n" style="top: 210px; right: 372px; visibility:visible; display:none; opacity:0.8; ">
 		<div class="tipsy-arrow tipsy-arrow-n"></div>
 		<div class="tipsy-inner">My credits</div>
@@ -80,6 +68,7 @@
                     </div>
                 </ul>
             </div>
+        <div id="upbar">
             <div id="userbar">
                      <img id="userbaravatar" src="http://www.gravatar.com/avatar/http://www.gravatar.com/avatar/<HASH>?s=45" align="left"/>
                      <div id="userbarelse">
@@ -91,40 +80,5 @@
                         <img id="signupicon" src="images/signupicon.png" onmouseover="this.src='images/signupiconpressed.png';document.getElementById('signupicontipsy').style.display='block'" onmouseout="this.src='images/signupicon.png';document.getElementById('signupicontipsy').style.display='none'" onclick="javascript:;"/>
                      </div>
             </div>
-</div>    
-    
-    
-    		<div id="container">
-			<form action="/SVRPlatform/signup" class="loginform" method="post">
-				<div class="login">SIGN UP!</div>
-				<div class="username-text">Email:</div>
-				<div class="password-text">Password:</div>
-				<div class="username-field">
-					<input type="text" name="email"/>
-				</div>
-				<div class="password-field">
-					<input type="password" name="password"/>
-				</div>
-				<input type="checkbox" name="remember" id="remember-me" value="remembered"/><label for="remember-me">Remember me</label>
-				<div class="forgot-usr-pwd">First time using <a href='home.html'>SVRPlatform</a>?</div>
-				<input type="submit" name="submit" id="signingo" value="GO" />
-			</form>
-		</div>
-       
-    	<div id="footer" align="center">
-            <p align="center" style="color:#000">Copyright © www.SVRPlatform.com</p>
-            <p> <a class="footer" style="color:#000" href="javascript:;">Terms of Service</a></p>
-            <p> <a class="footer" style="color:#000" href="javascript:;">License of Development</a></p>
-            <p> <a class="footer" style="color:#000" href="javascript:;">Privacy</a></p>
-        	<img src="images/SVRPlatformPUR.png" width=400px align="middle"/>
-    	</div>
-    <script type="text/javascript">
-	    function showWrongMessage(){
-		    document.getElementById("wrongmessage").style.display="block";
-	    }
-    </script>
-	<div id="wrongmessage" style="display:none">
-    ${message }
-    </div>
-</body>
-</html>
+        </div>
+</div>
