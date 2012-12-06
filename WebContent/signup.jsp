@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>SVRPlatform Sign In</title>
+	<title>SVRPlatform Sign UP!</title>
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js"></script>
 </head>
@@ -15,9 +15,10 @@
 	*/
 	function loadbackgroundname(){
 		var strallbg = "url(images/sgbg";
-		var ran = parseInt(Math.random()*9 + 1);
+		var ran = parseInt(Math.random()*9+1);
 		strallbg += ran;
 		strallbg += ".jpg) left top no-repeat";
+		
 		document.body.style.background=strallbg;
 	}
 
@@ -47,9 +48,13 @@
 	});
 
 </script>
-<body>
- 	
 
+<%
+	if (!session.getAttribute("email").equals("tourist")){
+		response.sendRedirect("SigningIn");
+	}
+%>
+<body>
 <div id="credittipsy" class="tipsy tipsy-n" style="top: 210px; right: 372px; visibility:visible; display:none; opacity:0.8; ">
 		<div class="tipsy-arrow tipsy-arrow-n"></div>
 		<div class="tipsy-inner">My credits</div>
@@ -87,14 +92,16 @@
                         <img class="seperator" src="images/seperator.png" align="middle"/>
                         <div id="userbarcredit" onMouseOver="document.getElementById('credittipsy').style.display='block'" onmouseout="document.getElementById('credittipsy').style.display='none'">0</div>
                         <img class="seperator" src="images/seperator.png" align="middle"/>
-                        <img id="signinicon" src="images/signinicon.png" onmouseover="this.src='images/signiniconpressed.png';document.getElementById('signinicontipsy').style.display='block'" onmouseout="this.src='images/signinicon.png';document.getElementById('signinicontipsy').style.display='none'" onclick="javascript:;"/>
-                        <img id="signupicon" src="images/signupicon.png" onmouseover="this.src='images/signupiconpressed.png';document.getElementById('signupicontipsy').style.display='block'" onmouseout="this.src='images/signupicon.png';document.getElementById('signupicontipsy').style.display='none'" onclick="javascript:;"/>
+                        <img id="signinicon" src="images/signinicon.png" onmouseover="this.src='images/signiniconpressed.png';document.getElementById('signinicontipsy').style.display='block'" onmouseout="this.src='images/signinicon.png';document.getElementById('signinicontipsy').style.display='none'" onclick="window.location.href='signin.jsp'"/>
+                        <img id="signupicon" src="images/signupicon.png" onmouseover="this.src='images/signupiconpressed.png';document.getElementById('signupicontipsy').style.display='block'" onmouseout="this.src='images/signupicon.png';document.getElementById('signupicontipsy').style.display='none'" onclick="window.location.href='signup.jsp'"/>
                      </div>
             </div>
 </div>    
+    
+    
     		<div id="container">
-			<form action="/SVRPlatform/signin" class="loginform" method="post">
-				<div class="login">SIGN IN</div>
+			<form action="SigningUp" class="loginform" method="post">
+				<div class="login">SIGN UP!</div>
 				<div class="username-text">Email:</div>
 				<div class="password-text">Password:</div>
 				<div class="username-field">
@@ -104,13 +111,13 @@
 					<input type="password" name="password"/>
 				</div>
 				<input type="checkbox" name="remember" id="remember-me" value="remembered"/><label for="remember-me">Remember me</label>
-				<div class="forgot-usr-pwd">Forgot password? <a href='#'>Retrieve it...</a></div>
-				<input type="submit" id="signingo" name="submit" value="GO" />
+				<div class="forgot-usr-pwd">First time using <a href='home.html'>SVRPlatform</a>?</div>
+				<input type="submit" name="submit" id="signingo" value="GO" />
 			</form>
 		</div>
-		<style type="text/css"></style>
+       
     	<div id="footer" align="center">
-            <p align="center" style="color:#000">Copyright Â© www.SVRPlatform.com</p>
+            <p align="center" style="color:#000">Copyright © www.SVRPlatform.com</p>
             <p> <a class="footer" style="color:#000" href="javascript:;">Terms of Service</a></p>
             <p> <a class="footer" style="color:#000" href="javascript:;">License of Development</a></p>
             <p> <a class="footer" style="color:#000" href="javascript:;">Privacy</a></p>

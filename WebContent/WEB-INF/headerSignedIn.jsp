@@ -1,3 +1,6 @@
+<%@ page language="java" import="org.apache.commons.codec.digest.DigestUtils" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+
 <script type="text/javascript">
 	/**
 	* Albus Shin
@@ -37,7 +40,11 @@
 	});
 
 </script>
-
+	<%
+		String str = (String) session.getAttribute("email");
+		String hash = DigestUtils.md5Hex(str.trim().toLowerCase());
+		str = "http://www.gravatar.com/avatar/" + hash + "?s=45&d=identicon&r=PG";
+	%>
 <div id="credittipsy" class="tipsy tipsy-n" style="top: 210px; right: 372px; visibility:visible; display:none; opacity:0.8; ">
 		<div class="tipsy-arrow tipsy-arrow-n"></div>
 		<div class="tipsy-inner">My credits</div>
@@ -62,8 +69,8 @@
             <div id="menu2" class="menu">
                 <ul>
                 	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
-                    <li><a href="javascript:;"><image src="images/logowhite.png" width="54px" margin="10px"></image>SVRP HOME</a></li>
-                    <li><a href="javascript:;">Bugs</a></li>
+                    <li><a href="home.jsp"><image src="images/logowhite.png" width="54px" margin="10px"></image>SVRP HOME</a></li>
+                    <li><a href="home.jsp">Bugs</a></li>
                     <li><a href="javascript:;">Vulnerabilities</a></li>
                     <li><a href="javascript:;">Exploits</a></li>
                     <li><a href="javascript:;">About</a></li>
@@ -77,7 +84,7 @@
             </div>
         <div id="upbar">
             <div id="userbar">
-                     <img id="userbaravatar" src="http://www.gravatar.com/avatar/http://www.gravatar.com/avatar/<HASH>?s=45" align="left"/>
+                     <img id="userbaravatar" src="<%=str %>" align="left"/>
                      <div id="userbarelse">
                         <div id="username">${sessionScope.email}</div>
                         <img class="seperator" src="images/seperator.png" align="middle"/>
