@@ -53,10 +53,10 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 	}
 
 	public String execute() throws Exception {
-		System.out.println(this.email);
-		System.out.println(this.password);
+		System.out.println("this.email = " + this.email);
+		System.out.println("this.password = " + this.password);
 		info = this.loginService.login(this.email, this.password);
-		System.out.println(info);
+		System.out.println("this.loginService.login()" + this.info);
 		if (!info) {																				//wrong email or password
 			message = "failed";
 			return FAIL;
@@ -66,7 +66,7 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 			request.getSession().setAttribute("password", password);	
 			
 			if(remember != null)																	//remember email and password for 2 weeks
-			{										
+			{
 				Cookie[] cookies = request.getCookies();
 				for (int i = 0; i < cookies.length; i++) {
 					System.out.println(cookies[i].getName());
