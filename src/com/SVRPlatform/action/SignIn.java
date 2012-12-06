@@ -7,7 +7,6 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.SVRPlatform.service.LoginService;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SignIn extends ActionSupport implements ServletRequestAware,			//sign in~login						
@@ -22,6 +21,7 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 	private String password;
 	private String message;
 	private String email;
+	@SuppressWarnings("rawtypes")
 	private List remember;
 	private HttpServletResponse response;
 	private HttpServletRequest request;
@@ -36,6 +36,7 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 		this.password = password;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void setRemember(List remember) {
 		this.remember = remember;
 	}

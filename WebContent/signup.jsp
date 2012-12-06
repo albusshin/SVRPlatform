@@ -49,11 +49,6 @@
 
 </script>
 
-<%
-	if (!session.getAttribute("email").equals("tourist")){
-		response.sendRedirect("SigningIn");
-	}
-%>
 <body>
 <div id="credittipsy" class="tipsy tipsy-n" style="top: 210px; right: 372px; visibility:visible; display:none; opacity:0.8; ">
 		<div class="tipsy-arrow tipsy-arrow-n"></div>

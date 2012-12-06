@@ -13,7 +13,6 @@ import com.SVRPlatform.service.Response;
 import com.SVRPlatform.service.RegisterService;
 import com.SVRPlatform.service.Response.Email;
 import com.SVRPlatform.service.Response.Password;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SignUp extends ActionSupport implements ServletRequestAware,		//sign up~ register
@@ -26,6 +25,7 @@ public class SignUp extends ActionSupport implements ServletRequestAware,		//sig
 	private RegisterService registerService;
 	private String email;
 	private String password;
+	@SuppressWarnings("rawtypes")
 	private List remember;
 	private String message;
 	private Response res;
@@ -49,6 +49,7 @@ public class SignUp extends ActionSupport implements ServletRequestAware,		//sig
 		this.password = password;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void setRemember(List remember) {
 		this.remember = remember;
 	}

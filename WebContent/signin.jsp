@@ -47,11 +47,7 @@
 	});
 
 </script>
-<%
-	if (!session.getAttribute("email").equals("tourist")){
-		response.sendRedirect("SigningIn");
-	}
-%>
+
 <body>
  	
 
