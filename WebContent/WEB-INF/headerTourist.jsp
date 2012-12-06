@@ -1,3 +1,43 @@
+<script type="text/javascript">
+	/**
+	* Albus Shin
+	* Up background bar
+	*/
+		function loadbarname(){
+			var strupbar = "url(images/upbar";
+			var ran = parseInt(Math.random()*5+1);
+			strupbar += ran;
+			strupbar += ".png) left top no-repeat";
+			document.getElementById("upbar").style.background=strupbar;
+		}
+
+	/**
+	*	Albus Shin 
+	*	User Animation Bar
+	*/
+
+		  var status = "In";
+		  var animating = false;
+		  
+	$(document).ready(function(){
+		loadbarname();
+	  $("#userbaravatar").click(function(){
+		  if (status == "Out"){
+			  $("#userbar").animate({width:100},"slow");
+			  document.getElementById("userbarelse").style.display="none";
+			  status = "In";
+		  }
+		  else{
+	 		  $("#userbar").animate({width:780},"slow");
+			  document.getElementById("userbarelse").style.display="block";
+			  status = "Out";
+		  }
+	  });
+	  
+	});
+
+</script>
+
 <div id="credittipsy" class="tipsy tipsy-n" style="top: 210px; right: 372px; visibility:visible; display:none; opacity:0.8; ">
 		<div class="tipsy-arrow tipsy-arrow-n"></div>
 		<div class="tipsy-inner">My credits</div>
@@ -41,4 +81,4 @@
                      </div>
             </div>
         </div>
-		</div>
+</div>

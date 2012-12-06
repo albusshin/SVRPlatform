@@ -11,7 +11,7 @@
 
 <body>
 
- 		<jsp:include page="/headerSignedIn.jsp" flush="true"/>
+ 		<jsp:include page="headerSignedIn.jsp" flush="true"/>
     <div id="content">
 	<div class="commentstitle" style="padding-top:30px;">
 		Submit New Bug Information
@@ -250,6 +250,6 @@
     ${message	}
     
 
- 		<jsp:include page="/footer.html" flush="true"/>
+ 		<jsp:include page="footer.jsp" flush="true"/>
 </body>
 </html>

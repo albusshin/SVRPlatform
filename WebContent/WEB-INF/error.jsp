@@ -9,13 +9,13 @@
 <title>Error page</title>
 </head>
 <body>
- 		<jsp:include page="/headerTourist.jsp" flush="true"/>
+ 		<jsp:include page="headerTourist.jsp" flush="true"/>
 <div id="content">
 	<div class="commentstitle" style="padding-top:30px;">
 	There's an error occured while processing your request.
 	</div>
 </div>
 
- 		<jsp:include page="/footer.html" flush="true"/>
+ 		<jsp:include page="footer.jsp" flush="true"/>
 </body>
 </html>

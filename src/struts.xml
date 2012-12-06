@@ -16,7 +16,7 @@
         <default-action-ref name="index" />
 
         <global-results>
-            <result name="error">/error.jsp</result>
+            <result name="error">/WEB-INF/error.jsp</result>
         </global-results>
 
         <global-exception-mappings>
@@ -35,7 +35,7 @@
     
          <action name="index" class="index" method="execute">
         	<result name="LoggedIn" >/WEB-INF/home.jsp</result>
-        	<result name="CookieNotFound" >/WEB-INF/index.html</result>
+        	<result name="CookieNotFound" >/WEB-INF/index.jsp</result>
         	<result name="NotAuthenticated">/WEB-INF/signin.jsp</result>
         </action>
          	
@@ -59,12 +59,5 @@
          
          
     </package>
-    
-
-
-    <!--include file="example.xml"/-->
-
-    <!-- Add packages here -->
-
 </struts>
 
