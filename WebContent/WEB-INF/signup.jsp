@@ -8,28 +8,18 @@
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js"></script>
 </head>
-
-<body>
-	<style type="text/css">
-			/* ------- Body ------- */
-		
-		body {
-			background: #eeeeee url(images/sgbg.jpg) top left no-repeat;
-		}
-
-	</style>
-	<script type="text/javascript">
+<script type="text/javascript">
 	/**
 	* Albus Shin
 	* Up background bar
 	*/
 	function loadbackgroundname(){
 		var strallbg = "url(images/sgbg";
-		var ran = parseInt(Math.random()*6);
+		var ran = parseInt(Math.random()*9+1);
 		strallbg += ran;
 		strallbg += ".jpg) left top no-repeat";
 		
-		document.getElementByTagName("body").style.background=strallbg;
+		document.body.style.background=strallbg;
 	}
 
 	/**
@@ -41,7 +31,7 @@
 		  var animating = false;
 		  
 	$(document).ready(function(){
-		//loadbackgroundname();
+		loadbackgroundname();
 	  $("#userbaravatar").click(function(){
 		  if (status == "Out"){
 			  $("#userbar").animate({width:100},"slow");
@@ -59,6 +49,7 @@
 
 </script>
 
+<body>
 <div id="credittipsy" class="tipsy tipsy-n" style="top: 210px; right: 372px; visibility:visible; display:none; opacity:0.8; ">
 		<div class="tipsy-arrow tipsy-arrow-n"></div>
 		<div class="tipsy-inner">My credits</div>
