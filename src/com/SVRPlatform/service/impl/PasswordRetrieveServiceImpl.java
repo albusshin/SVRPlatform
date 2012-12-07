@@ -123,12 +123,12 @@ public class PasswordRetrieveServiceImpl implements PasswordRetrieveService {
 		Response response = new Response(); 
 		email = email.toLowerCase();
 		
-		//check if password is against the rule or exists 
-		if (password.length() < 8)
-			response.password = Response.Password.password_too_short;
-		else if (digit.matcher(password).matches() && letter.matcher(password).matches()) 
+//		//check if password is against the rule or exists 
+//		if (password.length() < 8)
+//			response.password = Response.Password.password_too_short;
+//		else if (digit.matcher(password).matches() && letter.matcher(password).matches()) 
 			response.password = Response.Password.password_ok;
-		else response.password = Response.Password.password_against_rule;
+//		else response.password = Response.Password.password_against_rule;
 		
 		//if both email and password are OK, then register
 		if (response.password == Response.Password.password_ok) {
@@ -136,7 +136,7 @@ public class PasswordRetrieveServiceImpl implements PasswordRetrieveService {
 			String encodedPassword = PasswordEncoder.EncoderByMd5(password);
 			User user = userDAO.getUserByEmail(email);
 			user.setPassword(encodedPassword);
-			userDAO.add(user);
+			userDAO.update(user);
 		}
 		return response;
 	}

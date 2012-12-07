@@ -44,13 +44,16 @@ ServletRequestAware, ServletResponseAware {
 		email = (String) session.getAttribute("email");
 		System.out.println("this.email = " + this.email);
 		Response theResponse = passwordretrieveservice.updatePassword(email, password);
+		System.out.println("after updatePassword");
 		if (theResponse.email == Response.Email.email_ok && theResponse.password == Response.Password.password_ok){
 			return SUCCESS;
 		}
 		else if (theResponse.password == Response.Password.password_too_short){
+			System.out.println("password too short");
 			return PASSWORD_TOO_SHORT;
 		}
 		else if (theResponse.password == Response.Password.password_against_rule){
+			System.out.println("password against rule");
 			return PASSWORD_AGAINST_RULE;
 		}
 		return FAIL;
