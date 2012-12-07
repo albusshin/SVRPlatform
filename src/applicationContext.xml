@@ -13,6 +13,11 @@
     	<property name="loginService" ref="loginService"></property>
     </bean>
     
+     <bean id="signInAutomatically" scope="prototype" class="com.SVRPlatform.action.SignInAutomatically">
+    	<property name="loginService" ref="loginService"></property>
+    </bean>
+   
+    
     <bean id="signin" scope="prototype" class="com.SVRPlatform.action.SignIn">
     	<property name="loginService" ref="loginService"></property>
     </bean>

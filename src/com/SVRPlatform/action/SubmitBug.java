@@ -2,16 +2,12 @@ package com.SVRPlatform.action;
 
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.SVRPlatform.service.BugSubmitService;
-import com.SVRPlatform.service.RegisterService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SubmitBug extends ActionSupport implements ServletRequestAware,ServletResponseAware {
@@ -21,6 +17,7 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 	 */
 	private static final long serialVersionUID = 1L;
 	private HttpServletRequest request;
+	@SuppressWarnings("unused")
 	private HttpServletResponse response;
 	private String email;
 	private String digest;

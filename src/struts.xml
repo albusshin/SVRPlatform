@@ -10,11 +10,20 @@
     <constant name="struts.objectFactory" value="spring"/>
     <constant name="struts.serve.static.browserCache" value="false"/>
     <constant name="struts.configuration.xml.reload" value="true"/>
+    
 
     <package name="default" namespace="/" extends="struts-default">
-
+		<interceptors>
+		        <interceptor name="check" class="com.SVRPlatform.interceptor.CheckInterceptor"/>
+		        <interceptor-stack name="checkStack">
+		        	<interceptor-ref name="defaultStack" />
+		        	<interceptor-ref name="check" 		/>
+		        </interceptor-stack>
+		</interceptors>
+        
+        
         <default-action-ref name="index" />
-
+     
         <global-results>
             <result name="error">/WEB-INF/error.jsp</result>
         </global-results>
@@ -22,6 +31,8 @@
         <global-exception-mappings>
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
+        
+        
         
         <action name="SigningIn" class="signin" method="execute">
         	<result name="success" type="redirect" >/home.jsp</result>
@@ -39,14 +50,19 @@
         	<result name="NotAuthenticated" type="redirect">/signin.jsp</result>
         </action>
          	
-         <!-- <action name="SigningIn">    
-		 	<result >/signin.jsp</result>    
+         <action name="signInAutomatically" class="signInAutomatically">  
+            <interceptor-ref name="checkStack"/>  
+		 	<result name="FailToSignIn">/signin.jsp</result>    
+		 	<result name="SignInAtomatically">/home.jsp</result>
 		 </action>   
 		 
-         <action name="SigningUp">    
-		 	<result >/signup.jsp</result>    
-		 </action>
- 		-->
+           <action name="signInAutomaticallyUp" class="signInAutomatically">
+ 			<interceptor-ref name="checkStack"/>     
+		 	<result name="FailToSignIn">/signup.jsp</result>    
+		 	<result name="SignInAtomatically">/home.jsp</result>
+		 </action>   
+
+ 		
 		<action name="RetrievePassword" class="com.SVRPlatform.action.RetrievePassword" method="execute">
         	<result name="success" >/WEB-INF/emailSent.jsp</result>
         	<result name="fail">/WEB-INF/emailNotSent.jsp</result>

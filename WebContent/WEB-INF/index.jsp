@@ -45,8 +45,8 @@
             <a href="javascript:;" style="border-bottom:none"><img src="images/SVRPlatform.png" width="600px"/></a>
         </div>
         <div id="buttons">
-            <a href="signup.jsp" style="border-bottom:none"><img class="button"  onmouseover="this.src='images/registerbuttonpressed.png'" onmouseout="this.src='images/registerbutton.png' "src="images/registerbutton.png" width="240"/></a>
-            <a href="signin.jsp" style="border-bottom:none"><img class="button"  onmouseover="this.src='images/loginbuttonpressed.png'" onmouseout="this.src='images/loginbutton.png'"  src="images/loginbutton.png" width="240"/></a>
+            <a href="signInAutomaticallyUp" style="border-bottom:none"><img class="button"  onmouseover="this.src='images/registerbuttonpressed.png'" onmouseout="this.src='images/registerbutton.png' "src="images/registerbutton.png" width="240"/></a>
+            <a href="signInAutomatically" style="border-bottom:none"><img class="button"  onmouseover="this.src='images/loginbuttonpressed.png'" onmouseout="this.src='images/loginbutton.png'"  src="images/loginbutton.png" width="240"/></a>
 		</div>
     </div>
     

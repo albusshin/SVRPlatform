@@ -1,12 +1,15 @@
 package com.SVRPlatform.action;
 
-import org.apache.catalina.connector.Request;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Logout extends ActionSupport{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public String execute()
 	{
 		ActionContext actctx = ActionContext.getContext();

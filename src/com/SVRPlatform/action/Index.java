@@ -16,6 +16,7 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
 	private HttpServletRequest request;  
 	private String cookieEmail = null;	
 	private String cookiePassword = null;
+	private Object emailInSession = null;
 	private LoginService loginService;
 	
 	
@@ -41,12 +42,16 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
 	
 	public String execute()
 	{
-		System.out.println("In Index");				
+		System.out.println("In Index");	
 		
-    	request.getSession().setMaxInactiveInterval(60 * 60 * 24 * 7);								//store in new session as tourist ,modify later 
-		request.getSession().setAttribute("email", "tourist");
-		request.getSession().setAttribute("password", "tourist");
-		
+		emailInSession = request.getSession().getAttribute("email");
+		request.getSession().getAttribute("password");
+		System.out.println("emailInSession ="+emailInSession );	
+		if(emailInSession==null){
+	    	request.getSession().setMaxInactiveInterval(60 * 60 * 24 * 7);								//store in new session as tourist ,modify later 
+			request.getSession().setAttribute("email", "tourist");
+			request.getSession().setAttribute("password", "tourist");
+		}
 		Cookie[] cookies = request.getCookies();		
 		System.out.println("getcookie");
         if (cookies != null) {																		//get email and password in cookie 
