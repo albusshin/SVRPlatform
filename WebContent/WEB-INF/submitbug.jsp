@@ -85,7 +85,7 @@
 			}	
 		}
 	</script>
-    	<form id="submitbug" action="/SVRPlatform/submitbug" method="post">
+    	<form id="submitbug" action="submitbug" method="post">
         	<div class="submitbugdigest">
             	<table class="submitbugtable">
                 <tr>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html;  charset=utf-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -50,6 +50,21 @@
 
 <body>
  	
+	<div id="wrongmessage" class="alert-messages" style="display:none">
+    	<div class="message">
+        	<div class="message-inside">
+            	<div class="message-text">
+   			 		${message }
+             	</div>
+             	<script type="text/javascript">
+             		function dismiss(){
+             			document.getElementById("wrongmessage").setAttribute("style", "display:none");
+             		}
+             	</script>
+                <a class="dismiss" href="javascript:dismiss();">×</a>
+            </div>
+        </div>
+    </div>
 
 <div id="credittipsy" class="tipsy tipsy-n" style="top: 210px; right: 372px; visibility:visible; display:none; opacity:0.8; ">
 		<div class="tipsy-arrow tipsy-arrow-n"></div>
@@ -111,7 +126,7 @@
 		</div>
 		<style type="text/css"></style>
     	<div id="footer" align="center">
-            <p align="center" style="color:#000">Copyright � www.SVRPlatform.com</p>
+            <p align="center" style="color:#000">Copyright ï¿½ www.SVRPlatform.com</p>
             <p> <a class="footer" style="color:#000" href="javascript:;">Terms of Service</a></p>
             <p> <a class="footer" style="color:#000" href="javascript:;">License of Development</a></p>
             <p> <a class="footer" style="color:#000" href="javascript:;">Privacy</a></p>
@@ -122,8 +137,5 @@
 		    document.getElementById("wrongmessage").style.display="block";
 	    }
     </script>
-	<div id="wrongmessage" style="display:none">
-    ${message }
-    </div>
 </body>
 </html>

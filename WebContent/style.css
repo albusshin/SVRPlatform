@@ -1,716 +1,763 @@
-ï»¿body {
+body {
 	font-size: 14px;
 	line-height: 1.6;
-	background:url(images/carbon_fibre.png) left top repeat;
+	background: url(images/carbon_fibre.png) left top repeat;
 }
+
 #content {
 	width: 950px;
 	margin: 50px auto;
 	padding: 20px;
-	background: #FFF;	
-	border-radius:50px;
-	-webkit-box-shadow:inset 0 0 8px #000;
-	-moz-box-shadow:inset 0 0 8px #000;
-	box-shadow:0px 0px 8px #000 inset;
+	background: #FFF;
+	border-radius: 50px;
+	-webkit-box-shadow: inset 0 0 8px #000;
+	-moz-box-shadow: inset 0 0 8px #000;
+	box-shadow: 0px 0px 8px #000 inset;
 }
+
 #content-license {
 	width: 950px;
 	margin: 50px auto;
 	padding: 20px;
-	background: #FFF;	
+	background: #FFF;
 	border: 1px solid #CCC;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-a{
-	color:#000;
-	text-decoration:none;
-	border-bottom:thin;
-	border-bottom-style:dotted;
-	border-bottom-color:#666;
+a {
+	color: #000;
+	text-decoration: none;
+	border-bottom: thin;
+	border-bottom-style: dotted;
+	border-bottom-color: #666;
 }
 /*css used in submit bug page   Albus Shin*/
-form#submitbug{
-	padding-top:30px;
-	margin:50px auto;
-	outline:none;
+form#submitbug {
+	padding-top: 30px;
+	margin: 50px auto;
+	outline: none;
 }
-table.submitbugtable{
+
+table.submitbugtable {
 	margin: auto;
-	font-size:22px;
+	font-size: 22px;
 	line-height: 2.0;
-	font-family:Georgia, "Times New Roman", Times, serif;
-	font-style:italic;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
 }
-td.submitbugkey{
-	padding-top:10px;
+
+td.submitbugkey {
+	padding-top: 10px;
 	text-shadow: grey 1px 1px 1px;
-	text-align:left;
-	padding-right:30px;
-	vertical-align:top;
+	text-align: left;
+	padding-right: 30px;
+	vertical-align: top;
 }
-td.submitbugvalue{
-	padding-top:10px;
+
+td.submitbugvalue {
+	padding-top: 10px;
 }
-textarea#digest{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	width:700px;
-	height:100px;
-	font-size:22px;
+
+textarea#digest {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	width: 700px;
+	height: 100px;
+	font-size: 22px;
 	line-height: 2.0;
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 11px;
-	border-color:#000;
-	padding:5px;
+	border-color: #000;
+	padding: 5px;
 	line-height: 1.6;
-	background:#FC9;
+	background: #FC9;
 }
-textarea#description{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	width:700px;
-	height:350px;
-	font-size:22px;
+
+textarea#description {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	width: 700px;
+	height: 350px;
+	font-size: 22px;
 	line-height: 2.0;
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 11px;
-	border-color:#ccc;
-	padding:5px;
+	border-color: #ccc;
+	padding: 5px;
 	line-height: 1.6;
 }
-textarea#software, textarea#version, textarea#language{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	width:700px;
-	height:40px;
-	font-size:22px;
+
+textarea#software,textarea#version,textarea#language {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	width: 700px;
+	height: 40px;
+	font-size: 22px;
 	line-height: 2.0;
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 11px;
-	border-color:#ccc;
-	padding:5px;
+	border-color: #ccc;
+	padding: 5px;
 	line-height: 1.6
 }
-img#uploadscreenshot{
-	display:none;
-	width:700px;
-	margin-left:5px;
-	margin-bottom:10px;
-}
 
+img#uploadscreenshot {
+	display: none;
+	width: 700px;
+	margin-left: 5px;
+	margin-bottom: 10px;
+}
 
 /*css used in the user profile page  Albus Shin*/
-div.userprofile{
-	clear:both;
-	margin:auto;
+div.userprofile {
+	clear: both;
+	margin: auto;
 	padding-top: 10px;
-	width:900px;
+	width: 900px;
 }
-div.userprofiletitle{
-	padding-left:40px;
-	font-size:22px;
+
+div.userprofiletitle {
+	padding-left: 40px;
+	font-size: 22px;
 	line-height: 2.0;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family: Georgia, "Times New Roman", Times, serif;
 	text-shadow: grey 1px 1px 1px;
-	border-bottom-style:double;
-	border-bottom-color:#888;
-	font-weight:bold;
+	border-bottom-style: double;
+	border-bottom-color: #888;
+	font-weight: bold;
 }
-div.userprofiledigest{
-	width:inherit;
-	margin-top:40px;
-	border-bottom:thin;
-	padding-bottom:40px;
-	margin-bottom:40px;
-	border-bottom-style:solid;
-	border-bottom-color:#ddd;
+
+div.userprofiledigest {
+	width: inherit;
+	margin-top: 40px;
+	border-bottom: thin;
+	padding-bottom: 40px;
+	margin-bottom: 40px;
+	border-bottom-style: solid;
+	border-bottom-color: #ddd;
 }
-img.userprofiledigestavatar{
-	margin-left:60px;
-	margin-right:60px;
+
+img.userprofiledigestavatar {
+	margin-left: 60px;
+	margin-right: 60px;
 	border-radius: 11px;
-	width:200px;
-	float:left;
+	width: 200px;
+	float: left;
 }
-td.userprofiledigestleft{
-	text-align:left;
-	vertical-align:text-top;
-	color:#bbb;
-	font-size:12px;
-	font-style:italic;
-	font-family:Verdana, Geneva, sans-serif;
-	margin-right:20px;
-	padding-right:40px;
+
+td.userprofiledigestleft {
+	text-align: left;
+	vertical-align: text-top;
+	color: #bbb;
+	font-size: 12px;
+	font-style: italic;
+	font-family: Verdana, Geneva, sans-serif;
+	margin-right: 20px;
+	padding-right: 40px;
 }
-td.userprofiledigestmiddle{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	font-variant:small-caps;
-	line-height:14px;
-	font-size:15px;
-	padding-right:40px;
+
+td.userprofiledigestmiddle {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-variant: small-caps;
+	line-height: 14px;
+	font-size: 15px;
+	padding-right: 40px;
 }
-td.userprofiledigestright{
-	font-family:Georgia, "Times New Roman", Times, serif;
-	line-height:14px;
-	font-size:15px;
+
+td.userprofiledigestright {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 14px;
+	font-size: 15px;
 }
-p#memberfor,p#seen{
-	color:#36C;
+
+p#memberfor,p#seen {
+	color: #36C;
 }
-table#userprofiledetails{
-	width:inherit;
-	margin-top:20px;
+
+table#userprofiledetails {
+	width: inherit;
+	margin-top: 20px;
 }
-tr.userprofiledetailstitle{
-	font-size:20px;
+
+tr.userprofiledetailstitle {
+	font-size: 20px;
 	line-height: 2.0;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family: Georgia, "Times New Roman", Times, serif;
 	text-shadow: grey 1px 1px 1px;
-	border-bottom:thin;
-	border-bottom-style:solid;
-	border-bottom-color:#aaa;
+	border-bottom: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #aaa;
 }
-.userprofiledetailstitle td{
-	padding-left:20px;
-	margin-left:20px;
-	font-weight:bold;
+
+.userprofiledetailstitle td {
+	padding-left: 20px;
+	margin-left: 20px;
+	font-weight: bold;
 }
-tr.userprofiledetailscontent{
-	font-size:16px;
+
+tr.userprofiledetailscontent {
+	font-size: 16px;
 	line-height: 2.0;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family: Georgia, "Times New Roman", Times, serif;
 }
-.userprofiledetailscontent td{
-	font-size:15px;
-	padding-top:30px;
-	padding-bottom:10px;
-	padding-left:20px;
-	margin-left:20px;
+
+.userprofiledetailscontent td {
+	font-size: 15px;
+	padding-top: 30px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	margin-left: 20px;
 }
-div.userprofiledigesttable{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	line-height:0.2px;
-	float:left;
+
+div.userprofiledigesttable {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	line-height: 0.2px;
+	float: left;
 }
-div.userprofiledigesttextname{
+
+div.userprofiledigesttextname {
 	text-shadow: grey 1px 1px 1px;
-	font-weight:bold;
+	font-weight: bold;
 }
-div.userprofiledigesttextemail{
-	font-family:Georgia, "Times New Roman", Times, serif;
-	font-style:italic;
+
+div.userprofiledigesttextemail {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
 }
-div.userprofiledigesttextcredits{
-	font-family:Georgia, "Times New Roman", Times, serif;
+
+div.userprofiledigesttextcredits {
+	font-family: Georgia, "Times New Roman", Times, serif;
 }
 /*css used in the bug comments page and solution page  Albus Shin*/
 div.comments {
 	clear: both;
-	margin:auto;
+	margin: auto;
 	padding-top: 10px;
-	width:900px;
+	width: 900px;
 }
 
-div.commentstitle{
-	padding-left:40px;
-	font-size:22px;
+div.commentstitle {
+	padding-left: 40px;
+	font-size: 22px;
 	line-height: 1.6;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family: Georgia, "Times New Roman", Times, serif;
 	text-shadow: grey 1px 1px 1px;
-	border-bottom-style:double;
-	border-bottom-color:#888;
-	font-weight:bold;
+	border-bottom-style: double;
+	border-bottom-color: #888;
+	font-weight: bold;
 }
-div.comment{
-	margin:auto;
-	width:700px;
-	padding-top:30px;
-	padding-left:60px;
-	border-bottom:thin;
-	border-bottom-color:#ccc;
-	border-bottom-style:inset;
-	padding-bottom:30px;
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
+
+div.comment {
+	margin: auto;
+	width: 700px;
+	padding-top: 30px;
+	padding-left: 60px;
+	border-bottom: thin;
+	border-bottom-color: #ccc;
+	border-bottom-style: inset;
+	padding-bottom: 30px;
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
 }
 /* css style used in the solution page */
-table.solution{
-	margin:auto;
-	width:700px;
-	margin-top:30px;
-	padding-left:30px;
-	border-bottom:thin;
-	border-bottom-color:#ccc;
-	border-bottom-style:inset;
-	margin-bottom:30px;
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
+table.solution {
+	margin: auto;
+	width: 700px;
+	margin-top: 30px;
+	padding-left: 30px;
+	border-bottom: thin;
+	border-bottom-color: #ccc;
+	border-bottom-style: inset;
+	margin-bottom: 30px;
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
 }
-td.leftbar{
-	margin:auto;
-	width:150px;
-	height:250px;
+
+td.leftbar {
+	margin: auto;
+	width: 150px;
+	height: 250px;
 }
-img.leftbarup{
-	padding-left:50px;
-	height:50px;
+
+img.leftbarup {
+	padding-left: 50px;
+	height: 50px;
 }
-div.leftbarsum{
-	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	font-size:35px;
-	font-weight:bold;
+
+div.leftbarsum {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 35px;
+	font-weight: bold;
 }
-img.leftbardown{
-	padding-left:50px;
-	height:50px;
+
+img.leftbardown {
+	padding-left: 50px;
+	height: 50px;
 }
-img.leftbarbestofficial{
-	padding-top:30px;
-	padding-left:50px;
-	height:50px;
+
+img.leftbarbestofficial {
+	padding-top: 30px;
+	padding-left: 50px;
+	height: 50px;
 }
-td.rightcontent{
+
+td.rightcontent {
+	
 }
-div.commenttitle{
-	font-size:18px;
-	font-weight:bold;
+
+div.commenttitle {
+	font-size: 18px;
+	font-weight: bold;
 	line-height: 3.0;
 	text-shadow: grey 1px 1px 1px;
 }
-div.commenttext{
-	font-size:16px;
+
+div.commenttext {
+	font-size: 16px;
 	line-height: 1.6;
-}
-div.commentfooter{
-	height:80px;
-	clear:both;
-	width:inherit;
 }
 
-div.commentfooterdate{
-	text-align:left;
-	margin-top:50px;
-	float:left;
-	color:#aaa;
+div.commentfooter {
+	height: 80px;
+	clear: both;
+	width: inherit;
 }
-div.commentfooterauthor{
-	margin-top:30px;
-	margin-right:30px;
-	font-weight:bold;
-	float:right;
+
+div.commentfooterdate {
+	text-align: left;
+	margin-top: 50px;
+	float: left;
+	color: #aaa;
 }
-div.commentfooterauthorname{
-	font-weight:bold;
+
+div.commentfooterauthor {
+	margin-top: 30px;
+	margin-right: 30px;
+	font-weight: bold;
+	float: right;
+}
+
+div.commentfooterauthorname {
+	font-weight: bold;
 	text-shadow: grey 1px 1px 1px;
 }
-div.commentfooterauthorcredit{
-	color:#666;
+
+div.commentfooterauthorcredit {
+	color: #666;
 }
-img.commentfooteravatar{
-	float:right;
-	margin-right:20px;
+
+img.commentfooteravatar {
+	float: right;
+	margin-right: 20px;
 	border-radius: 11px;
 }
-img.commentsfooterleft{
-	height:50px;
-	float:left;
+
+img.commentsfooterleft {
+	height: 50px;
+	float: left;
 }
-img.commentsfooterright{
-	height:50px;
-	float:left;
+
+img.commentsfooterright {
+	height: 50px;
+	float: left;
 }
-a.commentsfooterlink{
-	padding-top:8px;
-	padding-left:5px;
-	padding-right:5px;
-	float:left;
-	font-size:16px;
+
+a.commentsfooterlink {
+	padding-top: 8px;
+	padding-left: 5px;
+	padding-right: 5px;
+	float: left;
+	font-size: 16px;
 	line-height: 1.6;
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	color:#444;
-	border-bottom:none;
-	text-decoration:underline;
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	color: #444;
+	border-bottom: none;
+	text-decoration: underline;
 }
-a.commentsfooternow{
-	padding-top:8px;
-	padding-left:5px;
-	padding-right:5px;
-	float:left;
-	font-size:16px;
+
+a.commentsfooternow {
+	padding-top: 8px;
+	padding-left: 5px;
+	padding-right: 5px;
+	float: left;
+	font-size: 16px;
 	line-height: 1.6;
-	border-bottom:none;
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
+	border-bottom: none;
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
 }
-div.commentssubmit{
-	margin:auto;
-	width:700px;
-	padding-top:30px;
-	border-bottom:thin;
-	border-bottom-color:#ccc;
-	border-bottom-style:inset;
-	padding-bottom:30px;
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
+
+div.commentssubmit {
+	margin: auto;
+	width: 700px;
+	padding-top: 30px;
+	border-bottom: thin;
+	border-bottom-color: #ccc;
+	border-bottom-style: inset;
+	padding-bottom: 30px;
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
 }
-form#commentssubmitform{
-	padding-top:30px;
-	margin:auto;
-	outline:none;
+
+form#commentssubmitform {
+	padding-top: 30px;
+	margin: auto;
+	outline: none;
 }
-input#submitbutton{
-	width:160px;
+
+input#submitbutton {
+	width: 160px;
 }
-table.commentssubmittable{
-	padding:20px;
-	margin:auto;
-	font-size:22px;
+
+table.commentssubmittable {
+	padding: 20px;
+	margin: auto;
+	font-size: 22px;
 	line-height: 2.0;
-	font-family:Georgia, "Times New Roman", Times, serif;
-	font-style:italic;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
 }
-td.commentssubmitkey{
-	padding-top:10px;
+
+td.commentssubmitkey {
+	padding-top: 10px;
 	text-shadow: grey 1px 1px 1px;
-	text-align:left;
-	padding-right:30px;
-	vertical-align:top;
+	text-align: left;
+	padding-right: 30px;
+	vertical-align: top;
 }
-td.commentssubmitvalue{
-	padding-top:10px;
+
+td.commentssubmitvalue {
+	padding-top: 10px;
 }
-textarea#commentssubmittitle{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	width:600px;
-	height:40px;
-	font-size:20px;
+
+textarea#commentssubmittitle {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	width: 600px;
+	height: 40px;
+	font-size: 20px;
 	line-height: 2.0;
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 11px;
-	border-color:#ccc;
-	padding:5px;
+	border-color: #ccc;
+	padding: 5px;
 	line-height: 1.6;
 }
-textarea#commentssubmittext{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	width:600px;
-	height:350px;
-	font-size:20px;
+
+textarea#commentssubmittext {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	width: 600px;
+	height: 350px;
+	font-size: 20px;
 	line-height: 2.0;
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 11px;
-	border-color:#ccc;
-	padding:5px;
+	border-color: #ccc;
+	padding: 5px;
 	line-height: 1.6;
 }
-
 
 /* css used in the bug and vulnerability index page  Albus Shin*/
 p.bugvulid {
-	padding-left:20px;
-	font-size:16px;
+	padding-left: 20px;
+	font-size: 16px;
 	line-height: 1.6;
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	background:#eee;
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	background: #eee;
 }
 
-img.bugvulscreenshot{
-	width:900px;
+img.bugvulscreenshot {
+	width: 900px;
 }
-/* css3 ä»£ç  å®ç°åœ†è§’çŸ©å½¢  Albus Shin */
+/* css3 ´úÂë ÊµÏÖÔ²½Ç¾ØĞÎ  Albus Shin */
 div.bugvuldigest {
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 11px;
-	padding:5px;
-	font-size:14px;
+	padding: 5px;
+	font-size: 14px;
 	line-height: 1.6;
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
 	text-shadow: grey 1px 1px 1px;
-	background:#FC9;
-}
-div.date{
-	color:#666;
+	background: #FC9;
 }
 
-table.bugvultable{
-	font-size:14px;
+div.date {
+	color: #666;
+}
+
+table.bugvultable {
+	font-size: 14px;
 	margin: auto 30px;
 	line-height: 2.0;
-	width:auto;
-	clear:both;
+	width: auto;
+	clear: both;
 }
-.tableleft{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	padding-right:40px;
-	padding-left:100px;
+
+.tableleft {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	padding-right: 40px;
+	padding-left: 100px;
 }
-.tablemiddlegreen{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	color:green;
+
+.tablemiddlegreen {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	color: green;
 }
-.tablemiddleorange{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	color:orange;
+
+.tablemiddleorange {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	color: orange;
 }
-.tablemiddlered{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	color:red;
+
+.tablemiddlered {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	color: red;
 }
-table.productstable{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	font-size:18px;
+
+table.productstable {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-size: 18px;
 	margin: auto;
 	line-height: 2.0;
-	clear:both;
+	clear: both;
 }
-.tableright{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	padding-left:60px;
-	color:#666;
+
+.tableright {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	padding-left: 60px;
+	color: #666;
 }
-.score{
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	font-weight:bold;
-	background:#f00;
+
+.score {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-weight: bold;
+	background: #f00;
 }
+
 p.bugvulsubtitle {
-	padding-left:20px;
-	font-size:15px;
+	padding-left: 20px;
+	font-size: 15px;
 	line-height: 1.5;
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-	background:#CCC;
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	background: #CCC;
 }
-p.bugvultext{
-	font-size:14px;
+
+p.bugvultext {
+	font-size: 14px;
 	margin: auto 30px;
 	line-height: 2.0;
-	font-family:"å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
 }
 
 hr {
 	border: none;
-	height: 1px; line-height: 1px;
-	background: #CCC;	
+	height: 1px;
+	line-height: 1px;
+	background: #CCC;
 	margin-bottom: 20px;
 	padding: 0;
 }
 
 p {
-	margin: 0;	
+	margin: 0;
 	padding: 7px 0;
 }
 
-		.msblack20{
-			font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-			text-shadow: grey 1px 1px 1px;
-			font-size: 20px;
-			line-height: 1.6;
-			margin: 0;
-		}
-		div#footer{
-			clear:both;
-			font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-			color:#fff;
-			text-shadow: grey 1px 1px 1px;
-			font-size: 12px;
-			padding-top:50px;
-			padding-bottom:50px;
-		}
-		div#footer a{
-			color:#fff;
-			text-decoration:none;
-			border-bottom:thin;
-			border-bottom-style:dotted;
-			border-bottom-color:#666;
-		}
-		.steelbluefont{
-			text-shadow: black 1px 1px 1px;
-			color: SteelBlue;
-			border-bottom:thin;
-			border-bottom-style:dotted;
-			border-bottom-color:#666;
-		}
-		/* menu bar copied from the Internet Albus Shin*/
-		.menu { 
-			height: 60px;
-			display: block;
-		}
+.msblack20 {
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	text-shadow: grey 1px 1px 1px;
+	font-size: 20px;
+	line-height: 1.6;
+	margin: 0;
+}
 
-		.menu ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-		}
+div#footer {
+	clear: both;
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	color: #fff;
+	text-shadow: grey 1px 1px 1px;
+	font-size: 12px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
 
-		.menu ul li {
-			/* width and height of the menu items */  
-			float: left;
-			overflow: hidden;
-			position: relative;
-			text-align: center;
-			line-height: 60px;
-		}
+div#footer a {
+	color: #fff;
+	text-decoration: none;
+	border-bottom: thin;
+	border-bottom-style: dotted;
+	border-bottom-color: #666;
+}
 
-		.menu ul li a {
-			/* must be postioned relative  */ 
-			position: relative;
-			display: block;
-			width: 140px;
-			height: 60px;
-			font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-			font-size: 12px;
-			font-weight: bold;
-			letter-spacing: 1px;
-			text-transform: uppercase;
-			text-decoration: none;
-			cursor: pointer;
-			border-bottom:none;
-		}
-
-		.menu ul li a span {
-			/* all layers will be absolute positioned */
-			position: absolute;
-			left: 0;
-			width: 140px;
-			border-bottom:none;	
-		}
-
-		.menu ul li a span.out {
-			top: 0px;
-		}
-
-		.menu ul li a span.over,
-		.menu ul li a span.bg {
-			/* hide */  
-			top: -60px;
-			border-bottom:none;
-		}
-
-		/** 1st example **/
-
-		#menu {
-			background: #fff;
-		}
-
-		#menu ul li a {
-			color: #000;
-			border-bottom:none;
-		}
-
-		#menu ul li a span.over {
-			border-bottom:none;
-			color: #FFF;
-		}
-
-		#menu ul li span.bg {
-			/* height of the menu items */  
-			height: 60px;
-			background: url('images/bg_over.gif') center center no-repeat;
-		}
-		
-		/** 2nd example **/
-
-		#menu2 {
-			background: #000;		
-		}
-		
-		#menu2 ul li a {
-			border-bottom:none;
-			color: #FFF;
-		}
-
-		#menu2 ul li a span.over {
-			border-bottom:none;
-			background: #fff;
-			color: #000;
-		}
-		/* input search bar from the Internet Albus Shin*/
-		input {
-			outline: none;
-		}
-		input[type=search] {
-			-webkit-appearance: textfield;
-			-webkit-box-sizing: content-box;
-			font: 85%/140% "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
-			font-size: 100%;
-		}
-		input::-webkit-search-decoration,
-		input::-webkit-search-cancel-button {
-			display: none; /* remove the search and cancel icon */
-		}
-		
-		/* search input field */
-		input[type=search] {
-			background: #ededed url(images/search-icon.png) no-repeat 9px center;
-			border: solid 1px #ccc;
-			padding: 9px 10px 9px 32px;
-			width: 55px;
-			
-			-webkit-border-radius: 10em;
-			-moz-border-radius: 10em;
-			border-radius: 10em;
-			
-			-webkit-transition: all .5s;
-			-moz-transition: all .5s;
-			transition: all .5s;
-		}
-		input[type=search]:focus {
-			width: 130px;
-			background-color: #fff;
-			border-color: #6dcff6;
-			
-			-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
-			-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
-			box-shadow: 0 0 5px rgba(109,207,246,.5);
-		}
-		
-		/* placeholder */
-		input:-moz-placeholder {
-			color: #999;
-		}
-		input::-webkit-input-placeholder {
-			color: #999;
-		}
-		.searchinput{
-			padding-top:8px;
-			padding-right:40px;
-		}
-		
-		/* Register and Login css file copied from the Internet Albus Shin */
-		
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+.steelbluefont {
+	text-shadow: black 1px 1px 1px;
+	color: SteelBlue;
+	border-bottom: thin;
+	border-bottom-style: dotted;
+	border-bottom-color: #666;
+}
+/* menu bar copied from the Internet Albus Shin*/
+.menu {
+	height: 60px;
 	display: block;
 }
 
+.menu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.menu ul li { /* width and height of the menu items */
+	float: left;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	line-height: 60px;
+}
+
+.menu ul li a { /* must be postioned relative  */
+	position: relative;
+	display: block;
+	width: 140px;
+	height: 60px;
+	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	text-decoration: none;
+	cursor: pointer;
+	border-bottom: none;
+}
+
+.menu ul li a span { /* all layers will be absolute positioned */
+	position: absolute;
+	left: 0;
+	width: 140px;
+	border-bottom: none;
+}
+
+.menu ul li a span.out {
+	top: 0px;
+}
+
+.menu ul li a span.over,.menu ul li a span.bg { /* hide */
+	top: -60px;
+	border-bottom: none;
+}
+
+/** 1st example **/
+#menu {
+	background: #fff;
+}
+
+#menu ul li a {
+	color: #000;
+	border-bottom: none;
+}
+
+#menu ul li a span.over {
+	border-bottom: none;
+	color: #FFF;
+}
+
+#menu ul li span.bg { /* height of the menu items */
+	height: 60px;
+	background: url('images/bg_over.gif') center center no-repeat;
+}
+
+/** 2nd example **/
+#menu2 {
+	background: #000;
+}
+
+#menu2 ul li a {
+	border-bottom: none;
+	color: #FFF;
+}
+
+#menu2 ul li a span.over {
+	border-bottom: none;
+	background: #fff;
+	color: #000;
+}
+/* input search bar from the Internet Albus Shin*/
+input {
+	outline: none;
+}
+
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font: 85%/140% "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-size: 100%;
+}
+
+input::-webkit-search-decoration,input::-webkit-search-cancel-button {
+	display: none; /* remove the search and cancel icon */
+}
+
+/* search input field */
+input[type=search] {
+	background: #ededed url(images/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 9px 10px 9px 32px;
+	width: 55px;
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+
+input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #6dcff6;
+	-webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+	-moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+	box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+}
+
+/* placeholder */
+input:-moz-placeholder {
+	color: #999;
+}
+
+input::-webkit-input-placeholder {
+	color: #999;
+}
+
+.searchinput {
+	padding-top: 8px;
+	padding-right: 40px;
+}
+
+/* Register and Login css file copied from the Internet Albus Shin */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section
+	{
+	display: block;
+}
 
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 
-
 /* ------- Remove Chrome's border around active fields ------- */
-
 *:focus {
 	outline: none;
 }
 
 /* ------- Disable background and border for input fields ------- */
-
 input {
 	background: transparent;
 	border: 0;
 }
 
-
-
 /* --------------------------------------------------------------- */
 
-
-
 /* ------- Container ------- */
-
 #container {
 	margin: auto;
 	margin-top: 180px;
@@ -723,17 +770,15 @@ input {
 	color: #ffffff;
 }
 
-
 /* ------- Login Form ------- */
-
-form.loginform, .welcome {
+form.loginform,.welcome {
 	background: url(images/form-bg.png) top left no-repeat;
 	width: 524px;
 	height: 262px;
 	padding-top: 1px;
 }
 
-.login, .welcome-user {
+.login,.welcome-user {
 	width: 470px;
 	float: left;
 	margin-top: 33px;
@@ -766,7 +811,7 @@ form.loginform, .welcome {
 .username-field {
 	width: 168px;
 	height: 38px;
-	float:left;
+	float: left;
 	margin-top: 10px;
 	margin-left: 35px;
 	background: url(images/username-field.png) center left no-repeat;
@@ -779,17 +824,17 @@ form.loginform, .welcome {
 .password-field {
 	width: 280px;
 	height: 38px;
-	float:left;
+	float: left;
 	margin-top: 10px;
 	margin-left: 22px;
 	background: url(images/password-field.png) center left no-repeat;
 }
 
 .password-field:hover {
-	background: url(images/password-field-hover.png) center left no-repeat;	
+	background: url(images/password-field-hover.png) center left no-repeat;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"],input[type="password"] {
 	width: 120px;
 	height: 16px;
 	margin-top: 10px;
@@ -804,13 +849,12 @@ input[type="text"], input[type="password"] {
 /* Works for browsers with CSS3 support (with or without Javascript) */
 /* Works for Internet Explorer 6-8 (without CSS3 support) with Javascript */
 /* If Javascript isn't available this doesn't work for Internet Explorer 6-8 */
-
 input[type="checkbox"] {
 	position: absolute;
 	left: -999px;
 }
 
-input[type="checkbox"] + label {
+input[type="checkbox"]+label {
 	width: 132px;
 	height: 24px;
 	float: left;
@@ -823,20 +867,21 @@ input[type="checkbox"] + label {
 	background: url(images/checkbox-off.png) top left no-repeat;
 }
 
-input[type="checkbox"]:checked + label {
+input[type="checkbox"]:checked+label {
 	background: url(images/checkbox-on.png) top left no-repeat;
 }
 
-input[type="checkbox"]:checked:hover + label, input[type="checkbox"]:checked:focus + label {
+input[type="checkbox"]:checked:hover+label,input[type="checkbox"]:checked:focus+label
+	{
 	background: url(images/checkbox-on-hover.png) top left no-repeat;
 }
 
-input[type="checkbox"]:not(:checked):hover + label, input[type="checkbox"]:not(:checked):focus + label {
+input[type="checkbox"]:not (:checked ):hover+label,input[type="checkbox"]:not
+	(:checked ):focus+label {
 	background: url(images/checkbox-off-hover.png) top left no-repeat;
 }
 
 /* -------------------------------------------------------------------------- */
-
 .forgot-usr-pwd {
 	width: 220px;
 	float: left;
@@ -852,7 +897,7 @@ input[type="checkbox"]:not(:checked):hover + label, input[type="checkbox"]:not(:
 	font-style: italic;
 }
 
-.forgot-usr-pwd a:hover, .forgot-usr-pwd a:focus {
+.forgot-usr-pwd a:hover,.forgot-usr-pwd a:focus {
 	text-decoration: underline;
 }
 
@@ -865,13 +910,12 @@ input#signingo {
 	font-family: Verdana, Arial;
 	font-size: 26px;
 	color: #ffffff;
-	
 }
 
-input#signingo[type="submit"]:hover, input#signingo[type="submit"]:focus {
+input#signingo[type="submit"]:hover,input#signingo[type="submit"]:focus
+	{
 	background: url(images/go-hover.png) top left no-repeat;
 }
-
 
 .home {
 	width: 70px;
@@ -883,105 +927,280 @@ input#signingo[type="submit"]:hover, input#signingo[type="submit"]:focus {
 	padding: 25px 0 0 15px;
 }
 
-.home:hover, .home:focus {
+.home:hover,.home:focus {
 	background: url(images/go-hover.png) top left no-repeat;
 }
 
-.home a, .home a:hover, .home a:focus {
+.home a,.home a:hover,.home a:focus {
 	color: #ffffff;
 	text-decoration: none;
 }
 
 /* Style used in the submitbug.html select dropdown */
-select{
-	margin-left:100px;
-	border:thin;
-	color:#666;
-	background:transparent;
-	font-size:20px;
-	font-weight:bold;
-	padding:2px 10px;
-	width:350px;
-	border-radius:5px;
-	box-shadow:1px 1px 11px 330033;
+select {
+	margin-left: 100px;
+	border: thin;
+	color: #666;
+	background: transparent;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 2px 10px;
+	width: 350px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 11px 330033;
 }
 
 /* Style used in home.html */
+div#userbar {
+	margin-top: 90px;
+	height: 60px;
+	background-image: url(images/NavigationBar.png);
+	vertical-align: middle;
+	width: 100px;
+	position: absolute;
+	right: 0px;
+}
 
-div#userbar{
-	margin-top:90px;
-	height:60px;
-	background-image:url(images/NavigationBar.png);
-	vertical-align:middle;
-	width:100px;
-	position:absolute;
-	right:0px;
+div#userbarelse {
+	display: none;
 }
-div#userbarelse{
-	display:none;
+
+img#userbaravatar {
+	width: 45px;
+	margin-left: 10px;
+	margin-top: 5px;
+	border-radius: 7px;
 }
-img#userbaravatar{
-	width:45px;
-	margin-left:10px;
-	margin-top:5px;
-	border-radius:7px;
-}
-div#username{
-	text-align:center;
-	float:left;
-	font-family:Georgia, "Times New Roman", Times, serif;
-	font-size:20px;
-	margin-top:12px;
-	margin-left:50px;
-	margin-right:30px;
-	font-weight:400;
-	width:150px;
-	color:#000;
+
+div#username {
+	text-align: center;
+	float: left;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 20px;
+	margin-top: 12px;
+	margin-left: 50px;
+	margin-right: 30px;
+	font-weight: 400;
+	width: 150px;
+	color: #000;
 	text-shadow: #999 1px 1px 1.5px;
 }
-div#userbarcredit{
-	text-align:center;
-	float:left;
-	font-family:Georgia, "Times New Roman", Times, serif;
-	font-size:20px;
-	margin-top:12px;
-	margin-left:20px;
-	font-weight:400;
-	width:90px;
-	color:#fff;
+
+div#userbarcredit {
+	text-align: center;
+	float: left;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 20px;
+	margin-top: 12px;
+	margin-left: 20px;
+	font-weight: 400;
+	width: 90px;
+	color: #fff;
 	text-shadow: #999 1px 1px 1.5px;
-	padding-right:20px;
+	padding-right: 20px;
 }
-img.seperator{
-	float:left;
-	height:58px;
-	margin-left:5px;
-	margin-right:5px;
+
+img.seperator {
+	float: left;
+	height: 58px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
-img#userbarwatching, img#userbarlogout, img#userbarusericon, img#signupicon, img#signinicon{
-	float:left;
-	margin-left:20px;
-	width:45px;
-	margin-top:5px;
+
+img#userbarwatching,img#userbarlogout,img#userbarusericon,img#signupicon,img#signinicon
+	{
+	float: left;
+	margin-left: 20px;
+	width: 45px;
+	margin-top: 5px;
 }
-div#upbar{
-	width:inherit;
-	height:200px;
-	background:left top no-repeat;
+
+div#upbar {
+	width: inherit;
+	height: 200px;
+	background: left top no-repeat;
 }
 /*Albus Shin added tipsy from github*/
-.tipsy{font-size:10px;position:absolute;padding:5px;z-index:100000}.tipsy-inner{background-color:#fff;color:#000;max-width:200px;padding:5px 8px 4px 8px;text-align:center}.tipsy-inner{border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}.tipsy-arrow{position:absolute;width:0;height:0;line-height:0;border:5px dashed #fff}.tipsy-arrow-n{border-bottom-color:#fff}.tipsy-arrow-s{border-top-color:#000}.tipsy-arrow-e{border-left-color:#fff}.tipsy-arrow-w{border-right-color:#fff}.tipsy-n .tipsy-arrow{top:0px;left:50%;margin-left:-5px;border-bottom-style:solid;border-top:none;border-left-color:transparent;border-right-color:transparent}.tipsy-nw .tipsy-arrow{top:0;left:10px;border-bottom-style:solid;border-top:none;border-left-color:transparent;border-right-color:transparent}.tipsy-ne .tipsy-arrow{top:0;right:10px;border-bottom-style:solid;border-top:none;border-left-color:transparent;border-right-color:transparent}.tipsy-s .tipsy-arrow{bottom:0;left:50%;margin-left:-5px;border-top-style:solid;border-bottom:none;border-left-color:transparent;border-right-color:transparent}.tipsy-sw .tipsy-arrow{bottom:0;left:10px;border-top-style:solid;border-bottom:none;border-left-color:transparent;border-right-color:transparent}.tipsy-se .tipsy-arrow{bottom:0;right:10px;border-top-style:solid;border-bottom:none;border-left-color:transparent;border-right-color:transparent}.tipsy-e .tipsy-arrow{right:0;top:50%;margin-top:-5px;border-left-style:solid;border-right:none;border-top-color:transparent;border-bottom-color:transparent}.tipsy-w .tipsy-arrow{left:0;top:50%;margin-top:-5px;border-right-style:solid;border-left:none;border-top-color:transparent;border-bottom-color:transparent}
+.tipsy {
+	font-size: 10px;
+	position: absolute;
+	padding: 5px;
+	z-index: 100000
+}
 
+.tipsy-inner {
+	background-color: #fff;
+	color: #000;
+	max-width: 200px;
+	padding: 5px 8px 4px 8px;
+	text-align: center
+}
 
+.tipsy-inner {
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px
+}
 
+.tipsy-arrow {
+	position: absolute;
+	width: 0;
+	height: 0;
+	line-height: 0;
+	border: 5px dashed #fff
+}
 
+.tipsy-arrow-n {
+	border-bottom-color: #fff
+}
 
+.tipsy-arrow-s {
+	border-top-color: #000
+}
 
+.tipsy-arrow-e {
+	border-left-color: #fff
+}
 
+.tipsy-arrow-w {
+	border-right-color: #fff
+}
 
+.tipsy-n .tipsy-arrow {
+	top: 0px;
+	left: 50%;
+	margin-left: -5px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent
+}
 
+.tipsy-nw .tipsy-arrow {
+	top: 0;
+	left: 10px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent
+}
 
+.tipsy-ne .tipsy-arrow {
+	top: 0;
+	right: 10px;
+	border-bottom-style: solid;
+	border-top: none;
+	border-left-color: transparent;
+	border-right-color: transparent
+}
 
+.tipsy-s .tipsy-arrow {
+	bottom: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent
+}
 
+.tipsy-sw .tipsy-arrow {
+	bottom: 0;
+	left: 10px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent
+}
 
+.tipsy-se .tipsy-arrow {
+	bottom: 0;
+	right: 10px;
+	border-top-style: solid;
+	border-bottom: none;
+	border-left-color: transparent;
+	border-right-color: transparent
+}
 
+.tipsy-e .tipsy-arrow {
+	right: 0;
+	top: 50%;
+	margin-top: -5px;
+	border-left-style: solid;
+	border-right: none;
+	border-top-color: transparent;
+	border-bottom-color: transparent
+}
+
+.tipsy-w .tipsy-arrow {
+	left: 0;
+	top: 50%;
+	margin-top: -5px;
+	border-right-style: solid;
+	border-left: none;
+	border-top-color: transparent;
+	border-bottom-color: transparent
+}
+
+/*Sign In and Up wrong message copied from twitter*/
+.alert-messages {
+	position: fixed;
+	top: 100px;
+	left: 0;
+	right: 0;
+	z-index: 7000
+}
+
+.message {
+	position: relative;
+	width: 500px;
+	padding: 10px 12px;
+	margin: 0 auto;
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, .5);
+	background: #eee;
+	background: rgba(20, 20, 20, .9);
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+}
+
+.message .message-text {
+	display: block;
+	margin-right: 20px;
+	color: #ccc;
+	font-size: 12px;
+	line-height: 16px;
+	text-align: center
+}
+
+.message .message-text a {
+	font-weight: bold;
+	color: #fff
+	
+}
+
+.message .close,.message .dismiss {
+	position: absolute;
+	top: 7px;
+	right: 12px;
+	filter: alpha(opacity = 50);
+	-moz-opacity: .50;
+	opacity: .50
+}
+
+.message .close:hover,.message .dismiss:hover {
+	filter: alpha(opacity = 100);
+	-moz-opacity: 1;
+	opacity: 1
+}
+
+.message .dismiss {
+	font-size: 18px;
+	font-weight: bold;
+	color: #fff;
+	margin-top: 0;
+	text-decoration: none
+}
