@@ -10,8 +10,7 @@ import com.SVRPlatform.service.PasswordRetrieveService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class RetrievePassword extends ActionSupport implements
-		ServletRequestAware, // sign in~login
-		ServletResponseAware {
+		ServletRequestAware, ServletResponseAware {
 	/**
 	 * 
 	 */
@@ -39,6 +38,9 @@ public class RetrievePassword extends ActionSupport implements
 
 	public String execute() {
 
+		System.out.println("this.email = " + this.email);
+		
+		
 		if (passwordretrieveservice.sendCheckingEmail(email)) {
 			return SUCCESS;
 		}
