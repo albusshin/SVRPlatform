@@ -53,7 +53,7 @@ public class TestForHibernate {
 		TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(s));
 		softwareDAO = (SoftwareDAOImpl) ctx.getBean("softwareDAO");
 		//commentDAO = (CommentDAOImpl) ctx.getBean("commentDAO");
-		passwordRetrieveService = (PasswordRetrieveService) ctx.getBean("passwordRetrieveService");
+		passwordRetrieveService = (PasswordRetrieveService) ctx.getBean("passwordretrieveservice");
 	}
 
 	@AfterClass
@@ -160,6 +160,6 @@ public class TestForHibernate {
 		System.out.println(b);
 	}
 	@Test public void testSendEmail2(){
-		passwordRetrieveService.sendCheckingEmail("povergoing@gmail.com");
+		System.out.println(passwordRetrieveService.checkHashValue("cf6c767bd7edac68a03857a1af83e275"));
 	}
 }

@@ -21,7 +21,7 @@ public class HashForPasswordRetrieveDAOImpl extends BasicDAOImpl implements
 		Session s = this.sessionFactory.openSession();
 		try{
 			org.hibernate.Criteria c = s.createCriteria(HashForPasswordRetrieve.class);
-			c.add(Restrictions.eq("hashvalue", hashValue));
+			c.add(Restrictions.eq("hashValue", hashValue));
 			return (HashForPasswordRetrieve) c.uniqueResult();
 		} finally{
 			if(s!=null)
