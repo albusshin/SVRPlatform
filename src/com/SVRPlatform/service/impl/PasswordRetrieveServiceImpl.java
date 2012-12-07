@@ -2,6 +2,7 @@ package com.SVRPlatform.service.impl;
 
 import java.util.Date;
 import java.util.Properties;
+import java.util.regex.Pattern;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -16,6 +17,7 @@ import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.model.HashForPasswordRetrieve;
 import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.PasswordRetrieveService;
+import com.SVRPlatform.service.Response;
 
 public class PasswordRetrieveServiceImpl implements PasswordRetrieveService {
 	
@@ -100,6 +102,43 @@ public class PasswordRetrieveServiceImpl implements PasswordRetrieveService {
 		else
 			this.hashForPasswordRetrieveDAO.update(this.hfpr);
 		//save it
+	}
+
+	@Override
+	public String checkHashValue(String hashValue) {
+		// TODO Auto-generated method stub
+		HashForPasswordRetrieve hfpr= this.hashForPasswordRetrieveDAO.getByHashValue(hashValue);
+		if( hfpr != null){
+			User u = (User) userDAO.getByID(hfpr.getUserId());
+			return u.getEmail();
+		}
+		return null;
+	}
+
+	@Override
+	public Response updatePassword(String email, String newPassword) {
+		// TODO Auto-generated method stub
+		Pattern digit = Pattern.compile("\\S*[0-9]+\\S*");
+		Pattern letter = Pattern.compile("\\S*[a-zA-Z]+\\S*");
+		Response response = new Response(); 
+		email = email.toLowerCase();
+		
+		//check if password is against the rule or exists 
+		if (password.length() < 8)
+			response.password = Response.Password.password_too_short;
+		else if (digit.matcher(password).matches() && letter.matcher(password).matches()) 
+			response.password = Response.Password.password_ok;
+		else response.password = Response.Password.password_against_rule;
+		
+		//if both email and password are OK, then register
+		if (response.password == Response.Password.password_ok) {
+			//encoding the password!
+			String encodedPassword = PasswordEncoder.EncoderByMd5(password);
+			User user = userDAO.getUserByEmail(email);
+			user.setPassword(encodedPassword);
+			userDAO.add(user);
+		}
+		return response;
 	}
 
 }
