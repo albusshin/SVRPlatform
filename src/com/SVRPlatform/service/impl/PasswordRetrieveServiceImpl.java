@@ -73,7 +73,7 @@ public class PasswordRetrieveServiceImpl implements PasswordRetrieveService {
      	   msg.setSubject("You've gotta reset your password");
      	   msg.setText("Hey there,\n\n\n We've heard you lost your SVRPlatform password. Is it so?\n\n" +
      			   "Use the following link within the next 24 hours to reset your password:\n\n" +
-     			   "http://svrplatform.com/login/" + retrieveHash + "\n\n\n\n" +
+     			   "http://svrplatform.com/CheckingHash?hash=" + retrieveHash + "\n\n\n\n" +
      			   "Best wishes and kind regards,\n\n\n\n" +
      			   "The NBGroup \n\n" +
      			   "Albus Shin | Gokeii  | Povergo | Gousheng | Shaoye\n\nwww.svrplatform.com");

@@ -23,7 +23,7 @@
 				line-height: 1.6;
 		}
 		</style>
- 		<jsp:include page="WEB-INF/headerTourist.jsp" flush="true"/>
+ 		<jsp:include page="headerTourist.jsp" flush="true"/>
 	<div id="content">
 		<div class="commentstitle" style="padding-top:30px;">
 			Forgot your password?
@@ -31,19 +31,19 @@
 		<p class="bugvultext" style="font-size:14px;">
 		<br>
 		<br>
-			 Don't worry. 
+			 You've chosen to reset your password.
 		<br>
-			Please input your email address below and we'll send a link leading you to reset your password. 
+			Please input your new password below to reset your password.
 		<br>
 		</p>
-		<form id="retrieve" action="RetrievePassword" method="post">
+		<form id="retrieve" action="ResetPassword" method="post">
 			<table class="submitbugtable">
                 <tr>
                 	<td class="submitbugkey">
-                    	<label for="email" > Email </label>
+                    	<label for="password" > Password </label>
                     </td>
                     <td class="submitbugvalue">
-                    	<input id="email" name="email" maxlength="300" tabindex="100" placeholder="Input your email address"/>
+                    	<input id="password" name="password" maxlength="300" tabindex="100"/>
                     </td>
 					<td>
 						<input type="image" alt="submit" src="images/submitbutton.png" style="height:50px; padding-top:20px; padding-left:30px" onMouseOver="this.src='images/submitbuttonpressed.png'" onMouseOut="this.src='images/submitbutton.png'">

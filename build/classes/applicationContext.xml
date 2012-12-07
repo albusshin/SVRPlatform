@@ -30,6 +30,14 @@
     	<property name="passwordretrieveservice" ref="passwordretrieveservice"></property>
     </bean>
     
+    <bean id="checkinghash" scope="prototype" class="com.SVRPlatform.action.CheckingHash">
+    	<property name="passwordretrieveservice" ref="passwordretrieveservice"></property>
+    </bean>
+    
+    <bean id="resetpassword" scope="prototype" class="com.SVRPlatform.action.ResetPassword">
+    	<property name="passwordretrieveservice" ref="passwordretrieveservice"></property>
+    </bean>
+    
     <bean id="submitbug" scope="prototype" class="com.SVRPlatform.action.SubmitBug">
     	<property name="bugsubmitService" ref="bugsubmitService"></property>
     </bean>

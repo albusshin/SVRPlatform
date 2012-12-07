@@ -68,6 +68,18 @@
         	<result name="fail">/WEB-INF/emailNotSent.jsp</result>
         </action>
         
+		<action name="CheckingHash" class="checkinghash" method="execute">
+        	<result name="success" >/WEB-INF/ResetPassword.jsp</result>
+        	<result name="fail">/WEB-INF/error.jsp</result>
+        </action>
+        
+		<action name="ResetPassword" class="resetpassword" method="execute">
+        	<result name="success" >/index</result>
+        	<result name="passwordTooShort">/WEB-INF/ResetPassword.jsp</result>
+        	<result name="passwordAgainstRule">/WEB-INF/ResetPassword.jsp</result>
+        	<result name="fail">/WEB-INF/error.jsp</result>
+        </action>
+        
 		<action name="Logout" class="com.SVRPlatform.action.Logout" method="execute">
         	<result name="success" type="redirect">logout.jsp</result>
         </action>
