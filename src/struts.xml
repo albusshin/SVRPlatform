@@ -63,7 +63,7 @@
 		 </action>   
 
  		
-		<action name="RetrievePassword" class="com.SVRPlatform.action.RetrievePassword" method="execute">
+		<action name="RetrievePassword" class="retrievepassword" method="execute">
         	<result name="success" >/WEB-INF/emailSent.jsp</result>
         	<result name="fail">/WEB-INF/emailNotSent.jsp</result>
         </action>

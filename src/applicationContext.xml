@@ -26,9 +26,9 @@
     	<property name="registerService" ref="registerService"></property>
     </bean>
     
-    <!-- <bean id="retrievepassword" scope="prototype" class="com.SVRPlatform.action.RetrievePassword">
-    	<property name="bugsubmitService" ref="bugsubmitService"></property>
-    </bean> -->
+    <bean id="retrievepassword" scope="prototype" class="com.SVRPlatform.action.RetrievePassword">
+    	<property name="passwordretrieveservice" ref="passwordretrieveservice"></property>
+    </bean>
     
     <bean id="submitbug" scope="prototype" class="com.SVRPlatform.action.SubmitBug">
     	<property name="bugsubmitService" ref="bugsubmitService"></property>
@@ -51,7 +51,7 @@
     	<property name="softwareDAO" ref="softwareDAO"></property>
     </bean>
     
-    <bean id="passwordRetrieveService" class="com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl">
+    <bean id="passwordretrieveservice" class="com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl">
     	<property name="userDAO" ref="userDAO"></property>
     	<property name="hashForPasswordRetrieveDAO" ref="hashForPasswordRetrieveDAO"></property>
     </bean>
