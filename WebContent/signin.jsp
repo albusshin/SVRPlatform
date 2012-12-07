@@ -120,7 +120,7 @@
 					<input type="password" name="password"/>
 				</div>
 				<input type="checkbox" name="remember" id="remember-me" value="remembered"/><label for="remember-me">Remember me</label>
-				<div class="forgot-usr-pwd">Forgot password? <a href='#'>Retrieve it...</a></div>
+				<div class="forgot-usr-pwd">Forgot password? <a href='RetrievePassword.jsp'>Retrieve it...</a></div>
 				<input type="submit" id="signingo" name="submit" value="GO" />
 			</form>
 		</div>
