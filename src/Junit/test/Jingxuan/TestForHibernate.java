@@ -19,14 +19,18 @@ import org.springframework.orm.hibernate4.SessionHolder;
 import org.springframework.orm.hibernate4.support.OpenSessionInViewFilter;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
+import com.SVRPlatform.action.RetrievePassword;
+import com.SVRPlatform.dao.HashForPasswordRetrieveDAO;
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.dao.impl.BugDAOImpl;
 import com.SVRPlatform.dao.impl.CommentDAOImpl;
+import com.SVRPlatform.dao.impl.HashForPasswordRetrieveDAOImpl;
 import com.SVRPlatform.dao.impl.SoftwareDAOImpl;
 import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Software;
 import com.SVRPlatform.model.User;
+import com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl;
 
 public class TestForHibernate {
 	static UserDAO userDAO;
@@ -140,5 +144,20 @@ public class TestForHibernate {
 //		for(Comment c: list2){
 //			System.out.println(c.getCommentId());
 //		}
+	}
+	
+	@Test public void testSendEmail() {
+		HashForPasswordRetrieveDAOImpl hashForPasswordRetrieveDAO = new HashForPasswordRetrieveDAOImpl();
+		hashForPasswordRetrieveDAO.setSessionFactory(sessionFactory);
+		PasswordRetrieveServiceImpl prs = new PasswordRetrieveServiceImpl();
+		prs.setHashForPasswordRetrieveDAO(hashForPasswordRetrieveDAO);
+		prs.setUserDAO(userDAO);
+		
+		boolean b = prs.sendCheckingEmail("povergoing@gmail.com");
+		System.out.println(b);
+	}
+	@Test public void testSendEmail2(){
+		RetrievePassword rp = new RetrievePassword();
+		rp.execute();
 	}
 }
