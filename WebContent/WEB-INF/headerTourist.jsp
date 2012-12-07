@@ -79,8 +79,8 @@
                         <img class="seperator" src="images/seperator.png" align="middle"/>
                         <div id="userbarcredit" onMouseOver="document.getElementById('credittipsy').style.display='block'" onmouseout="document.getElementById('credittipsy').style.display='none'">0</div>
                         <img class="seperator" src="images/seperator.png" align="middle"/>
-                        <img id="signinicon" src="images/signinicon.png" onmouseover="this.src='images/signiniconpressed.png';document.getElementById('signinicontipsy').style.display='block'" onmouseout="this.src='images/signinicon.png';document.getElementById('signinicontipsy').style.display='none'" onclick="window.navigate('signin.jsp')"/>
-                        <img id="signupicon" src="images/signupicon.png" onmouseover="this.src='images/signupiconpressed.png';document.getElementById('signupicontipsy').style.display='block'" onmouseout="this.src='images/signupicon.png';document.getElementById('signupicontipsy').style.display='none'" onclick="window.navigate('signup.jsp')"/>
+                        <img id="signinicon" src="images/signinicon.png" onmouseover="this.src='images/signiniconpressed.png';document.getElementById('signinicontipsy').style.display='block'" onmouseout="this.src='images/signinicon.png';document.getElementById('signinicontipsy').style.display='none'" onclick="window.location.href='signin.jsp'"/>
+                        <img id="signupicon" src="images/signupicon.png" onmouseover="this.src='images/signupiconpressed.png';document.getElementById('signupicontipsy').style.display='block'" onmouseout="this.src='images/signupicon.png';document.getElementById('signupicontipsy').style.display='none'" onclick="window.location.href='signup.jsp'"/>
                      </div>
             </div>
         </div>

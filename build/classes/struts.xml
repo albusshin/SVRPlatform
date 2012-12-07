@@ -68,6 +68,10 @@
         	<result name="fail">/WEB-INF/emailNotSent.jsp</result>
         </action>
         
+		<action name="Logout" class="com.SVRPlatform.action.Logout" method="execute">
+        	<result name="success" type="redirect">logout.jsp</result>
+        </action>
+        
          <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph">  
 	            <result name="success">/WEB-INF/index.jsp</result>  
 	            <result name="input">/upload.jsp</result>  
