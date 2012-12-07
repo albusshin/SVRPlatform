@@ -15,6 +15,6 @@
 		Comming soon.
 		Don't fucking push me.
 	</div>
-    <jsp:include page="/footer.html" flush="true"/>
+    <jsp:include page="/footer.jsp" flush="true"/>
 </body>
 </html>
