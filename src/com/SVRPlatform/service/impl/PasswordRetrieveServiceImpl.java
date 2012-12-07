@@ -95,7 +95,10 @@ public class PasswordRetrieveServiceImpl implements PasswordRetrieveService {
 		this.hfpr.setUserId(u.getUserId());
 		this.hfpr.setHashValue(PasswordEncoder.EncoderByMd5(str));
 		//set the data of this model
-		this.hashForPasswordRetrieveDAO.add(this.hfpr);
+		if(hashForPasswordRetrieveDAO.getByID(u.getUserId()) == null)
+			this.hashForPasswordRetrieveDAO.add(this.hfpr);
+		else
+			this.hashForPasswordRetrieveDAO.update(this.hfpr);
 		//save it
 	}
 

@@ -30,6 +30,7 @@ import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Software;
 import com.SVRPlatform.model.User;
+import com.SVRPlatform.service.PasswordRetrieveService;
 import com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl;
 
 public class TestForHibernate {
@@ -40,9 +41,10 @@ public class TestForHibernate {
 	static SoftwareDAOImpl softwareDAO;
 	static Session session;
 	static CommentDAOImpl commentDAO;
+	static PasswordRetrieveService passwordRetrieveService;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		ctx = new ClassPathXmlApplicationContext( "Junit/test/Jingxuan/testBeans-hibernate.xml", "Junit/test/Jingxuan/testBeans.xml" );
+		ctx = new ClassPathXmlApplicationContext( "Junit/test/Jingxuan/testBeans-hibernate.xml", "applicationContext.xml" );
 		userDAO = (UserDAO)ctx.getBean("userDAO");
 		bugDAO = (BugDAOImpl)ctx.getBean("bugDAO");
 		sessionFactory = (SessionFactory) ctx.getBean("sessionFactory");
@@ -50,7 +52,8 @@ public class TestForHibernate {
 		Session s = sessionFactory.openSession();  
 		TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(s));
 		softwareDAO = (SoftwareDAOImpl) ctx.getBean("softwareDAO");
-		commentDAO = (CommentDAOImpl) ctx.getBean("commentDAO");
+		//commentDAO = (CommentDAOImpl) ctx.getBean("commentDAO");
+		passwordRetrieveService = (PasswordRetrieveService) ctx.getBean("passwordRetrieveService");
 	}
 
 	@AfterClass
@@ -157,7 +160,6 @@ public class TestForHibernate {
 		System.out.println(b);
 	}
 	@Test public void testSendEmail2(){
-		RetrievePassword rp = new RetrievePassword();
-		rp.execute();
+		passwordRetrieveService.sendCheckingEmail("povergoing@gmail.com");
 	}
 }
