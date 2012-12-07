@@ -62,9 +62,11 @@
 		<div class="tipsy-arrow tipsy-arrow-n"></div>
 		<div class="tipsy-inner">Log out</div>
 	</div>
-	<script type="text/javascript">
-	
-	</script>
+            <script type="text/javascript">
+            	function navigateLogout(){
+            		window.navigate("/Logout");
+            	}
+            </script>
 	<div align="right">
             <div id="menu2" class="menu">
                 <ul>
@@ -90,9 +92,12 @@
                         <img class="seperator" src="images/seperator.png" align="middle"/>
                         <div id="userbarcredit" onMouseOver="document.getElementById('credittipsy').style.display='block'" onmouseout="document.getElementById('credittipsy').style.display='none'">1,023</div>
                         <img class="seperator" src="images/seperator.png" align="middle"/>
-                        <img id="userbarusericon" src="images/usericon.png" onmouseover="this.src='images/usericonpressed.png';document.getElementById('usericontipsy').style.display='block'" onmouseout="this.src='images/usericon.png';document.getElementById('usericontipsy').style.display='none'" onclick="javascript:;"/>
-                        <img id="userbarwatching" src="images/watching.png" onmouseover="this.src='images/watchingpressed.png';document.getElementById('watchingtipsy').style.display='block'" onmouseout="this.src='images/watching.png';document.getElementById('watchingtipsy').style.display='none'" onclick="javascript:;"/>
-                        <img id="userbarlogout" src="images/logout.png" onmouseover="this.src='images/logoutpressed.png';document.getElementById('logouttipsy').style.display='block'" onmouseout="this.src='images/logout.png';document.getElementById('logouttipsy').style.display='none'" onclick="javascript:;"/>
+                        <img id="userbarusericon" src="images/usericon.png" onmouseover="this.src='images/usericonpressed.png';document.getElementById('usericontipsy').style.display='block'" onmouseout="this.src='images/usericon.png';document.getElementById('usericontipsy').style.display='none'" 
+                        onclick="javascript:;"/>
+                        <img id="userbarwatching" src="images/watching.png" onmouseover="this.src='images/watchingpressed.png';document.getElementById('watchingtipsy').style.display='block'" onmouseout="this.src='images/watching.png';document.getElementById('watchingtipsy').style.display='none'" 
+                        onclick="javascript:;"/>
+                        <img id="userbarlogout" src="images/logout.png" onmouseover="this.src='images/logoutpressed.png';document.getElementById('logouttipsy').style.display='block'" onmouseout="this.src='images/logout.png';document.getElementById('logouttipsy').style.display='none'" 
+                        onclick="window.location.href='Logout'"/>
                      </div>
             </div>
         </div>
