@@ -14,7 +14,13 @@ public class HashForPasswordRetrieveDAOImpl extends BasicDAOImpl implements
 	@Override
 	public Object getByID(Serializable ID) {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.openSession().get(HashForPasswordRetrieve.class, ID);
+		Session s = this.sessionFactory.openSession();
+		try{
+			return s.get(HashForPasswordRetrieve.class, ID);
+		} finally {
+			if(s!=null)
+				s.close();
+		}
 	}
 	
 	public HashForPasswordRetrieve getByHashValue(String hashValue){

@@ -124,16 +124,16 @@ public class PasswordRetrieveServiceImpl implements PasswordRetrieveService {
 		email = email.toLowerCase();
 		
 //		//check if password is against the rule or exists 
-//		if (password.length() < 8)
-//			response.password = Response.Password.password_too_short;
-//		else if (digit.matcher(password).matches() && letter.matcher(password).matches()) 
+		if (newPassword.length() < 8)
+			response.password = Response.Password.password_too_short;
+		else if (digit.matcher(newPassword).matches() && letter.matcher(newPassword).matches()) 
 			response.password = Response.Password.password_ok;
-//		else response.password = Response.Password.password_against_rule;
+		else response.password = Response.Password.password_against_rule;
 		
 		//if both email and password are OK, then register
 		if (response.password == Response.Password.password_ok) {
 			//encoding the password!
-			String encodedPassword = PasswordEncoder.EncoderByMd5(password);
+			String encodedPassword = PasswordEncoder.EncoderByMd5(newPassword);
 			User user = userDAO.getUserByEmail(email);
 			user.setPassword(encodedPassword);
 			userDAO.update(user);

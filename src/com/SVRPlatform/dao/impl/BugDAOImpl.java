@@ -14,15 +14,27 @@ public class BugDAOImpl extends BasicDAOImpl implements BugDAO{
 	
 	public Bug getBugbyBugNmber(String bugNumber){
 		Session s = this.sessionFactory.openSession();
-		org.hibernate.Criteria c = s.createCriteria(Bug.class);
-		c.add(Restrictions.eq("bugNumber", bugNumber));
-		return (Bug) c.uniqueResult();
+		try{
+			org.hibernate.Criteria c = s.createCriteria(Bug.class);
+			c.add(Restrictions.eq("bugNumber", bugNumber));
+			return (Bug) c.uniqueResult();
+		}finally {
+			if(s!=null)
+				s.close();
+		}
 	}
 
 	@Override
 	public Object getByID(Serializable ID) {
 		// TODO Auto-generated method stub
-		return sessionFactory.openSession().get(Bug.class, ID);
+		Session s = null;
+		try{
+			s = this.sessionFactory.openSession();
+			return s.get(Bug.class, ID);
+		} finally {
+			if(s != null)
+				s.close();
+		}
 	}
 
 	@Override

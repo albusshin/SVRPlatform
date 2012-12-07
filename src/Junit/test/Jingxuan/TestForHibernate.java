@@ -31,6 +31,7 @@ import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Software;
 import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.PasswordRetrieveService;
+import com.SVRPlatform.service.impl.PasswordEncoder;
 import com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl;
 
 public class TestForHibernate {
@@ -160,6 +161,8 @@ public class TestForHibernate {
 		System.out.println(b);
 	}
 	@Test public void testSendEmail2(){
-		System.out.println(passwordRetrieveService.checkHashValue("cf6c767bd7edac68a03857a1af83e275"));
+		//System.out.println(passwordRetrieveService.checkHashValue("cf6c767bd7edac68a03857a1af83e275"));
+		passwordRetrieveService.updatePassword("povergoing@gmail.com", "hantian00");
+		System.out.println(PasswordEncoder.EncoderByMd5("hantian00"));
 	}
 }
