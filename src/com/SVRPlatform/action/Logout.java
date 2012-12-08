@@ -3,6 +3,7 @@ package com.SVRPlatform.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.Session;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
@@ -15,7 +16,7 @@ ServletResponseAware{
 	/**
 	 * 
 	 */
-
+	public static final String FAIL = "fail";
 	private HttpServletResponse response;
 	private HttpServletRequest request;
 	private static final long serialVersionUID = 1L;
@@ -23,7 +24,7 @@ ServletResponseAware{
 	public String execute()
 	{
 	
-		ActionContext actctx = ActionContext.getContext();
+//		ActionContext actctx = ActionContext.getContext();
 //		actctx.getSession().clear();
 //		Cookie[] cookies = request.getCookies();
 //		for (Cookie cookie:cookies){
@@ -31,9 +32,14 @@ ServletResponseAware{
 //			cookie.setPath("/");
 //			response.addCookie(cookie);
 //		}
-		actctx.getSession().put("email", "tourist");
-		actctx.getSession().put("password", "tourist");
-		return SUCCESS;
+//		actctx.getSession().put("email", "tourist");
+//		actctx.getSession().put("password", "tourist");
+		
+		if (com.SVRPlatform.userHandling.UserHandlers.clearSessionAndCookies(request, response)){
+			return SUCCESS;
+		}
+		
+		return FAIL;
 	}
 
 	@Override

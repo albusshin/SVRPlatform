@@ -50,6 +50,34 @@
 </script>
 
 <body>
+ 	
+ 	<%
+ 		String stat = request.getParameter("stat");
+ 		if (stat != null)
+	 		if (stat.equals("wrong")){
+	 			out.println("<div id=\"wrongmessage\" class=\"alert-messages\" style=\"display:block\">");
+	 			out.println("<div class=\"message\">");
+	 			out.println("<div class=\"message-inside\">");
+	 			out.println("<div class=\"message-text\">");
+	%>
+		<div>
+	 			${message }
+	 	</div>
+	<%
+	 			out.println("</div>");
+	 			out.println("<a class=\"dismiss\" href=\"javascript:dismiss();\">×</a>");
+	 			out.println("</div>");
+	 			out.println("</div>");
+	 			out.println("</div>");
+	 		}
+ 	%>
+             	<script type="text/javascript">
+             		function dismiss(){
+             			document.getElementById("wrongmessage").setAttribute("style", "display:none");
+             		}
+             	</script>
+	
+	
 <div id="credittipsy" class="tipsy tipsy-n" style="top: 210px; right: 372px; visibility:visible; display:none; opacity:0.8; ">
 		<div class="tipsy-arrow tipsy-arrow-n"></div>
 		<div class="tipsy-inner">My credits</div>
@@ -118,13 +146,5 @@
             <p> <a class="footer" style="color:#000" href="javascript:;">Privacy</a></p>
         	<img src="images/SVRPlatformPUR.png" width=400px align="middle"/>
     	</div>
-    <script type="text/javascript">
-	    function showWrongMessage(){
-		    document.getElementById("wrongmessage").style.display="block";
-	    }
-    </script>
-	<div id="wrongmessage" style="display:none">
-    ${message }
-    </div>
 </body>
 </html>

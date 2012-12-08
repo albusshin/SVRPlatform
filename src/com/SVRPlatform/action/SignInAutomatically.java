@@ -48,23 +48,31 @@ public class SignInAutomatically extends ActionSupport implements ServletRequest
 		email= (String) act.getSession().get("email");
 		password = (String) act.getSession().get("password");  
 		
-		if (email.equals("tourist") || password.equals("tourist")){
-		//get email & password in cookie 	
-		Cookie[] cookies = request.getCookies();
+//		if (email.equals("tourist") || password.equals("tourist")){                 //BUGGY STATEMENT.
+		if (email == null || password == null){
+			//get email & password in cookie 	
+			Cookie[] cookies = request.getCookies();
 			if (cookies != null) {									
-	        	for (int i = 0; i < cookies.length; i++) {				
-	        	if (cookies[i].getName().equals("email")) {
-	        		email= cookies[i].getValue();
-	            }
-	            if (cookies[i].getName().equals("password")) {
-	                password = cookies[i].getValue();
-	            }
-	          }
+//	        	for (int i = 0; i < cookies.length; i++) {				
+//	        	if (cookies[i].getName().equals("email")) {
+//	        		email= cookies[i].getValue();
+//	            }
+//	            if (cookies[i].getName().equals("password")) {
+//	                password = cookies[i].getValue();
+//	            }
+				for (Cookie cookie:cookies){
+					if (cookie.getName().equals("email")){
+						email = cookie.getValue();
+					}
+					if (cookie.getName().equals("password")){
+						password = cookie.getValue();
+					}
+				}
 	        }
 		}	
 		
-		boolean info=this.loginService.login(email, password);
-		if(info){
+		boolean canlogin=this.loginService.login(email, password);
+		if(canlogin){
 			return "SignInAtomatically";
 		}
 		else {

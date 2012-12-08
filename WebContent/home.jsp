@@ -9,11 +9,13 @@
 	<script type="text/javascript" src="jquery.min.js"></script>
 </head>
 <body>
+
  		<jsp:include page="WEB-INF/headerSignedIn.jsp" flush="true"/>
 	<div id="content">
 		Home page. 
 		Comming soon.
 		Don't fucking push me.
+		<a href="TrySubmitBug">上传bug试试。</a>
 	</div>
     <jsp:include page="/footer.jsp" flush="true"/>
 </body>

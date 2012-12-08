@@ -958,6 +958,7 @@ select {
 
 /* Style used in home.html */
 div#userbar {
+	z-index: 7001;
 	margin-top: 90px;
 	height: 60px;
 	background-image: url(images/NavigationBar.png);
@@ -1174,15 +1175,19 @@ div#upbar {
 }
 
 .message .message-text {
+	padding-top:20px;
+	padding-bottom:20px;
 	display: block;
 	margin-right: 20px;
 	color: #ccc;
-	font-size: 12px;
-	line-height: 16px;
+	font-size: 15px;
+	line-height: 20px;
 	text-align: center
 }
 
 .message .message-text a {
+	text-decoration:none;
+	border-bottom:none;
 	font-weight: bold;
 	color: #fff
 	

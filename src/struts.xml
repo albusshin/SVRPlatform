@@ -36,12 +36,12 @@
         
         <action name="SigningIn" class="signin" method="execute">
         	<result name="success" type="redirect" >/home.jsp</result>
-        	<result name="fail">/signin.jsp</result>
+        	<result name="fail">/signin.jsp?stat=wrong</result>
         </action>
         
 		<action name="SigningUp" class="signup" method="execute">
         	<result name="success" type="redirect" >/home.jsp</result>
-        	<result name="fail">/signup.jsp</result>
+        	<result name="fail">/signup.jsp?stat=wrong</result>
         </action>
     
          <action name="index" class="index" method="execute">
@@ -52,14 +52,14 @@
          	
          <action name="signInAutomatically" class="signInAutomatically">  
             <interceptor-ref name="checkStack"/>  
-		 	<result name="FailToSignIn">/signin.jsp</result>    
-		 	<result name="SignInAtomatically">/home.jsp</result>
+		 	<result name="FailToSignIn" type="redirect">/signin.jsp</result>    
+		 	<result name="SignInAtomatically" type="redirect">/home.jsp</result>
 		 </action>   
 		 
            <action name="signInAutomaticallyUp" class="signInAutomatically">
  			<interceptor-ref name="checkStack"/>     
-		 	<result name="FailToSignIn">/signup.jsp</result>    
-		 	<result name="SignInAtomatically">/home.jsp</result>
+		 	<result name="FailToSignIn" type="redirect">/signup.jsp</result>    
+		 	<result name="SignInAtomatically" type="redirect">/home.jsp</result>
 		 </action>   
 
  		
@@ -84,12 +84,17 @@
         	<result name="success" type="redirect">logout.jsp</result>
         </action>
         
-         <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph">  
+        <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph">  
 	            <result name="success">/WEB-INF/index.jsp</result>  
 	            <result name="input">/upload.jsp</result>  
-       		</action>  
+       	</action>  
          
-         <action name="submitbug" class="submitbug" method="execute">
+        <action name="TrySubmitBug" class="com.SVRPlatform.action.TrySubmitBug" method="execute">
+	 		<result name="success">/WEB-INF/submitbug.jsp</result>
+	 		<result name="fail">/WEB-INF/submitbugfailure.jsp</result>
+        </action>
+        
+        <action name="submitbug" class="submitbug" method="execute">
 	 		<result name="BugSubmitSuccess">/WEB-INF/bugpage.jsp</result>
 	 		<result name="BugSubmitFailed">/submitbug.jsp</result>  
         </action>
