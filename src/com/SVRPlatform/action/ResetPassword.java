@@ -45,7 +45,9 @@ ServletRequestAware, ServletResponseAware {
 		System.out.println("this.email = " + this.email);
 		Response theResponse = passwordretrieveservice.updatePassword(email, password);
 		System.out.println("after updatePassword");
-		if (theResponse.email == Response.Email.email_ok && theResponse.password == Response.Password.password_ok){
+		
+		if (theResponse.password == Response.Password.password_ok){
+			System.out.println("before return success");
 			return SUCCESS;
 		}
 		else if (theResponse.password == Response.Password.password_too_short){

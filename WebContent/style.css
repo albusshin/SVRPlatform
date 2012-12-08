@@ -4,6 +4,12 @@ body {
 	background: url(images/carbon_fibre.png) left top repeat;
 }
 
+body {
+ margin-left: 0px;
+ margin-top: 0px;
+ margin-right: 0px;
+ margin-bottom: 0px;
+}
 #content {
 	width: 950px;
 	margin: 50px auto;

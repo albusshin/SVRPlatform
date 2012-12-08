@@ -6,6 +6,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Welcome to SVRPlatform</title>
 	<link rel="stylesheet" href="style.css" />
+	<style type="text/css">
+</style>
 	<style>
 		div#contains{
 			clear:both;
