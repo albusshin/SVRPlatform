@@ -11,7 +11,17 @@
 
 <body>
 
- 		<jsp:include page="headerSignedIn.jsp" flush="true"/>
+	<%
+	
+	String str = (String) session.getAttribute("email");
+	if (str != null){
+		str = "signedin";
+	}
+	
+	%>
+ 		<jsp:include page="header.jsp" flush="true">
+ 			<jsp:param name="type" value="<%=str%>"/>
+ 		</jsp:include>
     <div id="content">
 	<div class="commentstitle" style="padding-top:30px;">
 		Submit New Bug Information

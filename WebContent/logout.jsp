@@ -11,7 +11,17 @@
 	<script type="text/javascript" src="jquery.min.js"></script>
 </head>
 <body>
- 		<jsp:include page="WEB-INF/headerTourist.jsp" flush="true"/>
+	<%
+	
+	String str = (String) session.getAttribute("email");
+	if (str != null){
+		str = "signedin";
+	}
+	
+	%>
+ 		<jsp:include page="WEB-INF/header.jsp" flush="true">
+ 			<jsp:param name="type" value="<%=str%>"/>
+ 		</jsp:include>
 	<div id="content">
 		<div id="commentstitle">
 			You've successfully logged out.

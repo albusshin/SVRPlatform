@@ -23,7 +23,17 @@
 				line-height: 1.6;
 		}
 		</style>
- 		<jsp:include page="WEB-INF/headerTourist.jsp" flush="true"/>
+	<%
+	
+	String str = (String) session.getAttribute("email");
+	if (str != null){
+		str = "signedin";
+	}
+	
+	%>
+ 		<jsp:include page="WEB-INF/header.jsp" flush="true">
+ 			<jsp:param name="type" value="<%=str%>"/>
+ 		</jsp:include>
 	<div id="content">
 		<div class="commentstitle" style="padding-top:30px;">
 			Forgot your password?
