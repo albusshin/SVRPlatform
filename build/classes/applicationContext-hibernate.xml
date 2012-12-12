@@ -17,7 +17,7 @@
     <!-- Set the data source --> 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">   
     	<property name="driverClass" value="org.gjt.mm.mysql.Driver" />    
-    	<property name="jdbcUrl" value="jdbc:mysql://svrplatform.com:3306/SVRPlatform_database" />     
+    	<property name="jdbcUrl" value="jdbc:mysql://10.60.41.159:3306/SVRPlatform_database" />     
     	<property name="user" value="nbgroup" />     
     	<property name="password" value="MROFTALprvs" />    
     </bean>     
