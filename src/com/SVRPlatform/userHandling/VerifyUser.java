@@ -5,11 +5,13 @@ import javax.servlet.http.HttpSession;
 
 public class VerifyUser {
 	String email;
-	public String verify(HttpServletRequest request){
+	public String getNowUser(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String sessionEmail = (String) session.getAttribute("email");
 		String sessionPassword = (String) session.getAttribute("password");
-//		if ()
+		if (sessionEmail != null && sessionPassword != null){
+			return sessionEmail;
+		}
 		return null;
 	}
 }

@@ -67,10 +67,19 @@ public class SignUp extends ActionSupport implements ServletRequestAware,		//sig
 			message = "Email is not properly filled in. Please refill and retry.<br><br>";
 		if (res.email == Email.email_exists)
 			message = "This email address is already signed up on SVRPlatform. <br><br>";
-		if (res.password == Password.password_against_rule)
-			message = message + "Your password is too simple to guess. Please include UPPER LETTERS, lower letters and numbers in your password.";
-		if (res.password == Password.password_too_short)
-			message = message + "Your password is too short. Please at least include 8 characters.";
+		if (res.password == Password.password_against_rule){
+			if (message != null)
+				message = message + "Your password is too simple to guess. Please include UPPER LETTERS, lower letters and numbers in your password.";
+			else
+				message = "Your password is too simple to guess. Please include UPPER LETTERS, lower letters and numbers in your password.";
+		}
+	
+		if (res.password == Password.password_too_short){
+			if (message != null)
+				message = message + "Your password is too short. Please at least include 8 characters.";
+			else 
+				message = "Your password is too short. Please at least include 8 characters.";
+		}
 		System.out.println(message);
 
 
