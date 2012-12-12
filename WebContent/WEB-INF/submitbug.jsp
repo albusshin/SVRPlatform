@@ -11,6 +11,7 @@
 
 <body>
 
+
 	<%
 	
 	String str = (String) session.getAttribute("email");
@@ -22,6 +23,35 @@
  		<jsp:include page="header.jsp" flush="true">
  			<jsp:param name="type" value="<%=str%>"/>
  		</jsp:include>
+ 		
+ 		
+ 		
+ 	<%
+ 		String stat = request.getParameter("stat");
+ 		System.out.println("stat == " + request.getParameter("stat"));
+ 		if (stat != null)
+	 		if (stat.equals("wrong")){
+	 			out.println("<div id=\"wrongmessage\" class=\"alert-messages\" style=\"display:block\">");
+	 			out.println("<div class=\"message\">");
+	 			out.println("<div class=\"message-inside\">");
+	 			out.println("<div class=\"message-text\">");
+	%>
+		<div>
+	 			${message }
+	 	</div>
+	<%
+	 			out.println("</div>");
+	 			out.println("<a class=\"dismiss\" href=\"javascript:dismiss();\">×</a>");
+	 			out.println("</div>");
+	 			out.println("</div>");
+	 			out.println("</div>");
+	 		}
+ 	%>
+             	<script type="text/javascript">
+             		function dismiss(){
+             			document.getElementById("wrongmessage").setAttribute("style", "display:none");
+             		}
+             	</script>
     <div id="content">
 	<div class="commentstitle" style="padding-top:30px;">
 		Submit New Bug Information
@@ -255,11 +285,8 @@
 			</table>
 		</form>
 		<iframe id="hiddenFrame" name="hiddenFrame" style="display:none"></iframe>
-    </div>
+    </div>   
     
-    ${message	}
-    
-
  		<jsp:include page="/footer.jsp" flush="true"/>
 </body>
 </html>

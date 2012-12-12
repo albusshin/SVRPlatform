@@ -9,9 +9,11 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.SVRPlatform.service.BugSubmitService;
 import com.opensymphony.xwork2.ActionSupport;
+import com.SVRPlatform.constants.*;
 
-public class SubmitBug extends ActionSupport implements ServletRequestAware,ServletResponseAware {
-	
+public class SubmitBug extends ActionSupport implements ServletRequestAware,
+		ServletResponseAware {
+
 	/**
 	 * 
 	 */
@@ -34,7 +36,7 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 	private BugSubmitService bugsubmitService;
 	private Map<String, String> map;
 	private String message;
-	
+
 	public void setBugsubmitService(BugSubmitService bugsubmitService) {
 		this.bugsubmitService = bugsubmitService;
 	}
@@ -95,7 +97,6 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 		this.description = description;
 	}
 
-
 	public String getGraphaddress() {
 		return graphaddress;
 	}
@@ -127,7 +128,7 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-	
+
 	public String getMessage() {
 		return message;
 	}
@@ -136,25 +137,21 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 		this.message = message;
 	}
 
-	
 	@Override
 	public void setServletResponse(HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		this.response=response;
+		this.response = response;
 	}
 
 	@Override
 	public void setServletRequest(HttpServletRequest request) {
 		// TODO Auto-generated method stub
-		this.request=request;
+		this.request = request;
 	}
-	
 
+	public String execute() {
+		email = (String) request.getSession().getAttribute("email");
 
-	public String execute()
-	{ 
-		email=(String)request.getSession().getAttribute("email");
-		
 		System.out.println(digest);
 		System.out.println(usabilityimpact);
 		System.out.println(dataimpact);
@@ -166,24 +163,25 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,Serv
 		System.out.println(version);
 		System.out.println(software);
 		System.out.println(language);
-		
-		map=bugsubmitService.bugSubmit(graphaddress, description,version, software,
-				digest, email, usabilityimpact, dataimpact,
-				 privacyimpact, availabilityimpact, frequency, language);
 
-		message=map.get("description")+ map.get("version") + map.get("software")
-					+map.get("bugDigest") + map.get("language");
-		
+		map = bugsubmitService.bugSubmit(graphaddress, description, version,
+				software, digest, email, usabilityimpact, dataimpact,
+				privacyimpact, availabilityimpact, frequency, language);
+
+		message = map.get("description") + map.get("version")
+				+ map.get("software") + map.get("bugDigest")
+				+ map.get("language");
+
 		System.out.println(message);
-		
-		if (map.get("description").equals("OK") && map.get("version").equals("OK") && 
-				map.get("software").equals("OK") && map.get("bugDigest").equals("OK") && 
-				map.get("language").equals("OK")) {
-		return "BugSubmitSuccess";}
-		else  return "BugSubmitFailed";
+
+		if (map.get("description").equals("OK")
+				&& map.get("version").equals("OK")
+				&& map.get("software").equals("OK")
+				&& map.get("bugDigest").equals("OK")
+				&& map.get("language").equals("OK")) {
+			return Constants.SUCCESS;
+		} else
+			return Constants.FAIL;
 	}
-
-
-	
 
 }

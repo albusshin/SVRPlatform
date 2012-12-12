@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html;  charset=utf-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="utf-8"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -65,7 +65,7 @@
 	 	</div>
 	<%
 	 			out.println("</div>");
-	 			out.println("<a class=\"dismiss\" href=\"javascript:dismiss();\">×</a>");
+	 			out.println("<a class=\"dismiss\" href=\"javascript:dismiss();\">Ã—</a>");
 	 			out.println("</div>");
 	 			out.println("</div>");
 	 			out.println("</div>");
@@ -140,7 +140,7 @@
 		</div>
        
     	<div id="footer" align="center">
-            <p align="center" style="color:#000">Copyright © www.SVRPlatform.com</p>
+            <p align="center" style="color:#000">Copyright Â© www.SVRPlatform.com</p>
             <p> <a class="footer" style="color:#000" href="javascript:;">Terms of Service</a></p>
             <p> <a class="footer" style="color:#000" href="javascript:;">License of Development</a></p>
             <p> <a class="footer" style="color:#000" href="javascript:;">Privacy</a></p>

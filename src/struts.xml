@@ -95,8 +95,8 @@
         </action>
         
         <action name="submitbug" class="submitbug" method="execute">
-	 		<result name="BugSubmitSuccess">/WEB-INF/bugpage.jsp</result>
-	 		<result name="BugSubmitFailed">/submitbug.jsp</result>  
+	 		<result name="success">/WEB-INF/bugpage.jsp</result>
+	 		<result name="fail">/WEB-INF/submitbug.jsp?stat=wrong</result>  
         </action>
          
          
