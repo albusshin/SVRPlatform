@@ -26,7 +26,7 @@
 	</div>
    	<p class="bugvultext">
    	It seems that you haven't signed in SVRPlatform. Bug information submission must be logged on to perform. <br>
-   	Please <a href="/signin.jsp">Sign in</a> or <a href="/signup.jsp">Sign up...</a>
+   	Please <a href="/signin.jsp">Sign in</a> or <a href="/signup.jsp">Join us..</a>
     </p>
 </div>
 
