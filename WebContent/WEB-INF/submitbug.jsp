@@ -218,6 +218,48 @@
                     </td>
                 </tr>
 
+		<%-- 
+			1. url in ajax needs to be modified.
+        	2. upload page should print out the image address
+        --%>
+		<tr>
+			<td class="submitbugkey">
+				<label for="Screenshot"> Screenshot </label>
+			</td>
+			<td class="submitugvalue">
+				<script type="text/javascript">					
+					$(document).ready(function(){
+					     $("#inputfile").change(function(){
+							 $("#uploadscreenshotbutton").attr('style','display:none');
+					         //create FormData
+					         var data = new FormData();
+					         
+					         //add data for FormData
+					         $.each($("#inputfile")[0].files, function(i, file) {
+					             data.append('uploadFile', file);  //upload_file is the name of file
+					         });
+					         $.ajax({
+					             url:'upload',
+					             type:'POST',
+					             data:data,
+					             cache: false,
+					             contentType: false,    //must declare
+					             processData: false,    //must declare
+					             success:function(data){
+					                 $("#uploadscreenshot").attr("src",data);
+					                 $("#uploadscreenshot").attr('style','display:block');
+					             }
+					         });
+					     });
+					 });
+				</script>
+				<img id="uploadscreenshotbutton" type='image' src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="getElementById('inputfile').click()"/>
+				
+				<input type="file" name="image" style="visibility:hidden" id="inputfile"/>
+				
+				<img id="uploadscreenshot" name="graphaddress" src="/"/>
+			</td>
+		</tr>
 		
 		<tr>
 			<td class="submitbugkey">
@@ -256,35 +298,6 @@
             </div>
 	    
         </form>
-        <form id="uploadScreenshotForm" action="upload.jsp" method="post" enctype="multipart/form-data" target="hiddenFrame">
-	        <table class="submitbugtable">
-	        <tr>
-				<td class="submitbugkey">
-					<label for="Screenshot"> Screenshot </label>
-				</td>
-				<td class="submitbugvalue">
-					<script type="text/javascript">
-						function uploadPressed() {
-							document.getElementById("uploadfilebutton").click();
-						}
-						function changeScreenshot() {
-							document.getElementById("uploadscreenshotbutton").style.display="none";
-							document.getElementById("uploadScreenshotForm").submit();
-						}
-						function callback(msg) {
-							document.getElementById("uploadscreenshot").value=msg;
-							document.getElementById("uploadscreenshot").src=msg;
-							document.getElementById("uploadscreenshot").style.display="block";
-						}
-					</script>
-					<img id="uploadscreenshotbutton" src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="uploadPressed()"/>
-					<input id="uploadfilebutton" name="file" type="file" style="visibility:hidden" onchange="changeScreenshot()">
-					<img id="uploadscreenshot" name="graphaddress" src="/"/>
-				</td>
-			</tr>
-			</table>
-		</form>
-		<iframe id="hiddenFrame" name="hiddenFrame" style="display:none"></iframe>
     </div>   
     
  		<jsp:include page="/footer.jsp" flush="true"/>
