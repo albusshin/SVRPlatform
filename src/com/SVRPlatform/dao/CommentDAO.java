@@ -8,7 +8,8 @@ import com.SVRPlatform.model.User;
 
 public interface CommentDAO extends basicDAO {
 
-	public List<Comment> getByUserIdAndBugId(User user, Bug bug);
+	public List<Comment> getByUserIdAndBugId(User user, Bug bug, int fetchSize,
+			int firstResult);
 
 	public List<Comment> getByBugId(Bug bug, int fetchSize,
 			int firstResult);

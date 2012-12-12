@@ -17,15 +17,26 @@ public class UserDAOImpl extends BasicDAOImpl implements UserDAO {
 	public User getUserByEmail(String email) {
 		// TODO Auto-generated method stub
 		Session s = this.sessionFactory.openSession();
-		org.hibernate.Criteria c = s.createCriteria(User.class);
-		c.add(Restrictions.eq("email", email));
-		return (User) c.uniqueResult();
+		try{
+			org.hibernate.Criteria c = s.createCriteria(User.class);
+			c.add(Restrictions.eq("email", email));
+			return (User) c.uniqueResult();
+		} finally {
+			if(s != null)
+				s.close();
+		}
 	}
 
 	@Override
 	public Object getByID(Serializable ID) {
 		// TODO Auto-generated method stub
-		Session s = this.sessionFactory.openSession();
-		return s.get(User.class, ID);
+		Session s = null;
+		try{
+			s = this.sessionFactory.openSession();
+			return s.get(User.class, ID);
+		} finally {
+			if(s != null)
+				s.close();
+		}
 	}
  }

@@ -3,6 +3,8 @@ package com.SVRPlatform.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Session;
+
 import com.SVRPlatform.dao.CommentDAO;
 import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Comment;
@@ -13,7 +15,14 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 	@Override
 	public Object getByID(Serializable ID) {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.openSession().get(Comment.class, ID);
+		Session s = null;
+		try{
+			s = this.sessionFactory.openSession();
+			return s.get(Comment.class, ID);
+		} finally {
+			if(s != null)
+				s.close();
+		}
 	}
 	
 	/* (non-Javadoc)
@@ -21,7 +30,8 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Comment> getByUserIdAndBugId(User user, Bug bug){
+	public List<Comment> getByUserIdAndBugId(User user, Bug bug, int fetchSize,
+			int firstResult){
 //		Session s = this.sessionFactory.openSession();
 //		try{
 //			org.hibernate.Criteria c = s.createCriteria(Comment.class);
@@ -32,7 +42,7 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 //			if(s!=null)
 //				s.close();
 //		}
-		return (List<Comment>) getByUserOrBugId(Comment.class, -1, -1, bug, user);
+		return (List<Comment>) getByUserOrBugId(Comment.class, fetchSize, firstResult, bug, user);
 	}
 	
 	/* (non-Javadoc)

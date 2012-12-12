@@ -7,7 +7,6 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.SVRPlatform.service.LoginService;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SignIn extends ActionSupport implements ServletRequestAware,			//sign in~login						
@@ -22,10 +21,12 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 	private String password;
 	private String message;
 	private String email;
+	@SuppressWarnings("rawtypes")
 	private List remember;
 	private HttpServletResponse response;
 	private HttpServletRequest request;
-	private boolean have;
+	private boolean browserHasCookie;
+	private boolean info;	
 
 	public String getMessage() {
 		return message;
@@ -35,6 +36,7 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 		this.password = password;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void setRemember(List remember) {
 		this.remember = remember;
 	}
@@ -52,65 +54,47 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 	}
 
 	public String execute() throws Exception {
-		System.out.println(this.email);
-		System.out.println(this.password);
-		System.out.println(this.remember);
-		boolean info = this.loginService.login(this.email, this.password);
-		System.out.println(info);
-		if (!info) {															//wrong email or password
-			message = "failed";
+		System.out.println("this.email = " + this.email);
+		System.out.println("this.password = " + this.password);
+		info = this.loginService.login(this.email, this.password);
+		System.out.println("this.loginService.login()" + this.info);
+		if (!info) {																				//wrong email or password
+			message = "Failed to sign in. Please check again and retry.";
 			return FAIL;
-		} else {																//store email & password in cookie	  																			
-			Cookie[] cookies = request.getCookies();
-			for (int i = 0; i < cookies.length; i++) {
-				System.out.println(cookies[i].getName());
-				if (cookies[i].getName().equals("email")) {						//cookie had email before 
-					cookies[i].setValue(this.email);
-					response.addCookie(cookies[i]);
-					if (remember != null) {
-						cookies[i].setMaxAge(60 * 60 * 24 * 7);
-
-					} else {
-						cookies[i].setMaxAge(-1);
+		} else {																					//valid email and password 								
+			request.getSession().setMaxInactiveInterval(60 * 60 * 3);							//Session 3 hours is enough.
+			request.getSession().setAttribute("email", email);
+			request.getSession().setAttribute("password", password);	
+			
+			if(remember != null)																	//remember email and password for 2 weeks
+			{
+				Cookie[] cookies = request.getCookies();
+				for (int i = 0; i < cookies.length; i++) {
+					System.out.println(cookies[i].getName());
+					if (cookies[i].getName().equals("email")) {										//cookie had email before 
+						cookies[i].setValue(this.email);
+						response.addCookie(cookies[i]);
+						browserHasCookie = true;
 					}
-					have = true;
+					
+					if (cookies[i].getName().equals("password")) {									//cookie had password before 
+						cookies[i].setValue(this.password);
+						response.addCookie(cookies[i]);
+						browserHasCookie = true;
+					}
 				}
 				
-				if (cookies[i].getName().equals("password")) {						//cookie had password before 
-					cookies[i].setValue(this.password);
-					response.addCookie(cookies[i]);
-					if (remember != null) {
-						cookies[i].setMaxAge(60 * 60 * 24 * 7);
-
-					} else {
-						cookies[i].setMaxAge(-1);
-					}
-					have = true;
-				}
-			}
-			
-			if (have == false) {
-				Cookie cemail = new Cookie("email", this.email);			    //cookie do not have email & password before  store email & password in cookie
-				Cookie cpassword = new Cookie("password", this.password);	
-				if (remember != null) {
-					System.out.println("remember != null");
+				if (browserHasCookie == false) {
+					Cookie cemail = new Cookie("email", this.email);			    //cookie do not browserHasCookie email & password before  store email & password in cookie
+					Cookie cpassword = new Cookie("password", this.password);	
 					cemail.setMaxAge(60 * 60 * 24 * 7);
 					cpassword.setMaxAge(60 * 60 * 24 * 7);
 					response.addCookie(cemail);
 					response.addCookie(cpassword);
-				} else {
-					cemail.setMaxAge(-1);
-					cpassword.setMaxAge(-1);
-					response.addCookie(cemail);
-					response.addCookie(cpassword);
-				}
+				} 
 			}
-																					
-			request.getSession().setMaxInactiveInterval(60 * 60 * 24 * 7);							//store in session
-			request.getSession().setAttribute("email", email);
-			request.getSession().setAttribute("password", password);
-			return SUCCESS;
-		}
+		}																		
+			return SUCCESS;		
 	}
 
 	@Override

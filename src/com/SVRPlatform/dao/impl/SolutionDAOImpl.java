@@ -3,6 +3,8 @@ package com.SVRPlatform.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Session;
+
 import com.SVRPlatform.dao.SolutionDAO;
 import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Solution;
@@ -13,14 +15,22 @@ public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements S
 	@Override
 	public Object getByID(Serializable ID) {
 		// TODO Auto-generated method stub
-		return this.sessionFactory.openSession().get(Solution.class, ID);
+		Session s = null;
+		try{
+			s = this.sessionFactory.openSession();
+			return s.get(Solution.class, ID);
+		} finally {
+			if(s != null)
+				s.close();
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Solution> getByUserIdAndBugId(User user, Bug bug) {
+	public List<Solution> getByUserIdAndBugId(User user, Bug bug, int fetchSize,
+			int firstResult) {
 		// TODO Auto-generated method stub
-		return (List<Solution>) getByUserOrBugId(Solution.class, -1, -1, bug, user);
+		return (List<Solution>) getByUserOrBugId(Solution.class, fetchSize, firstResult, bug, user);
 	}
 
 	@SuppressWarnings("unchecked")

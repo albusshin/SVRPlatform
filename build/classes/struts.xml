@@ -10,67 +10,96 @@
     <constant name="struts.objectFactory" value="spring"/>
     <constant name="struts.serve.static.browserCache" value="false"/>
     <constant name="struts.configuration.xml.reload" value="true"/>
+    
 
     <package name="default" namespace="/" extends="struts-default">
-
+		<interceptors>
+		        <interceptor name="check" class="com.SVRPlatform.interceptor.CheckInterceptor"/>
+		        <interceptor-stack name="checkStack">
+		        	<interceptor-ref name="defaultStack" />
+		        	<interceptor-ref name="check" 		/>
+		        </interceptor-stack>
+		</interceptors>
+        
+        
         <default-action-ref name="index" />
-
+     
         <global-results>
-            <result name="error">/error.jsp</result>
+            <result name="error">/WEB-INF/error.jsp</result>
         </global-results>
 
         <global-exception-mappings>
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
         
-        <action name="signin" class="signin" method="execute">
-        	<result name="success" >/WEB-INF/home.jsp</result>
-        	<result name="fail">/WEB-INF/signin.jsp</result>
+        
+        
+        <action name="SigningIn" class="signin" method="execute">
+        	<result name="success" type="redirect" >/home.jsp</result>
+        	<result name="fail">/signin.jsp?stat=wrong</result>
         </action>
         
-		<action name="signup" class="signup" method="execute">
-        	<result name="success" >/WEB-INF/home.jsp</result>
-        	<result name="fail">/WEB-INF/signup.jsp</result>
+		<action name="SigningUp" class="signup" method="execute">
+        	<result name="success" type="redirect" >/home.jsp</result>
+        	<result name="fail">/signup.jsp?stat=wrong</result>
         </action>
     
-         <action name="index" class="com.SVRPlatform.action.Index" method="execute">
-        	<result name="LoggedIn" >/WEB-INF/home.jsp</result>
-        	<result name="CookieNotFound" >/WEB-INF/index.html</result>
-        	<result name="NotAuthenticated">/WEB-INF/signin.jsp</result>
+         <action name="index" class="index" method="execute">
+        	<result name="LoggedIn" type="redirect" >/home.jsp</result>
+        	<result name="CookieNotFound" >/WEB-INF/index.jsp</result>
+        	<result name="NotAuthenticated" type="redirect">/signin.jsp</result>
         </action>
          	
-         <action name="SigningIn">    
-		 	<result >/WEB-INF/signin.jsp</result>    
+         <action name="signInAutomatically" class="signInAutomatically">  
+            <interceptor-ref name="checkStack"/>  
+		 	<result name="FailToSignIn" type="redirect">/signin.jsp</result>    
+		 	<result name="SignInAtomatically" type="redirect">/home.jsp</result>
 		 </action>   
 		 
-         <action name="SigningUp">    
-		 	<result >/WEB-INF/signup.jsp</result>    
-		 </action>
-         
-		 <action name="tosubmitbug" class="com.SVRPlatform.action.ToSubmitBug" method="execute">
-        	<result name="LoggedIn" type="redirect">/WEB-INF/submitbug.jsp</result>
-        	<result name="CookieNotFound" >/WEB-INF/index.html</result>
-        	<result name="NotAuthenticated">/WEB-INF/signin.jsp</result>
-        </action>
+           <action name="signInAutomaticallyUp" class="signInAutomatically">
+ 			<interceptor-ref name="checkStack"/>     
+		 	<result name="FailToSignIn" type="redirect">/signup.jsp</result>    
+		 	<result name="SignInAtomatically" type="redirect">/home.jsp</result>
+		 </action>   
 
-         <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph">  
-	            <result name="success">/WEB-INF/index.html</result>  
+ 		
+		<action name="RetrievePassword" class="retrievepassword" method="execute">
+        	<result name="success" >/WEB-INF/emailSent.jsp</result>
+        	<result name="fail">/WEB-INF/emailNotSent.jsp</result>
+        </action>
+        
+		<action name="CheckingHash" class="checkinghash" method="execute">
+        	<result name="success" >/WEB-INF/ResetPassword.jsp</result>
+        	<result name="fail">/WEB-INF/error.jsp</result>
+        </action>
+        
+		<action name="ResetPassword" class="resetpassword" method="execute">
+        	<result name="success" type="redirect">/index</result>
+        	<result name="passwordTooShort">/WEB-INF/ResetPassword.jsp</result>
+        	<result name="passwordAgainstRule">/WEB-INF/ResetPassword.jsp</result>
+        	<result name="fail" type="redirect">/WEB-INF/error.jsp</result>
+        </action>
+        
+		<action name="Logout" class="com.SVRPlatform.action.Logout" method="execute">
+        	<result name="success" type="redirect">logout.jsp</result>
+        </action>
+        
+        <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph">  
+	            <result name="success">/WEB-INF/index.jsp</result>  
 	            <result name="input">/upload.jsp</result>  
-       		</action>  
+       	</action>  
          
-         <action name="submitbug" class="submitbug" method="execute">
-	 		<result name="BugSubmitSuccess">/WEB-INF/index.html</result>
-	 		<result name="BugSubmitFailed">/WEB-INF/submitbug.jsp</result>  
+        <action name="TrySubmitBug" class="com.SVRPlatform.action.TrySubmitBug" method="execute">
+	 		<result name="success">/WEB-INF/submitbug.jsp</result>
+	 		<result name="fail">/WEB-INF/submitbugfailure.jsp</result>
+        </action>
+        
+        <action name="submitbug" class="submitbug" method="execute">
+	 		<result name="BugSubmitSuccess">/WEB-INF/bugpage.jsp</result>
+	 		<result name="BugSubmitFailed">/submitbug.jsp</result>  
         </action>
          
          
     </package>
-    
-
-
-    <!--include file="example.xml"/-->
-
-    <!-- Add packages here -->
-
 </struts>
 
