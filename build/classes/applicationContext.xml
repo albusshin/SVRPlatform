@@ -26,9 +26,17 @@
     	<property name="registerService" ref="registerService"></property>
     </bean>
     
-    <!-- <bean id="retrievepassword" scope="prototype" class="com.SVRPlatform.action.RetrievePassword">
-    	<property name="bugsubmitService" ref="bugsubmitService"></property>
-    </bean> -->
+    <bean id="retrievepassword" scope="prototype" class="com.SVRPlatform.action.RetrievePassword">
+    	<property name="passwordretrieveservice" ref="passwordretrieveservice"></property>
+    </bean>
+    
+    <bean id="checkinghash" scope="prototype" class="com.SVRPlatform.action.CheckingHash">
+    	<property name="passwordretrieveservice" ref="passwordretrieveservice"></property>
+    </bean>
+    
+    <bean id="resetpassword" scope="prototype" class="com.SVRPlatform.action.ResetPassword">
+    	<property name="passwordretrieveservice" ref="passwordretrieveservice"></property>
+    </bean>
     
     <bean id="submitbug" scope="prototype" class="com.SVRPlatform.action.SubmitBug">
     	<property name="bugsubmitService" ref="bugsubmitService"></property>
@@ -50,6 +58,14 @@
     	<property name="bugDAO" ref="bugDAO"></property>
     	<property name="softwareDAO" ref="softwareDAO"></property>
     </bean>
+    
+    <bean id="passwordretrieveservice" class="com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl">
+    	<property name="userDAO" ref="userDAO"></property>
+    	<property name="hashForPasswordRetrieveDAO" ref="hashForPasswordRetrieveDAO"></property>
+    </bean>
+	
+	
+	
 	<!-- ************************************************************************ -->
     <!-- DAOImpls beans definition -->
     <bean id="userDAO" class="com.SVRPlatform.dao.impl.UserDAOImpl">
@@ -61,6 +77,10 @@
     </bean>
     
     <bean id="softwareDAO" class="com.SVRPlatform.dao.impl.SoftwareDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <bean id="hashForPasswordRetrieveDAO" class="com.SVRPlatform.dao.impl.HashForPasswordRetrieveDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     

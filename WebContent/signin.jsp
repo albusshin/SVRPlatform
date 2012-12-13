@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html;  charset=utf-8"
-    pageEncoding="ISO-8859-1"%>
+<%@page import="com.SVRPlatform.userHandling.UserHandlers"%>
+<%@ page language="java" import="javax.servlet.http.*;" contentType="text/html;  charset=utf-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -8,6 +9,9 @@
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js"></script>
 </head>
+<%
+	//UserHandlers.clearSessionAndCookies(request, response);
+%>
 <script type="text/javascript">
 	/**
 	* Albus Shin
@@ -49,7 +53,31 @@
 </script>
 
 <body>
- 	
+ 	<%
+ 		String stat = request.getParameter("stat");
+ 		if (stat != null)
+	 		if (stat.equals("wrong")){
+	 			out.println("<div id=\"wrongmessage\" class=\"alert-messages\" style=\"display:block\">");
+	 			out.println("<div class=\"message\">");
+	 			out.println("<div class=\"message-inside\">");
+	 			out.println("<div class=\"message-text\">");
+	%>
+		<div>
+	 			${message }
+	 	</div>
+	<%
+	 			out.println("</div>");
+	 			out.println("<a class=\"dismiss\" href=\"javascript:dismiss();\">×</a>");
+	 			out.println("</div>");
+	 			out.println("</div>");
+	 			out.println("</div>");
+	 		}
+ 	%>
+             	<script type="text/javascript">
+             		function dismiss(){
+             			document.getElementById("wrongmessage").setAttribute("style", "display:none");
+             		}
+             	</script>
 
 <div id="credittipsy" class="tipsy tipsy-n" style="top: 210px; right: 372px; visibility:visible; display:none; opacity:0.8; ">
 		<div class="tipsy-arrow tipsy-arrow-n"></div>
@@ -105,25 +133,17 @@
 					<input type="password" name="password"/>
 				</div>
 				<input type="checkbox" name="remember" id="remember-me" value="remembered"/><label for="remember-me">Remember me</label>
-				<div class="forgot-usr-pwd">Forgot password? <a href='#'>Retrieve it...</a></div>
+				<div class="forgot-usr-pwd">Forgot password? <a href='RetrievePassword.jsp'>Retrieve it...</a></div>
 				<input type="submit" id="signingo" name="submit" value="GO" />
 			</form>
 		</div>
 		<style type="text/css"></style>
     	<div id="footer" align="center">
-            <p align="center" style="color:#000">Copyright � www.SVRPlatform.com</p>
+            <p align="center" style="color:#000">Copyright ï¿½ www.SVRPlatform.com</p>
             <p> <a class="footer" style="color:#000" href="javascript:;">Terms of Service</a></p>
             <p> <a class="footer" style="color:#000" href="javascript:;">License of Development</a></p>
             <p> <a class="footer" style="color:#000" href="javascript:;">Privacy</a></p>
         	<img src="images/SVRPlatformPUR.png" width=400px align="middle"/>
     	</div>
-    <script type="text/javascript">
-	    function showWrongMessage(){
-		    document.getElementById("wrongmessage").style.display="block";
-	    }
-    </script>
-	<div id="wrongmessage" style="display:none">
-    ${message }
-    </div>
 </body>
 </html>

@@ -13,15 +13,27 @@ public class SoftwareDAOImpl extends BasicDAOImpl implements SoftwareDAO{
 	@Override
 	public Object getByID(Serializable ID) {
 		// TODO Auto-generated method stub
-		return sessionFactory.getCurrentSession().get(Software.class, ID);
+		Session s = null;
+		try{
+			s = this.sessionFactory.openSession();
+			return s.get(Software.class, ID);
+		} finally {
+			if(s != null)
+				s.close();
+		}
 	}
 
 	@Override
 	public Software getSoftwareByName(String name) {
 		// TODO Auto-generated method stub
 		Session s = this.sessionFactory.openSession();
-		org.hibernate.Criteria c = s.createCriteria(Software.class);
-		c.add(Restrictions.eq("name", name));
-		return (Software) c.uniqueResult();
+		try{
+			org.hibernate.Criteria c = s.createCriteria(Software.class);
+			c.add(Restrictions.eq("name", name));
+			return (Software) c.uniqueResult();
+		}finally {
+			if(s != null)
+				s.close();
+		}
 	}
 }

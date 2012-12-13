@@ -6,6 +6,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Welcome to SVRPlatform</title>
 	<link rel="stylesheet" href="style.css" />
+	<style type="text/css">
+</style>
 	<style>
 		div#contains{
 			clear:both;
@@ -39,7 +41,17 @@
 	<script type="text/javascript" src="jquery.min.js"></script>
 </head>
 <body>
-	<jsp:include page="headerTourist.jsp" flush="true"/>
+	<%
+	
+	String str = (String) session.getAttribute("email");
+	if (str != null){
+		str = "signedin";
+	}
+	
+	%>
+ 		<jsp:include page="header.jsp" flush="true">
+ 			<jsp:param name="type" value="<%=str%>"/>
+ 		</jsp:include>
     <div id="contains">
         <div id="biglogo">
             <a href="javascript:;" style="border-bottom:none"><img src="images/SVRPlatform.png" width="600px"/></a>
@@ -70,6 +82,6 @@
             Some description
         </div>
     </div>
-    <jsp:include page="footer.jsp" flush="true"/>
+    <jsp:include page="/footer.jsp" flush="true"/>
 </body>
 </html>

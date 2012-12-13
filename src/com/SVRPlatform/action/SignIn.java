@@ -25,7 +25,7 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 	private List remember;
 	private HttpServletResponse response;
 	private HttpServletRequest request;
-	private boolean have;
+	private boolean browserHasCookie;
 	private boolean info;	
 
 	public String getMessage() {
@@ -59,10 +59,10 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 		info = this.loginService.login(this.email, this.password);
 		System.out.println("this.loginService.login()" + this.info);
 		if (!info) {																				//wrong email or password
-			message = "failed";
+			message = "Failed to sign in. Please check again and retry.";
 			return FAIL;
 		} else {																					//valid email and password 								
-			request.getSession().setMaxInactiveInterval(60 * 60 * 24 * 7);							//store in session
+			request.getSession().setMaxInactiveInterval(60 * 60 * 3);							//Session 3 hours is enough.
 			request.getSession().setAttribute("email", email);
 			request.getSession().setAttribute("password", password);	
 			
@@ -74,24 +74,24 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 					if (cookies[i].getName().equals("email")) {										//cookie had email before 
 						cookies[i].setValue(this.email);
 						response.addCookie(cookies[i]);
-						have = true;
+						browserHasCookie = true;
 					}
 					
 					if (cookies[i].getName().equals("password")) {									//cookie had password before 
 						cookies[i].setValue(this.password);
 						response.addCookie(cookies[i]);
-						have = true;
+						browserHasCookie = true;
 					}
 				}
 				
-				if (have == false) {
-					Cookie cemail = new Cookie("email", this.email);			    //cookie do not have email & password before  store email & password in cookie
+				if (browserHasCookie == false) {
+					Cookie cemail = new Cookie("email", this.email);			    //cookie do not browserHasCookie email & password before  store email & password in cookie
 					Cookie cpassword = new Cookie("password", this.password);	
 					cemail.setMaxAge(60 * 60 * 24 * 7);
 					cpassword.setMaxAge(60 * 60 * 24 * 7);
 					response.addCookie(cemail);
 					response.addCookie(cpassword);
-					} 
+				} 
 			}
 		}																		
 			return SUCCESS;		

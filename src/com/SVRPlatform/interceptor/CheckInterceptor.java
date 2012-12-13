@@ -80,7 +80,8 @@ public class CheckInterceptor implements Interceptor,ServletRequestAware,Servlet
 		System.out.println("cookieEmail="+cookieEmail);
 		System.out.println("cookiePassword="+cookiePassword);
 		
-		if (!emailInSession.equals("tourist") && !passwordInSession.equals("tourist"))
+//		if (!emailInSession.equals("tourist") && !passwordInSession.equals("tourist"))
+		if (!(emailInSession == null) && !(passwordInSession == null))
 			return invocation.invoke();
 		else if(cookieEmail != null && cookiePassword != null)
 			return invocation.invoke();

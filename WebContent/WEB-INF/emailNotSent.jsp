@@ -9,7 +9,17 @@
 <title>Sorry, error - SVRPlatform</title>
 </head>
 <body>
- 		<jsp:include page="headerTourist.jsp" flush="true"/>
+	<%
+	
+	String str = (String) session.getAttribute("email");
+	if (str != null){
+		str = "signedin";
+	}
+	
+	%>
+ 		<jsp:include page="header.jsp" flush="true">
+ 			<jsp:param name="type" value="<%=str%>"/>
+ 		</jsp:include>
 <div id="content">
 	<div class="commentstitle" style="padding-top:30px;">
 	Password reset confirmation sent failed
@@ -19,6 +29,6 @@
     </p>
 </div>
 
- 		<jsp:include page="footer.jsp" flush="true"/>
+ 		<jsp:include page="/footer.jsp" flush="true"/>
 </body>
 </html>

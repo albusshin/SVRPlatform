@@ -19,14 +19,20 @@ import org.springframework.orm.hibernate4.SessionHolder;
 import org.springframework.orm.hibernate4.support.OpenSessionInViewFilter;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
+import com.SVRPlatform.action.RetrievePassword;
+import com.SVRPlatform.dao.HashForPasswordRetrieveDAO;
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.dao.impl.BugDAOImpl;
 import com.SVRPlatform.dao.impl.CommentDAOImpl;
+import com.SVRPlatform.dao.impl.HashForPasswordRetrieveDAOImpl;
 import com.SVRPlatform.dao.impl.SoftwareDAOImpl;
 import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Software;
 import com.SVRPlatform.model.User;
+import com.SVRPlatform.service.PasswordRetrieveService;
+import com.SVRPlatform.service.impl.PasswordEncoder;
+import com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl;
 
 public class TestForHibernate {
 	static UserDAO userDAO;
@@ -36,9 +42,10 @@ public class TestForHibernate {
 	static SoftwareDAOImpl softwareDAO;
 	static Session session;
 	static CommentDAOImpl commentDAO;
+	static PasswordRetrieveService passwordRetrieveService;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		ctx = new ClassPathXmlApplicationContext( "Junit/test/Jingxuan/testBeans-hibernate.xml", "Junit/test/Jingxuan/testBeans.xml" );
+		ctx = new ClassPathXmlApplicationContext( "Junit/test/Jingxuan/testBeans-hibernate.xml", "applicationContext.xml" );
 		userDAO = (UserDAO)ctx.getBean("userDAO");
 		bugDAO = (BugDAOImpl)ctx.getBean("bugDAO");
 		sessionFactory = (SessionFactory) ctx.getBean("sessionFactory");
@@ -46,7 +53,8 @@ public class TestForHibernate {
 		Session s = sessionFactory.openSession();  
 		TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(s));
 		softwareDAO = (SoftwareDAOImpl) ctx.getBean("softwareDAO");
-		commentDAO = (CommentDAOImpl) ctx.getBean("commentDAO");
+		//commentDAO = (CommentDAOImpl) ctx.getBean("commentDAO");
+		passwordRetrieveService = (PasswordRetrieveService) ctx.getBean("passwordretrieveservice");
 	}
 
 	@AfterClass
@@ -140,5 +148,21 @@ public class TestForHibernate {
 //		for(Comment c: list2){
 //			System.out.println(c.getCommentId());
 //		}
+	}
+	
+	@Test public void testSendEmail() {
+		HashForPasswordRetrieveDAOImpl hashForPasswordRetrieveDAO = new HashForPasswordRetrieveDAOImpl();
+		hashForPasswordRetrieveDAO.setSessionFactory(sessionFactory);
+		PasswordRetrieveServiceImpl prs = new PasswordRetrieveServiceImpl();
+		prs.setHashForPasswordRetrieveDAO(hashForPasswordRetrieveDAO);
+		prs.setUserDAO(userDAO);
+		
+		boolean b = prs.sendCheckingEmail("povergoing@gmail.com");
+		System.out.println(b);
+	}
+	@Test public void testSendEmail2(){
+		//System.out.println(passwordRetrieveService.checkHashValue("cf6c767bd7edac68a03857a1af83e275"));
+		passwordRetrieveService.updatePassword("povergoing@gmail.com", "hantian00");
+		System.out.println(PasswordEncoder.EncoderByMd5("hantian00"));
 	}
 }
