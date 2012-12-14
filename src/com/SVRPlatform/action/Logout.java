@@ -35,7 +35,7 @@ ServletResponseAware{
 //		actctx.getSession().put("email", "tourist");
 //		actctx.getSession().put("password", "tourist");
 		
-		if (com.SVRPlatform.userHandling.UserHandlers.clearSessionAndCookies(request, response)){
+		if (com.SVRPlatform.Utils.UserHandlers.clearSessionAndCookies(request, response)){
 			return SUCCESS;
 		}
 		

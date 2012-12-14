@@ -93,7 +93,7 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
             System.out.println("after loginService.login()");
             if(!cookieCanLogin)
     		{
-            	com.SVRPlatform.userHandling.UserHandlers.clearSessionAndCookies(request, response);
+            	com.SVRPlatform.Utils.UserHandlers.clearSessionAndCookies(request, response);
             	//return "NotAuthenticated"; 									//There should be no things such as "Not authenticated".
             	return "CookieNotFound";										//Just return a cookieNotFound is enough.
             }

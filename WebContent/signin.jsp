@@ -1,4 +1,4 @@
-<%@page import="com.SVRPlatform.userHandling.UserHandlers"%>
+<%@page import="com.SVRPlatform.Utils.UserHandlers"%>
 <%@ page language="java" import="javax.servlet.http.*;" contentType="text/html;  charset=utf-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
