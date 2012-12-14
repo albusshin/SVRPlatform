@@ -2,6 +2,8 @@ package Junit.test.Jingxuan;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -20,12 +22,6 @@ public class testForPasswdEncodeing {
 
 	@Test
 	public void test() {
-//		String s1 = PasswordEncoder.EncoderByMd5("hantian00");
-//		String s2 = PasswordEncoder.EncoderByMd5("hantian00");
-//		String s3 = PasswordEncoder.EncoderByMd5("hantian004321fdsaf");
-////		System.out.println(PasswordEncoder.EncoderByMd5("hantian00"));
-////		System.out.println(PasswordEncoder.EncoderByMd5("hantian00"));
-//		System.out.println(s3);
 		System.out.println(String.format("%1$08d", 333));
 	}
 
