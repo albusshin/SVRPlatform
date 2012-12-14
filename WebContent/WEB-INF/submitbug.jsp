@@ -257,6 +257,7 @@
 					             success:function(data){
 					                 $("#uploadscreenshot").attr("src",data);
 					                 $("#uploadscreenshot").attr('style','display:block');
+					                 $("#hiddenpath").attr('value', data);
 					             },
 					             error:function(){
 					            	 $("#wrongmessage1").attr('style','display:block');
@@ -266,8 +267,7 @@
 					 });
 				</script>
 				<img id="uploadscreenshotbutton" type='image' src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="getElementById('inputfile').click()"/>
-				
-				<input type="file" name="graph" style="visibility:hidden" id="inputfile"/>
+				<input id="hiddenpath" type="text" name="graphPath" style="display:none"/>
 				
 				<img id="uploadscreenshot" name="graphaddress" src="/"/>
 			</td>
@@ -310,6 +310,7 @@
             </div>
 	    
         </form>
+      	<input type="file" name="graph" style="visibility:hidden" id="inputfile"/>
     </div>   
     
  		<jsp:include page="/footer.jsp" flush="true"/>
