@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-	<script src="jquery.min.js" type="text/javascript"></script>
+	<script src="jquery.js" type="text/javascript"></script>
 	<!-- script src="cssAndJs/myJs.js" type="text/javascript"></script-->
 	<script type="text/javascript">
 	$(document).ready(function(){
@@ -11,9 +11,9 @@
 		$("#uploading").hide();
 		$('#upgraph').bind('change',function(){
 			
-//			var formData = new FormData($('form')[0]);
+			//var formData = new FormData($('form')[0]);
 			var formData = new FormData();
-//			alert("fff");
+			//alert("fff");
 			formData.append('graph',$('#upgraph')[0].files[0]);
 			jQuery.ajax({
 				url: 'upload.action',
@@ -40,13 +40,40 @@
 			});
 
 		});
+
+		$('#button').click(function(){
+			var formData = new FormData($('form')[0]);
+			jQuery.ajax({
+				url: 'upload.action',
+				data: formData,
+				enctype: 'multipart/form-data',
+				type: 'POST',
+//				dataType: 'text',
+				cache: false,
+	        	contentType: false,
+	        	processData: false,
+				beforeSend: function()
+				{  
+					alert("sending");
+					$("#uploading").show();
+				},
+				success: function(data)
+				{
+//					alert(data);
+					$('#uploading').hide();
+					$('#showimage').html(data);
+				},
+				error: function(data){
+					alert(data);
+				}
+			});
+		});
 	})
 	</script>
 </head>
 <body>
 <h1>welcome</h1>
-<form id="uploadfile">
-	
+<form id="uploadfile" action="upload" enctype="multipart/form-data" method="post">
 </form>
 <input id="upgraph" type="file"/>
 <p id="uploading">uploading...</p>

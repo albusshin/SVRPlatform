@@ -46,6 +46,20 @@ public class Upload extends ActionSupport {
 	private String graphFileName;
 	private String uploadPath;
 	
+	private String username;
+	
+	public String getUsername() {
+		return username;
+	}
+
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+
 	private String message;
 	
     public File getGraph() {
@@ -90,29 +104,32 @@ public class Upload extends ActionSupport {
 
 
 	public String execute() throws Exception {
-		uploadPath= ServletActionContext.getServletContext()
-				.getRealPath("/upload");
-		System.out.println(uploadPath);
-		if(graph !=null){
-			File savefile = new File(new File(uploadPath), graphFileName);
-			if(!savefile.getParentFile().exists())
-				savefile.getParentFile().mkdirs();
-		
-			if(!graphContentType.equals("image/png") && 
-					!graphContentType.equals("image/bmp") && 
-					!graphContentType.equals("image/jpg") &&
-					!graphContentType.equals("image/jpeg") ){ 
-				message="graphWrongType";
-			}
-			else if(message==null){		
-				FileUtils.copyFile(graph,savefile);
-				message = "<img src=\"upload/" + savefile.getName() + "\"/>";
-			}
-			 System.out.println(graph.length());
-		}
-		else {
-			message="graphIsNull";
-		}
+		System.out.println(this.username);
+		System.out.println(this.graph);
+//		uploadPath= ServletActionContext.getServletContext()
+//				.getRealPath("/upload");
+//		System.out.println(uploadPath);
+//		if(graph !=null){
+//			File savefile = new File(new File(uploadPath), graphFileName);
+//			if(!savefile.getParentFile().exists())
+//				savefile.getParentFile().mkdirs();
+//		
+//			if(!graphContentType.equals("image/png") && 
+//					!graphContentType.equals("image/bmp") && 
+//					!graphContentType.equals("image/jpg") &&
+//					!graphContentType.equals("image/jpeg") ){ 
+//				message="graphWrongType";
+//			}
+//			else if(message==null){		
+//				FileUtils.copyFile(graph,savefile);
+//				message = "<img src=\"upload/" + savefile.getName() + "\"/>";
+//			}
+//			 System.out.println(graph.length());
+//		}
+//		else {
+//			message="graphIsNull";
+//		}
+		message="hahhahah";
     	inputStream = new ByteArrayInputStream(message.getBytes("utf-8"));
         return SUCCESS;
     }
