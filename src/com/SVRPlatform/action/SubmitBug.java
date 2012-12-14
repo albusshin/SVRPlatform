@@ -29,13 +29,22 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 	private String availabilityimpact;
 	private String frequency;
 	private String description;
-	private String graphaddress;
+//	private String graphaddress;
 	private String version;
 	private String software;
 	private String language;
 	private BugSubmitService bugsubmitService;
 	private Map<String, String> map;
 	private String message;
+	private String graphPath;
+
+	public String getGraphPath() {
+		return graphPath;
+	}
+
+	public void setGraphPath(String graphPath) {
+		this.graphPath = graphPath;
+	}
 
 	public void setBugsubmitService(BugSubmitService bugsubmitService) {
 		this.bugsubmitService = bugsubmitService;
@@ -97,13 +106,13 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 		this.description = description;
 	}
 
-	public String getGraphaddress() {
-		return graphaddress;
-	}
-
-	public void setGraphaddress(String graphaddress) {
-		this.graphaddress = graphaddress;
-	}
+//	public String getGraphaddress() {
+//		return graphaddress;
+//	}
+//
+//	public void setGraphaddress(String graphaddress) {
+//		this.graphaddress = graphaddress;
+//	}
 
 	public String getVersion() {
 		return version;
@@ -159,14 +168,14 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 		System.out.println(availabilityimpact);
 		System.out.println(frequency);
 		System.out.println(description);
-		System.out.println(graphaddress);
+//		System.out.println(graphaddress);
 		System.out.println(version);
 		System.out.println(software);
 		System.out.println(language);
-
-//		map = bugsubmitService.bugSubmit(graphaddress, description, version,
-//				software, digest, email, usabilityimpact, dataimpact,
-//				privacyimpact, availabilityimpact, frequency, language);
+		System.out.println("graphPath=" + graphPath);
+		map = bugsubmitService.bugSubmit(graphPath, description, version,
+				software, digest, email, usabilityimpact, dataimpact,
+				privacyimpact, availabilityimpact, frequency, language);
 		message = "There's something wrong with your inputs, please check:\n";
 		message = map.get("description") + map.get("version")
 				+ map.get("software") + map.get("bugDigest")
@@ -193,6 +202,7 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 				&& map.get("software").equals("OK")
 				&& map.get("bugDigest").equals("OK")
 				&& map.get("language").equals("OK")) {
+			
 			return Constants.SUCCESS;
 		} else
 			return Constants.FAIL;
