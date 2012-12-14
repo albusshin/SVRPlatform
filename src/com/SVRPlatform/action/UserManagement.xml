@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--description>
+	The UserManagement contains user signing in and out and register 
+	and many other functions.
+	Then you can add descriptions here.
+</description-->
+<struts>
+
+    <package name="UserManagement" namespace="/" extends="default">
+    	
+		<interceptors>
+		        <interceptor name="check" class="com.SVRPlatform.interceptor.CheckInterceptor"/>
+		        <interceptor-stack name="checkStack">
+		        	<interceptor-ref name="defaultStack" />
+		        	<interceptor-ref name="check" 		/>
+		        </interceptor-stack>
+		</interceptors>
+		
+        <action name="SigningIn" class="signin" method="execute">
+        	<result name="success" type="redirect" >/home.jsp</result>
+        	<result name="fail">/signin.jsp?stat=wrong</result>
+        </action>
+        
+		<action name="SigningUp" class="signup" method="execute">
+        	<result name="success" type="redirect" >/home.jsp</result>
+        	<result name="fail">/signup.jsp?stat=wrong</result>
+        </action>
+    
+         <action name="index" class="index" method="execute">
+        	<result name="LoggedIn" type="redirect" >/home.jsp</result>
+        	<result name="CookieNotFound" >/WEB-INF/index.jsp</result>
+        	<result name="NotAuthenticated" type="redirect">/signin.jsp</result>
+        </action>
+         	
+         <action name="signInAutomatically" class="signInAutomatically">  
+            <interceptor-ref name="checkStack"/>  
+		 	<result name="FailToSignIn" type="redirect">/signin.jsp</result>    
+		 	<result name="SignInAtomatically" type="redirect">/home.jsp</result>
+		 </action>   
+		 
+           <action name="signInAutomaticallyUp" class="signInAutomatically">
+ 			<interceptor-ref name="checkStack"/>     
+		 	<result name="FailToSignIn" type="redirect">/signup.jsp</result>    
+		 	<result name="SignInAtomatically" type="redirect">/home.jsp</result>
+		 </action>   
+
+ 		
+		<action name="RetrievePassword" class="retrievepassword" method="execute">
+        	<result name="success" >/WEB-INF/emailSent.jsp</result>
+        	<result name="fail">/WEB-INF/emailNotSent.jsp</result>
+        </action>
+        
+		<action name="CheckingHash" class="checkinghash" method="execute">
+        	<result name="success" >/WEB-INF/ResetPassword.jsp</result>
+        	<result name="fail">/WEB-INF/error.jsp</result>
+        </action>
+        
+		<action name="ResetPassword" class="resetpassword" method="execute">
+        	<result name="success" type="redirect">/index</result>
+        	<result name="passwordTooShort">/WEB-INF/ResetPassword.jsp</result>
+        	<result name="passwordAgainstRule">/WEB-INF/ResetPassword.jsp</result>
+        	<result name="fail" type="redirect">/WEB-INF/error.jsp</result>
+        </action>
+        
+		<action name="Logout" class="com.SVRPlatform.action.Logout" method="execute">
+        	<result name="success" type="redirect">logout.jsp</result>
+        </action>
+
+        <!-- Add actions here -->
+    </package>
+</struts>

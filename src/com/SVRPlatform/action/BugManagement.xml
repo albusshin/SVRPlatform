@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--description>
+	The BugManagement contains submitting bugs, browseing bugs, submitting
+	bug comments, solutions and many other functions.
+	Then you can add descriptions here.
+</description-->
+<struts>
+<!--This is bug region -->
+    <package name="Bug" namespace="/" extends="default">
+		<!--This is submitting bug region -->
+        <action name="TrySubmitBug" class="com.SVRPlatform.action.TrySubmitBug" method="execute">
+	 		<result name="success">/WEB-INF/submitbug.jsp</result>
+	 		<result name="fail">/WEB-INF/submitbugfailure.jsp</result>
+        </action>
+        
+        <action name="submitbug" class="submitbug" method="execute">
+	 		<result name="success">/WEB-INF/bugpage.jsp</result>
+	 		<result name="fail">/WEB-INF/submitbug.jsp?stat=wrong</result>  
+        </action>
+        
+        <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph" method="execute">
+      		<result name="fail">/WEB-INF/GraphAddressOutWrong.jsp</result>
+	 		<result name="success" type="stream"></result>
+        </action>
+        <!-- Add actions here -->
+    </package>
+    
+<!--This is comment region -->    
+    <package name="Comment" namespace="/" extends="default">
+         
+		<action name="makeComment" class="com.SVRPlatform.action.MakeComment" method="execute">
+         	<result name="success" >/bugcomments.html</result>
+        </action>
+    </package>
+<!--This is solution region -->      
+    <package name="Solution" namespace="/" extends="default">
+       
+        <action name="giveSolution" class="com.SVRPlatform.action.GiveSolution" method="execute">
+        	<result name="success" >/bugsolutions.html</result>
+        </action>
+    </package>
+</struts>
