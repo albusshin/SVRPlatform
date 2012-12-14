@@ -164,14 +164,28 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 		System.out.println(software);
 		System.out.println(language);
 
-		map = bugsubmitService.bugSubmit(graphaddress, description, version,
-				software, digest, email, usabilityimpact, dataimpact,
-				privacyimpact, availabilityimpact, frequency, language);
-
+//		map = bugsubmitService.bugSubmit(graphaddress, description, version,
+//				software, digest, email, usabilityimpact, dataimpact,
+//				privacyimpact, availabilityimpact, frequency, language);
+		message = "There's something wrong with your inputs, please check:\n";
 		message = map.get("description") + map.get("version")
 				+ map.get("software") + map.get("bugDigest")
 				+ map.get("language");
-
+		if ((!map.get("bugDigest").equals("OK"))){
+			message += "Please input the digest of the bug information";
+		}
+		if (!(map.get("description").equals("OK"))){
+			message += "Please input your description about the bug";
+		}
+		if (!(map.get("software").equals("OK"))){
+			message += "Please input the buggy software name";
+		}
+		if (!(map.get("version").equals("OK"))){
+			message += "Please input the version of the software";
+		}
+		if (!(map.get("language").equals("OK"))){
+			message += "Please input the language of the software";
+		}
 		System.out.println(message);
 
 		if (map.get("description").equals("OK")

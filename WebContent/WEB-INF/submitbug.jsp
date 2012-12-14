@@ -243,6 +243,7 @@
 					             type:'POST',
 					             data:data,
 					             cache: false,
+					             enctype: 'multipart/form-data',
 					             contentType: false,    //must declare
 					             processData: false,    //must declare
 					             success:function(data){
