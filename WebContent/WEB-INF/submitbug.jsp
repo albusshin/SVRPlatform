@@ -23,9 +23,19 @@
  		<jsp:include page="header.jsp" flush="true">
  			<jsp:param name="type" value="<%=str%>"/>
  		</jsp:include>
- 		
- 		
- 		
+ 
+ 	<div id="wrongmessage1" class="alert-messages" style="display:none">
+ 		<div class="message">
+	 		<div class="message-inside">
+		 		<div class="message-text">
+			 		<div>
+				 			${message }
+				 	</div>
+		 		</div>
+		 		<a class="dismiss" href="javascript:dismiss();">×</a>
+	 		</div>
+ 		</div>
+ 	</div>
  	<%
  		String stat = request.getParameter("stat");
  		System.out.println("stat == " + request.getParameter("stat"));
@@ -235,9 +245,6 @@
 					         var data = new FormData();
 					         
 					         //add data for FormData
-					         //$.each($("#inputfile")[0].files, function(i, file) {
-					          //   data.append('graph', file);  //upload_file is the name of file
-					         //});
 					         data.append('graph',$("#inputfile")[0].files[0]);
 					         $.ajax({
 					             url:'uploadgraph',
@@ -250,7 +257,10 @@
 					             success:function(data){
 					                 $("#uploadscreenshot").attr("src",data);
 					                 $("#uploadscreenshot").attr('style','display:block');
-					             }
+					             },
+					             error:function(){
+					            	 $("#wrongmessage1").attr('style','display:block');
+					             }					             
 					         });
 					     });
 					 });

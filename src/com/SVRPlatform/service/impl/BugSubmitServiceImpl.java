@@ -1,9 +1,13 @@
 package com.SVRPlatform.service.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.io.FileUtils;
 
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.SoftwareDAO;
@@ -124,7 +128,6 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			sc = ui + di*3 + pi*5 + ai*4 + fr*2;
 			sc /= 15;
 			
-			bug.setGraphAddress(graphAddress);
 			bug.setDatetime(new Date());
 			bug.setDescription(description);
 			bug.setVersion(version);
@@ -140,10 +143,25 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			bug.setLanguage(language);
 			
 			//set the bugNumber to year for now, hibernate layer will fix it later.
-			int year = Calendar.getInstance().get(Calendar.YEAR);
-			String bugNumber = Integer.toString(year);
-			bug.setBugNumber(bugNumber);
 			bugDAO.add(bug);
+			
+			//
+			int year = Calendar.getInstance().get(Calendar.YEAR);
+			String bugNumber = "SVRB-"+Integer.toString(year)+"-"+String.format("%1$08d", bug.getBugId());
+			bug.setBugNumber(bugNumber);
+			bug.setGraphAddress("b"+bug.getBugId());
+			bugDAO.update(bug);
+			
+			File fromFile = new File(graphAddress);
+			File toFile = new File(bug.getGraphAddress());
+			
+			try {
+				FileUtils.copyFile(fromFile, toFile);
+				fromFile.delete();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		return map;
