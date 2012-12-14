@@ -6,54 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Submit New BUG Information - SVRPlatform</title>
 	<link rel="stylesheet" href="style.css" />
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript">			
-	
-					$(document).ready(function(){
-						$("#subButton").click(function(){
-					         var data = new FormData($("form#form1")[0]);
-					         data.append('username', 'gokeii');
-					         $.ajax({
-					             url:'upload.jsp',
-					             type:'POST',
-					             data:data,
-					             cache: false,
-					             contentType: false,    //must declare
-					             processData: false,    //must declare
-					             success:function(data){
-					                 $("#uploadscreenshot").attr("src",data);
-					                 $("#uploadscreenshot").attr('style','display:block');
-					             }
-					         });
-					     });
-					     $("#inputfile").change(function(){
-							 $("#uploadscreenshotbutton").attr('style','display:none');
-					         //create FormData
-					         //$("#description").attr('value',document.getElementById("form1").nodeName);
-					         //var data = new FormData($("form#form1")[0]);
-					         var data = new FormData();
-					         
-					         //add data for FormData
-					         //$.each($("#inputfile")[0].files, function(i, file) {
-					         /*     data.append('graph', $("#inputfile")[0].files[0]);
-					             $("#description").attr('value',data); */
-					         //});
-					         data.append('username', 'gokeii');
-					         $.ajax({
-					             url:'uploadgraph',
-					             type:'POST',
-					             data:data,
-					             cache: false,
-					             contentType: false,    //must declare
-					             processData: false,    //must declare
-					             success:function(data){
-					                 $("#uploadscreenshot").attr("src",data);
-					                 $("#uploadscreenshot").attr('style','display:block');
-					             }
-					         });
-					     });
-					 });
-				</script>
+	<script type="text/javascript" src="jquery.js"></script>
 </head>
 
 <body>
@@ -172,11 +125,6 @@
 			}	
 		}
 	</script>
-	<form id="form1" action="uploadgraph" method="post" enctype="multipart/form-data">
-		<input type="file" name="graph">
-		<input type="text" name="username">
-		<input type="button" id="subButton" value="submit">
-	</form>
     	<form id="submitbug" action="submitbug" method="post">
         	<div class="submitbugdigest">
             	<table class="submitbugtable">
@@ -274,13 +222,40 @@
 			1. url in ajax needs to be modified.
         	2. upload page should print out the image address
         --%>
+        
 		<tr>
 			<td class="submitbugkey">
 				<label for="Screenshot"> Screenshot </label>
 			</td>
 			<td class="submitugvalue">
 				
-				<img id="uploadscreenshotbutton" type='image' src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="getElementById('inputfile').click()"/>
+				<script type="text/javascript">	
+					$(document).ready(function(){
+					     $("#inputfile").change(function(){
+							 $("#uploadscreenshotbutton").attr('style','display:none');
+							 
+					         //create FormData
+					         var data = new FormData();
+					         
+					         //add data for FormData
+					         data.append('graph', $("#inputfile")[0].files[0]);
+					         $.ajax({
+					             url:'uploadgraph',
+					             type:'POST',
+					             data:data,
+					             cache: false,
+					             contentType: false,    //must declare
+					             processData: false,    //must declare
+					             success:function(data){
+					                 $("#uploadscreenshot").attr("src",data);
+					                 $("#uploadscreenshot").attr('style','display:block');
+					             }
+					         });
+					     });
+					 });
+				</script>
+				
+				<img id="uploadscreenshotbutton" src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="getElementById('inputfile').click()"/>
 				
 				<input type="file" name="graph" style="visibility:hidden" id="inputfile"/>
 				

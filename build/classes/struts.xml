@@ -96,7 +96,7 @@
         </action>
         
         <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph" method="execute">
-      		<result name="fail">/WEB-INF/GraphAddressOutWrong.jsp</result>
+      		<result name="fail">/WEB-INF/GraphAddressOut.jsp</result>
 	 		<result name="success" type="stream"></result>
         </action>
          
