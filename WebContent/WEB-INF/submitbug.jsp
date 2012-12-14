@@ -236,10 +236,10 @@
 					         
 					         //add data for FormData
 					         $.each($("#inputfile")[0].files, function(i, file) {
-					             data.append('uploadFile', file);  //upload_file is the name of file
+					             data.append('graph', file);  //upload_file is the name of file
 					         });
 					         $.ajax({
-					             url:'upload',
+					             url:'uploadgraph',
 					             type:'POST',
 					             data:data,
 					             cache: false,
@@ -255,7 +255,7 @@
 				</script>
 				<img id="uploadscreenshotbutton" type='image' src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="getElementById('inputfile').click()"/>
 				
-				<input type="file" name="image" style="visibility:hidden" id="inputfile"/>
+				<input type="file" name="graph" style="visibility:hidden" id="inputfile"/>
 				
 				<img id="uploadscreenshot" name="graphaddress" src="/"/>
 			</td>
