@@ -26,6 +26,7 @@ public class testForPasswdEncodeing {
 ////		System.out.println(PasswordEncoder.EncoderByMd5("hantian00"));
 ////		System.out.println(PasswordEncoder.EncoderByMd5("hantian00"));
 //		System.out.println(s3);
+		System.out.println(String.format("%1$08d", 333));
 	}
 
 }
