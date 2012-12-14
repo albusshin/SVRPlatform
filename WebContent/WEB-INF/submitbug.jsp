@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Submit New BUG Information - SVRPlatform</title>
 	<link rel="stylesheet" href="style.css" />
-	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="jquery.min.js"></script>
 </head>
 
 <body>
@@ -222,28 +222,29 @@
 			1. url in ajax needs to be modified.
         	2. upload page should print out the image address
         --%>
-        
 		<tr>
 			<td class="submitbugkey">
 				<label for="Screenshot"> Screenshot </label>
 			</td>
 			<td class="submitugvalue">
-				
-				<script type="text/javascript">	
+				<script type="text/javascript">					
 					$(document).ready(function(){
 					     $("#inputfile").change(function(){
 							 $("#uploadscreenshotbutton").attr('style','display:none');
-							 
 					         //create FormData
 					         var data = new FormData();
 					         
 					         //add data for FormData
-					         data.append('graph', $("#inputfile")[0].files[0]);
+					         //$.each($("#inputfile")[0].files, function(i, file) {
+					          //   data.append('graph', file);  //upload_file is the name of file
+					         //});
+					         data.append('graph',$("#inputfile")[0].files[0]);
 					         $.ajax({
 					             url:'uploadgraph',
 					             type:'POST',
 					             data:data,
 					             cache: false,
+					             enctype: 'multipart/form-data',
 					             contentType: false,    //must declare
 					             processData: false,    //must declare
 					             success:function(data){
@@ -254,8 +255,7 @@
 					     });
 					 });
 				</script>
-				
-				<img id="uploadscreenshotbutton" src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="getElementById('inputfile').click()"/>
+				<img id="uploadscreenshotbutton" type='image' src="images/uploadbutton.png" width="300px" onmouseover="this.src='images/uploadbuttonpressed.png'" onmouseout="this.src='images/uploadbutton.png'" onclick="getElementById('inputfile').click()"/>
 				
 				<input type="file" name="graph" style="visibility:hidden" id="inputfile"/>
 				

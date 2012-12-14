@@ -23,11 +23,11 @@ public class UploadGraph extends ActionSupport {
 	private String message;
 	private InputStream inputStream;
 
-	public InputStream getInputstream() {
+	public InputStream getInputStream() {
 		return inputStream;
 	}
 
-	public void setInputstream(InputStream inputStream) {
+	public void setInputStream(InputStream inputStream) {
 		this.inputStream = inputStream;
 	}
 
@@ -75,17 +75,13 @@ public class UploadGraph extends ActionSupport {
 			// }
 			if (!graphContentType.equals("image/png")
 					&& !graphContentType.equals("image/bmp")
-					&& !graphContentType.equals("image/jpg")) {
+					&& !graphContentType.equals("image/jpg")
+					&& !graphContentType.equals("image/jpeg")) {
 				message = "graphWrongType";
-				return Constants.FAIL;
 			}
 			FileUtils.copyFile(graph, savefile);
-			String abc = "abcdefg";
-			inputStream = new ByteArrayInputStream(abc.getBytes("UTF-8"));
-			System.out.println("message == " + message);
-			System.out.println("graph.getAbsolutePath() == "
-					+ graph.getAbsolutePath());
-			System.out.println("graph.length() " + graph.length());
+			String address = "upload/" + savefile.getName();
+			inputStream = new ByteArrayInputStream(address.getBytes("UTF-8"));
 			return Constants.SUCCESS;
 
 		} else {
