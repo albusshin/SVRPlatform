@@ -3,6 +3,7 @@ package com.SVRPlatform.action;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
@@ -73,10 +74,7 @@ public class UploadGraph extends ActionSupport {
 			// message = "graphTooBig";
 			// return Constants.FAIL;
 			// }
-			if (!graphContentType.equals("image/png")
-					&& !graphContentType.equals("image/bmp")
-					&& !graphContentType.equals("image/jpg")
-					&& !graphContentType.equals("image/jpeg")) {
+			if (!Pattern.matches("image/\\w+", graphContentType)) {
 				message = "graphWrongType";
 			}
 			FileUtils.copyFile(graph, savefile);
