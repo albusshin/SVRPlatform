@@ -2,12 +2,12 @@ package com.SVRPlatform.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.SVRPlatform.userHandling.*;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.SVRPlatform.Utils.*;
 import com.SVRPlatform.constants.*;
 
 public class TrySubmitBug extends ActionSupport implements ServletRequestAware,ServletResponseAware {

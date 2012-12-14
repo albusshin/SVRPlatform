@@ -1,4 +1,4 @@
-package com.SVRPlatform.userHandling;
+package com.SVRPlatform.Utils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
