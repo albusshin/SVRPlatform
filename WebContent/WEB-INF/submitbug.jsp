@@ -235,9 +235,10 @@
 					         var data = new FormData();
 					         
 					         //add data for FormData
-					         $.each($("#inputfile")[0].files, function(i, file) {
-					             data.append('graph', file);  //upload_file is the name of file
-					         });
+					         //$.each($("#inputfile")[0].files, function(i, file) {
+					          //   data.append('graph', file);  //upload_file is the name of file
+					         //});
+					         data.append('graph',$("#inputfile")[0].files[0]);
 					         $.ajax({
 					             url:'uploadgraph',
 					             type:'POST',
