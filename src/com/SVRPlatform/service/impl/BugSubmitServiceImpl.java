@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.SoftwareDAO;
@@ -146,15 +147,9 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			bugDAO.add(bug);
 			
 			//
-			int year = Calendar.getInstance().get(Calendar.YEAR);
-			String bugNumber = "SVRB-"+Integer.toString(year)+"-"+String.format("%1$08d", bug.getBugId());
-			bug.setBugNumber(bugNumber);
-			bug.setGraphAddress("b"+bug.getBugId());
-			bugDAO.update(bug);
-			
-			File fromFile = new File(graphAddress);
-			File toFile = new File(bug.getGraphAddress());
-			
+			String uploadPath = ServletActionContext.getServletContext().getRealPath("/upload");
+			File fromFile = new File(new File(uploadPath), graphAddress);
+			File toFile = new File(new File(uploadPath), bug.getGraphAddress());
 			try {
 				FileUtils.copyFile(fromFile, toFile);
 				fromFile.delete();
@@ -162,6 +157,13 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			int year = Calendar.getInstance().get(Calendar.YEAR);
+			String bugNumber = "SVRB-"+Integer.toString(year)+"-"+String.format("%1$08d", bug.getBugId());
+			bug.setBugNumber(bugNumber);
+			bug.setGraphAddress("b"+bug.getBugId()+graphAddress.substring(graphAddress.indexOf(".")));
+			bugDAO.update(bug);
+			
 		}
 
 		return map;
