@@ -146,8 +146,14 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			//set the bugNumber to year for now, hibernate layer will fix it later.
 			bugDAO.add(bug);
 			
-			//
-			String uploadPath = ServletActionContext.getServletContext().getRealPath("/upload");
+			int year = Calendar.getInstance().get(Calendar.YEAR);
+			String bugNumber = "SVRB-"+Integer.toString(year)+"-"+String.format("%1$08d", bug.getBugId());
+			bug.setBugNumber(bugNumber);
+			bug.setGraphAddress("upload/b"+bug.getBugId()+graphAddress.substring(graphAddress.indexOf(".")));
+			bugDAO.update(bug);
+			
+
+			String uploadPath = ServletActionContext.getServletContext().getRealPath("/");
 			File fromFile = new File(new File(uploadPath), graphAddress);
 			File toFile = new File(new File(uploadPath), bug.getGraphAddress());
 			try {
@@ -157,13 +163,6 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			int year = Calendar.getInstance().get(Calendar.YEAR);
-			String bugNumber = "SVRB-"+Integer.toString(year)+"-"+String.format("%1$08d", bug.getBugId());
-			bug.setBugNumber(bugNumber);
-			bug.setGraphAddress("b"+bug.getBugId()+graphAddress.substring(graphAddress.indexOf(".")));
-			bugDAO.update(bug);
-			
 		}
 
 		return map;
