@@ -3,7 +3,6 @@ package com.SVRPlatform.dao.impl;
 import java.io.Serializable;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,24 +36,25 @@ public class BugDAOImpl extends BasicDAOImpl implements BugDAO{
 		}
 	}
 
-	@Override
-	public Serializable add(Object obj) {
-		// TODO Auto-generated method stub
-		Session s = null;
-		Transaction tx;
-		try{
-			s = sessionFactory.openSession();
-			tx = s.beginTransaction();
-			Bug bug = (Bug)obj;
-			Serializable se = s.save(obj);
-			String str = bug.getBugNumber() + bug.getBugId();
-			bug.setBugNumber(str);
-			tx.commit();
-			return se;
-		} finally {
-			if(s != null)
-				s.close();
-		}
-	}
+//	@Override
+//	public Serializable add(Object obj) {
+//		// TODO Auto-generated method stub
+//		Session s = null;
+//		Transaction tx;
+//		try{
+//			s = sessionFactory.openSession();
+//			tx = s.beginTransaction();
+//			Bug bug = (Bug)obj;
+//			Serializable se = s.save(obj);
+//			String str = bug.getBugNumber() + "-" 
+//							+ String.format("%1$08d", bug.getBugId());
+//			bug.setBugNumber(str);
+//			tx.commit();
+//			return se;
+//		} finally {
+//			if(s != null)
+//				s.close();
+//		}
+//	}
 
 }
