@@ -7,9 +7,9 @@
 
     <package name="example" namespace="/" extends="default">
 
-        <action name="upload" class="Junit.test.Jingxuan.Upload">
+        <!--action name="upload" class="Junit.test.Jingxuan.Upload">
         	<result name="success" type="stream"/>
-        </action>
+        </action-->
 
         <!-- Add actions here -->
     </package>
