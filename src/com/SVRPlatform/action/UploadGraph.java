@@ -1,13 +1,17 @@
 package com.SVRPlatform.action;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
+import com.SVRPlatform.constants.Constants;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UploadGraph extends ActionSupport {
-	
+
 	/**
 	 * 
 	 */
@@ -17,7 +21,16 @@ public class UploadGraph extends ActionSupport {
 	private String graphFileName;
 	private String uploadPath;
 	private String message;
-	
+	private InputStream inputStream;
+
+	public InputStream getInputstream() {
+		return inputStream;
+	}
+
+	public void setInputstream(InputStream inputStream) {
+		this.inputStream = inputStream;
+	}
+
 	public File getGraph() {
 		return graph;
 	}
@@ -45,37 +58,41 @@ public class UploadGraph extends ActionSupport {
 	public String getMessage() {
 		return message;
 	}
-	
-	
+
 	public String execute() throws Exception {
-		
-		uploadPath= ServletActionContext.getServletContext()
-				.getRealPath("/upload");
+
+		uploadPath = ServletActionContext.getServletContext().getRealPath(
+				"/upload");
 		System.out.println(uploadPath);
-		
-		if(graph !=null){
+		if (graph != null) {
 			File savefile = new File(new File(uploadPath), graphFileName);
-			if(!savefile.getParentFile().exists())
+			if (!savefile.getParentFile().exists())
 				savefile.getParentFile().mkdirs();
-		
-			if(graph.length()>2097152){
-				message="graphTooBig";
-				return "FileUploadFailed";
+
+			// if (graph.length() > 2097152) {
+			// message = "graphTooBig";
+			// return Constants.FAIL;
+			// }
+			if (!graphContentType.equals("image/png")
+					&& !graphContentType.equals("image/bmp")
+					&& !graphContentType.equals("image/jpg")) {
+				message = "graphWrongType";
+				return Constants.FAIL;
 			}
-			if(!graphContentType.equals("image/png") && !graphContentType.equals("image/bmp") && !graphContentType.equals("image/jpg")){ 
-				message="graphWrongType";
-				return "FileUploadFailed";
-			}
-			if(message==null){		
-				FileUtils.copyFile(graph,savefile);
-				return "FileUploadSuccess";
-			}
-			 System.out.println(graph.length());
+			FileUtils.copyFile(graph, savefile);
+			String abc = "abcdefg";
+			inputStream = new ByteArrayInputStream(abc.getBytes("UTF-8"));
+			System.out.println("message == " + message);
+			System.out.println("graph.getAbsolutePath() == "
+					+ graph.getAbsolutePath());
+			System.out.println("graph.length() " + graph.length());
+			return Constants.SUCCESS;
+
+		} else {
+			message = "graphIsNull";
+			System.out.println("message = " + message);
+			return Constants.FAIL;
 		}
-		else {
-			message="graphIsNull";
-			return "FileUploadFailed";
-		}
-		return "FileUploadSuccess";
+
 	}
 }

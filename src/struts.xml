@@ -84,10 +84,13 @@
         	<result name="success" type="redirect">logout.jsp</result>
         </action>
         
+        <!-- 
+        What the F**K is this???
         <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph">  
 	            <result name="success">/WEB-INF/index.jsp</result>  
 	            <result name="input">/upload.jsp</result>  
        	</action>  
+       	-->
          
         <action name="TrySubmitBug" class="com.SVRPlatform.action.TrySubmitBug" method="execute">
 	 		<result name="success">/WEB-INF/submitbug.jsp</result>
@@ -99,15 +102,12 @@
 	 		<result name="fail">/WEB-INF/submitbug.jsp?stat=wrong</result>  
         </action>
         
-        <action name="makeComment" class="com.SVRPlatform.action.MakeComment" method="execute">
-        	<result name="success" >/bugcomments.html</result>
+        <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph" method="execute">
+      		<result name="fail">/WEB-INF/GraphAddressOutWrong.jsp</result>
+	 		<result name="success" type="stream"></result>
         </action>
-        
-        <action name="giveSolution" class="com.SVRPlatform.action.GiveSolution" method="execute">
-        	<result name="success" >/bugsolutions.html</result>
-        </action>
-        
-        
+         
+         
     </package>
 </struts>
 
