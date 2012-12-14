@@ -21,6 +21,7 @@ public class UploadGraph extends ActionSupport {
 	private String graphFileName;
 	private String uploadPath;
 	private String message;
+	private String username;
 	private InputStream inputStream;
 
 	public InputStream getInputstream() {
@@ -37,6 +38,14 @@ public class UploadGraph extends ActionSupport {
 
 	public void setGraph(File graph) {
 		this.graph = graph;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getGraphContentType() {
@@ -64,6 +73,7 @@ public class UploadGraph extends ActionSupport {
 		uploadPath = ServletActionContext.getServletContext().getRealPath(
 				"/upload");
 		System.out.println(uploadPath);
+		System.out.println(username);
 		if (graph != null) {
 			File savefile = new File(new File(uploadPath), graphFileName);
 			if (!savefile.getParentFile().exists())
