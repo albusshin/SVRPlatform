@@ -10,7 +10,7 @@
     <constant name="struts.objectFactory" value="spring"/>
     <constant name="struts.serve.static.browserCache" value="false"/>
     <constant name="struts.configuration.xml.reload" value="true"/>
-    
+    <constant name="struts.multipart.maxSize" value="10485760"></constant>
 
     <package name="default" namespace="/" extends="struts-default">
     	   
