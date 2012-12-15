@@ -34,8 +34,14 @@ public class BugInfoDisplayServiceImpl implements BugInfoDisplayService {
 		}
 		
 		Software software = bug.getSoftware();
+/*
+		System.out.println("-------1111111111111-------");
 		Solution bestSolution = (Solution) solutionDAO.getByID(bug.getBestSolutionId());
+
+		System.out.println("--------123-13-1--------");
 		Solution officialSolution = (Solution) solutionDAO.getByID(bug.getOfficialSolutionId());
+		
+		System.out.println("------22222222222-------");*/
 		
 		map.put("strBugNumber", bug.getBugNumber());
 		map.put("strBugDigest", bug.getBugDigest());
@@ -50,8 +56,8 @@ public class BugInfoDisplayServiceImpl implements BugInfoDisplayService {
 		map.put("strSoftware", software.getName());
 		map.put("strVersion", bug.getVersion());
 		map.put("strLanguage", bug.getLanguage());
-		map.put("strBestSolution", bestSolution.getContent());
-		map.put("strOfficialSolution", officialSolution.getContent());
+/*		map.put("strBestSolution", bestSolution.getContent());
+		map.put("strOfficialSolution", officialSolution.getContent());*/
 		map.put("status", "success");
 
 		return map;
