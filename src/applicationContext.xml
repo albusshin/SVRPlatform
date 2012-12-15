@@ -93,6 +93,10 @@
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     
+    <bean id="commentDAO" class="com.SVRPlatform.dao.impl.CommentDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
     <bean id="hashForPasswordRetrieveDAO" class="com.SVRPlatform.dao.impl.HashForPasswordRetrieveDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>

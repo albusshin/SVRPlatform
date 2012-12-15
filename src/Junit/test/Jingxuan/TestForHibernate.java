@@ -29,6 +29,7 @@ import com.SVRPlatform.dao.impl.SoftwareDAOImpl;
 import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Software;
+import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.PasswordRetrieveService;
 import com.SVRPlatform.service.impl.PasswordEncoder;
@@ -53,7 +54,7 @@ public class TestForHibernate {
 		Session s = sessionFactory.openSession();  
 		TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(s));
 		softwareDAO = (SoftwareDAOImpl) ctx.getBean("softwareDAO");
-		//commentDAO = (CommentDAOImpl) ctx.getBean("commentDAO");
+		commentDAO = (CommentDAOImpl) ctx.getBean("commentDAO");
 		passwordRetrieveService = (PasswordRetrieveService) ctx.getBean("passwordretrieveservice");
 	}
 
@@ -108,19 +109,21 @@ public class TestForHibernate {
 		}
 	}
 	@Test public void testSolution() {
-		Bug b = new Bug();
-		Software s = new Software();
-		s.setCompany("qq");
-		softwareDAO.add(s);
-		b.setSoftware(s);
-		bugDAO.add(b);
-		
+//		Bug b = new Bug();
+//		Software s = new Software();
+//		s.setCompany("qq");
+//		softwareDAO.add(s);
+//		b.setSoftware(s);
+//		bugDAO.add(b);
+//		System.out.println(((Bug)bugDAO.getByID(3)).getSoftware());
 		//sessionFactory.getCurrentSession().close();
+		Solution so = new Solution();
 	}
 	
 	@Test public void testBug() {
 		Bug b = new Bug();
 		bugDAO.add(b);
+		
 	}
 	
 	@Test public void testAddComment(){
@@ -138,6 +141,7 @@ public class TestForHibernate {
 	@Test public void testFindComment(){
 //		Bug bug = (Bug) bugDAO.getByID(new Integer(1));
 		User user = (User) userDAO.getByID(new Integer(1));
+		System.out.println(user);
 //		System.out.println(User.class.getSimpleName());
 //		System.out.println(User.class.getCanonicalName());
 		List<Comment> list = commentDAO.getByUserId(user, 10, 10);
