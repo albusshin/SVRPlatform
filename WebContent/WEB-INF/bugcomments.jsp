@@ -68,7 +68,7 @@ div.commentsfooter {
 				"	<div class='commentfooterdate'>Published:"+ datetimes.get(i) +
 				"	</div>"+
 				"	<img class='commentfooteravatar'"+
-			"			src='http://www.gravatar.com/avatar/"+	 hash + ">"+
+			"			src='http://www.gravatar.com/avatar/"+	 hash + "'>"+
 			"		<div class='commentfooterauthor'>"+
 			"			<div class='commentfooterauthorname'>"+
 			"				<a href='#' class='msblack20'>"+realnames.get(i)+"</a>"+
