@@ -5,6 +5,8 @@ import java.io.Serializable;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Projections;
 
 import com.SVRPlatform.dao.basicDAO;
 
@@ -64,4 +66,19 @@ public abstract class BasicDAOImpl implements basicDAO{
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
+	@Override
+	public long getRowCount(Class clazz) {
+		// TODO Auto-generated method stub
+		Session s = this.sessionFactory.openSession();
+			try{
+				org.hibernate.Criteria c = s.createCriteria(clazz);
+				c.setProjection(Projections.rowCount());
+				//System.out.println(c.list().get(0));
+				return ((Long)(c.list().get(0))).longValue();
+			} finally{
+				if(s!=null)
+					s.close();
+			}
+		}
 }

@@ -7,4 +7,6 @@ public interface basicDAO {
 	public void update(Object obj);
 	public void delete(Object obj);
 	public Object getByID(Serializable ID);
+	@SuppressWarnings("rawtypes")
+	public long getRowCount(Class clazz);
 }

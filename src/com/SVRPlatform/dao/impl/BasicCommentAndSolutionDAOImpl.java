@@ -3,6 +3,7 @@ package com.SVRPlatform.dao.impl;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Restrictions;
 
 import com.SVRPlatform.model.BasicCommentAndSolution;
@@ -12,7 +13,6 @@ abstract class BasicCommentAndSolutionDAOImpl extends BasicDAOImpl {
 	//protected methods
 		@SuppressWarnings("rawtypes")
 		protected List getByUserOrBugId(Class clazz, int fetchSize, int firstResult, int type, Object... obj){
-			System.out.println("fdasfdsfsd");
 			Session s = this.sessionFactory.openSession();
 			String str = null;
 			try{
@@ -28,7 +28,6 @@ abstract class BasicCommentAndSolutionDAOImpl extends BasicDAOImpl {
 				System.out.println(c.list().size());
 				@SuppressWarnings("unchecked")
 				List<BasicCommentAndSolution> list= c.list();
-				System.out.println(list.size());
 				switch(type){
 				case 1: {
 					for(BasicCommentAndSolution bcas : list){
