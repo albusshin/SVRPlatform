@@ -5,7 +5,7 @@ import java.util.List;
 public class BugCommentsData {
 	
 	private int commentCount;
-	private List<CommentData> comments;
+	private List<CommentData> commentsData;
 
 	public int getCommentCount() {
 		return commentCount;
@@ -13,10 +13,10 @@ public class BugCommentsData {
 	public void setCommentCount(int commentCount) {
 		this.commentCount = commentCount;
 	}
-	public List<CommentData> getComments() {
-		return comments;
+	public List<CommentData> getCommentsData() {
+		return commentsData;
 	}
-	public void setComments(List<CommentData> comments) {
-		this.comments = comments;
+	public void setCommentsData(List<CommentData> commentsData) {
+		this.commentsData = commentsData;
 	}
 }
