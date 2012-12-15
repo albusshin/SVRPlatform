@@ -152,6 +152,8 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			bug.setGraphAddress("upload/b"+bug.getBugId()+graphAddress.substring(graphAddress.indexOf(".")));
 			bugDAO.update(bug);
 			
+			//struts end needs bug number
+			map.put("BugNumber", bugNumber);			
 
 			String uploadPath = ServletActionContext.getServletContext().getRealPath("/");
 			File fromFile = new File(new File(uploadPath), graphAddress);
