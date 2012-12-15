@@ -46,6 +46,9 @@
    		<property name="bugInfoDisplayService" ref="bugInfoDisplayService"></property>
     </bean>
     
+    <bean id="displaycomments" scope="prototype" class="com.SVRPlatform.action.DisplayComments">
+    	<property name="commentsDisplayService" ref="commentsDisplayService"></property>
+    </bean>
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
     <bean id="loginService" class="com.SVRPlatform.service.impl.LoginServiceImpl">
