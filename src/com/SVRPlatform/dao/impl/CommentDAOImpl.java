@@ -42,7 +42,7 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 //			if(s!=null)
 //				s.close();
 //		}
-		return (List<Comment>) getByUserOrBugId(Comment.class, fetchSize, firstResult, bug, user);
+		return (List<Comment>) getByUserOrBugId(Comment.class, fetchSize, firstResult, 1, bug, user);
 	}
 	
 	/* (non-Javadoc)
@@ -51,8 +51,7 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Comment> getByBugId(Bug bug, int fetchSize, int firstResult){
-		return getByUserOrBugId(Comment.class, fetchSize, firstResult, bug);
-		
+		return getByUserOrBugId(Comment.class, fetchSize, firstResult, 2, bug);
 	}
 	
 	/* (non-Javadoc)
@@ -61,7 +60,7 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Comment> getByUserId(User user, int fetchSize, int firstResult){
-		return getByUserOrBugId(Comment.class, fetchSize, firstResult, user);
+		return getByUserOrBugId(Comment.class, fetchSize, firstResult, 3, user);
 	}
 	
 	

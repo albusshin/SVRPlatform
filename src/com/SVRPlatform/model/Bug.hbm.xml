@@ -11,10 +11,10 @@
         <property name="version" type="string">
             <column name="version" />
         </property>
-        <many-to-one name="software" class="com.SVRPlatform.model.Software" fetch="select">
+        <many-to-one name="software" class="com.SVRPlatform.model.Software" fetch="join">
             <column name="softwareID" />
         </many-to-one>
-        <many-to-one name="user" class="com.SVRPlatform.model.User" fetch="select">
+        <many-to-one name="user" class="com.SVRPlatform.model.User" fetch="join">
             <column name="userID" />
         </many-to-one>
         <property name="graphAddress" type="string">

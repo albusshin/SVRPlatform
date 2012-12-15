@@ -22,7 +22,9 @@ public class testForPasswdEncodeing {
 
 	@Test
 	public void test() {
-		System.out.println(String.format("%1$08d", 333));
+		String str="svrb-2012-00000045";
+		int i = Integer.parseInt(str.split("-")[2]);
+		System.out.println(i);
 	}
 
 }
