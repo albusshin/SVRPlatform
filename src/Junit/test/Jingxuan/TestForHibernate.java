@@ -144,10 +144,11 @@ public class TestForHibernate {
 		System.out.println(user);
 //		System.out.println(User.class.getSimpleName());
 //		System.out.println(User.class.getCanonicalName());
-		List<Comment> list = commentDAO.getByUserId(user, 10, 10);
+		List<Comment> list = commentDAO.getByUserId(user, 100, 10);
 		for(Comment c: list){
 			System.out.println(c.getCommentId());
 		}
+		System.out.println("---"+commentDAO.getRowCount(Comment.class));
 //		List<Comment> list2 = commentDAO.getByBugId(bug, 10, 10);
 //		for(Comment c: list2){
 //			System.out.println(c.getCommentId());

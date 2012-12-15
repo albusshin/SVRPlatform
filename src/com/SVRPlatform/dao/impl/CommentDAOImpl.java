@@ -60,7 +60,6 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Comment> getByUserId(User user, int fetchSize, int firstResult){
-		System.out.println(user);
 		return getByUserOrBugId(Comment.class, fetchSize, firstResult, 3, user);
 	}
 	
