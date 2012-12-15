@@ -76,7 +76,6 @@ div.commentsfooter {
 			"			<div class='commentfooterauthorcredit'>Credits: "+ creditss.get(i) +"</div>"+
 			"		</div>"+
 				"</div>"+
-				"</div>"+
 				"</div>");
 					
 				}
