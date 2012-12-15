@@ -23,7 +23,7 @@ public class CommentSubmitServiceImpl implements CommentSubmitService {
 	public void setBugDAO(BugDAO bugDAO) {
 		this.bugDAO = bugDAO;
 	}
-	public void setUserdAO(UserDAO userDAO) {
+	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
 	

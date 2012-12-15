@@ -46,12 +46,17 @@ div.commentsfooter {
 		</div>
 		<hr />
 		<div class="comments">
+		<%
+		System.out.println("Hello, worl1111111d!"); %>
 			<div class="commentstitle">${strCommentsAmount } Comments about
 				bug ${strBugNumber }</div>
 			<%
+			System.out.println("Hello, world!");
 			List<String> contents, datetimes, emails, realnames, titles, creditss;
 			contents = (List) request.getAttribute("contents");
+			System.out.println("contents === " + contents);
 			datetimes = (List)request.getAttribute("datetimes");
+			System.out.println("datetimes === " + datetimes);
 			emails = (List)request.getAttribute("emails");
 			realnames = (List)request.getAttribute("realnames");
 			titles = (List)request.getAttribute("titles");

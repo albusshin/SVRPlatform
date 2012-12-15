@@ -77,7 +77,10 @@ ServletResponseAware {
 	}
 
 	public String execute(){
-		BugCommentsData theData = commentsDisplayService.commentsDispalyService(strBugNumber, 0, 5);
+		System.out.println("DisplayComments execute()");
+		System.out.println("strBugNumber" + strBugNumber);
+		BugCommentsData theData = commentsDisplayService.commentsDispalyService(strBugNumber, 1, 5);
+		System.out.println("After theData initialization");
 		List<CommentData> commentData = theData.getCommentsData();
 		for (CommentData c: commentData){
 			contents.add(c.getContent());
