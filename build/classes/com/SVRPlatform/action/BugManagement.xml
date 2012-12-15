@@ -17,13 +17,19 @@
         </action>
         
         <action name="submitbug" class="submitbug" method="execute">
-	 		<result name="success">/WEB-INF/bugpage.jsp</result>
+	 		<result name="success" type="chain">/bugpage</result>
 	 		<result name="fail">/WEB-INF/submitbug.jsp?stat=wrong</result>  
         </action>
         
         <action name="uploadgraph" class="com.SVRPlatform.action.UploadGraph" method="execute">
 	 		<result name="success" type="stream"></result>
         </action>
+        
+        <action name="bugpage" class="bugpage" method="execute">
+        	<result name="success">/WEB-INF/bugpage.jsp</result>
+        	<result name="fail">/WEB-INF/bugpageNotFound.jsp</result>
+        </action>
+        
         <!-- Add actions here -->
     </package>
     
