@@ -211,7 +211,7 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 				&& map.get("software").equals("OK")
 				&& map.get("bugDigest").equals("OK")
 				&& map.get("language").equals("OK")) {
-			strBugNumber = map.get("strBugNumber");
+			strBugNumber = map.get("BugNumber");
 			return Constants.SUCCESS;
 		} else
 			return Constants.FAIL;
