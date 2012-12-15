@@ -1,5 +1,7 @@
 package com.SVRPlatform.action;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,6 +9,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.SVRPlatform.constants.Constants;
+import com.SVRPlatform.service.BugInfoDisplayService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class DisplayBug extends ActionSupport implements ServletRequestAware,
@@ -28,8 +31,12 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 	private String strSoftware;
 	private String strVersion;
 	private String strLanguage;
-	private String strBestSolutin;
+	private String strBestSolution;
 	private String strOfficialSolution;
+	private BugInfoDisplayService bugInfoDisplayService;
+	public void setBugInfoDisplayService(BugInfoDisplayService bugInfoDisplayService) {
+		this.bugInfoDisplayService = bugInfoDisplayService;
+	}
 	public HttpServletRequest getRequest() {
 		return request;
 	}
@@ -78,8 +85,8 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 	public String getStrLanguage() {
 		return strLanguage;
 	}
-	public String getStrBestSolutin() {
-		return strBestSolutin;
+	public String getStrBestSolution() {
+		return strBestSolution;
 	}
 	public String getStrOfficialSolution() {
 		return strOfficialSolution;
@@ -92,7 +99,26 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 		this.strBugNumber = strBugNumber;
 	}
 	public String execute(){
-		
+		Map<String, String> theMap = bugInfoDisplayService.bugInfoDisplay(strBugNumber);
+		if (theMap.get("status").equals("fail")){
+			return Constants.FAIL;
+		}
+		strBugDigest = theMap.get("strBugDigest");
+		strDate = theMap.get("strDate");
+		strScore = theMap.get("strScore");
+		strUsabilityImpact = theMap.get("strUsabilityImpact");
+		strDataImpact = theMap.get("strDataImpact");
+		strPrivacyImpact = theMap.get("strPrivscyImpact");
+		strAvailabilityImpact = theMap.get("strAvailabilityImpact");
+		strFrequency = theMap.get("strFrequency");
+		strScreenshotPath = theMap.get("strScreenshotPath");
+		strBugDescription = theMap.get("strBugDescription");
+		strCompany = theMap.get("strCompany");
+		strSoftware = theMap.get("strSoftware");
+		strVersion = theMap.get(strVersion);
+		strLanguage = theMap.get("strLanguage");
+		strBestSolution = theMap.get("strBestSolution");
+		strOfficialSolution = theMap.get("strOfficialSolution");
 		return Constants.SUCCESS;
 	}
 	@Override
