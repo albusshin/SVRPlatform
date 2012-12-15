@@ -45,11 +45,13 @@ public class BugInfoDisplayServiceImpl implements BugInfoDisplayService {
 		
 		map.put("strBugNumber", bug.getBugNumber());
 		map.put("strBugDigest", bug.getBugDigest());
+		map.put("strDate", bug.getDatetime().toString());
 		map.put("strScore", Float.toString(bug.getScore()));
 		map.put("strUsabilityImpact", Float.toString(bug.getUsabilityImpact()));
 		map.put("strDataImpact", Float.toString(bug.getDataImpact()));
 		map.put("strPrivacyImpact", Float.toString(bug.getPrivacyImpact()));
 		map.put("strAvailabilityImpact", Float.toString(bug.getAvailabilityImpact()));
+		map.put("strFrequency",  Float.toString(bug.getFrequency()));
 		map.put("strScreenshotPath", bug.getGraphAddress());
 		map.put("strBugDescription", bug.getDescription());
 		map.put("strCompany", software.getCompany());

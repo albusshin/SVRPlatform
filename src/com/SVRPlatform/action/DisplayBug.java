@@ -31,8 +31,8 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 	private String strSoftware;
 	private String strVersion;
 	private String strLanguage;
-//	private String strBestSolution;
-//	private String strOfficialSolution;
+	private String strBestSolution;
+	private String strOfficialSolution;
 	private BugInfoDisplayService bugInfoDisplayService;
 	public void setBugInfoDisplayService(BugInfoDisplayService bugInfoDisplayService) {
 		this.bugInfoDisplayService = bugInfoDisplayService;
@@ -85,13 +85,13 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 	public String getStrLanguage() {
 		return strLanguage;
 	}
-//	public String getStrBestSolution() {
-//		return strBestSolution;
-//	}
-//	public String getStrOfficialSolution() {
-//		return strOfficialSolution;
-//	}
-//	
+	public String getStrBestSolution() {
+		return strBestSolution;
+	}
+	public String getStrOfficialSolution() {
+		return strOfficialSolution;
+	}
+	
 	public String getStrBugNumber() {
 		return strBugNumber;
 	}
@@ -112,17 +112,17 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 		strScore = theMap.get("strScore");
 		strUsabilityImpact = theMap.get("strUsabilityImpact");
 		strDataImpact = theMap.get("strDataImpact");
-		strPrivacyImpact = theMap.get("strPrivscyImpact");
+		strPrivacyImpact = theMap.get("strPrivacyImpact");
 		strAvailabilityImpact = theMap.get("strAvailabilityImpact");
 		strFrequency = theMap.get("strFrequency");
 		strScreenshotPath = theMap.get("strScreenshotPath");
 		strBugDescription = theMap.get("strBugDescription");
 		strCompany = theMap.get("strCompany");
 		strSoftware = theMap.get("strSoftware");
-		strVersion = theMap.get(strVersion);
+		strVersion = theMap.get("strVersion");
 		strLanguage = theMap.get("strLanguage");
-//		strBestSolution = theMap.get("strBestSolution");
-//		strOfficialSolution = theMap.get("strOfficialSolution");
+		strBestSolution = theMap.get("strBestSolution");
+		strOfficialSolution = theMap.get("strOfficialSolution");
 		return Constants.SUCCESS;
 	}
 	@Override

@@ -120,8 +120,7 @@
         </table>	
         <br>
         <br>
-    
-   <!-- 
+        <!-- 
         <p class="bugvulsubtitle">
         Best Solution 
         </p>
@@ -133,8 +132,7 @@
 		</p>
 		<p class="bugvultext">
 		${strOfficialSolution }
-		</p>
-		
+		</p>a
 		-->
     </div>
     	<jsp:include page="/footer.jsp" flush="true"/>
