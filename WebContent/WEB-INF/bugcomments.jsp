@@ -49,12 +49,9 @@ div.commentsfooter {
 			<div class="commentstitle">${strCommentsAmount } Comments about
 				bug ${strBugNumber }</div>
 			<%
-			System.out.println("Hello, world!");
 			List<String> contents, datetimes, emails, realnames, titles, creditss;
 			contents = (List) request.getAttribute("contents");
-			System.out.println("contents === " + contents);
 			datetimes = (List)request.getAttribute("datetimes");
-			System.out.println("datetimes === " + datetimes);
 			emails = (List)request.getAttribute("emails");
 			realnames = (List)request.getAttribute("realnames");
 			titles = (List)request.getAttribute("titles");
@@ -63,9 +60,7 @@ div.commentsfooter {
 					String hash = emails.get(i);
 					if (hash!=null){
 						hash = DigestUtils.md5Hex(hash.trim().toLowerCase());
-						System.out.println("hash == " + hash);
 					}
-					System.out.println("Hello, worl1111111d!"); 
 					out.println("<div class='comment'>" + 
 					"<div class='commenttitle'>"+titles.get(i)+"</div>" +
 				"<div class='commenttext'>"+contents.get(i)+"</div>"+
@@ -73,15 +68,15 @@ div.commentsfooter {
 				"	<div class='commentfooterdate'>Published:"+ datetimes.get(i) +
 				"	</div>"+
 				"	<img class='commentfooteravatar'"+
-			"			src='http://www.gravatar.com/avatar/"+
-				
-			 hash + ">"+
+			"			src='http://www.gravatar.com/avatar/"+	 hash + ">"+
 			"		<div class='commentfooterauthor'>"+
 			"			<div class='commentfooterauthorname'>"+
 			"				<a href='#' class='msblack20'>"+realnames.get(i)+"</a>"+
 			"			</div>"+
 			"			<div class='commentfooterauthorcredit'>Credits: "+ creditss.get(i) +"</div>"+
 			"		</div>"+
+				"</div>"+
+				"</div>"+
 				"</div>");
 					
 				}
