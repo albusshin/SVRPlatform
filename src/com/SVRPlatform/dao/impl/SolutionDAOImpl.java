@@ -30,21 +30,21 @@ public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements S
 	public List<Solution> getByUserIdAndBugId(User user, Bug bug, int fetchSize,
 			int firstResult) {
 		// TODO Auto-generated method stub
-		return (List<Solution>) getByUserOrBugId(Solution.class, fetchSize, firstResult, bug, user);
+		return (List<Solution>) getByUserOrBugId(Solution.class, fetchSize, firstResult, 1, bug, user);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Solution> getByBugId(Bug bug, int fetchSize, int firstResult) {
 		// TODO Auto-generated method stub
-		return getByUserOrBugId(Solution.class, fetchSize, firstResult, bug);
+		return getByUserOrBugId(Solution.class, fetchSize, firstResult, 2, bug);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Solution> getByUserId(User user, int fetchSize, int firstResult) {
 		// TODO Auto-generated method stub
-		return getByUserOrBugId(Solution.class, fetchSize, firstResult, user);
+		return getByUserOrBugId(Solution.class, fetchSize, firstResult, 3, user);
 	}
 
 }
