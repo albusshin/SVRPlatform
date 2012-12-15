@@ -112,14 +112,14 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 		strScore = theMap.get("strScore");
 		strUsabilityImpact = theMap.get("strUsabilityImpact");
 		strDataImpact = theMap.get("strDataImpact");
-		strPrivacyImpact = theMap.get("strPrivscyImpact");
+		strPrivacyImpact = theMap.get("strPrivacyImpact");
 		strAvailabilityImpact = theMap.get("strAvailabilityImpact");
 		strFrequency = theMap.get("strFrequency");
 		strScreenshotPath = theMap.get("strScreenshotPath");
 		strBugDescription = theMap.get("strBugDescription");
 		strCompany = theMap.get("strCompany");
 		strSoftware = theMap.get("strSoftware");
-		strVersion = theMap.get(strVersion);
+		strVersion = theMap.get("strVersion");
 		strLanguage = theMap.get("strLanguage");
 		strBestSolution = theMap.get("strBestSolution");
 		strOfficialSolution = theMap.get("strOfficialSolution");
