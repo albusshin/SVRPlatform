@@ -124,10 +124,10 @@
         Best Solution 
         </p>
         <p class="bugvultext">
-        ${strBestSolutin }
+        ${strBestSolution }
 		</p>
 		<p class="bugvulsubtitle">
-		Official Solutin
+		Official Solution
 		</p>
 		<p class="bugvultext">
 		${strOfficialSolution }
