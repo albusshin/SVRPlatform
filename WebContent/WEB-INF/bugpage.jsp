@@ -131,7 +131,7 @@
 		</p>
 		<p class="bugvultext">
 		${strOfficialSolution }
-		</p>a
+		</p>
     </div>
     	<jsp:include page="/footer.jsp" flush="true"/>
 </body>

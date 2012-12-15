@@ -4,22 +4,14 @@ import java.util.List;
 
 public class BugCommentsData {
 	
-	private int bugCount;
-	private String bugNumber;
+	private int commentCount;
 	private List<CommentData> comments;
-	
 
-	public int getBugCount() {
-		return bugCount;
+	public int getCommentCount() {
+		return commentCount;
 	}
-	public void setBugCount(int bugCount) {
-		this.bugCount = bugCount;
-	}
-	public String getBugNumber() {
-		return bugNumber;
-	}
-	public void setBugNumber(String bugNumber) {
-		this.bugNumber = bugNumber;
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
 	}
 	public List<CommentData> getComments() {
 		return comments;
