@@ -12,6 +12,7 @@ abstract class BasicCommentAndSolutionDAOImpl extends BasicDAOImpl {
 	//protected methods
 		@SuppressWarnings("rawtypes")
 		protected List getByUserOrBugId(Class clazz, int fetchSize, int firstResult, int type, Object... obj){
+			System.out.println("fdasfdsfsd");
 			Session s = this.sessionFactory.openSession();
 			String str = null;
 			try{
@@ -24,8 +25,10 @@ abstract class BasicCommentAndSolutionDAOImpl extends BasicDAOImpl {
 					c.setMaxResults(fetchSize);
 				if(firstResult >= 0)
 					c.setFirstResult(firstResult);
+				System.out.println(c.list().size());
 				@SuppressWarnings("unchecked")
 				List<BasicCommentAndSolution> list= c.list();
+				System.out.println(list.size());
 				switch(type){
 				case 1: {
 					for(BasicCommentAndSolution bcas : list){
