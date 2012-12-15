@@ -13,9 +13,11 @@ public class CommentsDisplayServiceImpl implements CommentsDisplayService {
 	}
 	
 	@Override
-	public BugCommentsData commentsDispalyService(String bugNumber) {
+	public BugCommentsData commentsDispalyService(String bugNumber, int pageNumber, int commentsPerPage) {
 		int bugID = Integer.parseInt(bugNumber.split("-")[2]);
 		
+		
+		//List<Comment> comments = commentDAO.getByBugId(bugID, commentsPer, firstResult)
 
 		return null;
 	}
