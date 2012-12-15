@@ -16,5 +16,9 @@ public interface CommentDAO extends basicDAO {
 
 	public List<Comment> getByUserId(User user, int fetchSize,
 			int firstResult);
+	
+	public long getCountFromOneBug(Bug bug);
+	
+	public long getCountFromOneUser(User user);
 
 }
