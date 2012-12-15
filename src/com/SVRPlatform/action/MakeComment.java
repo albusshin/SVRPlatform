@@ -13,6 +13,15 @@ public class MakeComment extends ActionSupport
 	 * 
 	 */
 	private static final long serialVersionUID = 8398439497316195283L;
+	private String strBugNumber;
+	public String getStrBugNumber() {
+		return strBugNumber;
+	}
+
+	public void setStrBugNumber(String strBugNumber) {
+		this.strBugNumber = strBugNumber;
+	}
+
 	public String commentssubmittext;
 	public String commentssubmittitle;
 	public String message;
