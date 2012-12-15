@@ -60,7 +60,11 @@
    		<property name="bugDAO" ref="bugDAO"></property> 
     	<property name="solutionDAO" ref="solutionDAO"></property>
     </bean> 
-    	
+    
+    <bean id="commentsDisplayService" class="com.SVRPlatform.service.impl.CommentDisplayServiceImpl">
+    	<property name="bugDAO" ref="bugDAO"></property>
+    	<property name="commentDAO" ref="commentDAO"></property>
+    </bean>
     
     <bean id="bugsubmitService" class="com.SVRPlatform.service.impl.BugSubmitServiceImpl">
     	<property name="userDAO" ref="userDAO"></property>

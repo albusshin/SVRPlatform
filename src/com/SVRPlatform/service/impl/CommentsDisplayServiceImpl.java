@@ -30,7 +30,7 @@ public class CommentsDisplayServiceImpl implements CommentsDisplayService {
 		
 		int bugID = Integer.parseInt(bugNumber.split("-")[2]);
 		Bug bug = (Bug) bugDAO.getByID(bugID);
-		int firstResult = (pageNumber-1) * commentsPerPage + 1;
+		int firstResult = (pageNumber-1) * commentsPerPage;
 		List<Comment> comments = commentDAO.getByBugId(bug, commentsPerPage, firstResult);
 		List<CommentData> commentsData = new LinkedList<CommentData>();
 		

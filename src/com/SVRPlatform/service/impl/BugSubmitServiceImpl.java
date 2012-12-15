@@ -75,9 +75,9 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			map.put("language", "tooLong");
 		else map.put("language", "OK");
 		
-		if (map.get("description") == "OK" && map.get("version") == "OK" && 
-			map.get("software") == "OK" && map.get("bugDigest") == "OK" && 
-			map.get("language") == "OK") {
+		if (map.get("description").equals("OK") && map.get("version").equals("OK") && 
+			map.get("software").equals("OK") && map.get("bugDigest").equals("OK") && 
+			map.get("language").equals("OK")) {
 			Bug bug = new Bug();			
 			User user = (User) userDAO.getUserByEmail(email);
 			float ui = 0, di = 0, pi = 0, ai = 0, fr = 0, sc = 0;
