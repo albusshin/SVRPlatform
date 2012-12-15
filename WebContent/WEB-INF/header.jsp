@@ -72,8 +72,9 @@
 			                    "<li><a href='javascript:;'>About</a></li>"+
 			                    "<li><a href='javascript:;'>Contact</a></li>"+
 			                    "<div class='searchinput' align='right'>"+
-			                    	"<form>"+
-									"	<input type='search' placeholder='Search'>"+
+			                    	"<form action='searchbug'>"+
+									"	<input type='search' placeholder='Search' name='strBugNumber'/>"+
+						  	"						<input type='submit' style='display:none'/>" +
 									"</form>"+
 			                    "</div>"+
 			                "</ul>"+
@@ -126,8 +127,9 @@
 	    "                <li><a href='javascript:;'>About</a></li>"+
 	    "                <li><a href='javascript:;'>Contact</a></li>"+
 	    "                <div class='searchinput' align='right'>"+
-	    "                	<form>"+
-		"						<input type='search' placeholder='Search'>"+
+	    "                	<form action='searchbug'>"+
+		"						<input type='search' placeholder='Search' name='strBugNumber'/>"+
+	   	"						<input type='submit' style='display:none'/>" +
 		"					</form>"+
 	    "                </div>"+
 	    "            </ul>"+

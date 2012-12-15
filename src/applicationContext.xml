@@ -42,6 +42,9 @@
     	<property name="bugsubmitService" ref="bugsubmitService"></property>
     </bean>
     
+    <bean id="bugpage" scope="prototype" class="com.SVRPlatform.action.DisplayBug">
+   		<property name="bugInfoDisplayService" ref="bugInfoDisplayService"></property>
+    </bean>
     
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
@@ -52,6 +55,12 @@
      <bean id="registerService" class="com.SVRPlatform.service.impl.RegisterServiceImpl">
     	<property name="userDAO" ref="userDAO"></property>
     </bean>
+    
+   	<bean id="bugInfoDisplayService" class="com.SVRPlatform.service.impl.BugInfoDisplayServiceImpl">
+   		<property name="bugDAO" ref="bugDAO"></property> 
+    	<property name="solutionDAO" ref="solutionDAO"></property>
+    </bean> 
+    	
     
     <bean id="bugsubmitService" class="com.SVRPlatform.service.impl.BugSubmitServiceImpl">
     	<property name="userDAO" ref="userDAO"></property>
@@ -77,6 +86,10 @@
     </bean>
     
     <bean id="softwareDAO" class="com.SVRPlatform.dao.impl.SoftwareDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <bean id="solutionDAO" class="com.SVRPlatform.dao.impl.SolutionDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     

@@ -37,6 +37,15 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 	private Map<String, String> map;
 	private String message;
 	private String graphPath;
+	private String strBugNumber;
+
+	public String getStrBugNumber() {
+		return strBugNumber;
+	}
+
+	public void setStrBugNumber(String strBugNumber) {
+		this.strBugNumber = strBugNumber;
+	}
 
 	public String getGraphPath() {
 		return graphPath;
@@ -177,9 +186,9 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 				software, digest, email, usabilityimpact, dataimpact,
 				privacyimpact, availabilityimpact, frequency, language);
 		message = "There's something wrong with your inputs, please check:\n";
-		message = map.get("description") + map.get("version")
-				+ map.get("software") + map.get("bugDigest")
-				+ map.get("language");
+		//message = map.get("description") + map.get("version")
+		//		+ map.get("software") + map.get("bugDigest")
+		//		+ map.get("language");
 		if ((!map.get("bugDigest").equals("OK"))){
 			message += "Please input the digest of the bug information";
 		}
@@ -202,7 +211,7 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 				&& map.get("software").equals("OK")
 				&& map.get("bugDigest").equals("OK")
 				&& map.get("language").equals("OK")) {
-			
+			strBugNumber = map.get("BugNumber");
 			return Constants.SUCCESS;
 		} else
 			return Constants.FAIL;
