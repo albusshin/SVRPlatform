@@ -9,6 +9,10 @@ public class MakeComment extends ActionSupport
 	 * Get title and text from page,check it is null or not.
 	 */
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8398439497316195283L;
 	public String commentssubmittext;
 	public String commentssubmittitle;
 	public String message;
