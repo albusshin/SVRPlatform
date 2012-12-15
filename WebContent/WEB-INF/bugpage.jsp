@@ -33,7 +33,7 @@
                 </ul>
             </div>
         <p class="bugvulid">
-        Bug Details:&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">${strBugId }</a>
+        Bug Details:&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">${strBugNumber }</a>
         </p>
         <br>
         <div class="bugvuldigest">
@@ -94,7 +94,7 @@
         
         <br>
         <p class="bugvulsubtitle">
-        Products Affected By ${strBugId } 
+        Products Affected By ${strBugNumber } 
         </p>
         <br>
         <br>
@@ -124,10 +124,10 @@
         Best Solution 
         </p>
         <p class="bugvultext">
-        ${strBestSolutin }
+        ${strBestSolution }
 		</p>
 		<p class="bugvulsubtitle">
-		Official Solutin
+		Official Solution
 		</p>
 		<p class="bugvultext">
 		${strOfficialSolution }

@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.SoftwareDAO;
@@ -145,16 +146,18 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			//set the bugNumber to year for now, hibernate layer will fix it later.
 			bugDAO.add(bug);
 			
-			//
 			int year = Calendar.getInstance().get(Calendar.YEAR);
 			String bugNumber = "SVRB-"+Integer.toString(year)+"-"+String.format("%1$08d", bug.getBugId());
 			bug.setBugNumber(bugNumber);
-			bug.setGraphAddress("b"+bug.getBugId());
+			bug.setGraphAddress("upload/b"+bug.getBugId()+graphAddress.substring(graphAddress.indexOf(".")));
 			bugDAO.update(bug);
 			
-			File fromFile = new File(graphAddress);
-			File toFile = new File(bug.getGraphAddress());
-			
+			//struts end needs bug number
+			map.put("BugNumber", bugNumber);			
+
+			String uploadPath = ServletActionContext.getServletContext().getRealPath("/");
+			File fromFile = new File(new File(uploadPath), graphAddress);
+			File toFile = new File(new File(uploadPath), bug.getGraphAddress());
 			try {
 				FileUtils.copyFile(fromFile, toFile);
 				fromFile.delete();
