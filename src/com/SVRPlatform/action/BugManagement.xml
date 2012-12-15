@@ -17,7 +17,7 @@
         </action>
         
         <action name="submitbug" class="submitbug" method="execute">
-	 		<result name="success" type="chain">/bugpage</result>
+	 		<result name="success" type="chain">bugpage</result>
 	 		<result name="fail">/WEB-INF/submitbug.jsp?stat=wrong</result>  
         </action>
         
@@ -30,6 +30,9 @@
         	<result name="fail">/WEB-INF/bugpageNotFound.jsp</result>
         </action>
         
+        <action name="searchbug" class="com.SVRPlatform.action.SearchBug" method="execute">
+        	<result name="success" type="chain">bugpage</result>
+        </action>
         <!-- Add actions here -->
     </package>
     

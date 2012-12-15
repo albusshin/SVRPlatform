@@ -99,10 +99,14 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 		this.strBugNumber = strBugNumber;
 	}
 	public String execute(){
+		System.out.println("DisplayBug.java execute()");
+		System.out.println("firstly, the strBugNumber == " + strBugNumber);
 		Map<String, String> theMap = bugInfoDisplayService.bugInfoDisplay(strBugNumber);
 		if (theMap.get("status").equals("fail")){
+			System.out.println("theMap.get('status') == fail");
 			return Constants.FAIL;
 		}
+		System.out.println("theMap.get('status') == success");
 		strBugDigest = theMap.get("strBugDigest");
 		strDate = theMap.get("strDate");
 		strScore = theMap.get("strScore");
