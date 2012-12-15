@@ -52,9 +52,9 @@ public class CommentsDisplayServiceImpl implements CommentsDisplayService {
 			commentsData.add(commentData);
 		}
 		
-		//bugCommentsData.setCommentCount(commentCount);
+		bugCommentsData.setCommentCount((int)commentDAO.getCountFromOneBug(bug));
 		bugCommentsData.setCommentsData(commentsData);
 
-		return null;
+		return bugCommentsData;
 	}
 }
