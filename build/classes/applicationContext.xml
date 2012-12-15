@@ -56,11 +56,11 @@
     	<property name="userDAO" ref="userDAO"></property>
     </bean>
     
-   	<bean id="bugInfoDisplayService" class="com.SVRPlatform.service.impl.BugInfoDisplayService">
-    	<property name="userDAO" ref="userDAO"></property>
-    	<property name="bugDAO" ref="bugDAO"></property>
-    	<property name="softwareDAO" ref="softwareDAO"></property>
-   	</bean> 
+   	<bean id="bugInfoDisplayService" class="com.SVRPlatform.service.impl.BugInfoDisplayServiceImpl">
+   		<property name="bugDAO" ref="bugDAO"></property> 
+    	<property name="solutionDAO" ref="solutionDAO"></property>
+    </bean> 
+    	
     
     <bean id="bugsubmitService" class="com.SVRPlatform.service.impl.BugSubmitServiceImpl">
     	<property name="userDAO" ref="userDAO"></property>
@@ -86,6 +86,10 @@
     </bean>
     
     <bean id="softwareDAO" class="com.SVRPlatform.dao.impl.SoftwareDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <bean id="solutionDAO" class="com.SVRPlatform.dao.impl.SolutionDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     
