@@ -147,8 +147,9 @@ public class TestForHibernate {
 		List<Comment> list = commentDAO.getByUserId(user, 100, 10);
 		for(Comment c: list){
 			System.out.println(c.getCommentId());
+			System.out.println(c.getBug());
 		}
-		System.out.println("---"+commentDAO.getRowCount(Comment.class));
+		System.out.println("---"+commentDAO.getCountFromOneUser(user));
 //		List<Comment> list2 = commentDAO.getByBugId(bug, 10, 10);
 //		for(Comment c: list2){
 //			System.out.println(c.getCommentId());
