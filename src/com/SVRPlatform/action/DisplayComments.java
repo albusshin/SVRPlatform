@@ -1,5 +1,6 @@
 package com.SVRPlatform.action;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -80,8 +81,13 @@ ServletResponseAware {
 		System.out.println("DisplayComments execute()");
 		System.out.println("strBugNumber" + strBugNumber);
 		BugCommentsData theData = commentsDisplayService.commentsDispalyService(strBugNumber, 1, 5);
-		System.out.println("After theData initialization");
 		List<CommentData> commentData = theData.getCommentsData();
+		contents = new LinkedList<String>();
+		creditss = new LinkedList<String>();
+		datetimes = new LinkedList<String>();
+		emails = new LinkedList<String>();
+		realnames = new LinkedList<String>();
+		titles = new LinkedList<String>();
 		for (CommentData c: commentData){
 			contents.add(c.getContent());
 			creditss.add(c.getCredits()+"");
@@ -91,6 +97,7 @@ ServletResponseAware {
 			titles.add(c.getTitle());
 		}
 		strCommentsAmount = commentData.size() + "";
+		System.out.println("before return success");
 		return Constants.SUCCESS;
 	}
 

@@ -38,7 +38,7 @@ div.commentsfooter {
 		<div id="menu" class="menu">
 			<ul>
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><a href="bugpage"><image src="images/logo.png"
+				<li><a href="bugpage?strBugNumber=${strBugNumber }"><image src="images/logo.png"
 							width="54px" margin="10px"></image>BUG PAGE</a></li>
 				<li><a href="javascript:;">COMMENTS</a></li>
 				<li><a href="javascript:;">SOLUTIONS</a></li>
@@ -46,8 +46,6 @@ div.commentsfooter {
 		</div>
 		<hr />
 		<div class="comments">
-		<%
-		System.out.println("Hello, worl1111111d!"); %>
 			<div class="commentstitle">${strCommentsAmount } Comments about
 				bug ${strBugNumber }</div>
 			<%
@@ -64,8 +62,10 @@ div.commentsfooter {
 				for (int i=0; i<contents.size(); i++){
 					String hash = emails.get(i);
 					if (hash!=null){
-						hash = DigestUtils.md5Hex(str.trim().toLowerCase());
+						hash = DigestUtils.md5Hex(hash.trim().toLowerCase());
+						System.out.println("hash == " + hash);
 					}
+					System.out.println("Hello, worl1111111d!"); 
 					out.println("<div class='comment'>" + 
 					"<div class='commenttitle'>"+titles.get(i)+"</div>" +
 				"<div class='commenttext'>"+contents.get(i)+"</div>"+
