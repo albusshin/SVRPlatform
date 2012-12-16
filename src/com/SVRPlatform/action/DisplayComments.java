@@ -21,14 +21,17 @@ ServletResponseAware {
 	 * 
 	 */
 	private CommentsDisplayService commentsDisplayService;
-	public void setCommentsDisplayService(
-			CommentsDisplayService commentsDisplayService) {
-		this.commentsDisplayService = commentsDisplayService;
-	}
 	private String strBugNumber;
 	private String strCommentsAmount;
 	private String strNowPage;
 	private String strStat;
+	
+
+	public void setCommentsDisplayService(
+			CommentsDisplayService commentsDisplayService) {
+		this.commentsDisplayService = commentsDisplayService;
+	}
+	
 	public String getStrStat() {
 		return strStat;
 	}

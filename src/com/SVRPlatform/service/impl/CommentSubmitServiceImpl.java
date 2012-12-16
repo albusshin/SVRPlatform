@@ -31,7 +31,6 @@ public class CommentSubmitServiceImpl implements CommentSubmitService {
 	public Map<String, String> commentSubmit(String bugNumber, String email, String title, String content) {
 		Map<String, String> map = new HashMap<String, String>();
 		
-		System.out.println("before check");
 		//check if bug information is complete
 		if (title.compareTo("") == 0) 
 			map.put("title", "empty");
@@ -49,9 +48,7 @@ public class CommentSubmitServiceImpl implements CommentSubmitService {
 			map.put("status", "success");
 
 			int bugID = Integer.parseInt(bugNumber.split("-")[2]);
-			System.out.println("before get bug");
 			Bug bug = (Bug) bugDAO.getByID(bugID);
-			System.out.println("before get user");
 			User user = userDAO.getUserByEmail(email);
 			Comment comment = new Comment();
 			comment.setBug(bug);
@@ -60,9 +57,7 @@ public class CommentSubmitServiceImpl implements CommentSubmitService {
 			comment.setDatetime(new Date());
 			comment.setUser(user);
 			
-			System.out.println("before add");
 			commentDAO.add(comment);
-			System.out.println("after add");
 		}
 		else map.put("status", "fail");
 		

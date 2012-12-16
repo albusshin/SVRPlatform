@@ -13,9 +13,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class MakeComment extends ActionSupport implements ServletRequestAware
 {
-	/*
-	 * Get title and text from page,check it is null or not.
-	 */
 	private static final long serialVersionUID = 8398439497316195283L;
 	private String strBugNumber;
 	private String strNowPage;
@@ -23,23 +20,20 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 	private String commentssubmittitle;
 	private String message;
 	private String strStat;
-	public String getStrStat() {
-		return strStat;
-	}
-
-	public void setStrStat(String strStat) {
-		this.strStat = strStat;
-	}
-
 	private CommentSubmitService commentSubmitService;
 	private HttpServletRequest request;
 	
 
+	public String getStrStat() {
+		return strStat;
+	}
+	public void setStrStat(String strStat) {
+		this.strStat = strStat;
+	}
 
 	public String getMessage() {
 		return message;
 	}
-
 	public void setMessage(String message) {
 		this.message = message;
 	}
@@ -47,7 +41,6 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 	public String getStrNowPage() {
 		return strNowPage;
 	}
-	
 	public void setStrNowPage(String strNowPage) {
 		this.strNowPage = strNowPage;
 	}
@@ -63,7 +56,6 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 	public String getStrBugNumber() {
 		return strBugNumber;
 	}
-	
 	public void setStrBugNumber(String strBugNumber) {
 		this.strBugNumber = strBugNumber;
 	}
@@ -71,7 +63,6 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 	public String getCommentssubmittext() {
 		return commentssubmittext;
 	}
-
 	public void setCommentssubmittext(String commentssubmittext) {
 		this.commentssubmittext = commentssubmittext;
 	}
@@ -79,44 +70,26 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 	public String getCommentssubmittitle() {
 		return commentssubmittitle;
 	}
-
 	public void setCommentssubmittitle(String commentssubmittitle) {
 		this.commentssubmittitle = commentssubmittitle;
 	}
 
-	public String execute() {
-		System.out.println( "comment title:" + commentssubmittitle );
-		System.out.println( "comment text:" + commentssubmittext );
-		
+	public String execute() {		
 		String nowUser = VerifyUser.getNowUser(request);
 		if (nowUser == null){
 			return Constants.NOTSIGNEDIN;
 		}
-	 /*
-	  *   wait for the function supplied by Qingwei to check whether title and text are valid or not.
-	  *
-	  *   message=this.MakeCommentService.makeComment(commentssubmittitle,commentssubmittext);
-	  *   if(message.equal("CommentValid")) return Constants.SUCCESS;
-	  *   else return Constants.FAIL;
-	  *
-	  */
 		strNowPage = "1";
 		String email = (String) request.getSession().getAttribute("email");
-		System.out.println("strBugNumber:"+strBugNumber);
-		System.out.println("email: "+email);
 		Map<String, String> map = commentSubmitService.commentSubmit(strBugNumber, email, commentssubmittitle, commentssubmittext);
-		
-		System.out.println("after service");
-		strNowPage = "1";
 		if (map.get("status").equals("fail")) {
 			message = "There's something wrong with your inputs, please check:\n";
 			if ((!map.get("title").equals("OK"))){
-				message += "Please input the digest of the bug information";
+				message += "Please input the digest of the bug information. ";
 			}
 			if (!(map.get("content").equals("OK"))){
-				message += "Please input your description about the bug";
+				message += "Please input your description about the bug. ";
 			}
-			System.out.println("make comment fail");
 			strStat = "wrong";
 			return Constants.FAIL;
 		}

@@ -162,7 +162,6 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 				FileUtils.copyFile(fromFile, toFile);
 				fromFile.delete();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
