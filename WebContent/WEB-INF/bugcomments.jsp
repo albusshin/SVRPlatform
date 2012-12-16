@@ -13,7 +13,7 @@
 <style type="text/css">
 <%
 int commentsPerPage = 5;
-String strBugNumber = request.getParameter("strBugNumber");
+String strBugNumber = (String)request.getAttribute("strBugNumber");
 String strCommentsAmount = (String)request.getAttribute("strCommentsAmount");
 
 System.out.println(strCommentsAmount);
@@ -21,7 +21,7 @@ int commentsAmount = Integer.parseInt(strCommentsAmount);
 int pagesAmount;
 
 
-String strNowPage = request.getParameter("strNowPage");
+String strNowPage = (String)request.getAttribute("strNowPage");
 
 System.out.println(strNowPage);
 int nowPage = Integer.parseInt(strNowPage);

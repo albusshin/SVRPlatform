@@ -89,6 +89,7 @@ ServletResponseAware {
 	public String execute(){
 		System.out.println("DisplayComments execute()");
 		System.out.println("strBugNumber" + strBugNumber);
+		System.out.println("strNowPage == " + strNowPage);
 		nowPage = Integer.parseInt(strNowPage);
 		BugCommentsData theData = commentsDisplayService.commentsDispalyService(strBugNumber, nowPage, 5);
 		List<CommentData> commentData = theData.getCommentsData();
