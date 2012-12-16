@@ -28,7 +28,7 @@
                 <ul>
                 	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
                     <li><a href="javascript:;"><image src="images/logo.png" width="54px" margin="10px"></image>BUG PAGE</a></li>
-                    <li><a href="displaycomments?strBugNumber=${strBugNumber }">COMMENTS</a></li>
+                    <li><a href="displaycomments?strBugNumber=${strBugNumber }&strNowPage=1">COMMENTS</a></li>
                     <li><a href="javascript:;">SOLUTIONS</a></li>
                 </ul>
             </div>

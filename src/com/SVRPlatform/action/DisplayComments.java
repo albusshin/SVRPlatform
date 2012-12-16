@@ -27,6 +27,15 @@ ServletResponseAware {
 	}
 	private String strBugNumber;
 	private String strCommentsAmount;
+	private String strNowPage;
+	public String getStrNowPage() {
+		return strNowPage;
+	}
+
+	public void setStrNowPage(String strNowPage) {
+		this.strNowPage = strNowPage;
+	}
+	private int nowPage;
 	public String getStrCommentsAmount() {
 		return strCommentsAmount;
 	}
@@ -80,7 +89,8 @@ ServletResponseAware {
 	public String execute(){
 		System.out.println("DisplayComments execute()");
 		System.out.println("strBugNumber" + strBugNumber);
-		BugCommentsData theData = commentsDisplayService.commentsDispalyService(strBugNumber, 1, 5);
+		nowPage = Integer.parseInt(strNowPage);
+		BugCommentsData theData = commentsDisplayService.commentsDispalyService(strBugNumber, nowPage, 5);
 		List<CommentData> commentData = theData.getCommentsData();
 		contents = new LinkedList<String>();
 		creditss = new LinkedList<String>();
@@ -96,7 +106,8 @@ ServletResponseAware {
 			realnames.add(c.getRealname());
 			titles.add(c.getTitle());
 		}
-		strCommentsAmount = commentData.size() + "";
+		strCommentsAmount = theData.getCommentCount() + "";
+		System.out.println("strCommentsAmount == " + strCommentsAmount);
 		System.out.println("before return success");
 		return Constants.SUCCESS;
 	}
