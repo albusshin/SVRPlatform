@@ -85,6 +85,7 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 		Map<String, String> map = commentSubmitService.commentSubmit(strBugNumber, email, commentssubmittitle, commentssubmittext);
 		
 		System.out.println("after service");
+		strNowPage = "1";
 		if (map.get("status").equals("fail")) {
 			message = "There's something wrong with your inputs, please check:\n";
 			if ((!map.get("title").equals("OK"))){
