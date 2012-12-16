@@ -28,6 +28,16 @@ ServletResponseAware {
 	private String strBugNumber;
 	private String strCommentsAmount;
 	private String strNowPage;
+	private String message;
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	public String getStrNowPage() {
 		return strNowPage;
 	}
@@ -110,6 +120,10 @@ ServletResponseAware {
 		strCommentsAmount = theData.getCommentCount() + "";
 		System.out.println("strCommentsAmount == " + strCommentsAmount);
 		System.out.println("before return success");
+
+		if (request.getParameter("stat") != null)
+			request.setAttribute("stat", "wrong");
+		
 		return Constants.SUCCESS;
 	}
 

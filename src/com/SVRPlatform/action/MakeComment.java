@@ -26,6 +26,14 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 	
 
 
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
 	public String getStrNowPage() {
 		return strNowPage;
 	}
@@ -94,6 +102,7 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 			if (!(map.get("content").equals("OK"))){
 				message += "Please input your description about the bug";
 			}
+			System.out.println("make comment fail");
 			return Constants.FAIL;
 		}
 		else {
