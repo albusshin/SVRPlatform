@@ -33,7 +33,11 @@ public class CommentsDisplayServiceImpl implements CommentsDisplayService {
 		int count =  (int) commentDAO.getCountFromOneBug(bug);
 		BugCommentsData bugCommentsData = new BugCommentsData();
 		
-		int firstResult = count - 1 - pageNumber * (commentsPerPage - 1);
+		int firstResult = count - pageNumber * commentsPerPage;
+		if (firstResult < 0) {
+			commentsPerPage += firstResult;
+			firstResult = 0;
+		}
 		List<Comment> comments = commentDAO.getByBugId(bug, commentsPerPage, firstResult);
 		List<CommentData> commentsData = new LinkedList<CommentData>();
 		

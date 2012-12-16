@@ -17,13 +17,23 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 	 */
 	private static final long serialVersionUID = 8398439497316195283L;
 	private String strBugNumber;
-	public String commentssubmittext;
-	public String commentssubmittitle;
-	public String message;
+	private String strNowPage;
+	private String commentssubmittext;
+	private String commentssubmittitle;
+	private String message;
 	private CommentSubmitService commentSubmitService;
 	private HttpServletRequest request;
 	
 
+
+	public String getStrNowPage() {
+		return strNowPage;
+	}
+	
+	public void setStrNowPage(String strNowPage) {
+		this.strNowPage = strNowPage;
+	}
+	
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;		
 	}
@@ -69,8 +79,11 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 	  *
 	  */
 		String email = (String) request.getSession().getAttribute("email");
+		System.out.println("strBugNumber:"+strBugNumber);
+		System.out.println("email: "+email);
 		Map<String, String> map = commentSubmitService.commentSubmit(strBugNumber, email, commentssubmittitle, commentssubmittext);
 		
+		System.out.println("after service");
 		if (map.get("status").equals("fail")) {
 			message = "There's something wrong with your inputs, please check:\n";
 			if ((!map.get("title").equals("OK"))){
@@ -81,7 +94,9 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 			}
 			return Constants.FAIL;
 		}
-		else return Constants.SUCCESS;
-		//System.out.println("fail");
+		else {
+			strNowPage = "1";
+			return Constants.SUCCESS;
+		}
 	}
 }

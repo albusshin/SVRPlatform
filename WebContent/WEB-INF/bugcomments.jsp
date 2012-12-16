@@ -15,9 +15,15 @@
 int commentsPerPage = 5;
 String strBugNumber = request.getParameter("strBugNumber");
 String strCommentsAmount = (String)request.getAttribute("strCommentsAmount");
+
+System.out.println(strCommentsAmount);
 int commentsAmount = Integer.parseInt(strCommentsAmount);
 int pagesAmount;
+
+
 String strNowPage = request.getParameter("strNowPage");
+
+System.out.println(strNowPage);
 int nowPage = Integer.parseInt(strNowPage);
 if (commentsAmount % commentsPerPage == 0){
 	pagesAmount = commentsAmount / commentsPerPage;
@@ -144,6 +150,7 @@ else
 				${strBugNumber}</div>
 			<div class="commentssubmit">
 				<form id="commentssubmitform" action="makeComment" method="post">
+					<input type="text" value="${strBugNumber}" style="display:none" name="strBugNumber">
 					<table class="commentssubmittable">
 						<tr>
 							<td class="commentssubmitkey">Title</td>
