@@ -13,7 +13,7 @@
 		<!--This is submitting bug region -->
         <action name="TrySubmitBug" class="com.SVRPlatform.action.TrySubmitBug" method="execute">
 	 		<result name="success">/WEB-INF/submitbug.jsp</result>
-	 		<result name="fail">/WEB-INF/notSignedIn.jsp</result>
+	 		<result name="fail">/WEB-INF/submitbugfailure.jsp</result>
         </action>
         
         <action name="submitbug" class="submitbug" method="execute">
@@ -43,7 +43,7 @@
          
 		<action name="makeComment" class="com.SVRPlatform.action.MakeComment" method="execute">
          	<result name="success" type="chain">displaycomments</result>
-	 		<result name="fail">/WEB-INF/notSignedIn.jsp</result>
+         	<result name="fail" type="chain">displaycomments?stat=wrong</result>  
         </action>
         <action name="displaycomments" class="displaycomments" method="execute">
         	<result name="success">/WEB-INF/bugcomments.jsp</result>

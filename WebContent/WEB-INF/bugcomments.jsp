@@ -15,15 +15,11 @@
 int commentsPerPage = 5;
 String strBugNumber = (String)request.getAttribute("strBugNumber");
 String strCommentsAmount = (String)request.getAttribute("strCommentsAmount");
-
-System.out.println(strCommentsAmount);
 int commentsAmount = Integer.parseInt(strCommentsAmount);
 int pagesAmount;
 
 
 String strNowPage = (String)request.getAttribute("strNowPage");
-
-System.out.println(strNowPage);
 int nowPage = Integer.parseInt(strNowPage);
 if (commentsAmount % commentsPerPage == 0){
 	pagesAmount = commentsAmount / commentsPerPage;
@@ -46,6 +42,33 @@ else
 </head>
 
 <body>
+ 	<%
+ 		String stat = request.getParameter("stat");
+ 		System.out.println("stat == " + request.getAttribute("stat"));
+ 		if (stat != null)
+	 		if (stat.equals("wrong")){
+	 			out.println("<div id=\"wrongmessage\" class=\"alert-messages\" style=\"display:block\">");
+	 			out.println("<div class=\"message\">");
+	 			out.println("<div class=\"message-inside\">");
+	 			out.println("<div class=\"message-text\">");
+	%>
+		<div>
+	 			${message }
+	 	</div>
+	<%
+	 			out.println("</div>");
+	 			out.println("<a class=\"dismiss\" href=\"javascript:dismiss();\">×</a>");
+	 			out.println("</div>");
+	 			out.println("</div>");
+	 			out.println("</div>");
+	 		}
+ 	%>
+             	<script type="text/javascript">
+             		function dismiss(){
+             			document.getElementById("wrongmessage").setAttribute("style", "display:none");
+             		}
+             	</script>
+
 	<%
 		String str = (String) session.getAttribute("email");
 		if (str != null){
