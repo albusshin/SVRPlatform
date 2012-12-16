@@ -22,6 +22,15 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 	private String commentssubmittext;
 	private String commentssubmittitle;
 	private String message;
+	private String strStat;
+	public String getStrStat() {
+		return strStat;
+	}
+
+	public void setStrStat(String strStat) {
+		this.strStat = strStat;
+	}
+
 	private CommentSubmitService commentSubmitService;
 	private HttpServletRequest request;
 	
@@ -81,7 +90,7 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 		
 		String nowUser = VerifyUser.getNowUser(request);
 		if (nowUser == null){
-			return Constants.FAIL;
+			return Constants.NOTSIGNEDIN;
 		}
 	 /*
 	  *   wait for the function supplied by Qingwei to check whether title and text are valid or not.
@@ -108,6 +117,7 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 				message += "Please input your description about the bug";
 			}
 			System.out.println("make comment fail");
+			strStat = "wrong";
 			return Constants.FAIL;
 		}
 		else {

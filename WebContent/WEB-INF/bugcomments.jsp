@@ -43,8 +43,8 @@ else
 
 <body>
  	<%
- 		String stat = request.getParameter("stat");
- 		System.out.println("stat == " + request.getAttribute("stat"));
+ 		String stat = (String) request.getAttribute("strStat");
+ 		System.out.println("strStat == " + request.getAttribute("strStat"));
  		if (stat != null)
 	 		if (stat.equals("wrong")){
 	 			out.println("<div id=\"wrongmessage\" class=\"alert-messages\" style=\"display:block\">");
