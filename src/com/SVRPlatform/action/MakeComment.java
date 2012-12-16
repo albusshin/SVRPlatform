@@ -1,30 +1,44 @@
 package com.SVRPlatform.action;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+
 import com.SVRPlatform.constants.Constants;
+import com.SVRPlatform.service.CommentSubmitService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class MakeComment extends ActionSupport
+public class MakeComment extends ActionSupport implements ServletRequestAware
 {
 	/*
 	 * Get title and text from page,check it is null or not.
 	 */
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8398439497316195283L;
 	private String strBugNumber;
-	public String getStrBugNumber() {
-		return strBugNumber;
-	}
-
-	public void setStrBugNumber(String strBugNumber) {
-		this.strBugNumber = strBugNumber;
-	}
-
 	public String commentssubmittext;
 	public String commentssubmittitle;
 	public String message;
+	private CommentSubmitService commentSubmitService;
+	private HttpServletRequest request;
+	
+
+	public void setServletRequest(HttpServletRequest request) {
+		this.request = request;		
+	}
+	
+	public void setCommentSubmitService(CommentSubmitService commentSubmitService) {
+		this.commentSubmitService = commentSubmitService;
+	}
+
+	public String getStrBugNumber() {
+		return strBugNumber;
+	}
+	
+	public void setStrBugNumber(String strBugNumber) {
+		this.strBugNumber = strBugNumber;
+	}
 	
 	public String getCommentssubmittext() {
 		return commentssubmittext;
@@ -42,20 +56,32 @@ public class MakeComment extends ActionSupport
 		this.commentssubmittitle = commentssubmittitle;
 	}
 
-	public String execute()
-	{
+	public String execute() {
 		System.out.println( "comment title:" + commentssubmittitle );
 		System.out.println( "comment text:" + commentssubmittext );
 		
 	 /*
 	  *   wait for the function supplied by Qingwei to check whether title and text are valid or not.
-	  *	 
-	  *   message=this.MakeCommentService.makeComment(commentssubmittitle,commentssubmittext); 
+	  *
+	  *   message=this.MakeCommentService.makeComment(commentssubmittitle,commentssubmittext);
 	  *   if(message.equal("CommentValid")) return Constants.SUCCESS;
 	  *   else return Constants.FAIL;
 	  *
-	  */		
-	    return Constants.SUCCESS;
+	  */
+		String email = (String) request.getSession().getAttribute("email");
+		Map<String, String> map = commentSubmitService.commentSubmit(strBugNumber, email, commentssubmittitle, commentssubmittext);
 		
+		if (map.get("status").equals("fail")) {
+			message = "There's something wrong with your inputs, please check:\n";
+			if ((!map.get("title").equals("OK"))){
+				message += "Please input the digest of the bug information";
+			}
+			if (!(map.get("content").equals("OK"))){
+				message += "Please input your description about the bug";
+			}
+			return Constants.FAIL;
+		}
+		else return Constants.SUCCESS;
+		//System.out.println("fail");
 	}
 }

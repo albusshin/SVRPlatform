@@ -3,6 +3,7 @@ package com.SVRPlatform.service.impl;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.CommentDAO;
@@ -26,20 +27,23 @@ public class CommentsDisplayServiceImpl implements CommentsDisplayService {
 	
 	@Override
 	public BugCommentsData commentsDispalyService(String bugNumber, int pageNumber, int commentsPerPage) {
-		BugCommentsData bugCommentsData = new BugCommentsData();
-		
 		int bugID = Integer.parseInt(bugNumber.split("-")[2]);
 		Bug bug = (Bug) bugDAO.getByID(bugID);
-		int firstResult = (pageNumber-1) * commentsPerPage;
+		
+		int count =  (int) commentDAO.getCountFromOneBug(bug);
+		BugCommentsData bugCommentsData = new BugCommentsData();
+		
+		int firstResult = count - 1 - pageNumber * (commentsPerPage - 1);
 		List<Comment> comments = commentDAO.getByBugId(bug, commentsPerPage, firstResult);
 		List<CommentData> commentsData = new LinkedList<CommentData>();
 		
-		Iterator<Comment> it = comments.iterator();
+		ListIterator<Comment> it = comments.listIterator();
 		Comment comment;
 		CommentData commentData;
 		User user;
-		while(it.hasNext()) {
-			comment = it.next();
+		while(it.hasNext()) it.next();
+		while(it.hasPrevious()) {
+			comment = it.previous();
 			commentData = new CommentData();
 			user = comment.getUser();
 			
@@ -51,8 +55,8 @@ public class CommentsDisplayServiceImpl implements CommentsDisplayService {
 			commentData.setCredits(user.getCredit());
 			commentsData.add(commentData);
 		}
-		
-		bugCommentsData.setCommentCount((int)commentDAO.getCountFromOneBug(bug));
+
+		bugCommentsData.setCommentCount(count);
 		bugCommentsData.setCommentsData(commentsData);
 
 		return bugCommentsData;

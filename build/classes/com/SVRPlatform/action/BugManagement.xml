@@ -42,7 +42,7 @@
     <package name="Comment" namespace="/" extends="default">
          
 		<action name="makeComment" class="com.SVRPlatform.action.MakeComment" method="execute">
-         	<result name="success" >/bugcomments.html</result>
+         	<result name="success" >/WEB-INF/bugcomments.jsp</result>
         </action>
         <action name="displaycomments" class="displaycomments" method="execute">
         	<result name="success">/WEB-INF/bugcomments.jsp</result>
