@@ -22,10 +22,10 @@
  		</jsp:include>
 <div id="content">
 	<div class="commentstitle" style="padding-top:30px;">
-	Failed to open submit bug page.
+	Sorry, it seems that you haven't signed in.
 	</div>
    	<p class="bugvultext">
-   	It seems that you haven't signed in SVRPlatform. Bug information submission must be logged on to perform. <br>
+   	It seems that you haven't signed in SVRPlatform. <br>
    	Please <a href="/signin.jsp">Sign in</a> or <a href="/signup.jsp">Join us..</a>
     </p>
 </div>

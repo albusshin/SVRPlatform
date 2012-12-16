@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 
+import com.SVRPlatform.Utils.VerifyUser;
 import com.SVRPlatform.constants.Constants;
 import com.SVRPlatform.service.CommentSubmitService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -78,6 +79,10 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 		System.out.println( "comment title:" + commentssubmittitle );
 		System.out.println( "comment text:" + commentssubmittext );
 		
+		String nowUser = VerifyUser.getNowUser(request);
+		if (nowUser == null){
+			return Constants.FAIL;
+		}
 	 /*
 	  *   wait for the function supplied by Qingwei to check whether title and text are valid or not.
 	  *
