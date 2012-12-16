@@ -108,7 +108,7 @@ else
 	"					<img class=\"commentsfooterleft\""+
 	"						onmouseover=\"this.src='images/leftpressed.png'\""+
 	"						onmouseout=\"this.src='images/left.png'\" src=\"images/left.png\"");
-						if (nowPage != 1)
+						if (nowPage > 1)
 							out.print("onclick=\"window.location.href='displaycomments?strNowPage="+(nowPage-1)+"&strBugNumber="+(strBugNumber )+"'\">");
 						else
 							out.print(">");
@@ -134,7 +134,7 @@ else
 							"						onmouseover=\"this.src='images/rightpressed.png'\""+
 							"						onmouseout=\"this.src='images/right.png'\" src=\"images/right.png\"");
 												
-												if (nowPage != pagesAmount)
+												if (nowPage < pagesAmount)
 													out.print("onclick=\"window.location.href='displaycomments?strNowPage="+(nowPage+1)+"&strBugNumber="+(strBugNumber )+"'\">");
 												else
 													out.print(">");	
