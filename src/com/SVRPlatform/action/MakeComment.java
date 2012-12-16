@@ -78,6 +78,7 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 	  *   else return Constants.FAIL;
 	  *
 	  */
+		strNowPage = "1";
 		String email = (String) request.getSession().getAttribute("email");
 		System.out.println("strBugNumber:"+strBugNumber);
 		System.out.println("email: "+email);
@@ -95,7 +96,6 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 			return Constants.FAIL;
 		}
 		else {
-			strNowPage = "1";
 			return Constants.SUCCESS;
 		}
 	}
