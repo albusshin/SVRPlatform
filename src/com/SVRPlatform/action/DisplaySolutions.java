@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
+
 import com.SVRPlatform.constants.Constants;
 import com.SVRPlatform.data.BugSolutionsData;
 import com.SVRPlatform.data.SolutionData;
@@ -15,7 +16,7 @@ import com.SVRPlatform.service.SolutionsDisplayService;
 import com.opensymphony.xwork2.ActionSupport;
 
 class DisplaySolutions extends ActionSupport implements ServletRequestAware,
-ServletResponseAware {
+		ServletResponseAware {
 
 	/**
 	 * 
@@ -28,22 +29,23 @@ ServletResponseAware {
 	private String strSolutionsAmount;
 	private String strNowPage;
 	private String strStat;
+
 	public String getStrStat() {
 		return strStat;
 	}
-	public DisplaySolutions(){
+
+	public DisplaySolutions() {
 		super();
 		System.out.print("ππ‘Ï");
 	}
+
 	public void setStrStat(String strStat) {
 		this.strStat = strStat;
 	}
 
 	private int nowPage;
-	private List<String> contents, datetimes, emails, realnames, creditss, solutionScores, isBests;
-	
-
-
+	List<String> contents, datetimes, emails, realnames, creditss,
+			solutionScores, isBests;
 
 	public String getStrBugNumber() {
 		return strBugNumber;
@@ -145,7 +147,7 @@ ServletResponseAware {
 			SolutionsDisplayService solutionsDisplayService) {
 		this.solutionsDisplayService = solutionsDisplayService;
 	}
-
+	
 	@Override
 	public void setServletResponse(HttpServletResponse arg0) {
 		// TODO Auto-generated method stub
@@ -157,17 +159,19 @@ ServletResponseAware {
 		// TODO Auto-generated method stub
 		request = arg0;
 	}
-	
-	public String execute(){
+
+	public String execute() {
 		System.out.println("DisplaySolutions execute()");
 		System.out.println("strBugNumber" + strBugNumber);
 		System.out.println("strNowPage == " + strNowPage);
 		SolutionData officialSolution = null;
 		nowPage = Integer.parseInt(strNowPage);
-		if (nowPage == 1){
-			officialSolution = solutionsDisplayService.officialSolutionDisplayService(strBugNumber);
+		if (nowPage == 1) {
+			officialSolution = solutionsDisplayService
+					.officialSolutionDisplayService(strBugNumber);
 		}
-		BugSolutionsData theData = solutionsDisplayService.solutionsDisplayService(strBugNumber, nowPage, 5);
+		BugSolutionsData theData = solutionsDisplayService
+				.solutionsDisplayService(strBugNumber, nowPage, 5);
 		List<SolutionData> solutionData = theData.getSolutionsData();
 		contents = new LinkedList<String>();
 		creditss = new LinkedList<String>();
@@ -176,24 +180,23 @@ ServletResponseAware {
 		realnames = new LinkedList<String>();
 		solutionScores = new LinkedList<String>();
 		isBests = new LinkedList<String>();
-		for (SolutionData s: solutionData){
+		for (SolutionData s : solutionData) {
 			contents.add(s.getContent());
-			creditss.add(s.getCredits()+"");
+			creditss.add(s.getCredits() + "");
 			datetimes.add(s.getDatetime());
 			emails.add(s.getEmail());
 			realnames.add(s.getRealname());
-			solutionScores.add((s.getUp() - s.getDown())+"");
-			if (s.isBest()){
+			solutionScores.add((s.getUp() - s.getDown()) + "");
+			if (s.isBest()) {
 				isBests.add("true");
-			}
-			else
+			} else
 				isBests.add("false");
 		}
 		strSolutionsAmount = theData.getSolutionCount() + "";
 		System.out.println("strSolutionsAmount == " + strSolutionsAmount);
 		System.out.println("before return success");
 		request.setAttribute("officialSolution", officialSolution);
-		
+
 		return Constants.SUCCESS;
 	}
 }
