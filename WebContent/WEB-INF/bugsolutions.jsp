@@ -81,8 +81,8 @@ else
     <div id="menu" class="menu">
                 <ul>
                 	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp </li>
-                    <li><a href="javascript:;"><image src="images/logo.png" width="54px" margin="10px"></image>BUG PAGE</a></li>
-                    <li><a href="javascript:;">COMMENTS</a></li>
+                    <li><a href="bugpage?strBugNumber=${strBugNumber }"><image src="images/logo.png" width="54px" margin="10px"></image>BUG PAGE</a></li>
+                    <li><a href="displaycomments?strBugNumber=${strBugNumber }&strNowPage=1">COMMENTS</a></li>
                     <li><a href="javascript:;">SOLUTIONS</a></li>
                 </ul>
             </div>
