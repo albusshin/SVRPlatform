@@ -7,10 +7,8 @@ import java.util.ListIterator;
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.SolutionDAO;
 import com.SVRPlatform.data.BugSolutionsData;
-import com.SVRPlatform.data.CommentData;
 import com.SVRPlatform.data.SolutionData;
 import com.SVRPlatform.model.Bug;
-import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.SolutionsDisplayService;
@@ -40,46 +38,63 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 		
 		int bugID = Integer.parseInt(bugNumber.split("-")[2]);
 		Bug bug = (Bug) bugDAO.getByID(bugID);
-		int officialSolutionID = bug.getOfficialSolutionId();
 		
 		int count =  (int) solutionDAO.getCountFromOneBug(bug);
+		if (bug.getOfficialSolutionId() != -1) count--;
 
 		int firstResult = (pageNumber - 1) * solutionsPerPage;
-		if ( >= firstResult) {
-			solutionsPerPage += firstResult;
-			firstResult = 0;
-		}
-		List<Solution> solutions = solutionDAO.getByBugId(bug, solutionsPerPage, firstResult);
+		int fetchSize = solutionsPerPage;
+		if (firstResult + fetchSize > count)
+			fetchSize = count - firstResult;
+		
+		List<Solution> solutions = solutionDAO.getByBugId(bug, fetchSize, firstResult);
 		List<SolutionData> solutionsData = new LinkedList<SolutionData>();
 
 		ListIterator<Solution> it = solutions.listIterator();
 		Solution solution;
 		SolutionData solutionData;
 		User user;
-		while(it.hasNext()) it.next();
-		while(it.hasPrevious()) {
-			comment = it.previous();
-			commentData = new CommentData();
-			user = comment.getUser();
+		while(it.hasNext()) {
+			solution = it.next();
+			solutionData = new SolutionData();
+			user = solution.getUser();
 			
-			commentData.setTitle(comment.getCommentTitle());
-			commentData.setContent(comment.getContent());
-			commentData.setDatetime(comment.getDatetime().toString());
-			commentData.setRealname(user.getRealName());
-			commentData.setEmail(user.getEmail());
-			commentData.setCredits(user.getCredit());
-			commentsData.add(commentData);
+			solutionData.setContent(solution.getContent());
+			solutionData.setDatetime(solution.getDatetime().toString());
+			solutionData.setRealname(user.getRealName());
+			solutionData.setEmail(user.getEmail());
+			solutionData.setCredits(user.getCredit());
+			solutionData.setUp(solution.getUp());
+			solutionData.setDown(solution.getDown());
+			solutionData.setBest(false);
+			solutionsData.add(solutionData);
 		}
+		if (pageNumber == 1) 
+			solutionsData.get(0).setBest(true);
+		
+		bugSolutionsData.setSolutionCount(count);
+		bugSolutionsData.setSolutionsData(solutionsData);
 
-		bugCommentsData.setCommentCount(count);
-		bugCommentsData.setCommentsData(commentsData);
-
-		return bugCommentsData;
+		return bugSolutionsData;
 	}
 
 	public SolutionData officialSolutionDisplayService(String bugNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		int bugID = Integer.parseInt(bugNumber.split("-")[2]);
+		Bug bug = (Bug) bugDAO.getByID(bugID);
+		int officialSolutionID = bug.getOfficialSolutionId();
+		SolutionData solutionData = new SolutionData();
+		Solution solution = (Solution) solutionDAO.getByID(officialSolutionID);
+		User user = solution.getUser();
+		
+		solutionData.setContent(solution.getContent());
+		solutionData.setDatetime(solution.getDatetime().toString());
+		solutionData.setRealname(user.getRealName());
+		solutionData.setEmail(user.getEmail());
+		solutionData.setCredits(user.getCredit());
+		solutionData.setUp(solution.getUp());
+		solutionData.setDown(solution.getDown());
+		solutionData.setBest(false);
+		
+		return solutionData;
 	}
-
 }
