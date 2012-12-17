@@ -11,20 +11,20 @@
     </script>
     <style type="text/css">
     <%
-int commentsPerPage = 5;
+int solutionsPerPage = 5;
 String strBugNumber = (String)request.getAttribute("strBugNumber");
-String strCommentsAmount = (String)request.getAttribute("strCommentsAmount");
-int commentsAmount = Integer.parseInt(strCommentsAmount);
+String strSolutionsAmount = (String)request.getAttribute("strSolutionsAmount");
+int solutionsAmount = Integer.parseInt(strSolutionsAmount);
 int pagesAmount;
 
 
 String strNowPage = (String)request.getAttribute("strNowPage");
 int nowPage = Integer.parseInt(strNowPage);
-if (commentsAmount % commentsPerPage == 0){
-	pagesAmount = commentsAmount / commentsPerPage;
+if (solutionsAmount % solutionsPerPage == 0){
+	pagesAmount = solutionsAmount / solutionsPerPage;
 }
 else
-	pagesAmount = commentsAmount / commentsPerPage + 1;
+	pagesAmount = solutionsAmount / solutionsPerPage + 1;
 	out.println("div.commentsfooter {"+
 	"width:"+(pagesAmount*33+100) + "px;"+
 	"margin: auto;"+
@@ -173,14 +173,51 @@ else
 			}
             %>
       </div>
-            <div class="commentsfooter">
-            	<img class="commentsfooterleft" onmouseover="this.src='images/leftpressed.png'" onmouseout="this.src='images/left.png'" src="images/left.png">
-                <a class="commentsfooternow">1</a>
-                <a href="#" class="commentsfooterlink">2</a>
-                <a href="#" class="commentsfooterlink">3</a>
-                <a href="#" class="commentsfooterlink">...</a>
-            	<img class="commentsfooterright" onmouseover="this.src='images/rightpressed.png'" onmouseout="this.src='images/right.png'" src="images/right.png">
-            </div>
+      
+      
+
+
+      <%
+					
+/**
+* Firstly, we need to output the previous page image link
+*/
+					out.println("	<div class=\"commentsfooter\">"+
+	"					<img class=\"commentsfooterleft\""+
+	"						onmouseover=\"this.src='images/leftpressed.png'\""+
+	"						onmouseout=\"this.src='images/left.png'\" src=\"images/left.png\"");
+						if (nowPage > 1)
+							out.print("onclick=\"window.location.href='displaysolutions?strNowPage="+(nowPage-1)+"&strBugNumber="+(strBugNumber )+"'\">");
+						else
+							out.print(">");
+						
+					/**
+					* Next, we need to output the links of numbers;
+					*/
+					
+					
+					for (int i=1; i<pagesAmount+1; i++){
+						if (i == nowPage){
+							out.print("<a class=\"commentsfooternow\">"+ i + "</a>");
+						}
+						else{
+							out.print("<a href=\"displaysolutions?strNowPage="+ i +"&strBugNumber="+(strBugNumber )+"\" class=\"commentsfooterlink\">"+i+"</a>");
+						}
+					}
+					
+					/**
+					* Finally, we output the next page link image.
+					*/
+					out.println("					<img class=\"commentsfooterright\""+
+							"						onmouseover=\"this.src='images/rightpressed.png'\""+
+							"						onmouseout=\"this.src='images/right.png'\" src=\"images/right.png\"");
+												
+												if (nowPage < pagesAmount)
+													out.print("onclick=\"window.location.href='displaysolutions?strNowPage="+(nowPage+1)+"&strBugNumber="+(strBugNumber )+"'\">");
+												else
+													out.print(">");	
+					out.println("</div>");
+					%>
             <div class="commentstitle">
             	Give your solution on bug {strBugNumber}
             </div>
