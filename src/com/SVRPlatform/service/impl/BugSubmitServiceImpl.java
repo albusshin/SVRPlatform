@@ -142,6 +142,7 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			bug.setFrequency(fr);
 			bug.setScore(sc);
 			bug.setLanguage(language);
+			bug.setOfficialSolutionId(-1);
 			
 			//set the bugNumber to year for now, hibernate layer will fix it later.
 			bugDAO.add(bug);
