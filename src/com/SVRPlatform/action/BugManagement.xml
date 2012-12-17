@@ -58,7 +58,7 @@
          	<result name="fail" type="chain">displaysolutions</result>  
          	<result name="notsignedin">/WEB-INF/notSignedIn.jsp</result>
         </action>
-        <action name="displaysolutions" class="com.SVRPlatform.action.DisplaySolutions" method="execute">
+        <action name="displaysolutions" class="displaysolutions" method="execute">
         	<result name="success">/WEB-INF/bugsolutions.jsp</result>
         </action>
     </package>
