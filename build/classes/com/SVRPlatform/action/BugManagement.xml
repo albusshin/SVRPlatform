@@ -56,8 +56,10 @@
 <!--This is solution region -->      
     <package name="Solution" namespace="/" extends="default">
        
-        <action name="giveSolution" class="com.SVRPlatform.action.GiveSolution" method="execute">
-        	<result name="success" >/bugsolutions.html</result>
+        <action name="submitSolution" class="submitSolution" method="execute">
+        	<result name="success" type="chain">displaysolutions</result>
+         	<result name="fail" type="chain">displaysolutions</result>  
+         	<result name="notsignedin">/WEB-INF/notSignedIn.jsp</result>
         </action>
     </package>
 </struts>
