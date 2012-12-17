@@ -32,6 +32,7 @@ import com.SVRPlatform.model.Software;
 import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.PasswordRetrieveService;
+import com.SVRPlatform.service.SolutionSubmitService;
 import com.SVRPlatform.service.impl.PasswordEncoder;
 import com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl;
 
@@ -44,6 +45,7 @@ public class TestForHibernate {
 	static Session session;
 	static CommentDAOImpl commentDAO;
 	static PasswordRetrieveService passwordRetrieveService;
+	static SolutionSubmitService solutionSubmitService;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		ctx = new ClassPathXmlApplicationContext( "Junit/test/Jingxuan/testBeans-hibernate.xml", "applicationContext.xml" );
@@ -56,6 +58,7 @@ public class TestForHibernate {
 		softwareDAO = (SoftwareDAOImpl) ctx.getBean("softwareDAO");
 		commentDAO = (CommentDAOImpl) ctx.getBean("commentDAO");
 		passwordRetrieveService = (PasswordRetrieveService) ctx.getBean("passwordretrieveservice");
+		solutionSubmitService = (SolutionSubmitService) ctx.getBean("solutionSubmitService");
 	}
 
 	@AfterClass
@@ -168,7 +171,10 @@ public class TestForHibernate {
 	}
 	@Test public void testSendEmail2(){
 		//System.out.println(passwordRetrieveService.checkHashValue("cf6c767bd7edac68a03857a1af83e275"));
-		passwordRetrieveService.updatePassword("povergoing@gmail.com", "hantian00");
-		System.out.println(PasswordEncoder.EncoderByMd5("hantian00"));
+		passwordRetrieveService.updatePassword("povergoing@gmail.com", "hanfdsaftfdsaf");
+		System.out.println(PasswordEncoder.EncoderByMd5("fdaf"));
+	}
+	@Test public void testSolutionSubmitService(){
+		solutionSubmitService.solutionSubmit("--1", "povergoing@gmail.com", "fdafdaferfeavzer");
 	}
 }
