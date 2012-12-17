@@ -79,6 +79,12 @@
     	<property name="userDAO" ref="userDAO"></property>
     </bean>
     
+    <bean id="solutionSubmitService" class="com.SVRPlatform.service.impl.SolutionSubmitServiceImpl">
+		<property name="solutionDAO" ref="solutionDAO"></property>
+    	<property name="bugDAO" ref="bugDAO"></property>
+    	<property name="userDAO" ref="userDAO"></property>
+	</bean>
+    
     <bean id="bugsubmitService" class="com.SVRPlatform.service.impl.BugSubmitServiceImpl">
     	<property name="userDAO" ref="userDAO"></property>
     	<property name="bugDAO" ref="bugDAO"></property>
@@ -89,8 +95,6 @@
     	<property name="userDAO" ref="userDAO"></property>
     	<property name="hashForPasswordRetrieveDAO" ref="hashForPasswordRetrieveDAO"></property>
     </bean>
-	
-	
 	
 	<!-- ************************************************************************ -->
     <!-- DAOImpls beans definition -->
