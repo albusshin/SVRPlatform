@@ -21,11 +21,13 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 import com.SVRPlatform.action.RetrievePassword;
 import com.SVRPlatform.dao.HashForPasswordRetrieveDAO;
+import com.SVRPlatform.dao.SolutionDAO;
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.dao.impl.BugDAOImpl;
 import com.SVRPlatform.dao.impl.CommentDAOImpl;
 import com.SVRPlatform.dao.impl.HashForPasswordRetrieveDAOImpl;
 import com.SVRPlatform.dao.impl.SoftwareDAOImpl;
+import com.SVRPlatform.dao.impl.SolutionDAOImpl;
 import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Software;
@@ -44,8 +46,10 @@ public class TestForHibernate {
 	static SoftwareDAOImpl softwareDAO;
 	static Session session;
 	static CommentDAOImpl commentDAO;
+	static SolutionDAOImpl solutionDAO;
 	static PasswordRetrieveService passwordRetrieveService;
 	static SolutionSubmitService solutionSubmitService;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		ctx = new ClassPathXmlApplicationContext( "Junit/test/Jingxuan/testBeans-hibernate.xml", "applicationContext.xml" );
@@ -59,6 +63,7 @@ public class TestForHibernate {
 		commentDAO = (CommentDAOImpl) ctx.getBean("commentDAO");
 		passwordRetrieveService = (PasswordRetrieveService) ctx.getBean("passwordretrieveservice");
 		solutionSubmitService = (SolutionSubmitService) ctx.getBean("solutionSubmitService");
+		solutionDAO = (SolutionDAOImpl) ctx.getBean("solutionDAO");
 	}
 
 	@AfterClass
@@ -175,6 +180,12 @@ public class TestForHibernate {
 		System.out.println(PasswordEncoder.EncoderByMd5("fdaf"));
 	}
 	@Test public void testSolutionSubmitService(){
-		solutionSubmitService.solutionSubmit("--1", "povergoing@gmail.com", "fdafdaferfeavzer");
+		//solutionSubmitService.solutionSubmit("--1", "povergoing@gmail.com", "fdafdaferfeavzer");
+		Bug  b = (Bug) bugDAO.getByID(new Integer(2));
+		List<Solution> l = solutionDAO.getByBugId(b, -1, -1);
+		System.out.println(l.size());
+		for(Solution s : l){
+			System.out.println("up:"+s.getUp() + " id:" + s.getSolutionId());
+		}
 	}
 }
