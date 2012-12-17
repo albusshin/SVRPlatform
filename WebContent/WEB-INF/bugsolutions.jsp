@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html;  charset=utf-8"
-	import="org.apache.commons.codec.digest.DigestUtils,java.util.List"
+	import="org.apache.commons.codec.digest.DigestUtils,java.util.List, com.SVRPlatform.data.*"
 	pageEncoding="utf-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -92,27 +92,65 @@ else
             	{strSolutionsAmount} Solutions on Bug {strBugNumber}
             </div>
             <%
-            List<String> contents, datetimes, emails, realnames, solutionScores, creditss;
+            List<String> contents, datetimes, emails, realnames, solutionScores, creditss, isBests;
 			contents = (List) request.getAttribute("contents");
 			datetimes = (List)request.getAttribute("datetimes");
 			emails = (List)request.getAttribute("emails");
 			realnames = (List)request.getAttribute("realnames");
 			solutionScores = (List)request.getAttribute("solutionScores");
 			creditss = (List)request.getAttribute("creditss"); 
+			isBests = (List)request.getAttribute("isBests");
+			if (strNowPage.equals("1")){
+				SolutionData officialSolution = (SolutionData) request.getAttribute("officialSolution");
+				String hashofficial = officialSolution.getEmail();
+				if (hashofficial!=null){
+					hashofficial = DigestUtils.md5Hex(hashofficial.trim().toLowerCase());
+				}
+				out.println("<table class=\"solution\">"+
+						"<tr>"+
+						"<td class=\"leftbar\">"+
+						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" >"+
+						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>"+
+						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
+						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" >"+
+						"<img class=\"leftbarbestofficial\" src=\"images/best.png\" title=\"This solution is provided by official\">"+"</td>"+
+						"<td class=\"rightcontent\">"+
+						"<div class=\"commenttext\">"+officialSolution.getContent()+"</div>"+
+						"<div class=\"commentfooter\">"+
+						" <div class=\"commentfooterdate\">"+
+						"Published: "+officialSolution.getDatetime()+
+						"</div>"+
+						"<img class=\"commentfooteravatar\" src=\"http://www.gravatar.com/avatar/"+	 hashofficial + "\">"+
+						" <div class=\"commentfooterauthor\">"+
+						"<div class=\"commentfooterauthorname\">"+
+						"<a href=\"#\" class=\"msblack20\">"+officialSolution.getRealname()+"</a>"+
+						" </div>"+
+						" <div class=\"commentfooterauthorcredit\">"+
+						" Credits:  "+officialSolution.getCredits()+
+						"</div>"+
+						"</div>"+
+						"</div>"+
+						"</td>"+
+						"</tr>"+
+						"</table>");
+				}
 			for (int i=0; i<contents.size(); i++){
 				String hash = emails.get(i);
 				if (hash!=null){
 					hash = DigestUtils.md5Hex(hash.trim().toLowerCase());
 				}
+				
 				out.println("<table class=\"solution\">"+
 						"<tr>"+
 						"<td class=\"leftbar\">"+
 						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" >"+
 						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+solutionScores.get(i)+"</div>"+
 						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
-						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" >"+
-						"<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+
-						"</td>"+
+						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" >");
+				if (isBests.get(i).equals("true")){
+					out.println("<img class=\"leftbarbestofficial\" src=\"images/best.png\" title=\"This solution is selected as the best answer\">");
+				}
+						out.println("</td>"+
 						"<td class=\"rightcontent\">"+
 						"<div class=\"commenttext\">"+contents.get(i)+"</div>"+
 						"<div class=\"commentfooter\">"+

@@ -29,8 +29,128 @@ ServletResponseAware {
 	private String strSolutionsAmount;
 	private String strNowPage;
 	private String strStat;
+	public String getStrStat() {
+		return strStat;
+	}
+
+	public void setStrStat(String strStat) {
+		this.strStat = strStat;
+	}
+
 	private int nowPage;
-	List<String> contents, datetimes, emails, realnames, creditss, solutionScores;
+	List<String> contents, datetimes, emails, realnames, creditss, solutionScores, isBests;
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	public HttpServletResponse getResponse() {
+		return response;
+	}
+
+	public void setResponse(HttpServletResponse response) {
+		this.response = response;
+	}
+
+	public String getStrBugNumber() {
+		return strBugNumber;
+	}
+
+	public void setStrBugNumber(String strBugNumber) {
+		this.strBugNumber = strBugNumber;
+	}
+
+	public String getStrSolutionsAmount() {
+		return strSolutionsAmount;
+	}
+
+	public void setStrSolutionsAmount(String strSolutionsAmount) {
+		this.strSolutionsAmount = strSolutionsAmount;
+	}
+
+	public String getStrNowPage() {
+		return strNowPage;
+	}
+
+	public void setStrNowPage(String strNowPage) {
+		this.strNowPage = strNowPage;
+	}
+
+	public int getNowPage() {
+		return nowPage;
+	}
+
+	public void setNowPage(int nowPage) {
+		this.nowPage = nowPage;
+	}
+
+	public List<String> getContents() {
+		return contents;
+	}
+
+	public void setContents(List<String> contents) {
+		this.contents = contents;
+	}
+
+	public List<String> getDatetimes() {
+		return datetimes;
+	}
+
+	public void setDatetimes(List<String> datetimes) {
+		this.datetimes = datetimes;
+	}
+
+	public List<String> getEmails() {
+		return emails;
+	}
+
+	public void setEmails(List<String> emails) {
+		this.emails = emails;
+	}
+
+	public List<String> getRealnames() {
+		return realnames;
+	}
+
+	public void setRealnames(List<String> realnames) {
+		this.realnames = realnames;
+	}
+
+	public List<String> getCreditss() {
+		return creditss;
+	}
+
+	public void setCreditss(List<String> creditss) {
+		this.creditss = creditss;
+	}
+
+	public List<String> getSolutionScores() {
+		return solutionScores;
+	}
+
+	public void setSolutionScores(List<String> solutionScores) {
+		this.solutionScores = solutionScores;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public SolutionsDisplayService getSolutionsDisplayService() {
+		return solutionsDisplayService;
+	}
+
+	public List<String> getIsBests() {
+		return isBests;
+	}
+
+	public void setIsBests(List<String> isBests) {
+		this.isBests = isBests;
+	}
+
 	public void setSolutionsDisplayService(
 			SolutionsDisplayService solutionsDisplayService) {
 		this.solutionsDisplayService = solutionsDisplayService;
@@ -65,6 +185,7 @@ ServletResponseAware {
 		emails = new LinkedList<String>();
 		realnames = new LinkedList<String>();
 		solutionScores = new LinkedList<String>();
+		isBests = new LinkedList<String>();
 		for (SolutionData s: solutionData){
 			contents.add(s.getContent());
 			creditss.add(s.getCredits()+"");
@@ -72,11 +193,16 @@ ServletResponseAware {
 			emails.add(s.getEmail());
 			realnames.add(s.getRealname());
 			solutionScores.add((s.getUp() - s.getDown())+"");
+			if (s.isBest()){
+				isBests.add("true");
+			}
+			else
+				isBests.add("false");
 		}
 		strSolutionsAmount = theData.getSolutionCount() + "";
 		System.out.println("strSolutionsAmount == " + strSolutionsAmount);
 		System.out.println("before return success");
-
+		request.setAttribute("officialSolution", officialSolution);
 		
 		return Constants.SUCCESS;
 	}
