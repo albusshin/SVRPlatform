@@ -24,6 +24,11 @@
 	<div class="commentstitle" style="padding-top:30px;">
 	There's an error occured while processing your request.
 	</div>
+	<div class="comments" >
+	<h4>Exception Name:<br> ${exception } </h4>
+
+   <h4>Exception Details:<br> ${exceptionStack }</h4> 
+	</div>
 </div>
 
  		<jsp:include page="/footer.jsp" flush="true"/>
