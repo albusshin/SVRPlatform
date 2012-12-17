@@ -15,7 +15,7 @@ import com.SVRPlatform.data.SolutionData;
 import com.SVRPlatform.service.SolutionsDisplayService;
 import com.opensymphony.xwork2.ActionSupport;
 
-class DisplaySolutions extends ActionSupport implements ServletRequestAware,
+public class DisplaySolutions extends ActionSupport implements ServletRequestAware,
 		ServletResponseAware {
 
 	/**
@@ -32,11 +32,6 @@ class DisplaySolutions extends ActionSupport implements ServletRequestAware,
 
 	public String getStrStat() {
 		return strStat;
-	}
-
-	public DisplaySolutions() {
-		super();
-		System.out.print("ππ‘Ï");
 	}
 
 	public void setStrStat(String strStat) {

@@ -3,23 +3,18 @@ package com.SVRPlatform.action;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.ServletResponseAware;
-
 import com.SVRPlatform.constants.Constants;
 import com.SVRPlatform.data.BugCommentsData;
 import com.SVRPlatform.data.CommentData;
 import com.SVRPlatform.service.CommentsDisplayService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class DisplayComments extends ActionSupport implements ServletRequestAware,
-ServletResponseAware {
+public class DisplayComments extends ActionSupport {
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = 1L;
+
 	private CommentsDisplayService commentsDisplayService;
 	private String strBugNumber;
 	private String strCommentsAmount;
@@ -68,20 +63,7 @@ ServletResponseAware {
 	public void setStrBugNumber(String strBugNumber) {
 		this.strBugNumber = strBugNumber;
 	}
-	private static final long serialVersionUID = 7189405925477674686L;
-	private HttpServletResponse response;
-	private HttpServletRequest request;
-	@Override
-	public void setServletResponse(HttpServletResponse arg0) {
-		// TODO Auto-generated method stub
-		response = arg0;
-	}
-
-	@Override
-	public void setServletRequest(HttpServletRequest arg0) {
-		// TODO Auto-generated method stub
-		request = arg0;
-	}
+	
 	List<String> contents, datetimes, emails, realnames, titles, creditss;
 	public List<String> getContents() {
 		return contents;

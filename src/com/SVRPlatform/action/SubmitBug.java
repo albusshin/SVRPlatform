@@ -33,7 +33,7 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 	private String version;
 	private String software;
 	private String language;
-	private BugSubmitService bugsubmitService;
+	private BugSubmitService bugSubmitService;
 	private Map<String, String> map;
 	private String message;
 	private String graphPath;
@@ -55,8 +55,8 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 		this.graphPath = graphPath;
 	}
 
-	public void setBugsubmitService(BugSubmitService bugsubmitService) {
-		this.bugsubmitService = bugsubmitService;
+	public void setBugSubmitService(BugSubmitService bugSubmitService) {
+		this.bugSubmitService = bugSubmitService;
 	}
 
 	public String getDigest() {
@@ -182,7 +182,7 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 		System.out.println(software);
 		System.out.println(language);
 		System.out.println("graphPath=" + graphPath);
-		map = bugsubmitService.bugSubmit(graphPath, description, version,
+		map = bugSubmitService.bugSubmit(graphPath, description, version,
 				software, digest, email, usabilityimpact, dataimpact,
 				privacyimpact, availabilityimpact, frequency, language);
 		message = "There's something wrong with your inputs, please check:\n";

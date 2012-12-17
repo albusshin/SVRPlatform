@@ -19,11 +19,13 @@ public class RetrievePassword extends ActionSupport implements
 	final static String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
 	// private HttpServletResponse response;
 	// private HttpServletRequest request;
-	private PasswordRetrieveService passwordretrieveservice;
+	private PasswordRetrieveService passwordRetrieveService;
 
-	public void setPasswordretrieveservice(
-			PasswordRetrieveService passwordretrieveservice) {
-		this.passwordretrieveservice = passwordretrieveservice;
+
+
+	public void setPasswordRetrieveService(
+			PasswordRetrieveService passwordRetrieveService) {
+		this.passwordRetrieveService = passwordRetrieveService;
 	}
 
 	String email;
@@ -41,7 +43,7 @@ public class RetrievePassword extends ActionSupport implements
 		System.out.println("this.email = " + this.email);
 		
 		
-		if (passwordretrieveservice.sendCheckingEmail(email)) {
+		if (passwordRetrieveService.sendCheckingEmail(email)) {
 			return SUCCESS;
 		}
 		return FAIL;

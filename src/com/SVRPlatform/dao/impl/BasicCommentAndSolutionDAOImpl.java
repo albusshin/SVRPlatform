@@ -7,8 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
-import com.SVRPlatform.model.BasicCommentAndSolution;
-
 abstract class BasicCommentAndSolutionDAOImpl extends BasicDAOImpl {
 
 	//protected methods

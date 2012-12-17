@@ -7,6 +7,10 @@ package com.SVRPlatform.model;
  */
 public class Usertype implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int userId;
 	private User user;
 	private Integer usertype;

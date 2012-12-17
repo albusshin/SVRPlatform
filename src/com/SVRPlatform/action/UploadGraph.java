@@ -8,16 +8,13 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.core.ApplicationContext;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.SVRPlatform.constants.Constants;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.config.entities.ActionConfig;
 
 public class UploadGraph extends ActionSupport  implements ServletRequestAware,		//sign up~ register
 ServletResponseAware {
@@ -33,8 +30,6 @@ ServletResponseAware {
 	private String message;
 	private InputStream inputStream;
 	private HttpServletRequest request;
-	private HttpServletResponse response;
-
 	public InputStream getInputStream() {
 		return inputStream;
 	}
@@ -86,10 +81,6 @@ ServletResponseAware {
 			if (!savefile.getParentFile().exists())
 				savefile.getParentFile().mkdirs();
 
-			// if (graph.length() > 2097152) {
-			// message = "graphTooBig";
-			// return Constants.FAIL;
-			// }
 			if (!Pattern.matches("image/\\w+", graphContentType)) {
 				message = "graphWrongType";
 			}
@@ -108,8 +99,6 @@ ServletResponseAware {
 
 	@Override
 	public void setServletResponse(HttpServletResponse arg0) {
-		// TODO Auto-generated method stub
-		response = arg0;
 	}
 
 	@Override

@@ -6,25 +6,25 @@ import java.util.List;
 import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import com.SVRPlatform.dao.SolutionDAO;
 import com.SVRPlatform.model.Bug;
-import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.model.User;
-import com.mchange.v2.codegen.bean.Property;
 
 public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements SolutionDAO {
 
 	@Override
-	public Object getByID(Serializable ID) {
+	public Solution getByID(Serializable ID) {
 		// TODO Auto-generated method stub
 		Session s = null;
 		try{
 			s = this.sessionFactory.openSession();
-			return s.get(Solution.class, ID);
+			Solution sol = (Solution) s.get(Solution.class, ID);
+			sol.getUser().getEmail();
+			//System.out.println(sol.getUser());
+			return sol;
 		} finally {
 			if(s != null)
 				s.close();

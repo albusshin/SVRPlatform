@@ -18,31 +18,31 @@
     </bean>
    
     
-    <bean id="signin" scope="prototype" class="com.SVRPlatform.action.SignIn">
+    <bean id="signIn" scope="prototype" class="com.SVRPlatform.action.SignIn">
     	<property name="loginService" ref="loginService"></property>
     </bean>
     
-    <bean id="signup" scope="prototype" class="com.SVRPlatform.action.SignUp">
+    <bean id="signUp" scope="prototype" class="com.SVRPlatform.action.SignUp">
     	<property name="registerService" ref="registerService"></property>
     </bean>
     
-    <bean id="retrievepassword" scope="prototype" class="com.SVRPlatform.action.RetrievePassword">
-    	<property name="passwordretrieveservice" ref="passwordretrieveservice"></property>
+    <bean id="retrievePassword" scope="prototype" class="com.SVRPlatform.action.RetrievePassword">
+    	<property name="passwordRetrieveService" ref="passwordRetrieveService"></property>
     </bean>
     
-    <bean id="checkinghash" scope="prototype" class="com.SVRPlatform.action.CheckingHash">
-    	<property name="passwordretrieveservice" ref="passwordretrieveservice"></property>
+    <bean id="checkingHash" scope="prototype" class="com.SVRPlatform.action.CheckingHash">
+    	<property name="passwordRetrieveService" ref="passwordRetrieveService"></property>
     </bean>
     
-    <bean id="resetpassword" scope="prototype" class="com.SVRPlatform.action.ResetPassword">
-    	<property name="passwordretrieveservice" ref="passwordretrieveservice"></property>
+    <bean id="resetPassword" scope="prototype" class="com.SVRPlatform.action.ResetPassword">
+    	<property name="passwordRetrieveService" ref="passwordRetrieveService"></property>
     </bean>
     
-    <bean id="submitbug" scope="prototype" class="com.SVRPlatform.action.SubmitBug">
-    	<property name="bugsubmitService" ref="bugsubmitService"></property>
+    <bean id="submitBug" scope="prototype" class="com.SVRPlatform.action.SubmitBug">
+    	<property name="bugSubmitService" ref="bugSubmitService"></property>
     </bean>
     
-    <bean id="makecomment" scope="prototype" class="com.SVRPlatform.action.MakeComment">
+    <bean id="makeComment" scope="prototype" class="com.SVRPlatform.action.MakeComment">
     	<property name="commentSubmitService" ref="commentSubmitService"></property>
     </bean>
     
@@ -50,15 +50,15 @@
     	<property name="solutionSubmitService" ref="solutionSubmitService"></property>
     </bean>
     
-    <bean id="bugpage" scope="prototype" class="com.SVRPlatform.action.DisplayBug">
+    <bean id="bugPage" scope="prototype" class="com.SVRPlatform.action.DisplayBug">
    		<property name="bugInfoDisplayService" ref="bugInfoDisplayService"></property>
     </bean>
     
-    <bean id="displaycomments" scope="prototype" class="com.SVRPlatform.action.DisplayComments">
+    <bean id="displayComments" scope="prototype" class="com.SVRPlatform.action.DisplayComments">
     	<property name="commentsDisplayService" ref="commentsDisplayService"></property>
     </bean>
     
-    <bean id="displaysolutions" scope="prototype" class="com.SVRPlatform.action.DisplaySolutions">
+    <bean id="displaySolutions" scope="prototype" class="com.SVRPlatform.action.DisplaySolutions">
     	<property name="solutionsDisplayService" ref="solutionsDisplayService"></property>
     </bean>
     
@@ -73,7 +73,7 @@
 	    	<property name="userDAO" ref="userDAO"></property>
 	    </bean>
 	    
-	    <bean id="passwordretrieveservice" class="com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl">
+	    <bean id="passwordRetrieveService" class="com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl">
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="hashForPasswordRetrieveDAO" ref="hashForPasswordRetrieveDAO"></property>
 	    </bean>
@@ -108,7 +108,7 @@
 	    	<property name="userDAO" ref="userDAO"></property>
 		</bean>
 	    
-	    <bean id="bugsubmitService" class="com.SVRPlatform.service.impl.BugSubmitServiceImpl">
+	    <bean id="bugSubmitService" class="com.SVRPlatform.service.impl.BugSubmitServiceImpl">
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="bugDAO" ref="bugDAO"></property>
 	    	<property name="softwareDAO" ref="softwareDAO"></property>
