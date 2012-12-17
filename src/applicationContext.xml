@@ -55,46 +55,56 @@
     </bean>
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
-    <bean id="loginService" class="com.SVRPlatform.service.impl.LoginServiceImpl">
-    	<property name="userDAO" ref="userDAO"></property>
-    </bean>
-    
-     <bean id="registerService" class="com.SVRPlatform.service.impl.RegisterServiceImpl">
-    	<property name="userDAO" ref="userDAO"></property>
-    </bean>
-    
-   	<bean id="bugInfoDisplayService" class="com.SVRPlatform.service.impl.BugInfoDisplayServiceImpl">
-   		<property name="bugDAO" ref="bugDAO"></property> 
-    	<property name="solutionDAO" ref="solutionDAO"></property>
-    </bean> 
-    
-    <bean id="commentsDisplayService" class="com.SVRPlatform.service.impl.CommentsDisplayServiceImpl">
-    	<property name="bugDAO" ref="bugDAO"></property>
-    	<property name="commentDAO" ref="commentDAO"></property>
-    </bean>
-    
-    <bean id="commentSubmitService" class="com.SVRPlatform.service.impl.CommentSubmitServiceImpl">
-    	<property name="commentDAO" ref="commentDAO"></property>
-    	<property name="bugDAO" ref="bugDAO"></property>
-    	<property name="userDAO" ref="userDAO"></property>
-    </bean>
-    
-    <bean id="solutionSubmitService" class="com.SVRPlatform.service.impl.SolutionSubmitServiceImpl">
-		<property name="solutionDAO" ref="solutionDAO"></property>
-    	<property name="bugDAO" ref="bugDAO"></property>
-    	<property name="userDAO" ref="userDAO"></property>
-	</bean>
-    
-    <bean id="bugsubmitService" class="com.SVRPlatform.service.impl.BugSubmitServiceImpl">
-    	<property name="userDAO" ref="userDAO"></property>
-    	<property name="bugDAO" ref="bugDAO"></property>
-    	<property name="softwareDAO" ref="softwareDAO"></property>
-    </bean>
-    
-    <bean id="passwordretrieveservice" class="com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl">
-    	<property name="userDAO" ref="userDAO"></property>
-    	<property name="hashForPasswordRetrieveDAO" ref="hashForPasswordRetrieveDAO"></property>
-    </bean>
+    	<!-- user service -->
+	    <bean id="loginService" class="com.SVRPlatform.service.impl.LoginServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
+	    </bean>
+	    
+	     <bean id="registerService" class="com.SVRPlatform.service.impl.RegisterServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
+	    </bean>
+	    
+	    <bean id="passwordretrieveservice" class="com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="hashForPasswordRetrieveDAO" ref="hashForPasswordRetrieveDAO"></property>
+	    </bean>
+	    <!-- ************ -->
+	    
+	    <!-- display service -->
+	   	<bean id="bugInfoDisplayService" class="com.SVRPlatform.service.impl.BugInfoDisplayServiceImpl">
+	   		<property name="bugDAO" ref="bugDAO"></property> 
+	    	<property name="solutionDAO" ref="solutionDAO"></property>
+	    </bean> 
+	    
+	    <bean id="commentsDisplayService" class="com.SVRPlatform.service.impl.CommentsDisplayServiceImpl">
+	    	<property name="bugDAO" ref="bugDAO"></property>
+	    	<property name="commentDAO" ref="commentDAO"></property>
+	    </bean>
+	    <bean id="solutionsDisplayService" class="com.SVRPlatform.service.impl.SolutionsDisplayServiceImpl">
+	    	<property name="bugDAO" ref="bugDAO"></property>
+	    	<property name="solutionDAO" ref="solutionDAO"></property>
+	    </bean>
+	    <!-- *************** -->
+	    
+	    <!-- submit service  -->
+	    <bean id="commentSubmitService" class="com.SVRPlatform.service.impl.CommentSubmitServiceImpl">
+	    	<property name="commentDAO" ref="commentDAO"></property>
+	    	<property name="bugDAO" ref="bugDAO"></property>
+	    	<property name="userDAO" ref="userDAO"></property>
+	    </bean>
+	    
+	    <bean id="solutionSubmitService" class="com.SVRPlatform.service.impl.SolutionSubmitServiceImpl">
+			<property name="solutionDAO" ref="solutionDAO"></property>
+	    	<property name="bugDAO" ref="bugDAO"></property>
+	    	<property name="userDAO" ref="userDAO"></property>
+		</bean>
+	    
+	    <bean id="bugsubmitService" class="com.SVRPlatform.service.impl.BugSubmitServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="bugDAO" ref="bugDAO"></property>
+	    	<property name="softwareDAO" ref="softwareDAO"></property>
+	    </bean>
+	    <!-- *************** -->
 	
 	<!-- ************************************************************************ -->
     <!-- DAOImpls beans definition -->
