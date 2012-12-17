@@ -9,7 +9,14 @@ public class SolutionData {
 	private int credits;
 	private int up;
 	private int down;
+	private boolean isBest;
 	
+	public boolean isBest() {
+		return isBest;
+	}
+	public void setBest(boolean isBest) {
+		this.isBest = isBest;
+	}
 	public String getContent() {
 		return content;
 	}
