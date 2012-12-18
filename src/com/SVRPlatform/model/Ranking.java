@@ -7,6 +7,10 @@ package com.SVRPlatform.model;
  */
 public class Ranking implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int bugId;
 	private Bug bug;
 

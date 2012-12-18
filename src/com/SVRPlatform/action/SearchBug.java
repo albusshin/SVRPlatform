@@ -11,6 +11,10 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class SearchBug extends ActionSupport implements
 ServletRequestAware, ServletResponseAware {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	HttpServletRequest request;
 	HttpServletResponse response;
 	String strBugNumber;
