@@ -53,6 +53,7 @@ public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements S
 			}
 			c.add(Restrictions.eq("bug", bug));
 			c.addOrder(Order.desc("points"));
+			c.addOrder(Order.desc("up"));
 			if(fetchSize > 0)
 				c.setMaxResults(fetchSize);
 			if(firstResult >= 0)
