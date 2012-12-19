@@ -89,7 +89,7 @@ else
         <hr/>
 <div class="comments">
         	<div class="commentstitle">
-            	{strSolutionsAmount} Solutions on Bug {strBugNumber}
+            	${strSolutionsAmount} Solutions on Bug ${strBugNumber}
             </div>
             <%
             List<String> contents, datetimes, emails, realnames, solutionScores, creditss, isBests;
@@ -113,7 +113,7 @@ else
 						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>"+
 						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
 						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" >"+
-						"<img class=\"leftbarbestofficial\" src=\"images/best.png\" title=\"This solution is provided by official\">"+"</td>"+
+						"<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+"</td>"+
 						"<td class=\"rightcontent\">"+
 						"<div class=\"commenttext\">"+officialSolution.getContent()+"</div>"+
 						"<div class=\"commentfooter\">"+
@@ -143,10 +143,10 @@ else
 				out.println("<table class=\"solution\">"+
 						"<tr>"+
 						"<td class=\"leftbar\">"+
-						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" >"+
+						"<img id=\"upButton\" class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" >"+
 						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+solutionScores.get(i)+"</div>"+
 						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
-						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" >");
+						"<img id=\"downButton\" class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" >");
 				if (isBests.get(i).equals("true")){
 					out.println("<img class=\"leftbarbestofficial\" src=\"images/best.png\" title=\"This solution is selected as the best answer\">");
 				}
@@ -172,8 +172,36 @@ else
 						"</table>");
 			}
             %>
-      </div>
-      
+      </div><!-- 
+	<script type="text/javascript">					
+		$(document).ready(function(){
+			$("#upButton").click(function(){
+				if ()
+				//create FormData
+				var data = new FormData();
+				
+				//add data for FormData
+				data.append('graph',$("#inputfile")[0].files[0]);
+				$.ajax({
+				    url:'uploadgraph',
+				    type:'POST',
+				    data:data,
+				    cache: false,
+				    enctype: 'multipart/form-data',
+				    contentType: false,    //must declare
+				    processData: false,    //must declare
+				    success:function(data){
+				        $("#uploadscreenshot").attr("src",data);
+				        $("#uploadscreenshot").attr('style','display:block');
+				        $("#hiddenpath").attr('value', data);
+				    },
+				    error:function(){
+				   	 $("#wrongmessage1").attr('style','display:block');
+					}					             
+				});
+			});
+		});
+	</script> -->
       
 
 
@@ -219,17 +247,18 @@ else
 					out.println("</div>");
 					%>
             <div class="commentstitle">
-            	Give your solution on bug {strBugNumber}
+            	Give your solution on bug ${strBugNumber}
             </div>
             <div class="commentssubmit">
-                <form id="commentssubmitform" action="giveSolution" method="post">
+                <form id="commentssubmitform" action="submitSolution" method="post">
+                	<input type="text" value="${strBugNumber}" style="display:none" name="strBugNumber">
                     <table class="commentssubmittable">
                         <tr>
                             <td class="commentssubmitkey">
                             	Solution
                             </td>
                             <td class="commentssubmitvalue">
-                            	<textarea id="commentssubmittext" name="solutiontext" placeholder="Be aware of following tips:
+                            	<textarea id="commentssubmittext" name="solutionssubmittext" placeholder="Be aware of following tips:
                                 
                                 1. Give useful solutions;
                                 

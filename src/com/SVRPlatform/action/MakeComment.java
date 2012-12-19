@@ -85,10 +85,10 @@ public class MakeComment extends ActionSupport implements ServletRequestAware
 		if (map.get("status").equals("fail")) {
 			message = "There's something wrong with your inputs, please check:\n";
 			if ((!map.get("title").equals("OK"))){
-				message += "Please input the digest of the bug information. ";
+				message += "Please input the digest of the comment. ";
 			}
 			if (!(map.get("content").equals("OK"))){
-				message += "Please input your description about the bug. ";
+				message += "Please input your description about the comment. ";
 			}
 			strStat = "wrong";
 			return Constants.FAIL;

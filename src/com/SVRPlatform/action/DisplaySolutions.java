@@ -164,6 +164,20 @@ public class DisplaySolutions extends ActionSupport implements ServletRequestAwa
 		if (nowPage == 1) {
 			officialSolution = solutionsDisplayService
 					.officialSolutionDisplayService(strBugNumber);
+			
+			//if no official solution exists
+			if (officialSolution == null) {
+				officialSolution = new SolutionData();
+				officialSolution.setBest(false);
+				officialSolution.setContent("Not available.");
+				officialSolution.setCredits(0);
+				officialSolution.setDatetime("");
+				officialSolution.setDown(0);
+				officialSolution.setEmail("");
+				officialSolution.setRealname("");
+				officialSolution.setUp(0);
+			}
+			 
 		}
 		BugSolutionsData theData = solutionsDisplayService
 				.solutionsDisplayService(strBugNumber, nowPage, 5);

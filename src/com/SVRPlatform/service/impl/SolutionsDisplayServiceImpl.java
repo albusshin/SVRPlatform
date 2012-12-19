@@ -81,20 +81,24 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 	public SolutionData officialSolutionDisplayService(String bugNumber) {
 		int bugID = Integer.parseInt(bugNumber.split("-")[2]);
 		Bug bug = (Bug) bugDAO.getByID(bugID);
-		int officialSolutionID = bug.getOfficialSolutionId();
-		SolutionData solutionData = new SolutionData();
-		Solution solution = (Solution) solutionDAO.getByID(officialSolutionID);
-		User user = solution.getUser();
 		
-		solutionData.setContent(solution.getContent());
-		solutionData.setDatetime(solution.getDatetime().toString());
-		solutionData.setRealname(user.getRealName());
-		solutionData.setEmail(user.getEmail());
-		solutionData.setCredits(user.getCredit());
-		solutionData.setUp(solution.getUp());
-		solutionData.setDown(solution.getDown());
-		solutionData.setBest(false);
-		
-		return solutionData;
+		if (bug.getOfficialSolutionId() != -1) {
+			int officialSolutionID = bug.getOfficialSolutionId();
+			SolutionData solutionData = new SolutionData();
+			Solution solution = (Solution) solutionDAO.getByID(officialSolutionID);
+			User user = solution.getUser();
+			
+			solutionData.setContent(solution.getContent());
+			solutionData.setDatetime(solution.getDatetime().toString());
+			solutionData.setRealname(user.getRealName());
+			solutionData.setEmail(user.getEmail());
+			solutionData.setCredits(user.getCredit());
+			solutionData.setUp(solution.getUp());
+			solutionData.setDown(solution.getDown());
+			solutionData.setBest(false);
+			
+			return solutionData;
+		}
+		else return null;
 	}
 }
