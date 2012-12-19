@@ -52,7 +52,7 @@ public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements S
 				c.add(Restrictions.ne("solutionId", new Integer(4)));
 			}
 			c.add(Restrictions.eq("bug", bug));
-			c.addOrder(Order.desc("up"));
+			c.addOrder(Order.desc("points"));
 			if(fetchSize > 0)
 				c.setMaxResults(fetchSize);
 			if(firstResult >= 0)

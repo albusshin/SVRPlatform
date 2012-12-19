@@ -26,5 +26,9 @@
         <property name="down" type="java.lang.Integer">
             <column name="down" />
         </property>
+        <property name="points" type="java.lang.Integer"
+        			formula="up-down">
+        </property>
+        
     </class>
 </hibernate-mapping>

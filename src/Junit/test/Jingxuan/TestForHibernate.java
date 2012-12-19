@@ -61,7 +61,7 @@ public class TestForHibernate {
 		TransactionSynchronizationManager.bindResource(sessionFactory, new SessionHolder(s));
 		softwareDAO = (SoftwareDAOImpl) ctx.getBean("softwareDAO");
 		commentDAO = (CommentDAOImpl) ctx.getBean("commentDAO");
-		passwordRetrieveService = (PasswordRetrieveService) ctx.getBean("passwordretrieveservice");
+		passwordRetrieveService = (PasswordRetrieveService) ctx.getBean("passwordRetrieveService");
 		solutionSubmitService = (SolutionSubmitService) ctx.getBean("solutionSubmitService");
 		solutionDAO = (SolutionDAOImpl) ctx.getBean("solutionDAO");
 	}
@@ -185,7 +185,7 @@ public class TestForHibernate {
 		List<Solution> l = solutionDAO.getByBugId(b, -1, -1);
 		System.out.println(l.size());
 		for(Solution s : l){
-			System.out.println("up:"+s.getUp() + " id:" + s.getSolutionId());
+			System.out.println("points:"+s.getPoints() + " id:" + s.getSolutionId());
 		}
 	}
 }
