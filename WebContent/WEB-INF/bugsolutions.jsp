@@ -39,10 +39,10 @@ else
 	</style>
 	<script type="text/javascript">
 		function voteup(solutionid){
-			window.location.href="solutionvoteup?solutionId="+solutionid;
+			window.location.href="solutionvote_voteUp?solutionId="+solutionid;
 		}
 		function votedown(solutionid){
-			window.location.href="solutionvotedown?solutionId="+solutionid;
+			window.location.href="solutionvote_voteDown?solutionId="+solutionid;
 		}
 	</script>
 </head>
