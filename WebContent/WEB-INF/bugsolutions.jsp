@@ -37,6 +37,14 @@ else
 	"}");
 %>
 	</style>
+	<script type="text/javascript">
+		function voteup(solutionid){
+			document.write(solutionid + "" + "vote up.");
+		}
+		function votedown(solutionid){
+			document.write(solutionid + "" + "vote down.");
+		}
+	</script>
 </head>
 
 <body>
@@ -102,10 +110,10 @@ else
 				out.println("<table class=\"solution\">"+
 						"<tr>"+
 						"<td class=\"leftbar\">"+
-						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" >"+
+						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" onclick=\"voteup(this.id)\" id=\""+ officialSolution.getSolutionID() + "\" >"+
 						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>"+
 						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
-						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" >"+
+						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" onclick=\"votedown(this.id)\" id=\""+ officialSolution.getSolutionID() + "\" >"+
 						"<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+"</td>"+
 						"<td class=\"rightcontent\">"+
 						"<div class=\"commenttext\">"+officialSolution.getContent()+"</div>"+
@@ -136,10 +144,10 @@ else
 				out.println("<table class=\"solution\">"+
 						"<tr>"+
 						"<td class=\"leftbar\">"+
-						"<img id=\"upButton\" class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" >"+
+						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" onclick=\"voteup(this.id)\" id=\""+ solutionData.get(i).getSolutionID() + "\" >"+
 						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(solutionData.get(i).getUp()-solutionData.get(i).getDown())+"</div>"+
 						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
-						"<img id=\"downButton\" class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" >");
+						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" onclick=\"votedown(this.id)\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
 				if (solutionData.get(i).isBest()){
 					out.println("<img class=\"leftbarbestofficial\" src=\"images/best.png\" title=\"This solution is selected as the best answer\">");
 				}
