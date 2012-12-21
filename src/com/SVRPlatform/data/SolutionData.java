@@ -2,6 +2,7 @@ package com.SVRPlatform.data;
 
 public class SolutionData {
 
+	private int solutionID;
 	private String content;
 	private String datetime;
 	private String realname;
@@ -58,5 +59,11 @@ public class SolutionData {
 	}
 	public void setDown(int down) {
 		this.down = down;
+	}
+	public int getSolutionID() {
+		return solutionID;
+	}
+	public void setSolutionID(int solutionID) {
+		this.solutionID = solutionID;
 	}
 }

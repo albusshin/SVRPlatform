@@ -15,8 +15,8 @@ import com.SVRPlatform.data.SolutionData;
 import com.SVRPlatform.service.SolutionsDisplayService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class DisplaySolutions extends ActionSupport implements ServletRequestAware,
-		ServletResponseAware {
+public class DisplaySolutions extends ActionSupport implements
+		ServletRequestAware, ServletResponseAware {
 
 	/**
 	 * 
@@ -30,6 +30,16 @@ public class DisplaySolutions extends ActionSupport implements ServletRequestAwa
 	private String strNowPage;
 	private String strStat;
 
+	List<SolutionData> solutionData;
+
+	public List<SolutionData> getSolutionData() {
+		return solutionData;
+	}
+
+	public void setSolutionData(List<SolutionData> solutionData) {
+		this.solutionData = solutionData;
+	}
+
 	public String getStrStat() {
 		return strStat;
 	}
@@ -39,8 +49,8 @@ public class DisplaySolutions extends ActionSupport implements ServletRequestAwa
 	}
 
 	private int nowPage;
-	List<String> contents, datetimes, emails, realnames, creditss,
-			solutionScores, isBests;
+//	List<String> contents, datetimes, emails, realnames, creditss,
+//			solutionScores, isBests;
 
 	public String getStrBugNumber() {
 		return strBugNumber;
@@ -74,54 +84,6 @@ public class DisplaySolutions extends ActionSupport implements ServletRequestAwa
 		this.nowPage = nowPage;
 	}
 
-	public List<String> getContents() {
-		return contents;
-	}
-
-	public void setContents(List<String> contents) {
-		this.contents = contents;
-	}
-
-	public List<String> getDatetimes() {
-		return datetimes;
-	}
-
-	public void setDatetimes(List<String> datetimes) {
-		this.datetimes = datetimes;
-	}
-
-	public List<String> getEmails() {
-		return emails;
-	}
-
-	public void setEmails(List<String> emails) {
-		this.emails = emails;
-	}
-
-	public List<String> getRealnames() {
-		return realnames;
-	}
-
-	public void setRealnames(List<String> realnames) {
-		this.realnames = realnames;
-	}
-
-	public List<String> getCreditss() {
-		return creditss;
-	}
-
-	public void setCreditss(List<String> creditss) {
-		this.creditss = creditss;
-	}
-
-	public List<String> getSolutionScores() {
-		return solutionScores;
-	}
-
-	public void setSolutionScores(List<String> solutionScores) {
-		this.solutionScores = solutionScores;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -130,19 +92,11 @@ public class DisplaySolutions extends ActionSupport implements ServletRequestAwa
 		return solutionsDisplayService;
 	}
 
-	public List<String> getIsBests() {
-		return isBests;
-	}
-
-	public void setIsBests(List<String> isBests) {
-		this.isBests = isBests;
-	}
-
 	public void setSolutionsDisplayService(
 			SolutionsDisplayService solutionsDisplayService) {
 		this.solutionsDisplayService = solutionsDisplayService;
 	}
-	
+
 	@Override
 	public void setServletResponse(HttpServletResponse arg0) {
 		// TODO Auto-generated method stub
@@ -164,8 +118,8 @@ public class DisplaySolutions extends ActionSupport implements ServletRequestAwa
 		if (nowPage == 1) {
 			officialSolution = solutionsDisplayService
 					.officialSolutionDisplayService(strBugNumber);
-			
-			//if no official solution exists
+
+			// if no official solution exists
 			if (officialSolution == null) {
 				officialSolution = new SolutionData();
 				officialSolution.setBest(false);
@@ -177,30 +131,11 @@ public class DisplaySolutions extends ActionSupport implements ServletRequestAwa
 				officialSolution.setRealname("");
 				officialSolution.setUp(0);
 			}
-			 
+
 		}
 		BugSolutionsData theData = solutionsDisplayService
 				.solutionsDisplayService(strBugNumber, nowPage, 5);
-		List<SolutionData> solutionData = theData.getSolutionsData();
-		contents = new LinkedList<String>();
-		creditss = new LinkedList<String>();
-		datetimes = new LinkedList<String>();
-		emails = new LinkedList<String>();
-		realnames = new LinkedList<String>();
-		solutionScores = new LinkedList<String>();
-		isBests = new LinkedList<String>();
-		for (SolutionData s : solutionData) {
-			contents.add(s.getContent());
-			creditss.add(s.getCredits() + "");
-			datetimes.add(s.getDatetime());
-			emails.add(s.getEmail());
-			realnames.add(s.getRealname());
-			solutionScores.add((s.getUp() - s.getDown()) + "");
-			if (s.isBest()) {
-				isBests.add("true");
-			} else
-				isBests.add("false");
-		}
+		solutionData = theData.getSolutionsData();
 		strSolutionsAmount = theData.getSolutionCount() + "";
 		System.out.println("strSolutionsAmount == " + strSolutionsAmount);
 		System.out.println("before return success");

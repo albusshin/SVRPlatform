@@ -59,6 +59,7 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 			solutionData = new SolutionData();
 			user = solution.getUser();
 			
+			solutionData.setSolutionID(solution.getSolutionId());
 			solutionData.setContent(solution.getContent());
 			solutionData.setDatetime(solution.getDatetime().toString());
 			solutionData.setRealname(user.getRealName());
@@ -88,6 +89,7 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 			Solution solution = (Solution) solutionDAO.getByID(officialSolutionID);
 			User user = solution.getUser();
 			
+			solutionData.setSolutionID(solution.getSolutionId());
 			solutionData.setContent(solution.getContent());
 			solutionData.setDatetime(solution.getDatetime().toString());
 			solutionData.setRealname(user.getRealName());
