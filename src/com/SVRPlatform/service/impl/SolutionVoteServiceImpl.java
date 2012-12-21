@@ -3,7 +3,6 @@ package com.SVRPlatform.service.impl;
 import com.SVRPlatform.dao.SolutionDAO;
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.model.Solution;
-import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.SolutionVoteService;
 
 public class SolutionVoteServiceImpl implements SolutionVoteService {
@@ -29,20 +28,18 @@ public class SolutionVoteServiceImpl implements SolutionVoteService {
 	public boolean voteUp(int solutionId, String email) {
 		// TODO Auto-generated method stub
 		Solution solution = (Solution) solutionDAO.getByID(new Integer(solutionId));
-		User user = userDAO.getUserByEmail(email);
 		
-		return addUpOrDown(solution, user, true);
+		return addUpOrDown(solution, true);
 	}
 
 	@Override
 	public boolean voteDown(int solutionId, String email) {
 		// TODO Auto-generated method stub
 		Solution solution = (Solution) solutionDAO.getByID(new Integer(solutionId));
-		User user = userDAO.getUserByEmail(email);
-		return addUpOrDown(solution, user, false);
+		return addUpOrDown(solution, false);
 	}
 	
-	protected boolean addUpOrDown(Solution solution, User user, boolean isUp){
+	protected boolean addUpOrDown(Solution solution, boolean isUp){
 		if(isUp)
 			solution.setUp(new Integer(solution.getUp() + 1));
 		else
