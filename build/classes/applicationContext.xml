@@ -69,6 +69,9 @@
     	<property name="solutionsDisplayService" ref="solutionsDisplayService"></property>
     </bean>
     
+    <bean id="solutionvote" scope="prototype" class="com.SVRPlatform.action.SolutionVoteAction">
+    	<property name="solutionVoteService" ref="solutionVoteService"></property>
+    </bean>
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
     	<!-- user service -->
