@@ -172,11 +172,14 @@ else
 						"</table>");
 			}
             %>
-      </div><!-- 
+    </div>
 	<script type="text/javascript">					
 		$(document).ready(function(){
 			$("#upButton").click(function(){
-				if ()
+				var credits = session.getAttribute("credits");
+				if (credits > 25) {
+					
+				}
 				//create FormData
 				var data = new FormData();
 				
@@ -201,7 +204,7 @@ else
 				});
 			});
 		});
-	</script> -->
+	</script>
       
 
 
