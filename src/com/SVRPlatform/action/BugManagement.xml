@@ -62,10 +62,7 @@
         <action name="displaysolutions" class="displaySolutions" method="execute">
         	<result name="success">/WEB-INF/bugsolutions.jsp</result>
         </action>
-        <action name="solutionvoteup" class="solutionvote" method="voteUp">
-        	<result name="success" type="stream"></result>
-        </action>
-        <action name="solutionvotedown" class="solutionvote" method="voteDown">
+        <action name="solutionvote_*" class="solutionvote" method="{1}">
         	<result name="success" type="stream"></result>
         </action>
     </package>
