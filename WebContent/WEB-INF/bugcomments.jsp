@@ -1,5 +1,6 @@
+<%@page import="com.SVRPlatform.service.CommentsDisplayService"%>
 <%@ page language="java" contentType="text/html;  charset=utf-8"
-	import="org.apache.commons.codec.digest.DigestUtils,java.util.List"
+	import="org.apache.commons.codec.digest.DigestUtils,java.util.List,com.SVRPlatform.data.*"
 	pageEncoding="utf-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -94,32 +95,26 @@ else
 			<div class="commentstitle">${strCommentsAmount } Comments about
 				bug ${strBugNumber }</div>
 			<%
-			List<String> contents, datetimes, emails, realnames, titles, creditss;
-			contents = (List) request.getAttribute("contents");
-			datetimes = (List)request.getAttribute("datetimes");
-			emails = (List)request.getAttribute("emails");
-			realnames = (List)request.getAttribute("realnames");
-			titles = (List)request.getAttribute("titles");
-			creditss = (List)request.getAttribute("creditss");
-				for (int i=0; i<contents.size(); i++){
+			List<CommentData> commentData = (List) request.getAttribute("commentData");
+				for (int i=0; i<commentData.size(); i++){
 					
-					String hash = emails.get(i);
+					String hash = commentData.get(i).getEmail();
 					if (hash!=null){
 						hash = DigestUtils.md5Hex(hash.trim().toLowerCase());
 					}
 					out.println("<div class='comment'>" + 
-					"<div class='commenttitle'>"+titles.get(i)+"</div>" +
-				"<div class='commenttext'>"+contents.get(i)+"</div>"+
+					"<div class='commenttitle'>"+commentData.get(i).getTitle()+"</div>" +
+				"<div class='commenttext'>"+commentData.get(i).getContent()+"</div>"+
 				"<div class='commentfooter'>"+
-				"	<div class='commentfooterdate'>Published:"+ datetimes.get(i) +
+				"	<div class='commentfooterdate'>Published:"+ commentData.get(i).getDatetime() +
 				"	</div>"+
 				"	<img class='commentfooteravatar'"+
 			"			src='http://www.gravatar.com/avatar/"+	 hash + "'>"+
 			"		<div class='commentfooterauthor'>"+
 			"			<div class='commentfooterauthorname'>"+
-			"				<a href='#' class='msblack20'>"+realnames.get(i)+"</a>"+
+			"				<a href='#' class='msblack20'>"+commentData.get(i).getRealname()+"</a>"+
 			"			</div>"+
-			"			<div class='commentfooterauthorcredit'>Credits: "+ creditss.get(i) +"</div>"+
+			"			<div class='commentfooterauthorcredit'>Credits: "+ commentData.get(i).getCredits() +"</div>"+
 			"		</div>"+
 				"</div>"+
 				"</div>");

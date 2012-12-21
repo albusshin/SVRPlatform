@@ -20,13 +20,21 @@ public class DisplayComments extends ActionSupport {
 	private String strCommentsAmount;
 	private String strNowPage;
 	private String strStat;
-	
+	List<CommentData> commentData;
+
+	public List<CommentData> getCommentData() {
+		return commentData;
+	}
+
+	public void setCommentData(List<CommentData> commentData) {
+		this.commentData = commentData;
+	}
 
 	public void setCommentsDisplayService(
 			CommentsDisplayService commentsDisplayService) {
 		this.commentsDisplayService = commentsDisplayService;
 	}
-	
+
 	public String getStrStat() {
 		return strStat;
 	}
@@ -34,8 +42,9 @@ public class DisplayComments extends ActionSupport {
 	public void setStrStat(String strStat) {
 		this.strStat = strStat;
 	}
+
 	private String message;
-	
+
 	public String getMessage() {
 		return message;
 	}
@@ -51,7 +60,9 @@ public class DisplayComments extends ActionSupport {
 	public void setStrNowPage(String strNowPage) {
 		this.strNowPage = strNowPage;
 	}
+
 	private int nowPage;
+
 	public String getStrCommentsAmount() {
 		return strCommentsAmount;
 	}
@@ -63,58 +74,19 @@ public class DisplayComments extends ActionSupport {
 	public void setStrBugNumber(String strBugNumber) {
 		this.strBugNumber = strBugNumber;
 	}
-	
-	List<String> contents, datetimes, emails, realnames, titles, creditss;
-	public List<String> getContents() {
-		return contents;
-	}
 
-	public List<String> getDatetimes() {
-		return datetimes;
-	}
-
-	public List<String> getEmails() {
-		return emails;
-	}
-
-	public List<String> getRealnames() {
-		return realnames;
-	}
-
-	public List<String> getTitles() {
-		return titles;
-	}
-
-	public List<String> getCreditss() {
-		return creditss;
-	}
-
-	public String execute(){
+	public String execute() {
 		System.out.println("DisplayComments execute()");
 		System.out.println("strBugNumber" + strBugNumber);
 		System.out.println("strNowPage == " + strNowPage);
 		nowPage = Integer.parseInt(strNowPage);
-		BugCommentsData theData = commentsDisplayService.commentsDispalyService(strBugNumber, nowPage, 5);
-		List<CommentData> commentData = theData.getCommentsData();
-		contents = new LinkedList<String>();
-		creditss = new LinkedList<String>();
-		datetimes = new LinkedList<String>();
-		emails = new LinkedList<String>();
-		realnames = new LinkedList<String>();
-		titles = new LinkedList<String>();
-		for (CommentData c: commentData){
-			contents.add(c.getContent());
-			creditss.add(c.getCredits()+"");
-			datetimes.add(c.getDatetime());
-			emails.add(c.getEmail());
-			realnames.add(c.getRealname());
-			titles.add(c.getTitle());
-		}
+		BugCommentsData theData = commentsDisplayService
+				.commentsDispalyService(strBugNumber, nowPage, 5);
+		commentData = theData.getCommentsData();
 		strCommentsAmount = theData.getCommentCount() + "";
 		System.out.println("strCommentsAmount == " + strCommentsAmount);
 		System.out.println("before return success");
 
-		
 		return Constants.SUCCESS;
 	}
 
