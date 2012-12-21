@@ -35,7 +35,6 @@ ServletResponseAware{
 	}
 	
 	public String voteUp(){
-		System.out.println("vote up!");
 		String nowUser = VerifyUser.getNowUser(request);
 		if (nowUser == null){
 			return Constants.NOTSIGNEDIN;
