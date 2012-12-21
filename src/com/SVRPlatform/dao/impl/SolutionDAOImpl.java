@@ -49,7 +49,7 @@ public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements S
 			org.hibernate.Criteria c = s.createCriteria(Solution.class);
 			int sid = bug.getOfficialSolutionId();
 			if(sid > -1){
-				c.add(Restrictions.ne("solutionId", new Integer(4)));
+				c.add(Restrictions.ne("solutionId", new Integer(sid)));
 			}
 			c.add(Restrictions.eq("bug", bug));
 			c.addOrder(Order.desc("points"));

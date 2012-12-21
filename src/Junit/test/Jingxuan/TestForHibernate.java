@@ -192,6 +192,7 @@ public class TestForHibernate {
 		}
 	}
 	@Test public void testVote() {
-		solutionVoteService.voteUp(1, "povergoing@gmail.com");
+		System.out.println(
+		solutionVoteService.voteUp(1, "povergoing@gmail.com"));
 	}
 }
