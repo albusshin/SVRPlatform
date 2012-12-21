@@ -10,10 +10,10 @@
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"> 
     
     <!--Spring AOP -->
+    <!-- 
 	<aop:aspectj-autoproxy/>
-	
-	<!-- context:component-scan base-package="com.SVRPlatform.iterceptor"/-->
-    
+	<context:component-scan base-package="com.SVRPlatform.service"/>
+     -->
      
     <!-- Action -->  
     
@@ -70,6 +70,9 @@
     	<property name="solutionsDisplayService" ref="solutionsDisplayService"></property>
     </bean>
     
+    <bean id="solutionvote" scope="prototype" class="com.SVRPlatform.action.SolutionVoteAction">
+    	<property name="solutionVoteService" ref="solutionVoteService"></property>
+    </bean>
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
     	<!-- user service -->
@@ -128,7 +131,7 @@
 	    	<property name="solutionDAO" ref="solutionDAO"></property>
 	    </bean>
 	
-		<bean id="solutionVoteInterceptor" class="com.SVRPlatform.interceptor.SolutionVoteInterceptor"></bean>
+	
 	<!-- ************************************************************************ -->
     <!-- DAOImpls beans definition -->
     <bean id="userDAO" class="com.SVRPlatform.dao.impl.UserDAOImpl">

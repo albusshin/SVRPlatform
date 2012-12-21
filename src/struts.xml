@@ -18,6 +18,7 @@
      
         <global-results>
             <result name="error">/WEB-INF/error.jsp</result>
+        	<result name="notsignedin">/WEB-INF/notSignedIn.jsp</result>
         </global-results>
 
         <global-exception-mappings>

@@ -47,7 +47,6 @@
 		<action name="makeComment" class="makeComment" method="execute">
          	<result name="success" type="chain">displaycomments</result>
          	<result name="fail" type="chain">displaycomments</result>  
-         	<result name="notsignedin">/WEB-INF/notSignedIn.jsp</result>
         </action>
         <action name="displaycomments" class="displayComments" method="execute">
         	<result name="success">/WEB-INF/bugcomments.jsp</result>
@@ -59,10 +58,12 @@
         <action name="submitSolution" class="submitSolution" method="execute">
         	<result name="success" type="chain">displaysolutions</result>
          	<result name="fail" type="chain">displaysolutions</result>  
-         	<result name="notsignedin">/WEB-INF/notSignedIn.jsp</result>
         </action>
         <action name="displaysolutions" class="displaySolutions" method="execute">
         	<result name="success">/WEB-INF/bugsolutions.jsp</result>
+        </action>
+        <action name="solutionvote_*" class="solutionvote" method="{1}">
+        	<result name="success" type="stream"></result>
         </action>
     </package>
 </struts>

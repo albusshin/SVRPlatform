@@ -38,12 +38,57 @@ else
 %>
 	</style>
 	<script type="text/javascript">
-		function voteup(solutionid){
-			document.write(solutionid + "" + "vote up.");
+		function vote(type, id) {
+			var url = 'solutionvote_vote'+type+'?solutionId='+id;
+			
+			$.ajax({
+			    url:url,
+			    type:'GET',
+			    cache: false,
+			    contentType: false,    //must declare
+			    processData: false,    //must declare
+			    success:function(data){
+			        if (data == "success") 
+			        	if  (type == 'Up')
+			        		$('#'+id).next().text(parseInt($('#'+id).next().text())+1);
+			        	else $('#'+id).next().text(parseInt($('#'+id).next().text())-1);
+			        else if (data == "fail"){
+			        	//do something
+			        };
+			    },
+			    error:function(){
+			   		$("#wrongmessage1").attr('style','display:block');
+				}					             
+			});
 		}
-		function votedown(solutionid){
-			document.write(solutionid + "" + "vote down.");
-		}
+	
+		$(document).ready(function(){
+			$(".leftbarup").click(function() {
+				vote('Up', $(this).attr('id'));
+			});
+			$(".leftbardown").click(function() {
+				vote('Down', $(this).attr('id'));
+			});
+		});
+		$(document).ready(function(){ 
+
+			$('#official').animate({
+				backgroundColor:"#0000cc",
+			}, 50
+			);
+			$('#official').animate({
+				backgroundColor:"#ffffff",
+				}, 1000
+			);
+			$('#best').animate({
+				backgroundColor:"#ff8800",
+			}, 50
+			);
+			$('#best').animate({
+				backgroundColor:"#ffffff",
+				}, 1000
+			);
+		});
 	</script>
 </head>
 
@@ -72,6 +117,9 @@ else
              	<script type="text/javascript">
              		function dismiss(){
              			document.getElementById("wrongmessage").setAttribute("style", "display:none");
+             		}
+             		function dismiss1(){
+             			document.getElementById("officialsolutionnotgiven").setAttribute("style", "display:none");
              		}
              	</script>
 
@@ -103,51 +151,69 @@ else
             List<SolutionData> solutionData = (List) request.getAttribute("solutionData");
 			if (strNowPage.equals("1")){
 				SolutionData officialSolution = (SolutionData) request.getAttribute("officialSolution");
-				String hashofficial = officialSolution.getEmail();
-				if (hashofficial!=null){
-					hashofficial = DigestUtils.md5Hex(hashofficial.trim().toLowerCase());
+				if (officialSolution == null){
+			 			out.println("<div id=\"officialsolutionnotgiven\" class=\"alert-messages\" style=\"display:block\">");
+			 			out.println("<div class=\"message\">");
+			 			out.println("<div class=\"message-inside\">");
+			 			out.println("<div class=\"message-text\">");
+			 			out.println("Official solution not given yet.");
+			 			out.println("</div>");
+			 			out.println("<a class=\"dismiss\" href=\"javascript:dismiss1();\">×</a>");
+			 			out.println("</div>");
+			 			out.println("</div>");
+			 			out.println("</div>");
 				}
-				out.println("<table class=\"solution\">"+
-						"<tr>"+
-						"<td class=\"leftbar\">"+
-						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" onclick=\"voteup(this.id)\" id=\""+ officialSolution.getSolutionID() + "\" >"+
-						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>"+
-						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
-						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" onclick=\"votedown(this.id)\" id=\""+ officialSolution.getSolutionID() + "\" >"+
-						"<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+"</td>"+
-						"<td class=\"rightcontent\">"+
-						"<div class=\"commenttext\">"+officialSolution.getContent()+"</div>"+
-						"<div class=\"commentfooter\">"+
-						" <div class=\"commentfooterdate\">"+
-						"Published: "+officialSolution.getDatetime()+
-						"</div>"+
-						"<img class=\"commentfooteravatar\" src=\"http://www.gravatar.com/avatar/"+	 hashofficial + "\">"+
-						" <div class=\"commentfooterauthor\">"+
-						"<div class=\"commentfooterauthorname\">"+
-						"<a href=\"#\" class=\"msblack20\">"+officialSolution.getRealname()+"</a>"+
-						" </div>"+
-						" <div class=\"commentfooterauthorcredit\">"+
-						" Credits:  "+officialSolution.getCredits()+
-						"</div>"+
-						"</div>"+
-						"</div>"+
-						"</td>"+
-						"</tr>"+
-						"</table>");
+				else{
+					String hashofficial = officialSolution.getEmail();
+					if (hashofficial!=null){
+						hashofficial = DigestUtils.md5Hex(hashofficial.trim().toLowerCase());
+					}
+					out.println("<table class=\"solution\" id='official'>"+
+							"<tr>"+
+							"<td class=\"leftbar\">"+
+							"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ officialSolution.getSolutionID() + "\" >"+
+							"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>"+
+							//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
+							"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ officialSolution.getSolutionID() + "\" >"+
+							"<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+"</td>"+
+							"<td class=\"rightcontent\">"+
+							"<div class=\"commenttext\">"+officialSolution.getContent()+"</div>"+
+							"<div class=\"commentfooter\">"+
+							" <div class=\"commentfooterdate\">"+
+							"Published: "+officialSolution.getDatetime()+
+							"</div>"+
+							"<img class=\"commentfooteravatar\" src=\"http://www.gravatar.com/avatar/"+	 hashofficial + "\">"+
+							" <div class=\"commentfooterauthor\">"+
+							"<div class=\"commentfooterauthorname\">"+
+							"<a href=\"#\" class=\"msblack20\">"+officialSolution.getRealname()+"</a>"+
+							" </div>"+
+							" <div class=\"commentfooterauthorcredit\">"+
+							" Credits:  "+officialSolution.getCredits()+
+							"</div>"+
+							"</div>"+
+							"</div>"+
+							"</td>"+
+							"</tr>"+
+							"</table>");
 				}
+			}
 			for (int i=0; i<solutionData.size(); i++){
 				String hash = solutionData.get(i).getEmail();
 				if (hash!=null){
 					hash = DigestUtils.md5Hex(hash.trim().toLowerCase());
 				}
 				
-				out.println("<table class=\"solution\">"+
+				out.println("<table class=\"solution\"");
+				if (solutionData.get(i).isBest()){
+					out.print("id='best'");
+				}
+						out.print(">"+
 						"<tr>"+
 						"<td class=\"leftbar\">"+
-						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" onclick=\"voteup(this.id)\" id=\""+ solutionData.get(i).getSolutionID() + "\" >"+
+						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ solutionData.get(i).getSolutionID() + "\" >"+
 						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(solutionData.get(i).getUp()-solutionData.get(i).getDown())+"</div>"+
 						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
-						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" onclick=\"votedown(this.id)\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
+						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
 				if (solutionData.get(i).isBest()){
 					out.println("<img class=\"leftbarbestofficial\" src=\"images/best.png\" title=\"This solution is selected as the best answer\">");
 				}
@@ -174,41 +240,7 @@ else
 			}
             %>
     </div>
-	<script type="text/javascript">					
-		$(document).ready(function(){
-			$("#upButton").click(function(){
-				var credits = session.getAttribute("credits");
-				if (credits > 25) {
-					
-				}
-				//create FormData
-				var data = new FormData();
-				
-				//add data for FormData
-				data.append('graph',$("#inputfile")[0].files[0]);
-				$.ajax({
-				    url:'uploadgraph',
-				    type:'POST',
-				    data:data,
-				    cache: false,
-				    enctype: 'multipart/form-data',
-				    contentType: false,    //must declare
-				    processData: false,    //must declare
-				    success:function(data){
-				        $("#uploadscreenshot").attr("src",data);
-				        $("#uploadscreenshot").attr('style','display:block');
-				        $("#hiddenpath").attr('value', data);
-				    },
-				    error:function(){
-				   	 $("#wrongmessage1").attr('style','display:block');
-					}					             
-				});
-			});
-		});
-	</script>
-      
-
-
+    
       <%
 					
 /**

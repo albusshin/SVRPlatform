@@ -5,11 +5,12 @@ body {
 }
 
 body {
- margin-left: 0px;
- margin-top: 0px;
- margin-right: 0px;
- margin-bottom: 0px;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
 }
+
 #content {
 	width: 950px;
 	margin: 50px auto;
@@ -882,8 +883,8 @@ input[type="checkbox"]:checked:hover+label,input[type="checkbox"]:checked:focus+
 	background: url(images/checkbox-on-hover.png) top left no-repeat;
 }
 
-input[type="checkbox"]:not (:checked ):hover+label,input[type="checkbox"]:not
-	(:checked ):focus+label {
+input[type="checkbox"]:not  (:checked  ):hover+label,input[type="checkbox"]:not
+	 (:checked  ):focus+label {
 	background: url(images/checkbox-off-hover.png) top left no-repeat;
 }
 
@@ -1175,8 +1176,8 @@ div#upbar {
 }
 
 .message .message-text {
-	padding-top:20px;
-	padding-bottom:20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	display: block;
 	margin-right: 20px;
 	color: #ccc;
@@ -1186,24 +1187,23 @@ div#upbar {
 }
 
 .message .message-text a {
-	text-decoration:none;
-	border-bottom:none;
+	text-decoration: none;
+	border-bottom: none;
 	font-weight: bold;
 	color: #fff
-	
 }
 
 .message .close,.message .dismiss {
 	position: absolute;
 	top: 7px;
 	right: 12px;
-	filter: alpha(opacity = 50);
+	filter: alpha(opacity =   50);
 	-moz-opacity: .50;
 	opacity: .50
 }
 
 .message .close:hover,.message .dismiss:hover {
-	filter: alpha(opacity = 100);
+	filter: alpha(opacity =   100);
 	-moz-opacity: 1;
 	opacity: 1
 }

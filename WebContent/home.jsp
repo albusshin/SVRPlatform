@@ -21,10 +21,12 @@
  			<jsp:param name="type" value="<%=str%>"/>
  		</jsp:include>
 	<div id="content">
-		Home page. 
-		Comming soon.
-		Don't fucking push me.
-		<a href="TrySubmitBug">上传bug试试。</a>
+		Home page. <br>
+		大家加油编程啊！<br>
+		<a href="TrySubmitBug">上传bug试试。</a><br>
+		<a href="bugpage?strBugNumber=SVRB-2012-00000023">23号bug。</a><br>
+		<a href="displaycomments?strBugNumber=SVRB-2012-00000023&strNowPage=1">23号bug的comments.</a><br>
+		<a href="displaysolutions?strBugNumber=SVRB-2012-00000023&strNowPage=1">23号bug的solutions.</a>
 	</div>
     <jsp:include page="/footer.jsp" flush="true"/>
 </body>
