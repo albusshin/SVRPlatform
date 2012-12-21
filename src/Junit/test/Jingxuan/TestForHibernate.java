@@ -22,6 +22,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 import com.SVRPlatform.action.RetrievePassword;
 import com.SVRPlatform.dao.HashForPasswordRetrieveDAO;
 import com.SVRPlatform.dao.SolutionDAO;
+import com.SVRPlatform.dao.SolutionVoteDAO;
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.dao.impl.BugDAOImpl;
 import com.SVRPlatform.dao.impl.CommentDAOImpl;
@@ -32,6 +33,7 @@ import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Software;
 import com.SVRPlatform.model.Solution;
+import com.SVRPlatform.model.SolutionVote;
 import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.PasswordRetrieveService;
 import com.SVRPlatform.service.SolutionSubmitService;
@@ -51,10 +53,11 @@ public class TestForHibernate {
 	static PasswordRetrieveService passwordRetrieveService;
 	static SolutionSubmitService solutionSubmitService;
 	static SolutionVoteService solutionVoteService;
+	static SolutionVoteDAO solutionVoteDAO;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		ctx = new ClassPathXmlApplicationContext( "Junit/test/Jingxuan/testBeans-hibernate.xml", "applicationContext.xml" );
+		ctx = new ClassPathXmlApplicationContext( "applicationContext-hibernate.xml", "applicationContext.xml" );
 		userDAO = (UserDAO)ctx.getBean("userDAO");
 		bugDAO = (BugDAOImpl)ctx.getBean("bugDAO");
 		sessionFactory = (SessionFactory) ctx.getBean("sessionFactory");
@@ -67,6 +70,7 @@ public class TestForHibernate {
 		solutionSubmitService = (SolutionSubmitService) ctx.getBean("solutionSubmitService");
 		solutionDAO = (SolutionDAOImpl) ctx.getBean("solutionDAO");
 		solutionVoteService = (SolutionVoteService) ctx.getBean("solutionVoteService");
+		solutionVoteDAO = (SolutionVoteDAO) ctx.getBean("solutionVoteDAO");
 	}
 
 	@AfterClass
@@ -192,7 +196,13 @@ public class TestForHibernate {
 		}
 	}
 	@Test public void testVote() {
-		System.out.println(
-		solutionVoteService.voteUp(1, "povergoing@gmail.com"));
+		SolutionVote solutionVote = new SolutionVote();
+		solutionVote.setSolution(solutionDAO.getByID(new Integer(9)));
+		solutionVote.setUser((User)userDAO.getByID(new Integer(6)));
+		solutionVote.setVoteFlag(1);
+		solutionVoteDAO.add(solutionVote);
+	}
+	@Test public void testVote2(){
+		solutionVoteService.voteUp(9, "povergoing@gmail.com");
 	}
 }
