@@ -39,10 +39,10 @@ else
 	</style>
 	<script type="text/javascript">
 		function voteup(solutionid){
-			document.write(solutionid + "" + "vote up.");
+			window.location.href="solutionvoteup?solutionId="+solutionid;
 		}
 		function votedown(solutionid){
-			document.write(solutionid + "" + "vote down.");
+			window.location.href="solutionvotedown?solutionId="+solutionid;
 		}
 	</script>
 </head>
@@ -72,6 +72,9 @@ else
              	<script type="text/javascript">
              		function dismiss(){
              			document.getElementById("wrongmessage").setAttribute("style", "display:none");
+             		}
+             		function dismiss1(){
+             			document.getElementById("officialsolutionnotgiven").setAttribute("style", "display:none");
              		}
              	</script>
 
@@ -103,38 +106,52 @@ else
             List<SolutionData> solutionData = (List) request.getAttribute("solutionData");
 			if (strNowPage.equals("1")){
 				SolutionData officialSolution = (SolutionData) request.getAttribute("officialSolution");
-				String hashofficial = officialSolution.getEmail();
-				if (hashofficial!=null){
-					hashofficial = DigestUtils.md5Hex(hashofficial.trim().toLowerCase());
+				if (officialSolution == null){
+			 			out.println("<div id=\"officialsolutionnotgiven\" class=\"alert-messages\" style=\"display:block\">");
+			 			out.println("<div class=\"message\">");
+			 			out.println("<div class=\"message-inside\">");
+			 			out.println("<div class=\"message-text\">");
+			 			out.println("Official solution not given yet.");
+			 			out.println("</div>");
+			 			out.println("<a class=\"dismiss\" href=\"javascript:dismiss1();\">×</a>");
+			 			out.println("</div>");
+			 			out.println("</div>");
+			 			out.println("</div>");
 				}
-				out.println("<table class=\"solution\">"+
-						"<tr>"+
-						"<td class=\"leftbar\">"+
-						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" onclick=\"voteup(this.id)\" id=\""+ officialSolution.getSolutionID() + "\" >"+
-						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>"+
-						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
-						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" onclick=\"votedown(this.id)\" id=\""+ officialSolution.getSolutionID() + "\" >"+
-						"<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+"</td>"+
-						"<td class=\"rightcontent\">"+
-						"<div class=\"commenttext\">"+officialSolution.getContent()+"</div>"+
-						"<div class=\"commentfooter\">"+
-						" <div class=\"commentfooterdate\">"+
-						"Published: "+officialSolution.getDatetime()+
-						"</div>"+
-						"<img class=\"commentfooteravatar\" src=\"http://www.gravatar.com/avatar/"+	 hashofficial + "\">"+
-						" <div class=\"commentfooterauthor\">"+
-						"<div class=\"commentfooterauthorname\">"+
-						"<a href=\"#\" class=\"msblack20\">"+officialSolution.getRealname()+"</a>"+
-						" </div>"+
-						" <div class=\"commentfooterauthorcredit\">"+
-						" Credits:  "+officialSolution.getCredits()+
-						"</div>"+
-						"</div>"+
-						"</div>"+
-						"</td>"+
-						"</tr>"+
-						"</table>");
+				else{
+					String hashofficial = officialSolution.getEmail();
+					if (hashofficial!=null){
+						hashofficial = DigestUtils.md5Hex(hashofficial.trim().toLowerCase());
+					}
+					out.println("<table class=\"solution\">"+
+							"<tr>"+
+							"<td class=\"leftbar\">"+
+							"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" onclick=\"voteup(this.id)\" id=\""+ officialSolution.getSolutionID() + "\" >"+
+							"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>"+
+							//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
+							"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" onclick=\"votedown(this.id)\" id=\""+ officialSolution.getSolutionID() + "\" >"+
+							"<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+"</td>"+
+							"<td class=\"rightcontent\">"+
+							"<div class=\"commenttext\">"+officialSolution.getContent()+"</div>"+
+							"<div class=\"commentfooter\">"+
+							" <div class=\"commentfooterdate\">"+
+							"Published: "+officialSolution.getDatetime()+
+							"</div>"+
+							"<img class=\"commentfooteravatar\" src=\"http://www.gravatar.com/avatar/"+	 hashofficial + "\">"+
+							" <div class=\"commentfooterauthor\">"+
+							"<div class=\"commentfooterauthorname\">"+
+							"<a href=\"#\" class=\"msblack20\">"+officialSolution.getRealname()+"</a>"+
+							" </div>"+
+							" <div class=\"commentfooterauthorcredit\">"+
+							" Credits:  "+officialSolution.getCredits()+
+							"</div>"+
+							"</div>"+
+							"</div>"+
+							"</td>"+
+							"</tr>"+
+							"</table>");
 				}
+			}
 			for (int i=0; i<solutionData.size(); i++){
 				String hash = solutionData.get(i).getEmail();
 				if (hash!=null){
