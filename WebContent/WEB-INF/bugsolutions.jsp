@@ -44,6 +44,25 @@ else
 		function votedown(solutionid){
 			window.location.href="solutionvote_voteDown?solutionId="+solutionid;
 		}
+		$(document).ready(function(){ 
+
+			$('#official').animate({
+				backgroundColor:"#0000cc",
+			}, 50
+			);
+			$('#official').animate({
+				backgroundColor:"#ffffff",
+				}, 1000
+			);
+			$('#best').animate({
+				backgroundColor:"#ff8800",
+			}, 50
+			);
+			$('#best').animate({
+				backgroundColor:"#ffffff",
+				}, 1000
+			);
+		});
 	</script>
 </head>
 
@@ -123,7 +142,7 @@ else
 					if (hashofficial!=null){
 						hashofficial = DigestUtils.md5Hex(hashofficial.trim().toLowerCase());
 					}
-					out.println("<table class=\"solution\">"+
+					out.println("<table class=\"solution\" id='official'>"+
 							"<tr>"+
 							"<td class=\"leftbar\">"+
 							"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" onclick=\"voteup(this.id)\" id=\""+ officialSolution.getSolutionID() + "\" >"+
@@ -158,7 +177,11 @@ else
 					hash = DigestUtils.md5Hex(hash.trim().toLowerCase());
 				}
 				
-				out.println("<table class=\"solution\">"+
+				out.println("<table class=\"solution\"");
+				if (solutionData.get(i).isBest()){
+					out.print("id='best'");
+				}
+						out.print(">"+
 						"<tr>"+
 						"<td class=\"leftbar\">"+
 						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" onclick=\"voteup(this.id)\" id=\""+ solutionData.get(i).getSolutionID() + "\" >"+

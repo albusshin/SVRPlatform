@@ -2,6 +2,9 @@
 	import="org.apache.commons.codec.digest.DigestUtils"
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script type="text/javascript">
 	/**
 	 * Albus Shin
