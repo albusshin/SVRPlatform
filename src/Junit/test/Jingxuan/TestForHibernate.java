@@ -35,6 +35,7 @@ import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.PasswordRetrieveService;
 import com.SVRPlatform.service.SolutionSubmitService;
+import com.SVRPlatform.service.SolutionVoteService;
 import com.SVRPlatform.service.impl.PasswordEncoder;
 import com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl;
 
@@ -49,6 +50,7 @@ public class TestForHibernate {
 	static SolutionDAOImpl solutionDAO;
 	static PasswordRetrieveService passwordRetrieveService;
 	static SolutionSubmitService solutionSubmitService;
+	static SolutionVoteService solutionVoteService;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -64,6 +66,7 @@ public class TestForHibernate {
 		passwordRetrieveService = (PasswordRetrieveService) ctx.getBean("passwordRetrieveService");
 		solutionSubmitService = (SolutionSubmitService) ctx.getBean("solutionSubmitService");
 		solutionDAO = (SolutionDAOImpl) ctx.getBean("solutionDAO");
+		solutionVoteService = (SolutionVoteService) ctx.getBean("solutionVoteService");
 	}
 
 	@AfterClass
@@ -187,5 +190,8 @@ public class TestForHibernate {
 		for(Solution s : l){
 			System.out.println("points:"+s.getPoints() + " id:" + s.getSolutionId());
 		}
+	}
+	@Test public void testVote() {
+		solutionVoteService.voteUp(1, "povergoing@gmail.com");
 	}
 }
