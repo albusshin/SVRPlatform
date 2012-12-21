@@ -38,8 +38,36 @@ else
 %>
 	</style>
 	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$(".leftbarup").click(function(){
+			alert($(this).attr('id'));
+			//create FormData
+			var data = new FormData();
+			//add data for FormData
+			data.append('solutionID', $(this).attr('id'));
+			
+			$.ajax({
+			    url:'uploadgraph',
+			    type:'POST',
+			    data:data,
+			    cache: false,
+			    contentType: false,    //must declare
+			    processData: false,    //must declare
+			    success:function(data){
+			        $("#uploadscreenshot").attr("src",data);
+			        $("#uploadscreenshot").attr('style','display:block');
+			        $("#hiddenpath").attr('value', data);
+			    },
+			    error:function(){
+			   	 $("#wrongmessage1").attr('style','display:block');
+				}					             
+			});
+		}); 
+	});
 		function voteup(solutionid){
 			document.write(solutionid + "" + "vote up.");
+			
 		}
 		function votedown(solutionid){
 			document.write(solutionid + "" + "vote down.");
@@ -110,10 +138,10 @@ else
 				out.println("<table class=\"solution\">"+
 						"<tr>"+
 						"<td class=\"leftbar\">"+
-						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" onclick=\"voteup(this.id)\" id=\""+ officialSolution.getSolutionID() + "\" >"+
+						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ officialSolution.getSolutionID() + "\" >"+
 						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>"+
 						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
-						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" onclick=\"votedown(this.id)\" id=\""+ officialSolution.getSolutionID() + "\" >"+
+						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ officialSolution.getSolutionID() + "\" >"+
 						"<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+"</td>"+
 						"<td class=\"rightcontent\">"+
 						"<div class=\"commenttext\">"+officialSolution.getContent()+"</div>"+
@@ -144,10 +172,10 @@ else
 				out.println("<table class=\"solution\">"+
 						"<tr>"+
 						"<td class=\"leftbar\">"+
-						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" onclick=\"voteup(this.id)\" id=\""+ solutionData.get(i).getSolutionID() + "\" >"+
+						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ solutionData.get(i).getSolutionID() + "\" >"+
 						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(solutionData.get(i).getUp()-solutionData.get(i).getDown())+"</div>"+
 						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
-						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" onclick=\"votedown(this.id)\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
+						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
 				if (solutionData.get(i).isBest()){
 					out.println("<img class=\"leftbarbestofficial\" src=\"images/best.png\" title=\"This solution is selected as the best answer\">");
 				}
@@ -174,41 +202,6 @@ else
 			}
             %>
     </div>
-	<script type="text/javascript">					
-		$(document).ready(function(){
-			$("#upButton").click(function(){
-				var credits = session.getAttribute("credits");
-				if (credits > 25) {
-					
-				}
-				//create FormData
-				var data = new FormData();
-				
-				//add data for FormData
-				data.append('graph',$("#inputfile")[0].files[0]);
-				$.ajax({
-				    url:'uploadgraph',
-				    type:'POST',
-				    data:data,
-				    cache: false,
-				    enctype: 'multipart/form-data',
-				    contentType: false,    //must declare
-				    processData: false,    //must declare
-				    success:function(data){
-				        $("#uploadscreenshot").attr("src",data);
-				        $("#uploadscreenshot").attr('style','display:block');
-				        $("#hiddenpath").attr('value', data);
-				    },
-				    error:function(){
-				   	 $("#wrongmessage1").attr('style','display:block');
-					}					             
-				});
-			});
-		});
-	</script>
-      
-
-
       <%
 					
 /**
