@@ -49,8 +49,9 @@ public class DisplaySolutions extends ActionSupport implements
 	}
 
 	private int nowPage;
-//	List<String> contents, datetimes, emails, realnames, creditss,
-//			solutionScores, isBests;
+
+	// List<String> contents, datetimes, emails, realnames, creditss,
+	// solutionScores, isBests;
 
 	public String getStrBugNumber() {
 		return strBugNumber;
@@ -120,17 +121,18 @@ public class DisplaySolutions extends ActionSupport implements
 					.officialSolutionDisplayService(strBugNumber);
 
 			// if no official solution exists
-			if (officialSolution == null) {
-				officialSolution = new SolutionData();
-				officialSolution.setBest(false);
-				officialSolution.setContent("Not available.");
-				officialSolution.setCredits(0);
-				officialSolution.setDatetime("");
-				officialSolution.setDown(0);
-				officialSolution.setEmail("");
-				officialSolution.setRealname("");
-				officialSolution.setUp(0);
-			}
+			// 我改变主意了，所以下面这个注释掉。。
+			// if (officialSolution == null) {
+			// officialSolution = new SolutionData();
+			// officialSolution.setBest(false);
+			// officialSolution.setContent("Not available.");
+			// officialSolution.setCredits(0);
+			// officialSolution.setDatetime("");
+			// officialSolution.setDown(0);
+			// officialSolution.setEmail("");
+			// officialSolution.setRealname("");
+			// officialSolution.setUp(0);
+			// }
 
 		}
 		BugSolutionsData theData = solutionsDisplayService
