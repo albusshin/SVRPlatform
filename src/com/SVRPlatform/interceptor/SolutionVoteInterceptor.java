@@ -17,7 +17,7 @@ public class SolutionVoteInterceptor {
 	
 	@Around("voteMethod()")
 	public Object doBasicProfiling(ProceedingJoinPoint pjp) throws Throwable {
-		
+		System.out.println("aop processing");
 		String methodName = pjp.getSignature().getName();
 		SolutionVoteServiceImpl svsi = (SolutionVoteServiceImpl) pjp.getTarget();
 		User user = svsi.getUserDAO().getUserByEmail((String)pjp.getArgs()[1]);
