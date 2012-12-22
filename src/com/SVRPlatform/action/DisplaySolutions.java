@@ -117,9 +117,10 @@ public class DisplaySolutions extends ActionSupport implements
 		System.out.println("strNowPage == " + strNowPage);
 		SolutionData officialSolution = null;
 		nowPage = Integer.parseInt(strNowPage);
+		int userID = VerifyUser.getNowUserID(request);
 		if (nowPage == 1) {
 			officialSolution = solutionsDisplayService
-					.officialSolutionDisplayService(strBugNumber);
+					.officialSolutionDisplayService(userID, strBugNumber);
 
 			// if no official solution exists
 			// 我改变主意了，所以下面这个注释掉。。
@@ -137,7 +138,6 @@ public class DisplaySolutions extends ActionSupport implements
 
 		}
 		
-		int userID = VerifyUser.getNowUserID(request);
 		BugSolutionsData theData = solutionsDisplayService
 				.solutionsDisplayService(userID, strBugNumber, nowPage, 5);
 		solutionData = theData.getSolutionsData();
