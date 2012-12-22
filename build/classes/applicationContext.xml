@@ -106,6 +106,8 @@
 	    <bean id="solutionsDisplayService" class="com.SVRPlatform.service.impl.SolutionsDisplayServiceImpl">
 	    	<property name="bugDAO" ref="bugDAO"></property>
 	    	<property name="solutionDAO" ref="solutionDAO"></property>
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="solutionVoteDAO" ref="solutionVoteDAO"></property>
 	    </bean>
 	    <!-- *************** -->
 	    
