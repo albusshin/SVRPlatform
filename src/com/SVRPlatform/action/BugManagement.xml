@@ -13,7 +13,7 @@
 		<!--This is submitting bug region -->
         <action name="TrySubmitBug" class="com.SVRPlatform.action.TrySubmitBug" method="execute">
 	 		<result name="success">/WEB-INF/submitbug.jsp</result>
-	 		<result name="fail">/WEB-INF/submitbugfailure.jsp</result>
+	 		<result name="fail">/WEB-INF/notSignedIn.jsp</result>
         </action>
         
         <action name="submitbug" class="submitBug" method="execute">
