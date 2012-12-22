@@ -1,5 +1,8 @@
 package com.SVRPlatform.service.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.service.LoginService;
 
@@ -11,9 +14,10 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
-	public boolean login(String email, String password) {
+	public Map<String, ?> login(String email, String password) {
+		Map<String, ?> map = new HashMap<>();
 		if (email == null || password == null){
-			return false;
+			return map;
 		}
 		email = email.toLowerCase();
 		if (userDAO.getUserByEmail(email) == null) return false;
@@ -22,5 +26,7 @@ public class LoginServiceImpl implements LoginService{
 		if (psswrd.compareTo(encodedPassword) == 0)
 			return true;
 		return false;
+		
+		//userID credit realname
 	}
 }

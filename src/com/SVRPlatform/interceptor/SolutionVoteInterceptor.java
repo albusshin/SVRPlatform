@@ -6,27 +6,79 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+import com.SVRPlatform.dao.SolutionVoteDAO;
+import com.SVRPlatform.model.Solution;
+import com.SVRPlatform.model.SolutionVote;
 import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.impl.SolutionVoteServiceImpl;
 
 @Aspect @Component
 public class SolutionVoteInterceptor {
+	private SolutionVoteDAO solutionVoteDAO;
+	
+	public SolutionVoteDAO getSolutionVoteDAO() {
+		return solutionVoteDAO;
+	}
+
+
+	public void setSolutionVoteDAO(SolutionVoteDAO solutionVoteDAO) {
+		this.solutionVoteDAO = solutionVoteDAO;
+	}
+
+
 	@Pointcut("execution(* com.SVRPlatform.service.impl.SolutionVoteServiceImpl.vote*(..))")
 	private void voteMethod(){}
 	
 	
 	@Around("voteMethod()")
 	public Object doBasicProfiling(ProceedingJoinPoint pjp) throws Throwable {
-		System.out.println("aop processing");
 		String methodName = pjp.getSignature().getName();
 		SolutionVoteServiceImpl svsi = (SolutionVoteServiceImpl) pjp.getTarget();
 		User user = svsi.getUserDAO().getUserByEmail((String)pjp.getArgs()[1]);
+		Solution solution = (Solution) svsi.getSolutionDAO().getByID(new Integer((int)pjp.getArgs()[0]));
+		if(solution.getUser().getUserId() == user.getUserId()){
+			System.out.println("owner");
+			return false;
+		}
+		SolutionVote solutionVote = this.solutionVoteDAO.getByUserAndSolution(user, solution);
+		if(solutionVote != null){
+			if(solutionVote.getVoteFlag() == 1 && methodName == "voteUp"){
+				System.out.println("rowback for up");
+				solutionVote.setVoteFlag(0);
+				solutionVoteDAO.update(solutionVote);
+				return svsi.turnBackUp(solution, true);
+			}
+			else if(solutionVote.getVoteFlag() == -1 && methodName == "voteDown"){
+				System.out.println("rowback for down");
+				solutionVote.setVoteFlag(0);
+				solutionVoteDAO.update(solutionVote);
+				return svsi.turnBackUp(solution, false);
+			}
+			else{
+				System.out.println("have voted");
+				return false;
+			}
+		}
 
-//		User user = (User) pjp.getArgs()[1];
-//		boolean isUp = (boolean)pjp.getArgs()[2];
-		if((methodName == "voteUp" && user.getCredit() >= 15)
-				||(methodName == "voteDown" && user.getCredit() >= 125))
-				return pjp.proceed();
+		if(methodName == "voteUp" && user.getCredit() >= 15){
+			System.out.println("vote up");
+			solutionVote = new SolutionVote();
+			solutionVote.setVoteFlag(new Integer(1));
+			solutionVote.setUser(user);
+			solutionVote.setSolution(solution);
+			solutionVoteDAO.add(solutionVote);
+			return pjp.proceed();
+		}
+		else if(methodName == "voteDown" && user.getCredit() >= 125){
+			System.out.println("vote down");
+			solutionVote = new SolutionVote();
+			solutionVote.setVoteFlag(new Integer(-1));
+			solutionVote.setUser(user);
+			solutionVote.setSolution(solution);
+			solutionVoteDAO.add(solutionVote);
+			return pjp.proceed();
+		}
+		System.out.println("credit is not enough");		
 		return false;
 	}
 }

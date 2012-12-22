@@ -11,7 +11,9 @@
     
     <!--Spring AOP -->
     <aop:aspectj-autoproxy/>
-    <bean id="solutionVoteInterceptor" class="com.SVRPlatform.interceptor.SolutionVoteInterceptor"></bean>
+    <bean id="solutionVoteInterceptor" class="com.SVRPlatform.interceptor.SolutionVoteInterceptor">
+    	<property name="solutionVoteDAO" ref="solutionVoteDAO"></property>
+    </bean>
     <!-- 
 	<context:component-scan base-package="com.SVRPlatform.service"/>
      -->
@@ -156,6 +158,10 @@
     </bean>
     
     <bean id="hashForPasswordRetrieveDAO" class="com.SVRPlatform.dao.impl.HashForPasswordRetrieveDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <bean id="solutionVoteDAO" class="com.SVRPlatform.dao.impl.SolutionVoteDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     

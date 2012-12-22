@@ -49,5 +49,15 @@ public class SolutionVoteServiceImpl implements SolutionVoteService {
 		solutionDAO.update(solution);
 		return true;
 	}
+	
+	public boolean turnBackUp(Solution solution, boolean isUp){
+		if(isUp)
+			solution.setUp(new Integer(solution.getUp() - 1));
+		else
+			solution.setDown(new Integer(solution.getDown() - 1));
+		solutionDAO.update(solution);
+		return true;
+		
+	}
 
 }

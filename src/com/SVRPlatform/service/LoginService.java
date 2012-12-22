@@ -1,6 +1,8 @@
 package com.SVRPlatform.service;
 
+import java.util.Map;
+
 public interface LoginService {
 	
-	public boolean login(String email, String password);
+	public Map<String, ?> login(String email, String password);
 }
