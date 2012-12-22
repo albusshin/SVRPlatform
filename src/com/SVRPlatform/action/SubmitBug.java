@@ -170,18 +170,18 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 	public String execute() {
 		email = (String) request.getSession().getAttribute("email");
 
-		System.out.println(digest);
-		System.out.println(usabilityimpact);
-		System.out.println(dataimpact);
-		System.out.println(privacyimpact);
-		System.out.println(availabilityimpact);
-		System.out.println(frequency);
-		System.out.println(description);
-//		System.out.println(graphaddress);
-		System.out.println(version);
-		System.out.println(software);
-		System.out.println(language);
-		System.out.println("graphPath=" + graphPath);
+		//System.out.println(digest);
+		//System.out.println(usabilityimpact);
+		//System.out.println(dataimpact);
+		//System.out.println(privacyimpact);
+		//System.out.println(availabilityimpact);
+		//System.out.println(frequency);
+		//System.out.println(description);
+//		//System.out.println(graphaddress);
+		//System.out.println(version);
+		//System.out.println(software);
+		//System.out.println(language);
+		//System.out.println("graphPath=" + graphPath);
 		map = bugSubmitService.bugSubmit(graphPath, description, version,
 				software, digest, email, usabilityimpact, dataimpact,
 				privacyimpact, availabilityimpact, frequency, language);
@@ -204,7 +204,7 @@ public class SubmitBug extends ActionSupport implements ServletRequestAware,
 		if (!(map.get("language").equals("OK"))){
 			message += "Please input the language of the software";
 		}
-		System.out.println(message);
+		//System.out.println(message);
 
 		if (map.get("description").equals("OK")
 				&& map.get("version").equals("OK")

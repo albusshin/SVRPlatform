@@ -1,6 +1,5 @@
 package com.SVRPlatform.action;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -112,9 +111,9 @@ public class DisplaySolutions extends ActionSupport implements
 	}
 
 	public String execute() {
-		System.out.println("DisplaySolutions execute()");
-		System.out.println("strBugNumber" + strBugNumber);
-		System.out.println("strNowPage == " + strNowPage);
+		//System.out.println("DisplaySolutions execute()");
+		//System.out.println("strBugNumber" + strBugNumber);
+		//System.out.println("strNowPage == " + strNowPage);
 		SolutionData officialSolution = null;
 		nowPage = Integer.parseInt(strNowPage);
 		int userID = VerifyUser.getNowUserID(request);
@@ -142,8 +141,8 @@ public class DisplaySolutions extends ActionSupport implements
 				.solutionsDisplayService(userID, strBugNumber, nowPage, 5);
 		solutionData = theData.getSolutionsData();
 		strSolutionsAmount = theData.getSolutionCount() + "";
-		System.out.println("strSolutionsAmount == " + strSolutionsAmount);
-		System.out.println("before return success");
+		//System.out.println("strSolutionsAmount == " + strSolutionsAmount);
+		//System.out.println("before return success");
 		request.setAttribute("officialSolution", officialSolution);
 
 		return Constants.SUCCESS;

@@ -27,12 +27,12 @@ ServletRequestAware{
 
 	String email = null;
 	public String execute() {
-		System.out.println("Inside CheckingHash.java execute");
+//		//System.out.println("Inside CheckingHash.java execute");
 		HttpSession session = request.getSession();
 		String hash = request.getParameter("hash");
-		System.out.println("hash == " + hash);
+		//System.out.println("hash == " + hash);
 		email = passwordRetrieveService.checkHashValue(hash);
-		System.out.println("Checked email = " + email);
+		//System.out.println("Checked email = " + email);
 		
 		session.setAttribute("email", email);
 		if (email != null)

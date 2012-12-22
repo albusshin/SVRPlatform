@@ -40,7 +40,7 @@ public class RetrievePassword extends ActionSupport implements
 
 	public String execute() {
 
-		System.out.println("this.email = " + this.email);
+		//System.out.println("this.email = " + this.email);
 		
 		
 		if (passwordRetrieveService.sendCheckingEmail(email)) {
