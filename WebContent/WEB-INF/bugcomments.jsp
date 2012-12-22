@@ -87,7 +87,7 @@ else
 				<li><a href="bugpage?strBugNumber=${strBugNumber }"><image src="images/logo.png"
 							width="54px" margin="10px"></image>BUG PAGE</a></li>
 				<li><a href="javascript:;">COMMENTS</a></li>
-				<li><a href="displaysolutions?strBugNumber=${strBugNumber }&strNowPage=1">SOLUTIONS</a></li>
+				<li><a href="displaysolutions?strBugNumber=${strBugNumber }&strNowPage=1#official">SOLUTIONS</a></li>
 			</ul>
 		</div>
 		<hr />
