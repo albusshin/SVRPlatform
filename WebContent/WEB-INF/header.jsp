@@ -147,11 +147,11 @@
 				+ "                 <div id='userbarelse'>"
 				+ "                    <div id='username'>");
 %>
-${sessionScope.email}
+${sessionScope.realname}
 <%
 	out.print("</div>"
 				+ "                    <img class='seperator' src='images/seperator.png' align='middle'/>"
-				+ "                    <div id='userbarcredit' onMouseOver=\"document.getElementById('credittipsy').style.display='block'\" onmouseout=\"document.getElementById('credittipsy').style.display='none'\">1,023</div>"
+				+ "                    <div id='userbarcredit' onMouseOver=\"document.getElementById('credittipsy').style.display='block'\" onmouseout=\"document.getElementById('credittipsy').style.display='none'\"> "+ request.getSession().getValue("credit") +"</div>"
 				+ "                    <img class='seperator' src='images/seperator.png' align='middle'/>"
 				+ "                    <img id='userbarusericon' src='images/usericon.png' onmouseover=\"this.src='images/usericonpressed.png';document.getElementById('usericontipsy').style.display='block'\" onmouseout=\"this.src='images/usericon.png';document.getElementById('usericontipsy').style.display='none'\""
 				+ "                    onclick=\"javascript:;\"/>"
