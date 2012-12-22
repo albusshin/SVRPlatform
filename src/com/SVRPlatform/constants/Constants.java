@@ -25,4 +25,20 @@ public class Constants {
 	 * 
 	 */
 	public static final String CREDITSNOTENOUGH = "creditsnotenough";
+	/**
+	 * 上传bug加的分数
+	 */
+	public static final int BONUSONUPLOADBUG = 10;
+	/**
+	 * solution被顶或踩一下加或减的分数
+	 */
+	public static final int BONUSONSOLUTIONUPORDOWN = 5;
+	/**
+	 * 顶solution所允许的最小credits
+	 */
+	public static final int MINCREDITSONUP = 15;
+	/**
+	 * 踩solution所允许的最小credits
+	 */
+	public static final int MINCREDITSONDOWN = 125;
 }

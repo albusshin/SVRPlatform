@@ -71,6 +71,11 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 		
 		List<Solution> solutions = solutionDAO.getByBugId(bug, fetchSize, firstResult);
 		List<SolutionData> solutionsData = new LinkedList<SolutionData>();
+		//set bestSolutionID
+		if (solutions.size() > 0) {
+			bug.setBestSolutionId(solutions.get(0).getSolutionId());
+			bugDAO.update(bug);
+		}
 
 		Map<Integer, Integer> voted = new HashMap<Integer, Integer>();
 		if (userID != -1) {

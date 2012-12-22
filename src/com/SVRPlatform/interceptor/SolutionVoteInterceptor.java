@@ -44,7 +44,7 @@ public class SolutionVoteInterceptor {
 		}
 		SolutionVote solutionVote = this.solutionVoteDAO.getByUserAndSolution(user, solution);
 		if(solutionVote != null){
-			if(solutionVote.getVoteFlag() == 1 && methodName == "voteUp"){
+			if(solutionVote.getVoteFlag() == 1 && methodName.equals("voteUp")){
 				////System.out.println("rowback for up");
 				//solutionVote.setVoteFlag(0);
 				solutionVoteDAO.delete(solutionVote);
@@ -53,7 +53,8 @@ public class SolutionVoteInterceptor {
 				else
 					return Constants.DBERROR;
 			}
-			else if(solutionVote.getVoteFlag() == -1 && methodName == "voteDown"){
+			else if(solutionVote.getVoteFlag() == -1 && methodName.equals("voteDown")){
+				System.out.println("rollback for down");
 				//solutionVote.setVoteFlag(0);
 				solutionVoteDAO.delete(solutionVote);
 				if(svsi.turnBackUp(solution, false))
@@ -62,13 +63,15 @@ public class SolutionVoteInterceptor {
 					return Constants.DBERROR;
 			}
 			else{
-				////System.out.println("have voted");
+				
+				System.out.println("getVoteFlat == " + solutionVote.getVoteFlag() + "methodname==" + methodName);
+				System.out.println("have voted");
 				//message = "Have voted";
 				return Constants.ALREADYVOTED;
 			}
 		}
 
-		if(methodName == "voteUp" && user.getCredit() >= 15){
+		if(methodName == "voteUp" && user.getCredit() >= Constants.MINCREDITSONUP){
 			////System.out.println("vote up");
 			solutionVote = new SolutionVote();
 			solutionVote.setVoteFlag(new Integer(1));
@@ -77,7 +80,7 @@ public class SolutionVoteInterceptor {
 			solutionVoteDAO.add(solutionVote);
 			return pjp.proceed();
 		}
-		else if(methodName == "voteDown" && user.getCredit() >= 125){
+		else if(methodName == "voteDown" && user.getCredit() >= Constants.MINCREDITSONDOWN){
 			////System.out.println("vote down");
 			solutionVote = new SolutionVote();
 			solutionVote.setVoteFlag(new Integer(-1));

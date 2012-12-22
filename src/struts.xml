@@ -13,12 +13,20 @@
     <constant name="struts.multipart.maxSize" value="10485760"></constant>
 
     <package name="default" namespace="/" extends="struts-default">
-    	   
+    	<interceptors>
+		   	    <interceptor name="check" class="check"/>
+		        <interceptor-stack name="checkStack">
+		        	<interceptor-ref name="defaultStack" />
+		        	<interceptor-ref name="check" 		/>
+		        </interceptor-stack>
+		</interceptors>
+		
+     	<default-interceptor-ref name="checkStack"/>
         <default-action-ref name="index" />
-     
         <global-results>
             <result name="error">/WEB-INF/error.jsp</result>
         	<result name="notsignedin">/WEB-INF/notSignedIn.jsp</result>
+		 	<result name="FailToSignIn" type="redirect">/signin.jsp</result> 
         </global-results>
 
         <global-exception-mappings>

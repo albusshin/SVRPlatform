@@ -11,8 +11,11 @@ public class UserHandlers {
 		session.removeAttribute("email");
 		session.removeAttribute("password");
 		Cookie[] cookies = request.getCookies();
+		if (cookies == null)
+			return false;
 		for (Cookie cookie:cookies){
 			cookie.setMaxAge(0);
+			cookie.setPath("/");
 			response.addCookie(cookie);
 		}
 		return true;

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
+import com.SVRPlatform.Utils.UserHandlers;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Logout extends ActionSupport implements ServletRequestAware,			//Logout					
@@ -33,7 +34,7 @@ ServletResponseAware{
 //		actctx.getSession().put("email", "tourist");
 //		actctx.getSession().put("password", "tourist");
 		
-		if (com.SVRPlatform.Utils.UserHandlers.clearSessionAndCookies(request, response)){
+		if (UserHandlers.clearSessionAndCookies(request, response)){
 			return SUCCESS;
 		}
 		
