@@ -43,7 +43,7 @@ public class SolutionVoteDAOImpl extends BasicDAOImpl implements SolutionVoteDAO
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<SolutionVote> getSolutionIdFromSolutinList(List<Solution> solutions,
+	public List<SolutionVote> getSolutionIdFromSolutionList(List<Solution> solutions,
 			User user) {
 		// TODO Auto-generated method stub
 		Session s = this.sessionFactory.openSession();

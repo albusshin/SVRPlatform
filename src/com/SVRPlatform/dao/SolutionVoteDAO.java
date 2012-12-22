@@ -8,5 +8,5 @@ import com.SVRPlatform.model.User;
 
 public interface SolutionVoteDAO extends basicDAO{
 	public SolutionVote getByUserAndSolution(User user, Solution solution);
-	public List<SolutionVote> getSolutionIdFromSolutinList(List<Solution> solutions, User user);
+	public List<SolutionVote> getSolutionIdFromSolutionList(List<Solution> solutions, User user);
 }
