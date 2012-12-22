@@ -1,47 +1,32 @@
 package com.SVRPlatform.interceptor;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+import com.SVRPlatform.model.User;
+import com.SVRPlatform.service.impl.SolutionVoteServiceImpl;
+
 @Aspect @Component
 public class SolutionVoteInterceptor {
+	@Pointcut("execution(* com.SVRPlatform.service.impl.SolutionVoteServiceImpl.vote*(..))")
+	private void voteMethod(){}
+	
+	
+	@Around("voteMethod()")
+	public Object doBasicProfiling(ProceedingJoinPoint pjp) throws Throwable {
+		System.out.println("aop processing");
+		String methodName = pjp.getSignature().getName();
+		SolutionVoteServiceImpl svsi = (SolutionVoteServiceImpl) pjp.getTarget();
+		User user = svsi.getUserDAO().getUserByEmail((String)pjp.getArgs()[1]);
 
-	public class MyInterceptor {
-		@Pointcut("execution(* com.SpringAOP.service.impl.PersonServiceBean.*(..))")
-		private void anyMethod(){}
-		
-		@Before("anyMethod() && args(name)")
-		public void doAccessCheck(String name) {
-			System.out.println("before:"+name);
-		}
-		@AfterReturning(pointcut="anyMethod() && args(id)",returning="result")
-		public void doAfterReturning(Integer id, String result) {
-			System.out.println("after:"+id +","+result);
-		}
-		@After("anyMethod()")
-		public void doAfter() {
-			System.out.println("ultimate");
-		}
-		@AfterThrowing("anyMethod()")
-		public void doAfterThrowing() {
-			System.out.println("exception");
-		}
-		@Around("anyMethod() && args(name)")
-		public Object doBasicProfiling(ProceedingJoinPoint pjp, String name) throws Throwable {
-//			if(){判断用户是否有权限
-			System.out.println("start function");
-			System.out.println("start function"+name);
-				Object result = pjp.proceed();
-				System.out.println("close function");
-//			}
-			return result;
-		}
+//		User user = (User) pjp.getArgs()[1];
+//		boolean isUp = (boolean)pjp.getArgs()[2];
+		if((methodName == "voteUp" && user.getCredit() >= 15)
+				||(methodName == "voteDown" && user.getCredit() >= 125))
+				return pjp.proceed();
+		return false;
 	}
 }

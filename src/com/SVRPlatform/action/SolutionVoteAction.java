@@ -48,6 +48,7 @@ ServletResponseAware{
 		return Constants.SUCCESS;
 	}
 	public String voteDown(){
+		System.out.println("vote down!");
 		String nowUser = VerifyUser.getNowUser(request);
 		if (nowUser == null){
 			return Constants.NOTSIGNEDIN;
