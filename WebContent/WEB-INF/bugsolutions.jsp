@@ -40,6 +40,9 @@ else
 	<script type="text/javascript">
 		function vote(type, id) {
 			var url = 'solutionvote_vote'+type+'?solutionId='+id;
+			if (type == 'Up')
+				$('#'+id).next().text(parseInt($('#'+id).next().text())+1);
+			else $('#'+id).next().text(parseInt($('#'+id).next().text())-1);
 			
 			$.ajax({
 			    url:url,
@@ -48,13 +51,13 @@ else
 			    contentType: false,    //must declare
 			    processData: false,    //must declare
 			    success:function(data){
-			        if (data == "success") 
+			        if (data == "success") {
+			        	//do something	
+			        }			        	
+			        else if (data == "fail")
 			        	if  (type == 'Up')
-			        		$('#'+id).next().text(parseInt($('#'+id).next().text())+1);
-			        	else $('#'+id).next().text(parseInt($('#'+id).next().text())-1);
-			        else if (data == "fail"){
-			        	//do something
-			        };
+			        		$('#'+id).next().text(parseInt($('#'+id).next().text())-1);
+			        	else $('#'+id).next().text(parseInt($('#'+id).next().text())+1);
 			    },
 			    error:function(){
 			   		$("#wrongmessage1").attr('style','display:block');

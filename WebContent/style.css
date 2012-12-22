@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 body {
 	font-size: 14px;
 	line-height: 1.6;
@@ -66,7 +68,7 @@ td.submitbugvalue {
 }
 
 textarea#digest {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	width: 700px;
 	height: 100px;
 	font-size: 22px;
@@ -81,7 +83,7 @@ textarea#digest {
 }
 
 textarea#description {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	width: 700px;
 	height: 350px;
 	font-size: 22px;
@@ -95,7 +97,7 @@ textarea#description {
 }
 
 textarea#software,textarea#version,textarea#language {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	width: 700px;
 	height: 40px;
 	font-size: 22px;
@@ -164,7 +166,7 @@ td.userprofiledigestleft {
 }
 
 td.userprofiledigestmiddle {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	font-variant: small-caps;
 	line-height: 14px;
 	font-size: 15px;
@@ -217,7 +219,7 @@ tr.userprofiledetailscontent {
 }
 
 div.userprofiledigesttable {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	line-height: 0.2px;
 	float: left;
 }
@@ -263,7 +265,7 @@ div.comment {
 	border-bottom-color: #ccc;
 	border-bottom-style: inset;
 	padding-bottom: 30px;
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 }
 /* css style used in the solution page */
 table.solution {
@@ -275,7 +277,7 @@ table.solution {
 	border-bottom-color: #ccc;
 	border-bottom-style: inset;
 	margin-bottom: 30px;
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 }
 
 td.leftbar {
@@ -374,7 +376,7 @@ a.commentsfooterlink {
 	float: left;
 	font-size: 16px;
 	line-height: 1.6;
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	color: #444;
 	border-bottom: none;
 	text-decoration: underline;
@@ -388,7 +390,7 @@ a.commentsfooternow {
 	font-size: 16px;
 	line-height: 1.6;
 	border-bottom: none;
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 }
 
 div.commentssubmit {
@@ -399,7 +401,7 @@ div.commentssubmit {
 	border-bottom-color: #ccc;
 	border-bottom-style: inset;
 	padding-bottom: 30px;
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 }
 
 form#commentssubmitform {
@@ -434,7 +436,7 @@ td.commentssubmitvalue {
 }
 
 textarea#commentssubmittitle {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	width: 600px;
 	height: 40px;
 	font-size: 20px;
@@ -448,7 +450,7 @@ textarea#commentssubmittitle {
 }
 
 textarea#commentssubmittext {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	width: 600px;
 	height: 350px;
 	font-size: 20px;
@@ -466,14 +468,14 @@ p.bugvulid {
 	padding-left: 20px;
 	font-size: 16px;
 	line-height: 1.6;
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	background: #eee;
 }
 
 img.bugvulscreenshot {
 	width: 900px;
 }
-/* css3 ´úÂë ÊµÏÖÔ²½Ç¾ØĞÎ  Albus Shin */
+/* css3 ä»£ç  å®ç°åœ†è§’çŸ©å½¢  Albus Shin */
 div.bugvuldigest {
 	border-width: 1px;
 	border-style: solid;
@@ -481,7 +483,7 @@ div.bugvuldigest {
 	padding: 5px;
 	font-size: 14px;
 	line-height: 1.6;
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	text-shadow: grey 1px 1px 1px;
 	background: #FC9;
 }
@@ -499,28 +501,28 @@ table.bugvultable {
 }
 
 .tableleft {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	padding-right: 40px;
 	padding-left: 100px;
 }
 
 .tablemiddlegreen {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	color: green;
 }
 
 .tablemiddleorange {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	color: orange;
 }
 
 .tablemiddlered {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	color: red;
 }
 
 table.productstable {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	font-size: 18px;
 	margin: auto;
 	line-height: 2.0;
@@ -528,13 +530,13 @@ table.productstable {
 }
 
 .tableright {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	padding-left: 60px;
 	color: #666;
 }
 
 .score {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	font-weight: bold;
 	background: #f00;
 }
@@ -543,7 +545,7 @@ p.bugvulsubtitle {
 	padding-left: 20px;
 	font-size: 15px;
 	line-height: 1.5;
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	background: #CCC;
 }
 
@@ -551,7 +553,7 @@ p.bugvultext {
 	font-size: 14px;
 	margin: auto 30px;
 	line-height: 2.0;
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 }
 
 hr {
@@ -569,7 +571,7 @@ p {
 }
 
 .msblack20 {
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	text-shadow: grey 1px 1px 1px;
 	font-size: 20px;
 	line-height: 1.6;
@@ -578,7 +580,7 @@ p {
 
 div#footer {
 	clear: both;
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	color: #fff;
 	text-shadow: grey 1px 1px 1px;
 	font-size: 12px;
@@ -626,7 +628,7 @@ div#footer a {
 	display: block;
 	width: 140px;
 	height: 60px;
-	font-family: "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font-family: "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	font-size: 12px;
 	font-weight: bold;
 	letter-spacing: 1px;
@@ -695,7 +697,7 @@ input {
 input[type=search] {
 	-webkit-appearance: textfield;
 	-webkit-box-sizing: content-box;
-	font: 85%/140% "Î¢ÈíÑÅºÚ", "ºÚÌå", "ĞÂËÎÌå", "ËÎÌå";
+	font: 85%/140% "å¾®è½¯é›…é»‘", "é»‘ä½“", "æ–°å®‹ä½“", "å®‹ä½“";
 	font-size: 100%;
 }
 
