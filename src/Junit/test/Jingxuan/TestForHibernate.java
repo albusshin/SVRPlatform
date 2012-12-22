@@ -205,4 +205,18 @@ public class TestForHibernate {
 	@Test public void testVote2(){
 		solutionVoteService.voteUp(9, "povergoing@gmail.com");
 	}
+	@Test public void testVote3(){
+		Bug bug = new Bug();
+		bug.setBugId(23);
+		bug.setOfficialSolutionId(-1);
+		User user = new User();
+		user.setUserId(6);
+		List ls = solutionDAO.getByBugId(bug, -1, -1);
+		for(Solution s:(List<Solution>)ls)
+			System.out.println(s.getSolutionId());
+		System.out.println("------------------------------");
+		ls = solutionVoteDAO.getSolutionIdFromSolutinList(ls, user);
+		for(SolutionVote s:(List<SolutionVote>)ls)
+			System.out.println(s.getSolution().getSolutionId());
+	}
 }

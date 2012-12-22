@@ -1,7 +1,10 @@
 package com.SVRPlatform.dao.impl;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -33,6 +36,24 @@ public class SolutionVoteDAOImpl extends BasicDAOImpl implements SolutionVoteDAO
 			c.add(Restrictions.eq("user", user));
 			c.add(Restrictions.eq("solution", solution));
 			return (SolutionVote) c.uniqueResult();
+		}finally{
+			if(s!=null)
+				s.close();
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<SolutionVote> getSolutionIdFromSolutinList(List<Solution> solutions,
+			User user) {
+		// TODO Auto-generated method stub
+		Session s = this.sessionFactory.openSession();
+		try{
+			org.hibernate.Criteria c = s.createCriteria(SolutionVote.class);
+			c.add(Restrictions.eq("user", user));
+			c.add(Restrictions.in("solution", solutions.toArray()));
+			c.setFetchMode("solution", FetchMode.JOIN);	
+			return c.list();
 		}finally{
 			if(s!=null)
 				s.close();
