@@ -60,11 +60,11 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 	public String execute() throws Exception {
 		if (remember == null){
 			info = this.loginService.login(email, password);
-			System.out.println("remember == null");
+			//System.out.println("remember == null");
 		}
 		else
 			info = this.loginService.login(email, password, true);
-		System.out.println("this.loginService.login()" + this.info.get("success"));
+		//System.out.println("this.loginService.login()" + this.info.get("success"));
 		if (!(Boolean) this.info.get("success")) {//wrong email or password
 			message = "Failed to sign in. Please check again and retry.";
 			return FAIL;
@@ -78,10 +78,10 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 			
 			if(remember != null)																	//remember email and password for 2 weeks
 			{
-				System.out.println("remember != null");
+				//System.out.println("remember != null");
 				Cookie[] cookies = request.getCookies();
 				for (int i = 0; i < cookies.length; i++) {
-					System.out.println(cookies[i].getName());
+					//System.out.println(cookies[i].getName());
 					if (cookies[i].getName().equals("email")) {										//cookie had email before 
 						cookies[i].setValue(this.email);
 						response.addCookie(cookies[i]);

@@ -70,12 +70,12 @@ ServletResponseAware {
 
 		uploadPath = ServletActionContext.getServletContext().getRealPath(
 				"/upload");
-		System.out.println(uploadPath);
+		//System.out.println(uploadPath);
 		if (graph != null) {
 			int indexOfDot = graphFileName.indexOf('.');
 			String prefix = "Temp";
 			String suffix = graphFileName.substring(indexOfDot);
-			System.out.println(request.getSession().getId() + suffix);
+			//System.out.println(request.getSession().getId() + suffix);
 			graphFileName = prefix + request.getSession().getId() + suffix;
 			File savefile = new File(new File(uploadPath), graphFileName);
 			if (!savefile.getParentFile().exists())
@@ -91,7 +91,7 @@ ServletResponseAware {
 
 		} else {
 			message = "graphIsNull";
-			System.out.println("message = " + message);
+			//System.out.println("message = " + message);
 			return Constants.FAIL;
 		}
 

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
-import com.SVRPlatform.Utils.VerifyUser;
 import com.SVRPlatform.service.LoginService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -50,9 +49,9 @@ public class SignInAutomatically extends ActionSupport implements ServletRequest
 		ActionContext act=ActionContext.getContext();
 		email= (String) act.getSession().get("email");
 		//password = (String) act.getSession().get("password");  
-		System.out.println("Email == " + email);
+		//System.out.println("Email == " + email);
 		if (email != null){
-			System.out.println("Signinauto.");
+			//System.out.println("Signinauto.");
 			return "SignInAtomatically";
 		}
 		

@@ -41,20 +41,20 @@ ServletRequestAware, ServletResponseAware {
 	public String execute() {
 		HttpSession session = request.getSession();
 		email = (String) session.getAttribute("email");
-		System.out.println("this.email = " + this.email);
+		//System.out.println("this.email = " + this.email);
 		Response theResponse = passwordRetrieveService.updatePassword(email, password);
-		System.out.println("after updatePassword");
+		//System.out.println("after updatePassword");
 		
 		if (theResponse.password == Response.Password.password_ok){
-			System.out.println("before return success");
+			//System.out.println("before return success");
 			return SUCCESS;
 		}
 		else if (theResponse.password == Response.Password.password_too_short){
-			System.out.println("password too short");
+			//System.out.println("password too short");
 			return PASSWORD_TOO_SHORT;
 		}
 		else if (theResponse.password == Response.Password.password_against_rule){
-			System.out.println("password against rule");
+			//System.out.println("password against rule");
 			return PASSWORD_AGAINST_RULE;
 		}
 		return FAIL;

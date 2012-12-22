@@ -92,7 +92,7 @@ public class SubmitSolution extends ActionSupport implements ServletRequestAware
 		}
 		strNowPage = "1";
 		String email = (String) request.getSession().getAttribute("email");
-		System.out.println("Bug number: "+strBugNumber);
+		//System.out.println("Bug number: "+strBugNumber);
 		Map<String, String> map = solutionSubmitService.solutionSubmit(strBugNumber, email, solutionssubmittext);
 		if (map.get("status").equals("fail")) {
 			message = "There's something wrong with your inputs, please check:\n";
