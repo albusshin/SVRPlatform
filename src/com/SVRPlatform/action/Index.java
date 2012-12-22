@@ -5,12 +5,14 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.SVRPlatform.Utils.VerifyUser;
 import com.SVRPlatform.service.LoginService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Index extends ActionSupport implements ServletRequestAware,
@@ -43,9 +45,10 @@ public class Index extends ActionSupport implements ServletRequestAware,
 	}
 
 	public String execute() {
+		HttpSession session = request.getSession();
 		System.out.println("In Index");
-		emailInSession = VerifyUser.getNowUser(request);
-		// emailInSession = (String) session.getAttribute("email");
+		//emailInSession = VerifyUser.getNowUser(request);
+		emailInSession = (String) session.getAttribute("email");
 		// passwordInSession = (String) session.getAttribute("password");
 		// System.out.println("emailInSession == "+emailInSession );
 		// System.out.println("passwordInSession == "+passwordInSession );
@@ -90,6 +93,7 @@ public class Index extends ActionSupport implements ServletRequestAware,
 					cookieHash);
 			System.out.println("after loginService.cookieLogin()");
 			if (!(Boolean) info.get("success")) {
+				System.out.println("loginservice cookielogin failed");
 				com.SVRPlatform.Utils.UserHandlers.clearSessionAndCookies(
 						request, response);
 				return "CookieNotFound";

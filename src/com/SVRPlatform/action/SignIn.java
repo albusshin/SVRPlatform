@@ -58,10 +58,10 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 	}
 
 	public String execute() throws Exception {
-		System.out.println("this.email = " + this.email);
-		System.out.println("this.password = " + this.password);
-		if (remember == null)
+		if (remember == null){
 			info = this.loginService.login(email, password);
+			System.out.println("remember == null");
+		}
 		else
 			info = this.loginService.login(email, password, true);
 		System.out.println("this.loginService.login()" + this.info.get("success"));
@@ -78,6 +78,7 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 			
 			if(remember != null)																	//remember email and password for 2 weeks
 			{
+				System.out.println("remember != null");
 				Cookie[] cookies = request.getCookies();
 				for (int i = 0; i < cookies.length; i++) {
 					System.out.println(cookies[i].getName());
@@ -97,8 +98,8 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 				if (browserHasCookie == false) {
 					Cookie cemail = new Cookie("email", this.email);			    //cookie do not browserHasCookie email & password before  store email & password in cookie
 					Cookie cpassword = new Cookie("cookiehash", (String) info.get("cookiehash"));
-					cemail.setMaxAge(60 * 60 * 24 * 7);
-					cpassword.setMaxAge(60 * 60 * 24 * 7);
+					cemail.setMaxAge(60 * 60 * 24 * 15);
+					cpassword.setMaxAge(60 * 60 * 24 * 15);
 					response.addCookie(cemail);
 					response.addCookie(cpassword);
 				}

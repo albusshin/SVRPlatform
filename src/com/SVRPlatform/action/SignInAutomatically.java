@@ -48,10 +48,11 @@ public class SignInAutomatically extends ActionSupport implements ServletRequest
 		
 		//get email & password in session
 		ActionContext act=ActionContext.getContext();
-		//email= (String) act.getSession().get("email");
+		email= (String) act.getSession().get("email");
 		//password = (String) act.getSession().get("password");  
-		email = VerifyUser.getNowUser(request);
+		System.out.println("Email == " + email);
 		if (email != null){
+			System.out.println("Signinauto.");
 			return "SignInAtomatically";
 		}
 		
