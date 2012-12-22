@@ -1,7 +1,11 @@
 package com.SVRPlatform.action;
 
 import java.util.List;
-import javax.servlet.http.*;
+import java.util.Map;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
@@ -26,7 +30,7 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 	private HttpServletResponse response;
 	private HttpServletRequest request;
 	private boolean browserHasCookie;
-	private boolean info;	
+	private Map<String, Object>  info;	
 
 	public String getMessage() {
 		return message;
@@ -57,15 +61,19 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 		System.out.println("this.email = " + this.email);
 		System.out.println("this.password = " + this.password);
 		info = this.loginService.login(this.email, this.password);
-		System.out.println("this.loginService.login()" + this.info);
-		if (!info) {																				//wrong email or password
+		System.out.println("this.loginService.login()" + this.info.get("success"));
+		if (!(Boolean) this.info.get("success")) {																				//wrong email or password
 			message = "Failed to sign in. Please check again and retry.";
 			return FAIL;
 		} else {																					//valid email and password 								
+			
 			request.getSession().setMaxInactiveInterval(60 * 60 * 3);							//Session 3 hours is enough.
 			request.getSession().setAttribute("email", email);
-			request.getSession().setAttribute("password", password);	
+			request.getSession().setAttribute("userID", (Integer)info.get("userID"));
+			request.getSession().setAttribute("credit", (Integer)info.get("credit"));
+			request.getSession().setAttribute("realname", (String)info.get("realname"));
 			
+			//request.getSession().setAttribute("password", password);		//Absolutely no use
 			if(remember != null)																	//remember email and password for 2 weeks
 			{
 				Cookie[] cookies = request.getCookies();
