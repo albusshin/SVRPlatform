@@ -1,3 +1,4 @@
+<%@page import="com.SVRPlatform.Utils.VerifyUser"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE HTML>
@@ -24,9 +25,24 @@
 		Home page. <br>
 		大家加油编程啊！<br>
 		<a href="TrySubmitBug">上传bug试试。</a><br>
+		<br>
 		<a href="bugpage?strBugNumber=SVRB-2012-00000023">23号bug。</a><br>
+		<br>
 		<a href="displaycomments?strBugNumber=SVRB-2012-00000023&strNowPage=1">23号bug的comments.</a><br>
+		<br>
 		<a href="displaysolutions?strBugNumber=SVRB-2012-00000023&strNowPage=1">23号bug的solutions.</a>
+		<br>
+		<p>你的userID是：
+		<%
+		out.println(VerifyUser.getNowUserID(request));
+		
+		%>
+		</p>
+		<p>你的useremail是：
+		<%
+		
+		out.println(VerifyUser.getNowUser(request));
+		%>
 	</div>
     <jsp:include page="/footer.jsp" flush="true"/>
 </body>

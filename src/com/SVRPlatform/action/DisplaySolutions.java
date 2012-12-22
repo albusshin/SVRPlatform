@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
+import com.SVRPlatform.Utils.VerifyUser;
 import com.SVRPlatform.constants.Constants;
 import com.SVRPlatform.data.BugSolutionsData;
 import com.SVRPlatform.data.SolutionData;
@@ -135,8 +136,10 @@ public class DisplaySolutions extends ActionSupport implements
 			// }
 
 		}
+		
+		int userID = VerifyUser.getNowUserID(request);
 		BugSolutionsData theData = solutionsDisplayService
-				.solutionsDisplayService(strBugNumber, nowPage, 5);
+				.solutionsDisplayService(userID, strBugNumber, nowPage, 5);
 		solutionData = theData.getSolutionsData();
 		strSolutionsAmount = theData.getSolutionCount() + "";
 		System.out.println("strSolutionsAmount == " + strSolutionsAmount);

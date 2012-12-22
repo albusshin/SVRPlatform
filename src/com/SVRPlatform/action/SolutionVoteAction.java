@@ -49,6 +49,8 @@ ServletResponseAware{
 			inputStream = new ByteArrayInputStream(Constants.CREDITSNOTENOUGH.getBytes());
 		else if (message.equals(Constants.OWNER))
 			inputStream = new ByteArrayInputStream(Constants.OWNER.getBytes());
+		else if (message.equals(Constants.DBERROR))
+			inputStream = new ByteArrayInputStream(Constants.DBERROR.getBytes());
 		return Constants.SUCCESS;
 	}
 	public String voteDown(){

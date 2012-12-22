@@ -40,6 +40,9 @@ else
 	<script type="text/javascript">
 		function vote(type, id) {
 			var url = 'solutionvote_vote'+type+'?solutionId='+id;
+			if (type == 'Up')
+				$('#'+id).next().text(parseInt($('#'+id).next().text())+1);
+			else $('#'+id).next().text(parseInt($('#'+id).next().text())-1);
 			
 			$.ajax({
 			    url:url,
@@ -48,13 +51,24 @@ else
 			    contentType: false,    //must declare
 			    processData: false,    //must declare
 			    success:function(data){
-			        if (data == "success") 
-			        	if  (type == 'Up')
-			        		$('#'+id).next().text(parseInt($('#'+id).next().text())+1);
-			        	else $('#'+id).next().text(parseInt($('#'+id).next().text())-1);
-			        else if (data == "fail"){
+			        if (data == "success") {
 			        	//do something
-			        };
+			        }			        	
+			        else if (data == "creditsnotenough" || data == "alreadyvoted" ||
+			        			data == "owner" || data == "DBerror") {
+			        	if  (type == 'Up')	$('#'+id).next().text(parseInt($('#'+id).next().text())-1);
+			        	else $('#'+id).next().text(parseInt($('#'+id).next().text())+1);
+			        	if  (data == "creditsnotenough") {
+			        		if (type == 'Up') $('div.message-text').html("Vote Up requires 15 credits");
+			        		else $('div.message-text').html("Vote Down requires 125 credits");
+			        	}
+			        	if (data == "alreadyvoted") 
+			        		$('div.message-text').html("Already voted!");
+			        	if (data == "owner")
+			        		$('div.message-text').html("Cannot vote for yourself");
+			        	$('#wrongmessage').attr('style','display:block');
+			        }
+			        else window.location.replace("notSignedIn");
 			    },
 			    error:function(){
 			   		$("#wrongmessage1").attr('style','display:block');
@@ -93,27 +107,15 @@ else
 </head>
 
 <body>
-<%
- 		String stat = (String) request.getAttribute("strStat");
- 		System.out.println("strStat == " + request.getAttribute("strStat"));
- 		if (stat != null)
-	 		if (stat.equals("wrong")){
-	 			out.println("<div id=\"wrongmessage\" class=\"alert-messages\" style=\"display:block\">");
-	 			out.println("<div class=\"message\">");
-	 			out.println("<div class=\"message-inside\">");
-	 			out.println("<div class=\"message-text\">");
-	%>
-		<div>
-	 			${message }
-	 	</div>
-	<%
-	 			out.println("</div>");
-	 			out.println("<a class=\"dismiss\" href=\"javascript:dismiss();\">×</a>");
-	 			out.println("</div>");
-	 			out.println("</div>");
-	 			out.println("</div>");
-	 		}
- 	%>
+	<div id="wrongmessage" class="alert-messages" style="display:none">
+		<div class="message">
+			<div class="message-inside">
+				<div class="message-text">
+				</div>
+				<a class="dismiss" href="javascript:dismiss();">×</a>
+			</div>
+		</div>
+	</div>
              	<script type="text/javascript">
              		function dismiss(){
              			document.getElementById("wrongmessage").setAttribute("style", "display:none");
@@ -170,12 +172,25 @@ else
 					}
 					out.println("<table class=\"solution\" id='official'>"+
 							"<tr>"+
-							"<td class=\"leftbar\">"+
-							"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ officialSolution.getSolutionID() + "\" >"+
+							"<td class=\"leftbar\">");
+							if (!officialSolution.isVotedUp())
+								out.println("<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ officialSolution.getSolutionID() + "\" >");
+							else
+								out.println("<img class=\"leftbarup\" src=\"images/upvoted.png\" title=\"Click again to undo\" id=\""+ officialSolution.getSolutionID() + "\" >");
+							out.print("<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>");
+							if (!officialSolution.isVotedDown())
+								out.println("<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ officialSolution.getSolutionID() + "\" >");
+							else
+								out.println("<img class=\"leftbarup\" src=\"images/downvoted.png\" title=\"Click again to undo\" id=\""+ officialSolution.getSolutionID() + "\" >");
+									
+									
+									
+									
+							/*"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ officialSolution.getSolutionID() + "\" >"+
 							"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>"+
-							//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
 							"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ officialSolution.getSolutionID() + "\" >"+
-							"<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+"</td>"+
+							*/
+							out.println("<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+"</td>"+
 							"<td class=\"rightcontent\">"+
 							"<div class=\"commenttext\">"+officialSolution.getContent()+"</div>"+
 							"<div class=\"commentfooter\">"+
@@ -209,11 +224,16 @@ else
 				}
 						out.print(">"+
 						"<tr>"+
-						"<td class=\"leftbar\">"+
-						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ solutionData.get(i).getSolutionID() + "\" >"+
-						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(solutionData.get(i).getUp()-solutionData.get(i).getDown())+"</div>"+
-						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
-						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
+						"<td class=\"leftbar\">");
+						if (!solutionData.get(i).isVotedUp())
+							out.println("<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
+						else
+							out.println("<img class=\"leftbarup\" src=\"images/upvoted.png\" title=\"Click again to undo\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
+						out.print("<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(solutionData.get(i).getUp()-solutionData.get(i).getDown())+"</div>");
+						if (!solutionData.get(i).isVotedDown())
+							out.println("<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
+						else
+							out.println("<img class=\"leftbarup\" src=\"images/downvoted.png\" title=\"Click again to undo\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
 				if (solutionData.get(i).isBest()){
 					out.println("<img class=\"leftbarbestofficial\" src=\"images/best.png\" title=\"This solution is selected as the best answer\">");
 				}
