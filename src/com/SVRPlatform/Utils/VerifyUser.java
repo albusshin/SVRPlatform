@@ -4,14 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public class VerifyUser {
-	String email;
 	public static String getNowUser(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String sessionEmail = (String) session.getAttribute("email");
-		String sessionPassword = (String) session.getAttribute("password");
-		if (sessionEmail != null && sessionPassword != null){
-			return sessionEmail;
-		}
-		return null;
+		return sessionEmail;
+	}
+	public static String getNowUserID(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String sessionID = (String) session.getAttribute("userID");
+		return sessionID;
 	}
 }
