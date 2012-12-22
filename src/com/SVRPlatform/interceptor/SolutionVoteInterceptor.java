@@ -68,7 +68,7 @@ public class SolutionVoteInterceptor {
 			}
 		}
 
-		if(methodName == "voteUp" && user.getCredit() >= 15){
+		if(methodName == "voteUp" && user.getCredit() >= Constants.MINCREDITSONUP){
 			////System.out.println("vote up");
 			solutionVote = new SolutionVote();
 			solutionVote.setVoteFlag(new Integer(1));
@@ -77,7 +77,7 @@ public class SolutionVoteInterceptor {
 			solutionVoteDAO.add(solutionVote);
 			return pjp.proceed();
 		}
-		else if(methodName == "voteDown" && user.getCredit() >= 125){
+		else if(methodName == "voteDown" && user.getCredit() >= Constants.MINCREDITSONDOWN){
 			////System.out.println("vote down");
 			solutionVote = new SolutionVote();
 			solutionVote.setVoteFlag(new Integer(-1));
