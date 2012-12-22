@@ -59,6 +59,7 @@ else
 								$(caller).attr('onmouseover','this.src=\'images/uppressed.png\'');
 								$(caller).attr('onmouseout','this.src=\'images/up.png\'');
 				        		$(caller).next().text(parseInt($(caller).next().text())-1);
+								voting = false;
 							}, 400);
 			        	}
 			        	else {
@@ -67,6 +68,7 @@ else
 								$(caller).attr('onmouseover','this.src=\'images/downpressed.png\'');
 								$(caller).attr('onmouseout','this.src=\'images/down.png\'');
 				        		$(caller).prev().text(parseInt($(caller).prev().text())+1);
+								voting = false;
 							}, 400);
 			        	}
 			        	if  (data == "creditsnotenough") {
@@ -85,10 +87,13 @@ else
 			   		$("#wrongmessage1").attr('style','display:block');
 				}					             
 			});
-		}
-		
+		}		
+
+		var voting = false;
 		$(document).ready(function(){
 			$(".leftbarup").click(function() {
+				if (voting) return;
+				voting = true;
 				if ($(this).attr('src') == "images/uppressed.png" || $(this).attr('src') == "images/up.png") {
 					$(this).attr('src','images/upvoted.png');
 					$(this).attr('onmouseover','');
@@ -105,6 +110,8 @@ else
 				vote('Up', $(this).attr('id'), this);
 			});
 			$(".leftbardown").click(function() {
+				if (voting) return;
+				voting = true;
 				if ($(this).attr('src') == "images/downpressed.png" || $(this).attr('src') == "images/down.png") {
 					$(this).attr('src','images/downvoted.png');
 					$(this).attr('onmouseover','');
