@@ -11,13 +11,6 @@
 
     <package name="UserManagement" namespace="/" extends="default">
     	
-		<interceptors>
-		        <interceptor name="check" class="com.SVRPlatform.interceptor.CheckInterceptor"/>
-		        <interceptor-stack name="checkStack">
-		        	<interceptor-ref name="defaultStack" />
-		        	<interceptor-ref name="check" 		/>
-		        </interceptor-stack>
-		</interceptors>
 		
         <action name="SigningIn" class="signIn" method="execute">
         	<result name="success" type="redirect" >/home.jsp</result>
@@ -34,19 +27,17 @@
         	<result name="CookieNotFound" >/WEB-INF/index.jsp</result>
         	<result name="NotAuthenticated" type="redirect">/signin.jsp</result>
         </action>
-         	
+         <!-- 
          <action name="signInAutomatically" class="signInAutomatically">  
-            <interceptor-ref name="checkStack"/>  
-		 	<result name="FailToSignIn" type="redirect">/signin.jsp</result>    
+            <interceptor-ref name="checkStack"/>
 		 	<result name="SignInAtomatically" type="redirect">/home.jsp</result>
 		 </action>   
 		 
-           <action name="signInAutomaticallyUp" class="signInAutomatically">
- 			<interceptor-ref name="checkStack"/>     
-		 	<result name="FailToSignIn" type="redirect">/signup.jsp</result>    
+         <action name="signInAutomaticallyUp" class="signInAutomatically">
+ 			<interceptor-ref name="checkStack"/>
 		 	<result name="SignInAtomatically" type="redirect">/home.jsp</result>
 		 </action>   
-
+ 		-->	
  		
 		<action name="RetrievePassword" class="retrievePassword" method="execute">
         	<result name="success" >/WEB-INF/emailSent.jsp</result>

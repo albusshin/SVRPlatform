@@ -181,7 +181,7 @@ else
 							if (!officialSolution.isVotedDown())
 								out.println("<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ officialSolution.getSolutionID() + "\" >");
 							else
-								out.println("<img class=\"leftbarup\" src=\"images/downvoted.png\" title=\"Click again to undo\" id=\""+ officialSolution.getSolutionID() + "\" >");
+								out.println("<img class=\"leftbardown\" src=\"images/downvoted.png\" title=\"Click again to undo\" id=\""+ officialSolution.getSolutionID() + "\" >");
 									
 									
 									
@@ -233,7 +233,7 @@ else
 						if (!solutionData.get(i).isVotedDown())
 							out.println("<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
 						else
-							out.println("<img class=\"leftbarup\" src=\"images/downvoted.png\" title=\"Click again to undo\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
+							out.println("<img class=\"leftbardown\" src=\"images/downvoted.png\" title=\"Click again to undo\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
 				if (solutionData.get(i).isBest()){
 					out.println("<img class=\"leftbarbestofficial\" src=\"images/best.png\" title=\"This solution is selected as the best answer\">");
 				}
