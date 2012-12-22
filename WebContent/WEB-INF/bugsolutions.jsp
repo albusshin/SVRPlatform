@@ -38,11 +38,8 @@ else
 %>
 	</style>
 	<script type="text/javascript">
-		function vote(type, id) {
+		function vote(type, id, caller) {
 			var url = 'solutionvote_vote'+type+'?solutionId='+id;
-			if (type == 'Up')
-				$('#'+id).next().text(parseInt($('#'+id).next().text())+1);
-			else $('#'+id).next().text(parseInt($('#'+id).next().text())-1);
 			
 			$.ajax({
 			    url:url,
@@ -52,12 +49,21 @@ else
 			    processData: false,    //must declare
 			    success:function(data){
 			        if (data == "success") {
-			        	//do something
 			        }			        	
 			        else if (data == "creditsnotenough" || data == "alreadyvoted" ||
 			        			data == "owner" || data == "DBerror") {
-			        	if  (type == 'Up')	$('#'+id).next().text(parseInt($('#'+id).next().text())-1);
-			        	else $('#'+id).next().text(parseInt($('#'+id).next().text())+1);
+			        	if  (type == 'Up')	{
+			        		$(caller).attr('src','images/up.png');
+							$(caller).attr('onmouseover','this.src=\'images/uppressed.png\'');
+							$(caller).attr('onmouseout','this.src=\'images/up.png\'');
+			        		$(caller).next().text(parseInt($(caller).next().text())-1);
+			        	}
+			        	else {
+			        		$(caller).attr('src','images/down.png');
+							$(caller).attr('onmouseover','this.src=\'images/downpressed.png\'');
+							$(caller).attr('onmouseout','this.src=\'images/down.png\'');
+			        		$(caller).prev().text(parseInt($(caller).prev().text())+1);
+			        	}
 			        	if  (data == "creditsnotenough") {
 			        		if (type == 'Up') $('div.message-text').html("Vote Up requires 15 credits");
 			        		else $('div.message-text').html("Vote Down requires 125 credits");
@@ -75,13 +81,39 @@ else
 				}					             
 			});
 		}
-	
+		
 		$(document).ready(function(){
 			$(".leftbarup").click(function() {
-				vote('Up', $(this).attr('id'));
+				if ($(this).attr('src') == "images/uppressed.png" || $(this).attr('src') == "images/up.png") {
+					$(this).attr('src','images/upvoted.png');
+					$(this).attr('onmouseover','');
+					$(this).attr('onmouseout','');
+					$(this).next().text(parseInt($(this).next().text())+1);
+				}
+				else {
+					$(this).attr('src','images/up.png');
+					$(this).attr('onmouseover','this.src=\'images/uppressed.png\'');
+					$(this).attr('onmouseout','this.src=\'images/up.png\'');
+					$(this).next().text(parseInt($(this).next().text())-1);
+				}
+				
+				vote('Up', $(this).attr('id'), this);
 			});
 			$(".leftbardown").click(function() {
-				vote('Down', $(this).attr('id'));
+				if ($(this).attr('src') == "images/downpressed.png" || $(this).attr('src') == "images/down.png") {
+					$(this).attr('src','images/downvoted.png');
+					$(this).attr('onmouseover','');
+					$(this).attr('onmouseout','');
+					$(this).prev().text(parseInt($(this).prev().text())-1);
+				}
+				else {
+					$(this).attr('src','images/down.png');
+					$(this).attr('onmouseover','this.src=\'images/downpressed.png\'');
+					$(this).attr('onmouseout','this.src=\'images/down.png\'');
+					$(this).prev().text(parseInt($(this).prev().text())+1);
+				}
+				
+				vote('Down', $(this).attr('id'), this);
 			});
 		});
 		$(document).ready(function(){ 
