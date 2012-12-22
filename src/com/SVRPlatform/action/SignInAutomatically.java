@@ -78,7 +78,7 @@ public class SignInAutomatically extends ActionSupport implements ServletRequest
 				}
 	        }
 		}
-		Map<String, Object> info=this.loginService.login(email, password);
+		Map<String, ?> info=this.loginService.login(email, password);
 		if((Boolean)info.get("success")){
 			return "SignInAtomatically";
 		}

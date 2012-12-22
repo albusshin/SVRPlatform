@@ -30,7 +30,7 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 	private HttpServletResponse response;
 	private HttpServletRequest request;
 	private boolean browserHasCookie;
-	private Map<String, Object>  info;	
+	private Map<String, ?>  info;	
 
 	public String getMessage() {
 		return message;
