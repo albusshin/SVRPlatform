@@ -40,11 +40,15 @@ ServletResponseAware{
 		if (nowUser == null){
 			return Constants.NOTSIGNEDIN;
 		}
-		if (solutionVoteService.voteUp(solutionId, nowUser))
+		String message = solutionVoteService.voteUp(solutionId, nowUser);
+		if (message.equals(Constants.SUCCESS))
 			inputStream = new ByteArrayInputStream(Constants.SUCCESS.getBytes());
-	
-		else
-			inputStream = new ByteArrayInputStream(Constants.FAIL.getBytes());
+		else if (message.equals(Constants.ALREADYVOTED))
+			inputStream = new ByteArrayInputStream(Constants.ALREADYVOTED.getBytes());
+		else if (message.equals(Constants.CREDITSNOTENOUGH))
+			inputStream = new ByteArrayInputStream(Constants.CREDITSNOTENOUGH.getBytes());
+		else if (message.equals(Constants.OWNER))
+			inputStream = new ByteArrayInputStream(Constants.OWNER.getBytes());
 		return Constants.SUCCESS;
 	}
 	public String voteDown(){
@@ -54,11 +58,17 @@ ServletResponseAware{
 			return Constants.NOTSIGNEDIN;
 		}
 
-		if (solutionVoteService.voteDown(solutionId, nowUser))
+		String message = solutionVoteService.voteDown(solutionId, nowUser);
+		if (message.equals(Constants.SUCCESS))
 			inputStream = new ByteArrayInputStream(Constants.SUCCESS.getBytes());
-	
-		else
-			inputStream = new ByteArrayInputStream(Constants.FAIL.getBytes());
+		else if (message.equals(Constants.ALREADYVOTED))
+			inputStream = new ByteArrayInputStream(Constants.ALREADYVOTED.getBytes());
+		else if (message.equals(Constants.CREDITSNOTENOUGH))
+			inputStream = new ByteArrayInputStream(Constants.CREDITSNOTENOUGH.getBytes());
+		else if (message.equals(Constants.OWNER))
+			inputStream = new ByteArrayInputStream(Constants.OWNER.getBytes());
+		else if (message.equals(Constants.DBERROR))
+			inputStream = new ByteArrayInputStream(Constants.DBERROR.getBytes());
 		return Constants.SUCCESS;
 	}
 	@Override
