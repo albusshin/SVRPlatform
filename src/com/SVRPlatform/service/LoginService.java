@@ -4,5 +4,5 @@ import java.util.Map;
 
 public interface LoginService {
 	
-	public Map<String, ?> login(String email, String password);
+	public Map<String, Object> login(String email, String password);
 }

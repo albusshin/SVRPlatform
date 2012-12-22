@@ -14,7 +14,7 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
-	public Map<String, ?> login(String email, String password) {
+	public Map<String, Object> login(String email, String password) {
 		Map<String, ?> map = new HashMap<>();
 		if (email == null || password == null){
 			return map;

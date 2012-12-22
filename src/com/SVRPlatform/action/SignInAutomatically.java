@@ -1,5 +1,7 @@
 package com.SVRPlatform.action;
 
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -69,10 +71,9 @@ public class SignInAutomatically extends ActionSupport implements ServletRequest
 					}
 				}
 	        }
-		}	
-		
-		boolean canlogin=this.loginService.login(email, password);
-		if(canlogin){
+		}
+		Map<String, Object> info=this.loginService.login(email, password);
+		if((Boolean)info.get("success")){
 			return "SignInAtomatically";
 		}
 		else {
