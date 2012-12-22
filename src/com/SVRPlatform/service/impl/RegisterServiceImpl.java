@@ -47,6 +47,7 @@ public class RegisterServiceImpl implements RegisterService{
 			User user = new User(encodedPassword, email);
 			user.setDate(new Date());
 			user.setCredit(0);
+			user.setRealName(email.split("@")[0]);
 			userDAO.add(user);
 		}
 		return response;

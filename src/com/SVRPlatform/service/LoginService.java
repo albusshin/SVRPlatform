@@ -11,6 +11,7 @@ public interface LoginService {
 	 * 			("userID", int); 
 	 * 			("credit", int); 
 	 * 			("realname", String); 
+	 * 			("cookiehash", String);
 	 */
 	public Map<String, ?> login(String email, String password, Object... obj);
 	public Map<String, ?> cookieLogin(String email, String hash);
