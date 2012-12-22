@@ -3,6 +3,7 @@ package com.SVRPlatform.service.impl;
 import java.util.Date;
 import java.util.regex.Pattern;
 
+import com.SVRPlatform.Utils.StringEncoder;
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.RegisterService;
@@ -42,7 +43,7 @@ public class RegisterServiceImpl implements RegisterService{
 		//if both email and password are OK, then register
 		if (response.email == Response.Email.email_ok && response.password == Response.Password.password_ok) {
 			//encoding the password!
-			String encodedPassword = PasswordEncoder.EncoderByMd5(password);
+			String encodedPassword = StringEncoder.EncoderByMd5(password);
 			User user = new User(encodedPassword, email);
 			user.setDate(new Date());
 			user.setCredit(0);

@@ -19,6 +19,7 @@ import org.springframework.orm.hibernate4.SessionHolder;
 import org.springframework.orm.hibernate4.support.OpenSessionInViewFilter;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
+import com.SVRPlatform.Utils.StringEncoder;
 import com.SVRPlatform.action.RetrievePassword;
 import com.SVRPlatform.dao.HashForPasswordRetrieveDAO;
 import com.SVRPlatform.dao.SolutionDAO;
@@ -38,7 +39,6 @@ import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.PasswordRetrieveService;
 import com.SVRPlatform.service.SolutionSubmitService;
 import com.SVRPlatform.service.SolutionVoteService;
-import com.SVRPlatform.service.impl.PasswordEncoder;
 import com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl;
 
 public class TestForHibernate {
@@ -184,7 +184,7 @@ public class TestForHibernate {
 	@Test public void testSendEmail2(){
 		//System.out.println(passwordRetrieveService.checkHashValue("cf6c767bd7edac68a03857a1af83e275"));
 		passwordRetrieveService.updatePassword("povergoing@gmail.com", "hanfdsaftfdsaf");
-		System.out.println(PasswordEncoder.EncoderByMd5("fdaf"));
+		System.out.println(StringEncoder.EncoderByMd5("fdaf"));
 	}
 	@Test public void testSolutionSubmitService(){
 		//solutionSubmitService.solutionSubmit("--1", "povergoing@gmail.com", "fdafdaferfeavzer");
