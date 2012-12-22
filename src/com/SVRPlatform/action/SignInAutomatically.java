@@ -1,5 +1,7 @@
 package com.SVRPlatform.action;
 
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
+import com.SVRPlatform.Utils.VerifyUser;
 import com.SVRPlatform.service.LoginService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -45,11 +48,16 @@ public class SignInAutomatically extends ActionSupport implements ServletRequest
 		
 		//get email & password in session
 		ActionContext act=ActionContext.getContext();
-		email= (String) act.getSession().get("email");
-		password = (String) act.getSession().get("password");  
+		//email= (String) act.getSession().get("email");
+		//password = (String) act.getSession().get("password");  
+		email = VerifyUser.getNowUser(request);
+		if (email != null){
+			return "SignInAtomatically";
+		}
 		
 //		if (email.equals("tourist") || password.equals("tourist")){                 //BUGGY STATEMENT.
-		if (email == null || password == null){
+//		if (email == null || password == null){
+		else{
 			//get email & password in cookie 	
 			Cookie[] cookies = request.getCookies();
 			if (cookies != null) {									
@@ -69,10 +77,9 @@ public class SignInAutomatically extends ActionSupport implements ServletRequest
 					}
 				}
 	        }
-		}	
-		
-		boolean canlogin=this.loginService.login(email, password);
-		if(canlogin){
+		}
+		Map<String, Object> info=this.loginService.login(email, password);
+		if((Boolean)info.get("success")){
 			return "SignInAtomatically";
 		}
 		else {

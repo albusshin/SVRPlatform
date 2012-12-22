@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
+import com.SVRPlatform.Utils.UserHandlers;
+import com.SVRPlatform.Utils.VerifyUser;
 import com.SVRPlatform.service.LoginService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -49,12 +51,12 @@ public class Index extends ActionSupport implements ServletRequestAware,ServletR
 	{
 		System.out.println("In Index");	
 		HttpSession session = request.getSession();
-		emailInSession = (String) session.getAttribute("email");
-		passwordInSession = (String) session.getAttribute("password");
-		System.out.println("emailInSession == "+emailInSession );	
-		System.out.println("passwordInSession == "+passwordInSession );
-		boolean sessionCanLogin = this.loginService.login(cookieEmail, cookiePassword);
-		if (sessionCanLogin){
+		emailInSession = VerifyUser.getNowUser(request);
+		//emailInSession = (String) session.getAttribute("email");
+		//passwordInSession = (String) session.getAttribute("password");
+		//System.out.println("emailInSession == "+emailInSession );	
+		//System.out.println("passwordInSession == "+passwordInSession );
+		if (emailInSession != null){
 			System.out.println("Session can log in");
 			return "LoggedIn";
 		}

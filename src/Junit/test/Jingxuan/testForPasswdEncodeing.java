@@ -8,7 +8,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.SVRPlatform.service.impl.PasswordEncoder;
+import com.SVRPlatform.Utils.StringEncoder;
 
 public class testForPasswdEncodeing {
 

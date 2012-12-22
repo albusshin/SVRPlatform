@@ -12,6 +12,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.SVRPlatform.Utils.StringEncoder;
 import com.SVRPlatform.dao.HashForPasswordRetrieveDAO;
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.model.HashForPasswordRetrieve;
@@ -95,7 +96,7 @@ public class PasswordRetrieveServiceImpl implements PasswordRetrieveService {
 		this.hfpr = new HashForPasswordRetrieve();
 		//create the model of HashForPasswordRetrieve
 		this.hfpr.setUserId(u.getUserId());
-		this.hfpr.setHashValue(PasswordEncoder.EncoderByMd5(str));
+		this.hfpr.setHashValue(StringEncoder.EncoderByMd5(str));
 		//set the data of this model
 		if(hashForPasswordRetrieveDAO.getByID(u.getUserId()) == null)
 			this.hashForPasswordRetrieveDAO.add(this.hfpr);
@@ -133,7 +134,7 @@ public class PasswordRetrieveServiceImpl implements PasswordRetrieveService {
 		//if both email and password are OK, then register
 		if (response.password == Response.Password.password_ok) {
 			//encoding the password!
-			String encodedPassword = PasswordEncoder.EncoderByMd5(newPassword);
+			String encodedPassword = StringEncoder.EncoderByMd5(newPassword);
 			User user = userDAO.getUserByEmail(email);
 			user.setPassword(encodedPassword);
 			userDAO.update(user);

@@ -1,4 +1,4 @@
-package com.SVRPlatform.service.impl;
+package com.SVRPlatform.Utils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
  * @param str  待加密的字符串
  * @return  加密后的字符串 
  */
-public class PasswordEncoder{
+public class StringEncoder{
 	public static String EncoderByMd5(String input){
 		byte[] source;
 		String s = null;
