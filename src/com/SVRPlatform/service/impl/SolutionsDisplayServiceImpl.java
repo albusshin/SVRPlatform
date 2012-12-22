@@ -133,10 +133,12 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 			solutionData.setVotedDown(false);
 			if (userID != -1) {
 				SolutionVote solutionVote = solutionVoteDAO.getByUserAndSolution((User)userDAO.getByID(userID), solution);
-				if (solutionVote.getVoteFlag() == 1)
-					solutionData.setVotedUp(true);
-				else
-					solutionData.setVotedDown(true);
+				if (solutionVote != null){
+					if (solutionVote.getVoteFlag() == 1)
+						solutionData.setVotedUp(true);
+					else
+						solutionData.setVotedDown(true);
+				}
 			}
 				
 			solutionData.setSolutionID(solution.getSolutionId());
