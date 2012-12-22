@@ -8,8 +8,7 @@ public class VerifyUser {
 	public static String getNowUser(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String sessionEmail = (String) session.getAttribute("email");
-		String sessionPassword = (String) session.getAttribute("password");
-		if (sessionEmail != null && sessionPassword != null){
+		if (sessionEmail != null){
 			return sessionEmail;
 		}
 		return null;

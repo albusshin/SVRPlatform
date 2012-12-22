@@ -51,13 +51,26 @@ else
 			    contentType: false,    //must declare
 			    processData: false,    //must declare
 			    success:function(data){
+			    	alert(data);
 			        if (data == "success") {
-			        	//do something	
+			        	//do something
+			        	alert("success");
 			        }			        	
-			        else if (data == "fail")
-			        	if  (type == 'Up')
-			        		$('#'+id).next().text(parseInt($('#'+id).next().text())-1);
+			        else if (data == "creditsnotenough" || data == "alreadyvoted" || data == "notsignedin" ||
+			        			data == "owner" || data == "DBerror") {
+				        alert();
+			        	if  (type == 'Up')	$('#'+id).next().text(parseInt($('#'+id).next().text())-1);
 			        	else $('#'+id).next().text(parseInt($('#'+id).next().text())+1);
+			        	if  (data == "creditsnotenough") {
+			        		if (type == 'Up') $('div.message-text').html("Vote Up requires 15 credits");
+			        		else $('div.message-text').html("Vote Up requires 125 credits");
+			        	}
+			        	if (data == "alreadyvoted") 
+			        		$('div.message-text').html("Already voted!");
+			        	if (data == "owner")
+			        		$('div.message-text').html("Cannot vote for yourself");
+			        	$('#wrongmessage').attr('style','display:block');
+			        }
 			    },
 			    error:function(){
 			   		$("#wrongmessage1").attr('style','display:block');
