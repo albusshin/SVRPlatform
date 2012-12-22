@@ -19,10 +19,10 @@ public class CheckInterceptor implements Interceptor,ServletRequestAware,Servlet
 	 */
 	private static final long serialVersionUID = 1L;
 	private HttpServletRequest request; 
-	private Object emailInSession = null;
-	private Object passwordInSession = null;
+	private String emailInSession = null;
+	//private Object passwordInSession = null;
 	private String cookieEmail = null;
-	private String cookiePassword = null;
+	private String cookieHash = null;
 	
 	@Override
 	public void setServletResponse(HttpServletResponse arg0) {
@@ -58,8 +58,8 @@ public class CheckInterceptor implements Interceptor,ServletRequestAware,Servlet
         
         //get email & password in session
 		ActionContext act=ActionContext.getContext();
-		emailInSession = act.getSession().get("email");
-		passwordInSession = act.getSession().get("password");  
+		emailInSession = (String) act.getSession().get("email");
+		//passwordInSession = act.getSession().get("password");  
 		
 		//get email & password in cookie 
 		Cookie[] cookies = request.getCookies();
@@ -70,20 +70,20 @@ public class CheckInterceptor implements Interceptor,ServletRequestAware,Servlet
         	if (cookies[i].getName().equals("email")) {
         		cookieEmail= cookies[i].getValue();
             }
-            if (cookies[i].getName().equals("password")) {
-                cookiePassword = cookies[i].getValue();
+            if (cookies[i].getName().equals("cookiehash")) {
+            	cookieHash = cookies[i].getValue();
             }
           }
         }
 		System.out.println("emailInSession="+emailInSession);
-		System.out.println("passwordInSession="+passwordInSession);
+		//System.out.println("passwordInSession="+passwordInSession);
 		System.out.println("cookieEmail="+cookieEmail);
-		System.out.println("cookiePassword="+cookiePassword);
+		System.out.println("cookieHash="+cookieHash);
 		
 //		if (!emailInSession.equals("tourist") && !passwordInSession.equals("tourist"))
-		if (!(emailInSession == null) && !(passwordInSession == null))
+		if (emailInSession != null)
 			return invocation.invoke();
-		else if(cookieEmail != null && cookiePassword != null)
+		else if(cookieEmail != null && cookieHash != null)
 			return invocation.invoke();
 		else return"FailToSignIn";
 	}

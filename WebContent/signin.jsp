@@ -139,7 +139,7 @@
 		</div>
 		<style type="text/css"></style>
     	<div id="footer" align="center">
-            <p align="center" style="color:#000">Copyright ï¿½ www.SVRPlatform.com</p>
+            <p align="center" style="color:#000">Copyright © www.SVRPlatform.com</p>
             <p> <a class="footer" style="color:#000" href="javascript:;">Terms of Service</a></p>
             <p> <a class="footer" style="color:#000" href="javascript:;">License of Development</a></p>
             <p> <a class="footer" style="color:#000" href="javascript:;">Privacy</a></p>

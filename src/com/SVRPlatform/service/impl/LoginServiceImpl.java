@@ -76,7 +76,7 @@ public class LoginServiceImpl implements LoginService{
 		}
 		
 		String cookiehash = user.getCookieHash();
-		if (cookiehash.compareTo(hash) == 0 && (user.getValidDeadline().getTime() < Calendar.getInstance().getTime().getTime())){
+		if (cookiehash.compareTo(hash) == 0 && (user.getValidDeadline().getTime() > Calendar.getInstance().getTime().getTime())){
 			map.put("success", true);
 			map.put("userID", user.getUserId());
 			map.put("credit", user.getCredit());
