@@ -48,21 +48,26 @@ else
 			    contentType: false,    //must declare
 			    processData: false,    //must declare
 			    success:function(data){
+			    	
 			        if (data == "success") {
 			        }			        	
 			        else if (data == "creditsnotenough" || data == "alreadyvoted" ||
 			        			data == "owner" || data == "DBerror") {
 			        	if  (type == 'Up')	{
-			        		$(caller).attr('src','images/up.png');
-							$(caller).attr('onmouseover','this.src=\'images/uppressed.png\'');
-							$(caller).attr('onmouseout','this.src=\'images/up.png\'');
-			        		$(caller).next().text(parseInt($(caller).next().text())-1);
+							setTimeout(function() {
+				        		$(caller).attr('src','images/up.png');
+								$(caller).attr('onmouseover','this.src=\'images/uppressed.png\'');
+								$(caller).attr('onmouseout','this.src=\'images/up.png\'');
+				        		$(caller).next().text(parseInt($(caller).next().text())-1);
+							}, 400);
 			        	}
 			        	else {
-			        		$(caller).attr('src','images/down.png');
-							$(caller).attr('onmouseover','this.src=\'images/downpressed.png\'');
-							$(caller).attr('onmouseout','this.src=\'images/down.png\'');
-			        		$(caller).prev().text(parseInt($(caller).prev().text())+1);
+							setTimeout(function() {
+				        		$(caller).attr('src','images/down.png');
+								$(caller).attr('onmouseover','this.src=\'images/downpressed.png\'');
+								$(caller).attr('onmouseout','this.src=\'images/down.png\'');
+				        		$(caller).prev().text(parseInt($(caller).prev().text())+1);
+							}, 400);
 			        	}
 			        	if  (data == "creditsnotenough") {
 			        		if (type == 'Up') $('div.message-text').html("Vote Up requires 15 credits");

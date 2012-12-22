@@ -215,7 +215,7 @@ public class TestForHibernate {
 		for(Solution s:(List<Solution>)ls)
 			System.out.println(s.getSolutionId());
 		System.out.println("------------------------------");
-		ls = solutionVoteDAO.getSolutionIdFromSolutinList(ls, user);
+		ls = solutionVoteDAO.getSolutionIdFromSolutionList(ls, user);
 		for(SolutionVote s:(List<SolutionVote>)ls)
 			System.out.println(s.getSolution().getSolutionId());
 	}
