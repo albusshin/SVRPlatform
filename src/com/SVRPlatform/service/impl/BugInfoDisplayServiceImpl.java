@@ -35,13 +35,13 @@ public class BugInfoDisplayServiceImpl implements BugInfoDisplayService {
 		
 		Software software = bug.getSoftware();
 /*
-		System.out.println("-------1111111111111-------");
+		//System.out.println("-------1111111111111-------");
 		Solution bestSolution = (Solution) solutionDAO.getByID(bug.getBestSolutionId());
 
-		System.out.println("--------123-13-1--------");
+		//System.out.println("--------123-13-1--------");
 		Solution officialSolution = (Solution) solutionDAO.getByID(bug.getOfficialSolutionId());
 		
-		System.out.println("------22222222222-------");*/
+		//System.out.println("------22222222222-------");*/
 		
 		map.put("strBugNumber", bug.getBugNumber());
 		map.put("strBugDigest", bug.getBugDigest());

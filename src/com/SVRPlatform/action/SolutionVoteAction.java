@@ -17,6 +17,10 @@ import com.opensymphony.xwork2.ActionSupport;
 public class SolutionVoteAction extends ActionSupport implements ServletRequestAware,
 ServletResponseAware{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	HttpServletRequest request;
 	HttpServletResponse response;
 	int solutionId;
@@ -35,7 +39,7 @@ ServletResponseAware{
 	}
 	
 	public String voteUp(){
-		System.out.println("vote up!");
+		//System.out.println("vote up!");
 		String nowUser = VerifyUser.getNowUser(request);
 		if (nowUser == null){
 			return Constants.NOTSIGNEDIN;
@@ -54,7 +58,7 @@ ServletResponseAware{
 		return Constants.SUCCESS;
 	}
 	public String voteDown(){
-		System.out.println("vote down!");
+		//System.out.println("vote down!");
 		String nowUser = VerifyUser.getNowUser(request);
 		if (nowUser == null){
 			return Constants.NOTSIGNEDIN;

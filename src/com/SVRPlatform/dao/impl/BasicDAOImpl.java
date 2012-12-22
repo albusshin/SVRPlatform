@@ -73,7 +73,7 @@ public abstract class BasicDAOImpl implements basicDAO{
 			try{
 				org.hibernate.Criteria c = s.createCriteria(clazz);
 				c.setProjection(Projections.rowCount());
-				//System.out.println(c.list().get(0));
+				////System.out.println(c.list().get(0));
 				return ((Long)(c.list().get(0))).longValue();
 			} finally{
 				if(s!=null)

@@ -2,6 +2,8 @@ package Junit.test.Jingxuan;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,8 +17,8 @@ public class testAop {
 	static SolutionVoteService solutionVoteService;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		ctx = new ClassPathXmlApplicationContext("Junit/test/Jingxuan/Beans.xml");
-		solutionVoteService = (SolutionVoteService) ctx.getBean("solutionVoteService");
+//		ctx = new ClassPathXmlApplicationContext("Junit/test/Jingxuan/Beans.xml");
+//		solutionVoteService = (SolutionVoteService) ctx.getBean("solutionVoteService");
 	}
 
 	@AfterClass
@@ -25,7 +27,7 @@ public class testAop {
 
 	@Test
 	public void test() {
-		solutionVoteService.voteUp(12, "1234455435");
+		System.out.println("2012-12-18 00:09:52.0".substring(0,16));
 	}
 
 }

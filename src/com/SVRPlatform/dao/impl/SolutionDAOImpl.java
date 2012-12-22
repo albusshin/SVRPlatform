@@ -23,7 +23,7 @@ public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements S
 			s = this.sessionFactory.openSession();
 			Solution sol = (Solution) s.get(Solution.class, ID);
 			sol.getUser().getEmail();
-			//System.out.println(sol.getUser());
+			////System.out.println(sol.getUser());
 			return sol;
 		} finally {
 			if(s != null)

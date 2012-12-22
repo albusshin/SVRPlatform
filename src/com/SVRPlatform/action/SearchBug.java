@@ -39,8 +39,8 @@ ServletRequestAware, ServletResponseAware {
 	}
 
 	public String execute(){
-		System.out.println("Search Bug Execute");
-		System.out.println("Now StrbugNumber == " + strBugNumber);
+		//System.out.println("Search Bug Execute");
+		//System.out.println("Now StrbugNumber == " + strBugNumber);
 		return Constants.SUCCESS;
 	}
 }

@@ -1,6 +1,5 @@
 package com.SVRPlatform.action;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import com.SVRPlatform.constants.Constants;
@@ -76,16 +75,16 @@ public class DisplayComments extends ActionSupport {
 	}
 
 	public String execute() {
-		System.out.println("DisplayComments execute()");
-		System.out.println("strBugNumber" + strBugNumber);
-		System.out.println("strNowPage == " + strNowPage);
+		//System.out.println("DisplayComments execute()");
+		//System.out.println("strBugNumber" + strBugNumber);
+		//System.out.println("strNowPage == " + strNowPage);
 		nowPage = Integer.parseInt(strNowPage);
 		BugCommentsData theData = commentsDisplayService
 				.commentsDispalyService(strBugNumber, nowPage, 5);
 		commentData = theData.getCommentsData();
 		strCommentsAmount = theData.getCommentCount() + "";
-		System.out.println("strCommentsAmount == " + strCommentsAmount);
-		System.out.println("before return success");
+		//System.out.println("strCommentsAmount == " + strCommentsAmount);
+		//System.out.println("before return success");
 
 		return Constants.SUCCESS;
 	}

@@ -65,8 +65,8 @@ public class CheckInterceptor implements Interceptor,ServletRequestAware,Servlet
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {									
         	for (int i = 0; i < cookies.length; i++) {									
-            System.out.println(cookies[i].getName() +"/////");
-            System.out.println(cookies[i].getValue() );
+            //System.out.println(cookies[i].getName() +"/////");
+            //System.out.println(cookies[i].getValue() );
         	if (cookies[i].getName().equals("email")) {
         		cookieEmail= cookies[i].getValue();
             }
@@ -75,10 +75,10 @@ public class CheckInterceptor implements Interceptor,ServletRequestAware,Servlet
             }
           }
         }
-		System.out.println("emailInSession="+emailInSession);
-		//System.out.println("passwordInSession="+passwordInSession);
-		System.out.println("cookieEmail="+cookieEmail);
-		System.out.println("cookieHash="+cookieHash);
+		//System.out.println("emailInSession="+emailInSession);
+		////System.out.println("passwordInSession="+passwordInSession);
+		//System.out.println("cookieEmail="+cookieEmail);
+		//System.out.println("cookieHash="+cookieHash);
 		
 //		if (!emailInSession.equals("tourist") && !passwordInSession.equals("tourist"))
 		if (emailInSession != null)

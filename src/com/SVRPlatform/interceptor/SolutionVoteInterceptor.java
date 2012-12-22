@@ -38,14 +38,14 @@ public class SolutionVoteInterceptor {
 		User user = svsi.getUserDAO().getUserByEmail((String)pjp.getArgs()[1]);
 		Solution solution = (Solution) svsi.getSolutionDAO().getByID(new Integer((int)pjp.getArgs()[0]));
 		if(solution.getUser().getUserId() == user.getUserId()){
-			//System.out.println("owner");
+			////System.out.println("owner");
 			//message = "You are the owner";
 			return Constants.OWNER;
 		}
 		SolutionVote solutionVote = this.solutionVoteDAO.getByUserAndSolution(user, solution);
 		if(solutionVote != null){
 			if(solutionVote.getVoteFlag() == 1 && methodName == "voteUp"){
-				//System.out.println("rowback for up");
+				////System.out.println("rowback for up");
 				//solutionVote.setVoteFlag(0);
 				solutionVoteDAO.delete(solutionVote);
 				if(svsi.turnBackUp(solution, true))
@@ -62,14 +62,14 @@ public class SolutionVoteInterceptor {
 					return Constants.DBERROR;
 			}
 			else{
-				//System.out.println("have voted");
+				////System.out.println("have voted");
 				//message = "Have voted";
 				return Constants.ALREADYVOTED;
 			}
 		}
 
 		if(methodName == "voteUp" && user.getCredit() >= 15){
-			//System.out.println("vote up");
+			////System.out.println("vote up");
 			solutionVote = new SolutionVote();
 			solutionVote.setVoteFlag(new Integer(1));
 			solutionVote.setUser(user);
@@ -78,7 +78,7 @@ public class SolutionVoteInterceptor {
 			return pjp.proceed();
 		}
 		else if(methodName == "voteDown" && user.getCredit() >= 125){
-			//System.out.println("vote down");
+			////System.out.println("vote down");
 			solutionVote = new SolutionVote();
 			solutionVote.setVoteFlag(new Integer(-1));
 			solutionVote.setUser(user);
@@ -86,7 +86,7 @@ public class SolutionVoteInterceptor {
 			solutionVoteDAO.add(solutionVote);
 			return pjp.proceed();
 		}
-		//System.out.println("credit is not enough");	
+		////System.out.println("credit is not enough");	
 		//message = "Credit is not enough";
 		return Constants.CREDITSNOTENOUGH;
 	}

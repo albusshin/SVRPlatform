@@ -27,10 +27,10 @@ public class SolutionData {
 		this.content = content;
 	}
 	public String getDatetime() {
-		return datetime;
+		return datetime.substring(0,16);
 	}
 	public void setDatetime(String datetime) {
-		this.datetime = datetime;
+		this.datetime = datetime.substring(0, 16);
 	}
 	public String getRealname() {
 		return realname;

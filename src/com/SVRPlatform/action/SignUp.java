@@ -59,9 +59,9 @@ public class SignUp extends ActionSupport implements ServletRequestAware,		//sig
 	}
 
 	public String execute() {
-		System.out.println(this.email);
-		System.out.println(this.password);
-		System.out.println(this.remember);
+		//System.out.println(this.email);
+		//System.out.println(this.password);
+		//System.out.println(this.remember);
 		res = this.registerService.register(this.email, this.password);
 		if (res.email == Email.email_against_rule)
 			message = "Email is not properly filled in. Please refill and retry.<br><br>";
@@ -80,7 +80,7 @@ public class SignUp extends ActionSupport implements ServletRequestAware,		//sig
 			else 
 				message = "Your password is too short. Please at least include 8 characters.";
 		}
-		System.out.println(message);
+		//System.out.println(message);
 
 
 		if (res.email == Email.email_ok && res.password == Password.password_ok) {				//register success
@@ -88,14 +88,14 @@ public class SignUp extends ActionSupport implements ServletRequestAware,		//sig
 			request.getSession().setMaxInactiveInterval(60 * 60 * 3);						//Session 3 hours is enough.
 			request.getSession().setAttribute("email", email);
 			request.getSession().setAttribute("password", password);
-			System.out.println("session stored");
+			//System.out.println("session stored");
 			
 			if(remember != null)
 			{
 				Cookie[] cookies = request.getCookies();
 
 				for (int i = 0; i < cookies.length; i++) {
-					System.out.println(cookies[i].getName());
+					//System.out.println(cookies[i].getName());
 					if (cookies[i].getName().equals("email")) {										//browserHasCookie email & password in cookie
 						cookies[i].setValue(this.email);
 						cookies[i].setMaxAge(60 * 60 * 24 * 7);
@@ -110,11 +110,11 @@ public class SignUp extends ActionSupport implements ServletRequestAware,		//sig
 						browserHasCookie = true;
 					}
 				}
-				System.out.println(browserHasCookie + " == browserHasCookie");
+				//System.out.println(browserHasCookie + " == browserHasCookie");
 				if (browserHasCookie == false) {																//no email & password in cookie
 					Cookie cemail = new Cookie("email", this.email);
 					Cookie cpassword = new Cookie("password", this.password);
-					System.out.println(cemail.getValue());
+					//System.out.println(cemail.getValue());
 					cemail.setMaxAge(60 * 60 * 24 * 7);
 					cpassword.setMaxAge(60 * 60 * 24 * 7);
 					response.addCookie(cemail);
