@@ -172,12 +172,25 @@ else
 					}
 					out.println("<table class=\"solution\" id='official'>"+
 							"<tr>"+
-							"<td class=\"leftbar\">"+
-							"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ officialSolution.getSolutionID() + "\" >"+
+							"<td class=\"leftbar\">");
+							if (!officialSolution.isVotedUp())
+								out.println("<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ officialSolution.getSolutionID() + "\" >");
+							else
+								out.println("<img class=\"leftbarup\" src=\"images/upvoted.png\" title=\"Click again to undo\" id=\""+ officialSolution.getSolutionID() + "\" >");
+							out.print("<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>");
+							if (!officialSolution.isVotedDown())
+								out.println("<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ officialSolution.getSolutionID() + "\" >");
+							else
+								out.println("<img class=\"leftbarup\" src=\"images/downvoted.png\" title=\"Click again to undo\" id=\""+ officialSolution.getSolutionID() + "\" >");
+									
+									
+									
+									
+							/*"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ officialSolution.getSolutionID() + "\" >"+
 							"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(officialSolution.getUp()-officialSolution.getDown())+"</div>"+
-							//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
 							"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ officialSolution.getSolutionID() + "\" >"+
-							"<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+"</td>"+
+							*/
+							out.println("<img class=\"leftbarbestofficial\" src=\"images/official.png\" title=\"This solution is provided by official\">"+"</td>"+
 							"<td class=\"rightcontent\">"+
 							"<div class=\"commenttext\">"+officialSolution.getContent()+"</div>"+
 							"<div class=\"commentfooter\">"+
@@ -211,11 +224,16 @@ else
 				}
 						out.print(">"+
 						"<tr>"+
-						"<td class=\"leftbar\">"+
-						"<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ solutionData.get(i).getSolutionID() + "\" >"+
-						"<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(solutionData.get(i).getUp()-solutionData.get(i).getDown())+"</div>"+
-						//这里有一个问题，就是用户只能点一次顶和踩，怎么实现，初期计划填俩表，一个up表一个down表。
-						"<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
+						"<td class=\"leftbar\">");
+						if (!solutionData.get(i).isVotedUp())
+							out.println("<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
+						else
+							out.println("<img class=\"leftbarup\" src=\"images/upvoted.png\" title=\"Click again to undo\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
+						out.print("<div class=\"leftbarsum\" align=\"center\" title=\"Solution Score\">"+(solutionData.get(i).getUp()-solutionData.get(i).getDown())+"</div>");
+						if (!solutionData.get(i).isVotedDown())
+							out.println("<img class=\"leftbardown\" src=\"images/down.png\" onmouseover=\"this.src='images/downpressed.png'\" onmouseout=\"this.src='images/down.png'\" title=\"This solution seems not working\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
+						else
+							out.println("<img class=\"leftbarup\" src=\"images/downvoted.png\" title=\"Click again to undo\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
 				if (solutionData.get(i).isBest()){
 					out.println("<img class=\"leftbarbestofficial\" src=\"images/best.png\" title=\"This solution is selected as the best answer\">");
 				}

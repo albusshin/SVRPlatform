@@ -9,9 +9,15 @@ public class VerifyUser {
 		String sessionEmail = (String) session.getAttribute("email");
 		return sessionEmail;
 	}
-	public static String getNowUserID(HttpServletRequest request){
+	public static int getNowUserID(HttpServletRequest request){
 		HttpSession session = request.getSession();
-		String sessionID = (String) session.getAttribute("userID");
-		return sessionID;
+		int sessionID;
+		try{
+			sessionID = (Integer) session.getAttribute("userID");
+			return sessionID;
+		}
+		catch (NullPointerException e){
+			return -1;
+		}
 	}
 }
