@@ -14,8 +14,7 @@ public class LoginServiceImpl implements LoginService{
 		this.userDAO = userDAO;
 	}
 
-	@Override
-	public Map<String, ?> login(String email, String password) {
+	public Map<String, ?> login(String email, String password, boolean rememberme) {
 		Map<String, Object> map = new HashMap<>();
 		if (email == null || password == null){
 			map.put("success", false);
