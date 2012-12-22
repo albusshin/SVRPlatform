@@ -32,6 +32,9 @@ public class User implements java.io.Serializable {
 	private Set comments = new HashSet(0);
 	private Usertype usertype;
 	private Set watchingBugs = new HashSet(0);
+	
+	private String cookieHash;
+	private Date validDeadline;
 
 	public User() {
 	}
@@ -188,6 +191,22 @@ public class User implements java.io.Serializable {
 
 	public void setWatchingBugs(Set watchingBugs) {
 		this.watchingBugs = watchingBugs;
+	}
+
+	public String getCookieHash() {
+		return cookieHash;
+	}
+
+	public void setCookieHash(String cookieHash) {
+		this.cookieHash = cookieHash;
+	}
+
+	public Date getValidDeadline() {
+		return validDeadline;
+	}
+
+	public void setValidDeadline(Date validDeadline) {
+		this.validDeadline = validDeadline;
 	}
 
 }

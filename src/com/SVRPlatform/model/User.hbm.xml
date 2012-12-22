@@ -17,6 +17,12 @@
         <property name="date" type="date">
             <column name="date" length="10" />
         </property>
+        <property name="validDeadline" type="date">
+            <column name="validdeadline" length="10" />
+        </property>
+        <property name="cookieHash" type="string">
+            <column name="cookiehash" length="100"/>
+        </property>
         <property name="credit" type="java.lang.Integer">
             <column name="credit" />
         </property>
