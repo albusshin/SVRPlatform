@@ -28,7 +28,7 @@ public class SolutionVoteServiceImpl implements SolutionVoteService {
 	@Override
 	public String voteUp(int solutionId, String email) {
 		// TODO Auto-generated method stub
-		System.out.println("servcie:"+email);
+		//System.out.println("servcie:"+email);
 		Solution solution = (Solution) solutionDAO.getByID(new Integer(solutionId));
 		
 		return addUpOrDown(solution, true);
@@ -37,7 +37,7 @@ public class SolutionVoteServiceImpl implements SolutionVoteService {
 	@Override
 	public String voteDown(int solutionId, String email) {
 		// TODO Auto-generated method stub
-		System.out.println("servcie:"+email);
+		//System.out.println("servcie:"+email);
 		Solution solution = (Solution) solutionDAO.getByID(new Integer(solutionId));
 		return addUpOrDown(solution, false);
 	}
