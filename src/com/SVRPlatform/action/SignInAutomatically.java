@@ -23,7 +23,7 @@ public class SignInAutomatically extends ActionSupport implements ServletRequest
 	private LoginService loginService;
 	private HttpServletRequest request; 
 	private String email;
-	private String password;
+	private String cookiehash;
 	
 	public void setLoginService(LoginService loginService) {
 		this.loginService = loginService;
@@ -72,13 +72,13 @@ public class SignInAutomatically extends ActionSupport implements ServletRequest
 					if (cookie.getName().equals("email")){
 						email = cookie.getValue();
 					}
-					if (cookie.getName().equals("password")){
-						password = cookie.getValue();
+					if (cookie.getName().equals("cookiehash")){
+						cookiehash = cookie.getValue();
 					}
 				}
 	        }
 		}
-		Map<String, ?> info=this.loginService.login(email, password);
+		Map<String, ?> info=this.loginService.cookieLogin(email, cookiehash);
 		if((Boolean)info.get("success")){
 			return "SignInAtomatically";
 		}

@@ -60,20 +60,22 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 	public String execute() throws Exception {
 		System.out.println("this.email = " + this.email);
 		System.out.println("this.password = " + this.password);
-		info = this.loginService.login(this.email, this.password);
+		if (remember == null)
+			info = this.loginService.login(email, password);
+		else
+			info = this.loginService.login(email, password, true);
 		System.out.println("this.loginService.login()" + this.info.get("success"));
-		if (!(Boolean) this.info.get("success")) {																				//wrong email or password
+		if (!(Boolean) this.info.get("success")) {//wrong email or password
 			message = "Failed to sign in. Please check again and retry.";
 			return FAIL;
-		} else {																					//valid email and password 								
+		} else {//valid email and password 								
 			
-			request.getSession().setMaxInactiveInterval(60 * 60 * 3);							//Session 3 hours is enough.
+			request.getSession().setMaxInactiveInterval(60 * 60 * 3);				//Session 3 hours is enough.
 			request.getSession().setAttribute("email", email);
 			request.getSession().setAttribute("userID", (Integer)info.get("userID"));
 			request.getSession().setAttribute("credit", (Integer)info.get("credit"));
 			request.getSession().setAttribute("realname", (String)info.get("realname"));
 			
-			//request.getSession().setAttribute("password", password);		//Absolutely no use
 			if(remember != null)																	//remember email and password for 2 weeks
 			{
 				Cookie[] cookies = request.getCookies();
@@ -85,8 +87,8 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 						browserHasCookie = true;
 					}
 					
-					if (cookies[i].getName().equals("password")) {									//cookie had password before 
-						cookies[i].setValue(this.password);
+					if (cookies[i].getName().equals("cookiehash")) {									//cookie had password before 
+						cookies[i].setValue((String)info.get("cookiehash"));
 						response.addCookie(cookies[i]);
 						browserHasCookie = true;
 					}
@@ -94,15 +96,15 @@ public class SignIn extends ActionSupport implements ServletRequestAware,			//si
 				
 				if (browserHasCookie == false) {
 					Cookie cemail = new Cookie("email", this.email);			    //cookie do not browserHasCookie email & password before  store email & password in cookie
-					Cookie cpassword = new Cookie("password", this.password);	
+					Cookie cpassword = new Cookie("cookiehash", (String) info.get("cookiehash"));
 					cemail.setMaxAge(60 * 60 * 24 * 7);
 					cpassword.setMaxAge(60 * 60 * 24 * 7);
 					response.addCookie(cemail);
 					response.addCookie(cpassword);
-				} 
+				}
 			}
-		}																		
-			return SUCCESS;		
+		}
+		return SUCCESS;
 	}
 
 	@Override
