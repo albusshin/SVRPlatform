@@ -11,6 +11,8 @@ public class SolutionData {
 	private int up;
 	private int down;
 	private boolean isBest;
+	private boolean votedUp;
+	private boolean votedDown;
 	
 	public boolean isBest() {
 		return isBest;
@@ -65,5 +67,17 @@ public class SolutionData {
 	}
 	public void setSolutionID(int solutionID) {
 		this.solutionID = solutionID;
+	}
+	public boolean isVotedUp() {
+		return votedUp;
+	}
+	public void setVotedUp(boolean votedUp) {
+		this.votedUp = votedUp;
+	}
+	public boolean isVotedDown() {
+		return votedDown;
+	}
+	public void setVotedDown(boolean votedDown) {
+		this.votedDown = votedDown;
 	}
 }

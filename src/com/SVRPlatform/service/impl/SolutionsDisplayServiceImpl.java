@@ -33,7 +33,7 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 		this.bugDAO = bugDAO;
 	}
 
-	public BugSolutionsData solutionsDisplayService(String bugNumber, int pageNumber, int solutionsPerPage) {
+	public BugSolutionsData solutionsDisplayService(int userID, String bugNumber, int pageNumber, int solutionsPerPage) {
 		BugSolutionsData bugSolutionsData = new BugSolutionsData();
 		
 		int bugID = Integer.parseInt(bugNumber.split("-")[2]);

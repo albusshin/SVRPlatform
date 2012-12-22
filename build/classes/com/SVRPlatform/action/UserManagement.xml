@@ -68,6 +68,10 @@
 		<action name="Logout" class="com.SVRPlatform.action.Logout" method="execute">
         	<result name="success" type="redirect">logout.jsp</result>
         </action>
+        
+        <action name="notSignedIn">
+        	<result>/WEB-INF/notSignedIn.jsp</result>
+        </action>
 
         <!-- Add actions here -->
     </package>

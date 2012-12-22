@@ -51,19 +51,16 @@ else
 			    contentType: false,    //must declare
 			    processData: false,    //must declare
 			    success:function(data){
-			    	alert(data);
 			        if (data == "success") {
 			        	//do something
-			        	alert("success");
 			        }			        	
-			        else if (data == "creditsnotenough" || data == "alreadyvoted" || data == "notsignedin" ||
+			        else if (data == "creditsnotenough" || data == "alreadyvoted" ||
 			        			data == "owner" || data == "DBerror") {
-				        alert();
 			        	if  (type == 'Up')	$('#'+id).next().text(parseInt($('#'+id).next().text())-1);
 			        	else $('#'+id).next().text(parseInt($('#'+id).next().text())+1);
 			        	if  (data == "creditsnotenough") {
 			        		if (type == 'Up') $('div.message-text').html("Vote Up requires 15 credits");
-			        		else $('div.message-text').html("Vote Up requires 125 credits");
+			        		else $('div.message-text').html("Vote Down requires 125 credits");
 			        	}
 			        	if (data == "alreadyvoted") 
 			        		$('div.message-text').html("Already voted!");
@@ -71,6 +68,7 @@ else
 			        		$('div.message-text').html("Cannot vote for yourself");
 			        	$('#wrongmessage').attr('style','display:block');
 			        }
+			        else window.location.replace("notSignedIn");
 			    },
 			    error:function(){
 			   		$("#wrongmessage1").attr('style','display:block');
@@ -109,27 +107,15 @@ else
 </head>
 
 <body>
-<%
- 		String stat = (String) request.getAttribute("strStat");
- 		System.out.println("strStat == " + request.getAttribute("strStat"));
- 		if (stat != null)
-	 		if (stat.equals("wrong")){
-	 			out.println("<div id=\"wrongmessage\" class=\"alert-messages\" style=\"display:block\">");
-	 			out.println("<div class=\"message\">");
-	 			out.println("<div class=\"message-inside\">");
-	 			out.println("<div class=\"message-text\">");
-	%>
-		<div>
-	 			${message }
-	 	</div>
-	<%
-	 			out.println("</div>");
-	 			out.println("<a class=\"dismiss\" href=\"javascript:dismiss();\">×</a>");
-	 			out.println("</div>");
-	 			out.println("</div>");
-	 			out.println("</div>");
-	 		}
- 	%>
+	<div id="wrongmessage" class="alert-messages" style="display:none">
+		<div class="message">
+			<div class="message-inside">
+				<div class="message-text">
+				</div>
+				<a class="dismiss" href="javascript:dismiss();">×</a>
+			</div>
+		</div>
+	</div>
              	<script type="text/javascript">
              		function dismiss(){
              			document.getElementById("wrongmessage").setAttribute("style", "display:none");
