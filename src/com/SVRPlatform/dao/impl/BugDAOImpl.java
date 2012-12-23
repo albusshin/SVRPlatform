@@ -29,7 +29,9 @@ public class BugDAOImpl extends BasicDAOImpl implements BugDAO{
 		Session s = null;
 		try{
 			s = this.sessionFactory.openSession();
-			return s.get(Bug.class, ID);
+			Bug b = (Bug) s.get(Bug.class, ID);
+			b.getUser().getCredit();
+			return b;
 		} finally {
 			if(s != null)
 				s.close();

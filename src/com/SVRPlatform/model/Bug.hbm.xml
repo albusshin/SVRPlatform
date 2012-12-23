@@ -59,6 +59,12 @@
         <property name="bugNumber" type="string">
             <column name="bugNumber" length="65535" />
         </property>
+        <property name="up" type="java.lang.Integer">
+            <column name="up" />
+        </property>
+        <property name="down" type="java.lang.Integer">
+            <column name="down" />
+        </property>
         <!-- one-to-one name="ranking" class="com.SVRPlatform.model.Ranking"></one-to-one-->
         <!-- set name="solutions" table="solution" inverse="true" lazy="true" fetch="select">
             <key>

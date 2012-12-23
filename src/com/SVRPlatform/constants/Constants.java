@@ -26,9 +26,9 @@ public class Constants {
 	 */
 	public static final String CREDITSNOTENOUGH = "creditsnotenough";
 	/**
-	 * 上传bug加的分数
+	 * 顶踩bug加减的分数
 	 */
-	public static final int BONUSONUPLOADBUG = 10;
+	public static final int BONUSONBUGUPORDOWN = 5;
 	/**
 	 * solution被顶或踩一下加或减的分数
 	 */

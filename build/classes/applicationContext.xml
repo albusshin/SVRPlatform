@@ -11,8 +11,9 @@
     
     <!--Spring AOP -->
     <aop:aspectj-autoproxy/>
-    <bean id="solutionVoteInterceptor" class="com.SVRPlatform.interceptor.SolutionVoteInterceptor">
+    <bean id="creditsLimitationInterceptor" class="com.SVRPlatform.interceptor.CreditsLimitationInterceptor">
     	<property name="solutionVoteDAO" ref="solutionVoteDAO"></property>
+    	<property name="bugWatchDAO" ref="bugWatchDAO"></property>
     </bean>
     <bean id="check" class="com.SVRPlatform.interceptor.CheckInterceptor">
     	<property name="loginService" ref="loginService"></property>
@@ -142,6 +143,10 @@
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="solutionDAO" ref="solutionDAO"></property>
 	    </bean>
+	    <bean id="bugWatchService" class="com.SVRPlatform.service.impl.BugWatchServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="bugDAO" ref="bugDAO"></property>
+	    </bean>
 	
 		<bean id="bugVoteService" class="com.SVRPlatform.service.impl.BugVoteServiceImpl">
 	    </bean>
@@ -172,6 +177,10 @@
     </bean>
     
     <bean id="solutionVoteDAO" class="com.SVRPlatform.dao.impl.SolutionVoteDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <bean id="bugWatchDAO" class="com.SVRPlatform.dao.impl.BugWatchDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     
