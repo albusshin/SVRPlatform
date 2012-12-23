@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import com.SVRPlatform.Utils.VerifyUser;
 import com.SVRPlatform.constants.Constants;
-import com.SVRPlatform.service.BugVoteService;
+import com.SVRPlatform.service.BugWatchService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BugVoteAction extends ActionSupport implements ServletRequestAware{
 	private static final long serialVersionUID = 1L;
 	private String bugNumber;
-	private BugVoteService bugVoteService;
+	private BugWatchService bugWatchService;
 	private InputStream inputStream;
 	private HttpServletRequest request;
 	
@@ -25,8 +25,8 @@ public class BugVoteAction extends ActionSupport implements ServletRequestAware{
 		this.bugNumber = bugNumber;
 	}
 
-	public void setBugVoteService(BugVoteService bugVoteService) {
-		this.bugVoteService = bugVoteService;
+	public void setBugWatchService(BugWatchService bugWatchService) {
+		this.bugWatchService = bugWatchService;
 	}
 
 	public void setServletRequest(HttpServletRequest arg0) {
@@ -39,7 +39,8 @@ public class BugVoteAction extends ActionSupport implements ServletRequestAware{
 		if (nowUser == null){
 			return Constants.NOTSIGNEDIN;
 		}
-		String message = bugVoteService.voteUp(bugNumber, nowUser);
+		int bugID = Integer.parseInt(bugNumber.split("-")[2]);
+		String message = bugWatchService.voteUp(bugID, nowUser);
 		if (message.equals(Constants.SUCCESS))
 			inputStream = new ByteArrayInputStream(Constants.SUCCESS.getBytes());
 		else if (message.equals(Constants.ALREADYVOTED))
@@ -58,7 +59,8 @@ public class BugVoteAction extends ActionSupport implements ServletRequestAware{
 			return Constants.NOTSIGNEDIN;
 		}
 
-		String message = bugVoteService.voteDown(bugNumber, nowUser);
+		int bugID = Integer.parseInt(bugNumber.split("-")[2]);
+		String message = bugWatchService.voteDown(bugID, nowUser);
 		if (message.equals(Constants.SUCCESS))
 			inputStream = new ByteArrayInputStream(Constants.SUCCESS.getBytes());
 		else if (message.equals(Constants.ALREADYVOTED))

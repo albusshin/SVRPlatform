@@ -10,9 +10,8 @@
 	<script type="text/javascript" src="jquery.min.js">
     </script>
     <script type="text/javascript">
-		function vote(type) {
+		function vote(type, caller) {
 			var url = 'bugvote_vote'+type+'?bugNumber='+$('#bugNumber').text();
-			alert($('#bugNumber').text());
 			$.ajax({
 			    url:url,
 			    type:'GET',
@@ -20,7 +19,6 @@
 			    contentType: false,    //must declare
 			    processData: false,    //must declare
 			    success:function(data){
-			    	
 			        if (data == "success") {
 						voting = false;
 			        }			        	
@@ -28,19 +26,19 @@
 			        			data == "owner" || data == "DBerror") {
 			        	if  (type == 'Up')	{
 							setTimeout(function() {
-				        		$('.bugvulleftbarwatch').attr('src','images/watch.png');
-								$('.bugvulleftbarwatch').attr('onmouseover','this.src=\'images/watchpressed.png\'');
-								$('.bugvulleftbarwatch').attr('onmouseout','this.src=\'images/watch.png\'');
-				        		$('.bugvulleftbarwatch').next().text(parseInt($('.bugvulleftbarwatch').next().text())-1);
+				        		$(caller).attr('src','images/watch.png');
+								$(caller).attr('onmouseover','this.src=\'images/watchpressed.png\'');
+								$(caller).attr('onmouseout','this.src=\'images/watch.png\'');
+				        		$(caller).next().text(parseInt($(caller).next().text())-1);
 								voting = false;
 							}, 400);
 			        	}
 			        	else {
 							setTimeout(function() {
-				        		$('.bugvulleftbartrash').attr('src','images/trash.png');
-								$('.bugvulleftbartrash').attr('onmouseover','this.src=\'images/trashpressed.png\'');
-								$('.bugvulleftbartrash').attr('onmouseout','this.src=\'images/trash.png\'');
-				        		$('.bugvulleftbartrash').next().text(parseInt($('.bugvulleftbartrash').next().text())-1);
+				        		$(caller).attr('src','images/trash.png');
+								$(caller).attr('onmouseover','this.src=\'images/trashpressed.png\'');
+								$(caller).attr('onmouseout','this.src=\'images/trash.png\'');
+				        		$(caller).next().text(parseInt($(caller).next().text())-1);
 								voting = false;
 							}, 400);
 			        	}
@@ -62,8 +60,8 @@
 			});
 		}		
 
+		var voting = false;
 		$(document).ready(function(){
-			var voting = false;
 			$(".bugvulleftbarwatch").click(function() {
 				if (voting) return;
 				voting = true;
@@ -80,7 +78,7 @@
 					$(this).next().text(parseInt($(this).next().text())-1);
 				}
 				
-				vote('Up');
+				vote('Up', this);
 			});
 			$(".bugvulleftbartrash").click(function() {
 				if (voting) return;
@@ -98,13 +96,27 @@
 					$(this).next().text(parseInt($(this).next().text())-1);
 				}
 				
-				vote('Down');
+				vote('Down', this);
 			});
 		});
 	</script>
 </head>
 
 <body>
+	<div id="wrongmessage" class="alert-messages" style="display:none">
+		<div class="message">
+			<div class="message-inside">
+				<div class="message-text">
+				</div>
+				<a class="dismiss" href="javascript:dismiss();">×</a>
+			</div>
+		</div>
+	</div>             	
+	<script type="text/javascript">
+    	function dismiss() {
+    		document.getElementById("wrongmessage").setAttribute("style", "display:none");
+    	}
+    </script>
 	<%
 	
 	String str = (String) session.getAttribute("email");
@@ -141,10 +153,25 @@
         <br>
         <div class="bugvulrating">
         	<div class="bugvulleftbar">
-					<img class="bugvulleftbarwatch" src="images/watch.png" onmouseover="this.src='images/watchpressed.png'" onmouseout="this.src='images/watch.png'" title="Watch this bug" >
-					<p class="bugvulleftbarwatch" align="center">120</p>
-					<img class="bugvulleftbartrash" src="images/trash.png" onmouseover="this.src='images/trashpressed.png'" onmouseout="this.src='images/trash.png'" title="Vote down for this bug" >
-					<p class="bugvulleftbartrash" align="center">12</p>
+        		<%
+        		if (((String)request.getAttribute("strVotedUp")).equals("true")) {
+        			out.println("<img class=\"bugvulleftbarwatch\" src=\"images/nowwatch.png\" onmouseover=\"\" onmouseout=\"\" title=\"Watch this bug\" >");
+					out.println("<p class=\"bugvulleftbarwatch\" align=\"center\">"+(String)request.getAttribute("strUp")+"</p>");
+
+        		}
+        		else {
+        			out.println("<img class=\"bugvulleftbarwatch\" src=\"images/watch.png\" onmouseover=\"this.src='images/watchpressed.png'\" onmouseout=\"this.src='images/watch.png'\" title=\"Watch this bug\" >");
+					out.println("<p class=\"bugvulleftbarwatch\" align=\"center\">"+(String)request.getAttribute("strUp")+"</p>");
+        		}
+        		if (((String)request.getAttribute("strVotedDown")).equals("true")) {
+					out.println("<img class=\"bugvulleftbartrash\" src=\"images/nowtrash.png\" onmouseover=\"\" onmouseout=\"\" title=\"Vote down for this bug\" >");
+					out.println("<p class=\"bugvulleftbartrash\" align=\"center\">"+(String)request.getAttribute("strDown")+"</p>");
+        		}
+        		else {
+					out.println("<img class=\"bugvulleftbartrash\" src=\"images/trash.png\" onmouseover=\"this.src='images/trashpressed.png'\" onmouseout=\"this.src='images/trash.png'\" title=\"Vote down for this bug\" >");
+					out.println("<p class=\"bugvulleftbartrash\" align=\"center\">"+(String)request.getAttribute("strDown")+"</p>");
+        		}
+        		%>
 			</div>
 			<div class="bugvultablediv">
 		        <table class="bugvultable" align="center">

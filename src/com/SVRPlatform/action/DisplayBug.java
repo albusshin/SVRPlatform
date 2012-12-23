@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
+import com.SVRPlatform.Utils.VerifyUser;
 import com.SVRPlatform.constants.Constants;
 import com.SVRPlatform.service.BugInfoDisplayService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -37,6 +38,10 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 	private String strLanguage;
 	private String strBestSolution;
 	private String strOfficialSolution;
+	private String strVotedUp;
+	private String strVotedDown;
+	private String strUp;
+	private String strDown;
 	private BugInfoDisplayService bugInfoDisplayService;
 	public void setBugInfoDisplayService(BugInfoDisplayService bugInfoDisplayService) {
 		this.bugInfoDisplayService = bugInfoDisplayService;
@@ -102,10 +107,24 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 	public void setStrBugNumber(String strBugNumber) {
 		this.strBugNumber = strBugNumber;
 	}
+	public String getStrVotedUp() {
+		return strVotedUp;
+	}
+	public void setStrVotedUp(String strVotedUp) {
+		this.strVotedUp = strVotedUp;
+	}
+	public String getStrVotedDown() {
+		return strVotedDown;
+	}
+	public void setStrVotedDown(String strVotedDown) {
+		this.strVotedDown = strVotedDown;
+	}
+	
 	public String execute(){
+		String nowUser = VerifyUser.getNowUser(request);
 		//System.out.println("DisplayBug.java execute()");
 		//System.out.println("firstly, the strBugNumber == " + strBugNumber);
-		Map<String, String> theMap = bugInfoDisplayService.bugInfoDisplay(strBugNumber);
+		Map<String, String> theMap = bugInfoDisplayService.bugInfoDisplay(nowUser, strBugNumber);
 		if (theMap.get("status").equals("fail")){
 			//System.out.println("theMap.get('status') == fail");
 			return Constants.FAIL;
@@ -127,6 +146,15 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 		strLanguage = theMap.get("strLanguage");
 		strBestSolution = theMap.get("strBestSolution");
 		strOfficialSolution = theMap.get("strOfficialSolution");
+		strUp = theMap.get("strUp");
+		strDown = theMap.get("strDown");
+		if (theMap.containsKey("isVotedUp"))
+			strVotedUp = "true";
+		else strVotedUp = "false";
+		if (theMap.containsKey("isVotedDown"))
+			strVotedDown = "true";
+		else strVotedDown = "false";
+		
 		return Constants.SUCCESS;
 	}
 	@Override
@@ -141,5 +169,16 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 		// TODO Auto-generated method stub
 		request = arg0;
 	}
-
+	public String getStrDown() {
+		return strDown;
+	}
+	public void setStrDown(String strDown) {
+		this.strDown = strDown;
+	}
+	public String getStrUp() {
+		return strUp;
+	}
+	public void setStrUp(String strUp) {
+		this.strUp = strUp;
+	}
 }

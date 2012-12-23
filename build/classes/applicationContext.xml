@@ -82,7 +82,7 @@
     </bean>
     
     <bean id="bugvote" scope="prototype" class="com.SVRPlatform.action.BugVoteAction">
-    	<property name="bugVoteService" ref="bugVoteService"></property>
+    	<property name="bugWatchService" ref="bugWatchService"></property>
     </bean>
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
@@ -103,8 +103,10 @@
 	    
 	    <!-- display service -->
 	   	<bean id="bugInfoDisplayService" class="com.SVRPlatform.service.impl.BugInfoDisplayServiceImpl">
-	   		<property name="bugDAO" ref="bugDAO"></property> 
+	   		<property name="bugDAO" ref="bugDAO"></property>
+	   		<property name="userDAO" ref="userDAO"></property>  
 	    	<property name="solutionDAO" ref="solutionDAO"></property>
+	    	<property name="bugWatchDAO" ref="bugWatchDAO"></property>
 	    </bean> 
 	    
 	    <bean id="commentsDisplayService" class="com.SVRPlatform.service.impl.CommentsDisplayServiceImpl">
@@ -146,9 +148,6 @@
 	    <bean id="bugWatchService" class="com.SVRPlatform.service.impl.BugWatchServiceImpl">
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="bugDAO" ref="bugDAO"></property>
-	    </bean>
-	
-		<bean id="bugVoteService" class="com.SVRPlatform.service.impl.BugVoteServiceImpl">
 	    </bean>
 	<!-- ************************************************************************ -->
     <!-- DAOImpls beans definition -->

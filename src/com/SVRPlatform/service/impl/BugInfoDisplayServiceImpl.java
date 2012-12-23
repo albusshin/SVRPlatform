@@ -4,15 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.SVRPlatform.dao.BugDAO;
+import com.SVRPlatform.dao.BugWatchDAO;
 import com.SVRPlatform.dao.SolutionDAO;
+import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.model.Bug;
+import com.SVRPlatform.model.BugWatch;
 import com.SVRPlatform.model.Software;
 import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.service.BugInfoDisplayService;
 
 public class BugInfoDisplayServiceImpl implements BugInfoDisplayService {
 	private BugDAO bugDAO;
+	private UserDAO userDAO;
 	private SolutionDAO solutionDAO;
+	private BugWatchDAO bugWatchDAO;
 	
 	public void setBugDAO(BugDAO bugDAO) {
 		this.bugDAO = bugDAO;
@@ -21,9 +26,25 @@ public class BugInfoDisplayServiceImpl implements BugInfoDisplayService {
 	public void setSolutionDAO(SolutionDAO solutionDAO) {
 		this.solutionDAO = solutionDAO;
 	}
+
+	public BugWatchDAO getBugWatchDAO() {
+		return bugWatchDAO;
+	}
+
+	public void setBugWatchDAO(BugWatchDAO bugWatchDAO) {
+		this.bugWatchDAO = bugWatchDAO;
+	}
+
+	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
 	
 	@Override
-	public Map<String, String> bugInfoDisplay(String bugNumber) {
+	public Map<String, String> bugInfoDisplay(String email, String bugNumber) {
 		Map<String, String> map = new HashMap<String, String>();
 		
 		int bugID = Integer.parseInt(bugNumber.split("-")[2]);		
@@ -60,6 +81,14 @@ public class BugInfoDisplayServiceImpl implements BugInfoDisplayService {
 		map.put("strSoftware", software.getName());
 		map.put("strVersion", bug.getVersion());
 		map.put("strLanguage", bug.getLanguage());
+		map.put("strUp", bug.getUp().toString());
+		map.put("strDown", bug.getDown().toString());
+		
+		BugWatch bugWatch = bugWatchDAO.getByUserAndBug(userDAO.getUserByEmail(email), bug);
+		if (bugWatch != null) {
+			if (bugWatch.getVoteFlag() == 1) map.put("isVotedUp", "true");
+			else map.put("isVotedDown", "true");
+		}
 		if (bestSolution != null)
 			map.put("strBestSolution", bestSolution.getContent());
 		if (officialSolution != null)
