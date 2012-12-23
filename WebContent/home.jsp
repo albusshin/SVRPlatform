@@ -30,7 +30,7 @@
 		<br>
 		<a href="displaycomments?strBugNumber=SVRB-2012-00000023&strNowPage=1">23号bug的comments.</a><br>
 		<br>
-		<a href="displaysolutions?strBugNumber=SVRB-2012-00000023&strNowPage=1">23号bug的solutions.</a>
+		<a href="displaysolutions?strBugNumber=SVRB-2012-00000023&strNowPage=1#official">23号bug的solutions.</a>
 		<br>
 		<p>你的userID是：
 		<%
