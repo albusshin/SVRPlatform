@@ -38,6 +38,9 @@
         	<result name="success">/home.jsp</result>
         </action>
         
+		<action name="bugvote_*" class="bugvote" method="{1}">
+        	<result name="success" type="stream"></result>
+        </action>
         <!-- Add actions here -->
     </package>
     
@@ -52,9 +55,9 @@
         	<result name="success">/WEB-INF/bugcomments.jsp</result>
         </action>
     </package>
-<!--This is solution region -->      
+<!--This is solution region -->
     <package name="Solution" namespace="/" extends="default">
-       
+
         <action name="submitSolution" class="submitSolution" method="execute">
         	<result name="success" type="chain">displaysolutions</result>
          	<result name="fail" type="chain">displaysolutions</result>  

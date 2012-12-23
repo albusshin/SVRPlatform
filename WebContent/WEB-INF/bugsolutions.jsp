@@ -50,6 +50,7 @@ else
 			    success:function(data){
 			    	
 			        if (data == "success") {
+			        	voting = false;
 			        }			        	
 			        else if (data == "creditsnotenough" || data == "alreadyvoted" ||
 			        			data == "owner" || data == "DBerror") {
