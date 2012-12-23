@@ -36,6 +36,7 @@ import com.SVRPlatform.model.Software;
 import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.model.SolutionVote;
 import com.SVRPlatform.model.User;
+import com.SVRPlatform.service.BugWatchService;
 import com.SVRPlatform.service.PasswordRetrieveService;
 import com.SVRPlatform.service.SolutionSubmitService;
 import com.SVRPlatform.service.SolutionVoteService;
@@ -54,6 +55,7 @@ public class TestForHibernate {
 	static SolutionSubmitService solutionSubmitService;
 	static SolutionVoteService solutionVoteService;
 	static SolutionVoteDAO solutionVoteDAO;
+	static BugWatchService bugWatchService;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -71,6 +73,7 @@ public class TestForHibernate {
 		solutionDAO = (SolutionDAOImpl) ctx.getBean("solutionDAO");
 		solutionVoteService = (SolutionVoteService) ctx.getBean("solutionVoteService");
 		solutionVoteDAO = (SolutionVoteDAO) ctx.getBean("solutionVoteDAO");
+		bugWatchService = (BugWatchService) ctx.getBean("bugWatchService");
 	}
 
 	@AfterClass
@@ -196,14 +199,15 @@ public class TestForHibernate {
 		}
 	}
 	@Test public void testVote() {
-		SolutionVote solutionVote = new SolutionVote();
-		solutionVote.setSolution(solutionDAO.getByID(new Integer(9)));
-		solutionVote.setUser((User)userDAO.getByID(new Integer(6)));
-		solutionVote.setVoteFlag(1);
-		solutionVoteDAO.add(solutionVote);
+//		SolutionVote solutionVote = new SolutionVote();
+//		solutionVote.setSolution(solutionDAO.getByID(new Integer(9)));
+//		solutionVote.setUser((User)userDAO.getByID(new Integer(6)));
+//		solutionVote.setVoteFlag(1);
+//		solutionVoteDAO.add(solutionVote);
 	}
 	@Test public void testVote2(){
-		solutionVoteService.voteUp(9, "povergoing@gmail.com");
+		//solutionVoteService.voteUp(9, "povergoing@gmail.com");
+		bugWatchService.voteUp(23, "povergoing@gmail.com");
 	}
 	@Test public void testVote3(){
 		Bug bug = new Bug();

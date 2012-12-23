@@ -35,6 +35,24 @@ public class Bug implements java.io.Serializable {
 	private String language;
 	private String bugNumber;
 	private Ranking ranking;
+	private Integer up;
+	private Integer down;
+
+	public Integer getUp() {
+		return up;
+	}
+
+	public void setUp(Integer up) {
+		this.up = up;
+	}
+
+	public Integer getDown() {
+		return down;
+	}
+
+	public void setDown(Integer down) {
+		this.down = down;
+	}
 
 	private Set solutions = new HashSet(0);
 	private Set users = new HashSet(0);
