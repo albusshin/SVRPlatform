@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import com.SVRPlatform.Utils.VerifyUser;
 import com.SVRPlatform.constants.Constants;
-import com.SVRPlatform.service.SolutionVoteService;
+import com.SVRPlatform.service.BugVoteService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BugVoteAction extends ActionSupport implements ServletRequestAware{
 	private static final long serialVersionUID = 1L;
-	private int bugId;
+	private String bugNumber;
 	private BugVoteService bugVoteService;
 	private InputStream inputStream;
 	private HttpServletRequest request;
@@ -21,8 +21,8 @@ public class BugVoteAction extends ActionSupport implements ServletRequestAware{
 		return inputStream;
 	}
 	
-	public void setBugId(int bugId) {
-		this.bugId = bugId;
+	public void setBugNumber(String bugNumber) {
+		this.bugNumber = bugNumber;
 	}
 
 	public void setBugVoteService(BugVoteService bugVoteService) {
@@ -34,11 +34,12 @@ public class BugVoteAction extends ActionSupport implements ServletRequestAware{
 	}
 	
 	public String voteUp(){
+		System.out.println("bug vote up: "+bugNumber);
 		String nowUser = VerifyUser.getNowUser(request);
 		if (nowUser == null){
 			return Constants.NOTSIGNEDIN;
 		}
-		String message = bugVoteService.voteUp(bugId, nowUser);
+		String message = bugVoteService.voteUp(bugNumber, nowUser);
 		if (message.equals(Constants.SUCCESS))
 			inputStream = new ByteArrayInputStream(Constants.SUCCESS.getBytes());
 		else if (message.equals(Constants.ALREADYVOTED))
@@ -57,7 +58,7 @@ public class BugVoteAction extends ActionSupport implements ServletRequestAware{
 			return Constants.NOTSIGNEDIN;
 		}
 
-		String message = bugVoteService.voteDown(bugId, nowUser);
+		String message = bugVoteService.voteDown(bugNumber, nowUser);
 		if (message.equals(Constants.SUCCESS))
 			inputStream = new ByteArrayInputStream(Constants.SUCCESS.getBytes());
 		else if (message.equals(Constants.ALREADYVOTED))

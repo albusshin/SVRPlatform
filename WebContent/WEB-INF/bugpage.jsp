@@ -9,6 +9,99 @@
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js">
     </script>
+    <script type="text/javascript">
+		function vote(type) {
+			var url = 'bugvote_vote'+type+'?bugNumber='+$('#bugNumber').text();
+			alert($('#bugNumber').text());
+			$.ajax({
+			    url:url,
+			    type:'GET',
+			    cache: false,
+			    contentType: false,    //must declare
+			    processData: false,    //must declare
+			    success:function(data){
+			    	
+			        if (data == "success") {
+						voting = false;
+			        }			        	
+			        else if (data == "creditsnotenough" || data == "alreadyvoted" ||
+			        			data == "owner" || data == "DBerror") {
+			        	if  (type == 'Up')	{
+							setTimeout(function() {
+				        		$('.bugvulleftbarwatch').attr('src','images/watch.png');
+								$('.bugvulleftbarwatch').attr('onmouseover','this.src=\'images/watchpressed.png\'');
+								$('.bugvulleftbarwatch').attr('onmouseout','this.src=\'images/watch.png\'');
+				        		$('.bugvulleftbarwatch').next().text(parseInt($('.bugvulleftbarwatch').next().text())-1);
+								voting = false;
+							}, 400);
+			        	}
+			        	else {
+							setTimeout(function() {
+				        		$('.bugvulleftbartrash').attr('src','images/trash.png');
+								$('.bugvulleftbartrash').attr('onmouseover','this.src=\'images/trashpressed.png\'');
+								$('.bugvulleftbartrash').attr('onmouseout','this.src=\'images/trash.png\'');
+				        		$('.bugvulleftbartrash').next().text(parseInt($('.bugvulleftbartrash').next().text())-1);
+								voting = false;
+							}, 400);
+			        	}
+			        	if  (data == "creditsnotenough") {
+			        		if (type == 'Up') $('div.message-text').html("Vote Up requires 15 credits");
+			        		else $('div.message-text').html("Vote Down requires 125 credits");
+			        	}
+			        	if (data == "alreadyvoted") 
+			        		$('div.message-text').html("Already voted!");
+			        	if (data == "owner")
+			        		$('div.message-text').html("Cannot vote for yourself");
+			        	$('#wrongmessage').attr('style','display:block');
+			        }
+			        else window.location.replace("notSignedIn");
+			    },
+			    error:function(){
+			   		$("#wrongmessage1").attr('style','display:block');
+				}					             
+			});
+		}		
+
+		$(document).ready(function(){
+			var voting = false;
+			$(".bugvulleftbarwatch").click(function() {
+				if (voting) return;
+				voting = true;
+				if ($(this).attr('src') == "images/watchpressed.png" || $(this).attr('src') == "images/watch.png") {
+					$(this).attr('src','images/nowwatch.png');
+					$(this).attr('onmouseover','');
+					$(this).attr('onmouseout','');
+					$(this).next().text(parseInt($(this).next().text())+1);
+				}
+				else {
+					$(this).attr('src','images/watch.png');
+					$(this).attr('onmouseover','this.src=\'images/watchpressed.png\'');
+					$(this).attr('onmouseout','this.src=\'images/watch.png\'');
+					$(this).next().text(parseInt($(this).next().text())-1);
+				}
+				
+				vote('Up');
+			});
+			$(".bugvulleftbartrash").click(function() {
+				if (voting) return;
+				voting = true;
+				if ($(this).attr('src') == "images/trashpressed.png" || $(this).attr('src') == "images/trash.png") {
+					$(this).attr('src','images/nowtrash.png');
+					$(this).attr('onmouseover','');
+					$(this).attr('onmouseout','');
+					$(this).next().text(parseInt($(this).next().text())+1);
+				}
+				else {
+					$(this).attr('src','images/trash.png');
+					$(this).attr('onmouseover','this.src=\'images/trashpressed.png\'');
+					$(this).attr('onmouseout','this.src=\'images/trash.png\'');
+					$(this).next().text(parseInt($(this).next().text())-1);
+				}
+				
+				vote('Down');
+			});
+		});
+	</script>
 </head>
 
 <body>
@@ -33,7 +126,7 @@
                 </ul>
             </div>
         <p class="bugvulid">
-        Bug Details:&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">${strBugNumber }</a>
+        Bug Details:&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="bugNumber">${strBugNumber }</a>
         </p>
         <br>
         <div class="bugvuldigest">
