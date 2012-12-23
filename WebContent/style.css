@@ -490,15 +490,46 @@ div.bugvuldigest {
 div.date {
 	color: #666;
 }
-
-table.bugvultable {
-	font-size: 14px;
+div.bugvulrating{
+	width:auto;
+	clear:both;
+	height:300px;
+}
+div.bugvulleftbar{
+	margin-top:60px;
+	margin-left:50px;
+	width:50px;
+	float:left;
+}
+img.bugvulleftbarwatch{
+	width:50px;
+}
+img.bugvulleftbartrash{
+	width:50px;
+}
+p.bugvulleftbarwatch{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	color:orange;
+	font-size:12px;
+	padding-bottom:30px;
+	font-weight:bold;
+}
+p.bugvulleftbartrash{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-size:12px;
+	color:purple;
+	font-weight:bold;
+}
+div.bugvultablediv{
+	float:left;
+	width: 800px;
+}
+table.bugvultable{
+	font-size:14px;
 	margin: auto 30px;
 	line-height: 2.0;
-	width: auto;
-	clear: both;
+	width:auto;
 }
-
 .tableleft {
 	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
 	padding-right: 40px;

@@ -46,36 +46,46 @@
         </p>
         <br>
         <br>
-        <table class="bugvultable" align="center">
-        	<tr>
-            <td class="tableleft"> SVRB Score: </td>
-            <td class="score" align="center"> ${strScore } </td>
-            </tr>
-            <tr>
-            <td class="tableleft"> Usability Impact: </td>
-            <td class="tablemiddlegreen" align="center"> ${strUsabilityImpact } </td>
-            <td class="tableright"> There is none impact on functionality and usability of the software itself.</td>
-            </tr>
-            <tr>
-            <td class="tableleft"> Data Impact: </td>
-            <td class="tablemiddleorange" align="center"> ${strDataImpact } </td>
-            <td class="tableright"> Some saved data might be lost when the bug is triggered.</td>
-            </tr>
-            <tr>
-            <td class="tableleft"> Privacy Impact: </td>
-            <td class="tablemiddlered" align="center"> ${strPrivacyImpact}</td>
-            <td class="tableright">User privacy is completely exposed when the bug is triggered.</td>
-            </tr>
-            <tr>
-            <td class="tableleft"> Availability Impact: </td>
-            <td class="tablemiddlegreen" align="center"> ${strAvailabilityImpact } </td>
-            <td class="tableright"> There is none impact on the host's avaliability.</td>
-            <tr>
-            <td class="tableleft"> Frequency: </td>
-            <td class="tablemiddlered" align="center"> ${strFrequency } </td>
-            <td class="tableright"> There is very high probability to trigger the bug. </td>
-            </tr>
-		</table>
+        <div class="bugvulrating">
+        	<div class="bugvulleftbar">
+					<img class="bugvulleftbarwatch" src="images/watch.png" onmouseover="this.src='images/watchpressed.png'" onmouseout="this.src='images/watch.png'" title="Watch this bug" >
+					<p class="bugvulleftbarwatch" align="center">120</p>
+					<img class="bugvulleftbartrash" src="images/trash.png" onmouseover="this.src='images/trashpressed.png'" onmouseout="this.src='images/trash.png'" title="Vote down for this bug" >
+					<p class="bugvulleftbartrash" align="center">12</p>
+			</div>
+			<div class="bugvultablediv">
+		        <table class="bugvultable" align="center">
+		        	<tr>
+		            <td class="tableleft"> SVRB Score: </td>
+		            <td class="score" align="center"> ${strScore } </td>
+		            </tr>
+		            <tr>
+		            <td class="tableleft"> Usability Impact: </td>
+		            <td class="tablemiddlegreen" align="center"> ${strUsabilityImpact } </td>
+		            <td class="tableright"> There is none impact on functionality and usability of the software itself.</td>
+		            </tr>
+		            <tr>
+		            <td class="tableleft"> Data Impact: </td>
+		            <td class="tablemiddleorange" align="center"> ${strDataImpact } </td>
+		            <td class="tableright"> Some saved data might be lost when the bug is triggered.</td>
+		            </tr>
+		            <tr>
+		            <td class="tableleft"> Privacy Impact: </td>
+		            <td class="tablemiddlered" align="center"> ${strPrivacyImpact}</td>
+		            <td class="tableright">User privacy is completely exposed when the bug is triggered.</td>
+		            </tr>
+		            <tr>
+		            <td class="tableleft"> Availability Impact: </td>
+		            <td class="tablemiddlegreen" align="center"> ${strAvailabilityImpact } </td>
+		            <td class="tableright"> There is none impact on the host's avaliability.</td>
+		            <tr>
+		            <td class="tableleft"> Frequency: </td>
+		            <td class="tablemiddlered" align="center"> ${strFrequency } </td>
+		            <td class="tableright"> There is very high probability to trigger the bug. </td>
+		            </tr>
+				</table>
+			</div>
+		</div>
         <br>
     <br>
     	<p class="bugvulsubtitle">
