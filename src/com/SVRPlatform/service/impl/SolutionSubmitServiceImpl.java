@@ -2,6 +2,7 @@ package com.SVRPlatform.service.impl;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.SVRPlatform.dao.BugDAO;
@@ -58,11 +59,16 @@ public class SolutionSubmitServiceImpl implements SolutionSubmitService {
 				else map.put("content", "OK");
 				
 				if (map.get("content").equals("OK")) {
-					map.put("status", "success");
+					
 
 					int bugID = Integer.parseInt(bugNumber.split("-")[2]);
 					Bug bug = (Bug) bugDAO.getByID(bugID);
 					User user = userDAO.getUserByEmail(email);
+					if(solutionDAO.getByUserIdAndBugId(user, bug, -1, -1).size() != 0){
+						map.put("content", "alreadySubmit");
+						map.put("status", "fail");
+						return map;
+					}
 					Solution solution = new Solution();
 					solution.setBug(bug);
 					//solution.setCommentTitle(title);
@@ -73,6 +79,44 @@ public class SolutionSubmitServiceImpl implements SolutionSubmitService {
 					solution.setDown(new Integer(0));
 					
 					solutionDAO.add(solution);
+					map.put("status", "success");
+				}
+				else map.put("status", "fail");
+				
+				return map;
+	}
+
+	@Override
+	public Map<String, String> solutionEdit(String bugNumber, String email,
+			String content) {
+		Map<String, String> map = new HashMap<String, String>();
+		
+		//check if bug information is complete
+				
+				if (content.compareTo("") == 0) 
+					map.put("content", "empty");
+				else if (content.length() > 5000) 
+					map.put("content", "tooLong");
+				else map.put("content", "OK");
+				
+				if (map.get("content").equals("OK")) {
+
+					int bugID = Integer.parseInt(bugNumber.split("-")[2]);
+					Bug bug = (Bug) bugDAO.getByID(bugID);
+					User user = userDAO.getUserByEmail(email);
+					List<Solution> solutions = solutionDAO.getByUserIdAndBugId(user, bug, -1, -1);
+				
+					if(solutions.size() == 0){
+						map.put("content", "doesnotExist");
+						map.put("status", "fail");
+						return map;
+					}
+					Solution solution = solutions.get(0);
+					solution.setContent(content);
+					solution.setDatetime(new Date());
+					
+					solutionDAO.update(solution);
+					map.put("status", "success");
 				}
 				else map.put("status", "fail");
 				
