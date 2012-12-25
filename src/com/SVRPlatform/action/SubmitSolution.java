@@ -95,10 +95,38 @@ public class SubmitSolution extends ActionSupport implements ServletRequestAware
 		//System.out.println("Bug number: "+strBugNumber);
 		Map<String, String> map = solutionSubmitService.solutionSubmit(strBugNumber, email, solutionssubmittext);
 		if (map.get("status").equals("fail")) {
+			message = "There's something wrong with your inputs, please check:<br>";
+			
+			if (!(map.get("content").equals("OK"))){
+				if(map.get("content").equals("alreadySubmit"))
+					message += "You have aready given a solution for this bug!";
+				else
+					message += "Please input your description about the solution. ";
+			}
+			strStat = "wrong";
+			return Constants.FAIL;
+		}
+		else {
+			return Constants.SUCCESS;
+		}
+	}
+	
+	public String edit(){
+		String nowUser = VerifyUser.getNowUser(request);
+		if (nowUser == null){
+			return Constants.NOTSIGNEDIN;
+		}
+		String email = (String) request.getSession().getAttribute("email");
+		//System.out.println("Bug number: "+strBugNumber);
+		Map<String, String> map = solutionSubmitService.solutionEdit(strBugNumber, email, solutionssubmittext);
+		if (map.get("status").equals("fail")) {
 			message = "There's something wrong with your inputs, please check:\n";
 			
 			if (!(map.get("content").equals("OK"))){
-				message += "Please input your description about the solution. ";
+				if(map.get("content").equals("doesnotExist"))
+					message += "The solution you intend to edit doesn't exit!";
+				else
+					message += "Please input your description about the solution. ";
 			}
 			strStat = "wrong";
 			return Constants.FAIL;

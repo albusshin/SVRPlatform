@@ -58,7 +58,7 @@
 <!--This is solution region -->
     <package name="Solution" namespace="/" extends="default">
 
-        <action name="submitSolution" class="submitSolution" method="execute">
+        <action name="submitSolution_*" class="submitSolution" method="{1}">
         	<result name="success" type="chain">displaysolutions</result>
          	<result name="fail" type="chain">displaysolutions</result>  
         </action>
