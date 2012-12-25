@@ -10,6 +10,15 @@
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js">
     </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	  $(".commentsbutton").click(function(){
+    		  var slidedown = $(this).attr("slidedown");
+    		  slidedown="#" + slidedown;
+    	    $(slidedown).slideToggle("slow");
+    	  });
+    	});
+    </script>
     <style type="text/css">
     <%
 int solutionsPerPage = 5;
@@ -230,7 +239,7 @@ else
 						hashofficial = DigestUtils.md5Hex(hashofficial.trim().toLowerCase());
 					}
 					out.println("<table class=\"solution\" id='official'>"+
-							"<tr>"+
+							"<tr class='solutionitself'>"+
 							"<td class=\"leftbar\">");
 							if (!officialSolution.isVotedUp())
 								out.println("<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ officialSolution.getSolutionID() + "\" >");
@@ -262,17 +271,39 @@ else
 							"<a href=\"#\" class=\"msblack20\">"+officialSolution.getRealname()+"</a>"+
 							" </div>"+
 							" <div class=\"commentfooterauthorcredit\">"+
-							" Credits:  "+officialSolution.getCredits());
+							" Credits:  "+officialSolution.getCredits()+
+							"</div>"+
+							"</div>");
 							if (officialSolution.getEmail().equals(VerifyUser.getNowUser(request)))
 							{
-								out.println("<a onclick=\"document.getElementById('modifysolution').setAttribute('style', 'display:block')\" class=\"edit-button\" href=\"#\" >edit</a>");
+									out.println("<div class='solutionbuttons'>");
+									out.println("<a align='center' onclick=\"document.getElementById('modifysolution').setAttribute('style', 'display:block')\" class=\"edit-button\" href=\"#\" >edit</a>");
+									out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+(-1)+"' href='javascript:;'>comments</a>");
+									out.println("</div>");
 							}
-							out.println("</div>"+
-							"</div>"+
-							"</div>"+
-							"</td>"+
-							"</tr>"+
-							"</table>");
+							else{
+								out.println("<div class='solutionbuttons'>");
+								out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+(-1)+"' href='javascript:;'>comments</a>");
+								out.println("</div>");
+							}
+					out.println("</div>"+
+					"</td>"+
+					"</tr>"+
+					"</table>"+
+					"<div id='solutioncommentstable"+(-1)+"' style='display:none'>"+
+					"<table class='solutioncommentstable'>"+
+					"<tr class='solutioncomment'><td class='solutioncommentcontent'>abcabcabc</td></tr>"+
+					"<tr class='solutioncomment'><td class='solutioncommentcontent'>abcabcabc</td></tr>"+
+					"<tr class='solutioncomment'>"+
+					"<td><img class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe'/></td>"+
+					"<td class='solutioncommentauthor'>Albus Shin</td>"+
+					"<td class='solutioncommentcontent'>"+
+					"asfdsadf"+
+					"</td>"+
+					"</tr>"+
+					"<tr class='solutioncomment'><td class='solutioncommentcontent'>abcabcabc</td></tr>"+
+					"</table>"+
+					"</div>");
 				}
 			}
 			for (int i=0; i<solutionData.size(); i++){
@@ -286,7 +317,7 @@ else
 					out.print("id='best'");
 				}
 						out.print(">"+
-						"<tr>"+
+						"<tr class='solutionitself'>"+
 						"<td class=\"leftbar\">");
 						if (!solutionData.get(i).isVotedUp())
 							out.println("<img class=\"leftbarup\" src=\"images/up.png\" onmouseover=\"this.src='images/uppressed.png'\" onmouseout=\"this.src='images/up.png'\" title=\"This solution works well for me\" id=\""+ solutionData.get(i).getSolutionID() + "\" >");
@@ -308,22 +339,79 @@ else
 						"Published: "+solutionData.get(i).getDatetime()+
 						"</div>"+
 						"<img class=\"commentfooteravatar\" src=\"http://www.gravatar.com/avatar/"+	 hash + "\">"+
+						
 						" <div class=\"commentfooterauthor\">"+
 						"<div class=\"commentfooterauthorname\">"+
 						"<a href=\"#\" class=\"msblack20\">"+solutionData.get(i).getRealname()+"</a>"+
 						" </div>"+
 						" <div class=\"commentfooterauthorcredit\">"+
-						" Credits:  "+solutionData.get(i).getCredits());
-						if (solutionData.get(i).getEmail().equals(VerifyUser.getNowUser(request)))
-						{
-								out.println("<a onclick=\"document.getElementById('modifysolution').setAttribute('style', 'display:block')\" class=\"edit-button\" href=\"#\" >edit</a>");
-						}
+						" Credits:  "+solutionData.get(i).getCredits()+
+						"</div>"+
+						"</div>");
+								if (solutionData.get(i).getEmail().equals(VerifyUser.getNowUser(request)))
+								{
+										out.println("<div class='solutionbuttons'>");
+										out.println("<a align='center' onclick=\"document.getElementById('modifysolution').setAttribute('style', 'display:block')\" class=\"edit-button\" href=\"#\" >edit</a>");
+										out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+i+"' href='javascript:;'>comments</a>");
+										out.println("</div>");
+								}
+								else{
+									out.println("<div class='solutionbuttons'>");
+									out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+i+"' href='javascript:;'>comments</a>");
+									out.println("</div>");
+								}
 						out.println("</div>"+
-						"</div>"+
-						"</div>"+
 						"</td>"+
 						"</tr>"+
-						"</table>");
+						"</table>"+
+						"<div id='solutioncommentstable"+i+"' style='display:none'>"+
+						"<table class='solutioncommentstable'>"+
+								"<tr class='solutioncomment'>"+
+								"<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe'/></td>"+
+								"<td class='solutioncommentauthor'>Albus Shin</td>"+
+						"<td class='solutioncommentcontent'>"+
+						"asfdsadf"+
+						"</td>"+
+						"</tr>"+
+						"<tr class='solutioncomment'>"+
+						"<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe'/></td>"+
+						"<td class='solutioncommentauthor'>Albus Shin</td>"+
+				"<td class='solutioncommentcontent'>"+
+				"asfdsadf"+
+				"</td>"+
+				"</tr>"+
+								"<tr class='solutioncomment'>"+
+								"<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe'/></td>"+
+								"<td class='solutioncommentauthor'>Albus Shin</td>"+
+						"<td class='solutioncommentcontent'>"+
+						"This is really fucking making me laugh.This is really fucking making me laugh.This is really fucking making me laugh.This is really fucking making me laugh.This is really fucking making me laugh.This is really fucking making me laugh.This is really fucking making me laugh.s"+
+						"</td>"+
+						"</tr>"+
+						"<tr class='solutioncomment'>"+
+						"<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe'/></td>"+
+						"<td class='solutioncommentauthor'>Albus Shin</td>"+
+				"<td class='solutioncommentcontent'>"+
+				"asfdsadf"+
+				"</td>"+
+				"</tr>"+
+				"<tr class='solutioncomment'>");
+
+						String makecommentsolutionhash = VerifyUser.getNowUser(request);
+						if (makecommentsolutionhash!=null){
+							makecommentsolutionhash = DigestUtils.md5Hex(makecommentsolutionhash.trim().toLowerCase());
+						}
+			
+				out.println("<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/"+makecommentsolutionhash+"'/></td>"+
+				"<td class='solutioncommentauthor'>"+VerifyUser.getNowUserRealname(request)+"</td>"+
+				"<td class='solutioncommentcontent'>"+
+				"<form  action=''>"+
+				"<textarea class='makesolutioncomment' name=''></textarea>"+
+          		"<input type=\"image\" alt=\"submit\" style='padding-left:20px;' width='50px' id=\"submitcomment"+i+"\" src=\"images/submiticon.png\" onMouseOver=\"this.src='images/submiticonpressed.png'\" onMouseOut=\"this.src='images/submiticon.png'\" onClick=\"document.getElementById('modifysolution').style='display:block'\">"+
+				"</form>"+
+				"</td>"+
+				"</tr>"+
+				"</table>"+
+				"</div>");
 			}
             %>
             
