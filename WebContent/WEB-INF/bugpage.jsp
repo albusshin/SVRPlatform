@@ -62,7 +62,7 @@
 
 		var voting = false;
 		$(document).ready(function(){
-			$(".bugvulleftbarwatch").click(function() {
+			$("img.bugvulleftbarwatch").click(function() {
 				if (voting) return;
 				voting = true;
 				if ($(this).attr('src') == "images/watchpressed.png" || $(this).attr('src') == "images/watch.png") {
@@ -80,7 +80,7 @@
 				
 				vote('Up', this);
 			});
-			$(".bugvulleftbartrash").click(function() {
+			$("img.bugvulleftbartrash").click(function() {
 				if (voting) return;
 				voting = true;
 				if ($(this).attr('src') == "images/trashpressed.png" || $(this).attr('src') == "images/trash.png") {
