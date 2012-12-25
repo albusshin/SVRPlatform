@@ -1,3 +1,4 @@
+<%@page import="com.SVRPlatform.Utils.VerifyUser"%>
 <%@ page language="java" contentType="text/html;  charset=utf-8"
 	import="org.apache.commons.codec.digest.DigestUtils,java.util.List, com.SVRPlatform.data.*"
 	pageEncoding="utf-8"%>
@@ -249,8 +250,12 @@ else
 							"<a href=\"#\" class=\"msblack20\">"+officialSolution.getRealname()+"</a>"+
 							" </div>"+
 							" <div class=\"commentfooterauthorcredit\">"+
-							" Credits:  "+officialSolution.getCredits()+
-							"</div>"+
+							" Credits:  "+officialSolution.getCredits());
+							if (officialSolution.getEmail().equals(VerifyUser.getNowUser(request)))
+							{
+								out.println("<a onclick=\"document.getElementById('modifysolution').setAttribute('style', 'display:block')\" class=\"edit-button\" href=\"#\" >edit</a>");
+							}
+							out.println("</div>"+
 							"</div>"+
 							"</div>"+
 							"</td>"+
@@ -296,8 +301,12 @@ else
 						"<a href=\"#\" class=\"msblack20\">"+solutionData.get(i).getRealname()+"</a>"+
 						" </div>"+
 						" <div class=\"commentfooterauthorcredit\">"+
-						" Credits:  "+solutionData.get(i).getCredits()+
-						"</div>"+
+						" Credits:  "+solutionData.get(i).getCredits());
+						if (solutionData.get(i).getEmail().equals(VerifyUser.getNowUser(request)))
+						{
+								out.println("<a onclick=\"document.getElementById('modifysolution').setAttribute('style', 'display:block')\" class=\"edit-button\" href=\"#\" >edit</a>");
+						}
+						out.println("</div>"+
 						"</div>"+
 						"</div>"+
 						"</td>"+
@@ -305,6 +314,41 @@ else
 						"</table>");
 			}
             %>
+            
+            <div id="modifysolution" style="display:none">
+            	<form id="solutionmodifyform" action="" method="post">
+                	<input type="text" value="${strBugNumber}" style="display:none" name="strBugNumber">
+                    <table class="commentssubmittable">
+                        <tr>
+                            <td class="commentssubmitkey">
+                            	Solution
+                            </td>
+                            <td class="commentssubmitvalue">
+                            <%
+                            out.print("<textarea id=\"commentssubmittext\" name=\"solutionsmodifytext\">");
+                            for (SolutionData s:solutionData){
+                            	if (s.getEmail().equals(VerifyUser.getNowUser(request))){
+                            		out.print(s.getContent());
+                            		/*这里需要转义。*/
+                            	}
+                            }
+                            out.print("</textarea>");
+                            %>
+                            	
+                            </td>
+                        </tr>
+                        <tr>
+                        	<td>&nbsp;
+                            	
+                            </td>
+                    	    <td align="right">
+                  			 	<input type="image" alt="submit" id="submitbutton" src="images/submitbutton.png" onMouseOver="this.src='images/submitbuttonpressed.png'" onMouseOut="this.src='images/submitbutton.png'" onClick="document.getElementById('modifysolution').style='display:block'">
+                            </td>
+                        </tr>
+                    </table>
+                    
+                </form>   
+            </div>
     </div>
     
       <%
