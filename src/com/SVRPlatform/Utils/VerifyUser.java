@@ -20,4 +20,9 @@ public class VerifyUser {
 			return -1;
 		}
 	}
+	public static String getNowUserRealname(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String sessionRealname = (String) session.getAttribute("realname");
+		return sessionRealname;
+	}
 }

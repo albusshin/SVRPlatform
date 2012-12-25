@@ -272,13 +272,14 @@ table.solution {
 	width: 700px;
 	margin-top: 30px;
 	padding-left: 30px;
-	border-bottom: thin;
-	border-bottom-color: #ccc;
-	border-bottom-style: inset;
 	margin-bottom: 30px;
 	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
 }
-
+tr.solutionitself{
+	border-top: thin;
+	border-top-color: #ccc;
+	border-top-style: inset;
+	}
 td.leftbar {
 	margin: auto;
 	width: 150px;
@@ -308,6 +309,8 @@ img.leftbarbestofficial {
 }
 
 .edit-button{
+	padding-top:5px;
+	padding-bottom:5px;
 	padding-left:10px;
 	padding-right:10px;
 	margin-top:20px;
@@ -320,6 +323,9 @@ img.leftbarbestofficial {
 	box-shadow: none;
 	border:none;
 	text-decoration:none;
+	font-size:15px;
+	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+	font-weight:bold;
 }
 .edit-button:hover{
 	color: white;
@@ -378,11 +384,62 @@ div.commentfooterauthorname {
 div.commentfooterauthorcredit {
 	color: #666;
 }
+table.solutioncommentstable{
+	margin: auto;
+	width: 600px;
+}
+/*div.solutioncomments{
+	clear:both;
+	float:right;
+	width:600px;
+}*/
+.makesolutioncomment{
+	border-radius:3px;
+	width:260px;
+	height:60px;
+}
+tr.solutioncomment{
+}
+td.solutioncommentuseravatartd{
+	width:60px;
+}
+img.solutioncommentuseravatar{
+	width:50px;
+	border-radius:5px;
+}
+td.solutioncommentauthor{
+	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+	font-weight:bold;
+	width:80px;
+	text-shadow: grey 1px 1px 1px;
+	font-size:15px;
+	padding-right:40px;
+	border-bottom: thin;
+	border-bottom-color: #ccc;
+	border-bottom-style: inset;
+}
+td.solutioncommentcontent{
+	border-bottom: thin;
+	border-bottom-color: #ccc;
+	border-bottom-style: inset;
+	text-align:left;
+	padding-top: 10px;
+	padding-left: 60px;
+	padding-bottom: 10px;
+	line-height: 2.0;
+	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+}
 
 img.commentfooteravatar {
 	float: right;
 	margin-right: 20px;
 	border-radius: 11px;
+}
+
+.solutionbuttons{
+	float:right;
+	clear:both;
+	
 }
 
 img.commentsfooterleft {
