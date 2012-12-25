@@ -79,6 +79,7 @@ public class DisplayComments extends ActionSupport {
 		//System.out.println("strBugNumber" + strBugNumber);
 		//System.out.println("strNowPage == " + strNowPage);
 		nowPage = Integer.parseInt(strNowPage);
+		if (nowPage < 1) return "error";
 		BugCommentsData theData = commentsDisplayService
 				.commentsDispalyService(strBugNumber, nowPage, 5);
 		commentData = theData.getCommentsData();

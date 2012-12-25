@@ -70,6 +70,8 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 		if (firstResult + fetchSize > count)
 			fetchSize = count - firstResult;
 		
+		if (bug.getOfficialSolutionId() != -1) count++;
+		
 		List<Solution> solutions = solutionDAO.getByBugId(bug, fetchSize, firstResult);
 		List<SolutionData> solutionsData = new LinkedList<SolutionData>();
 		//set bestSolutionID

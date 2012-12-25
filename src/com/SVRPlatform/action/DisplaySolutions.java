@@ -116,6 +116,7 @@ public class DisplaySolutions extends ActionSupport implements
 		//System.out.println("strNowPage == " + strNowPage);
 		SolutionData officialSolution = null;
 		nowPage = Integer.parseInt(strNowPage);
+		if (nowPage < 1) return "error";
 		int userID = VerifyUser.getNowUserID(request);
 		if (nowPage == 1) {
 			officialSolution = solutionsDisplayService

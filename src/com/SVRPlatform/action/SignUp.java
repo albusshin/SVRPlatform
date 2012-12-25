@@ -1,6 +1,7 @@
 package com.SVRPlatform.action;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -9,8 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
-import com.SVRPlatform.service.Response;
+import com.SVRPlatform.service.LoginService;
 import com.SVRPlatform.service.RegisterService;
+import com.SVRPlatform.service.Response;
 import com.SVRPlatform.service.Response.Email;
 import com.SVRPlatform.service.Response.Password;
 import com.opensymphony.xwork2.ActionSupport;
@@ -23,6 +25,7 @@ public class SignUp extends ActionSupport implements ServletRequestAware,		//sig
 	 */
 	private static final long serialVersionUID = 1L;
 	private RegisterService registerService;
+	private LoginService loginService;
 	private String email;
 	private String password;
 	@SuppressWarnings("rawtypes")
@@ -57,6 +60,13 @@ public class SignUp extends ActionSupport implements ServletRequestAware,		//sig
 	public void setregisterService(RegisterService registerService) {
 		this.registerService = registerService;
 	}
+	public LoginService getLoginService() {
+		return loginService;
+	}
+
+	public void setLoginService(LoginService loginService) {
+		this.loginService = loginService;
+	}
 
 	public String execute() {
 		//System.out.println(this.email);
@@ -87,39 +97,39 @@ public class SignUp extends ActionSupport implements ServletRequestAware,		//sig
 			
 			request.getSession().setMaxInactiveInterval(60 * 60 * 3);						//Session 3 hours is enough.
 			request.getSession().setAttribute("email", email);
-			request.getSession().setAttribute("password", password);
+			request.getSession().setAttribute("userID", res.userID);
+			request.getSession().setAttribute("credit", res.credit);
+			request.getSession().setAttribute("realname", res.realName);
 			//System.out.println("session stored");
 			
 			if(remember != null)
 			{
-				Cookie[] cookies = request.getCookies();
 
+				Map<String, ?> info = this.loginService.login(email, password, true);
+				Cookie[] cookies = request.getCookies();
 				for (int i = 0; i < cookies.length; i++) {
 					//System.out.println(cookies[i].getName());
-					if (cookies[i].getName().equals("email")) {										//browserHasCookie email & password in cookie
+					if (cookies[i].getName().equals("email")) {										//cookie had email before 
 						cookies[i].setValue(this.email);
-						cookies[i].setMaxAge(60 * 60 * 24 * 7);
 						response.addCookie(cookies[i]);
 						browserHasCookie = true;
 					}
-
-					if (cookies[i].getName().equals("password")) {
-						cookies[i].setValue(this.password);
-						cookies[i].setMaxAge(60 * 60 * 24 * 7);
+					
+					if (cookies[i].getName().equals("cookiehash")) {									//cookie had password before 
+						cookies[i].setValue((String)info.get("cookiehash"));
 						response.addCookie(cookies[i]);
 						browserHasCookie = true;
 					}
 				}
-				//System.out.println(browserHasCookie + " == browserHasCookie");
-				if (browserHasCookie == false) {																//no email & password in cookie
-					Cookie cemail = new Cookie("email", this.email);
-					Cookie cpassword = new Cookie("password", this.password);
-					//System.out.println(cemail.getValue());
-					cemail.setMaxAge(60 * 60 * 24 * 7);
-					cpassword.setMaxAge(60 * 60 * 24 * 7);
+				
+				if (browserHasCookie == false) {
+					Cookie cemail = new Cookie("email", this.email);			    //cookie do not browserHasCookie email & password before  store email & password in cookie
+					Cookie cpassword = new Cookie("cookiehash", (String) info.get("cookiehash"));
+					cemail.setMaxAge(60 * 60 * 24 * 15);
+					cpassword.setMaxAge(60 * 60 * 24 * 15);
 					response.addCookie(cemail);
 					response.addCookie(cpassword);
-				} 
+				}
 			}
 
 			return SUCCESS;

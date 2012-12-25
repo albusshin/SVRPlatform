@@ -39,6 +39,7 @@
     
     <bean id="signUp" scope="prototype" class="com.SVRPlatform.action.SignUp">
     	<property name="registerService" ref="registerService"></property>
+    	<property name="loginService" ref="loginService"></property>
     </bean>
     
     <bean id="retrievePassword" scope="prototype" class="com.SVRPlatform.action.RetrievePassword">

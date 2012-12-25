@@ -49,6 +49,10 @@ public class RegisterServiceImpl implements RegisterService{
 			user.setCredit(0);
 			user.setRealName(email.split("@")[0]);
 			userDAO.add(user);
+			
+			response.credit = 0;
+			response.realName = user.getRealName();
+			response.userID = user.getUserId();
 		}
 		return response;
 	}
