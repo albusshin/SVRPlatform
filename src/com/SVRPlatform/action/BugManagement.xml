@@ -68,5 +68,9 @@
         <action name="solutionvote_*" class="solutionvote" method="{1}">
         	<result name="success" type="stream"></result>
         </action>
+        
+        <action name="solutioncomments_*" class="solutionComment" method="{1}">
+        	<result name="success">/WEB-INF/SolutionComments.jsp</result>
+        </action>
     </package>
 </struts>

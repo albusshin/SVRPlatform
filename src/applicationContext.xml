@@ -84,6 +84,11 @@
     <bean id="bugvote" scope="prototype" class="com.SVRPlatform.action.BugVoteAction">
     	<property name="bugWatchService" ref="bugWatchService"></property>
     </bean>
+    
+    <bean id="solutionComment" scope="prototype" class="com.SVRPlatform.action.SolutionComment">
+    	<property name="solutionCommentSubmitService" ref="solutionCommentSubmitService"></property>
+    	<property name="solutionCommentDisplayService" ref="solutionCommentDisplayService"></property>
+    </bean>
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
     	<!-- user service -->
