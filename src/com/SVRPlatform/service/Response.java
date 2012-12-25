@@ -7,4 +7,7 @@ public class Response {
 	
 	public Email email;
 	public Password password;
+	public int userID;
+	public String realName;
+	public int credit;
 }
