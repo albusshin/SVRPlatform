@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.SVRPlatform.Utils.HTMLTranscoder;
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.SolutionDAO;
 import com.SVRPlatform.dao.UserDAO;
@@ -72,7 +73,7 @@ public class SolutionSubmitServiceImpl implements SolutionSubmitService {
 					Solution solution = new Solution();
 					solution.setBug(bug);
 					//solution.setCommentTitle(title);
-					solution.setContent(content);
+					solution.setContent(HTMLTranscoder.transcode(content));
 					solution.setDatetime(new Date());
 					solution.setUser(user);
 					solution.setUp(new Integer(0));
@@ -112,7 +113,7 @@ public class SolutionSubmitServiceImpl implements SolutionSubmitService {
 						return map;
 					}
 					Solution solution = solutions.get(0);
-					solution.setContent(content);
+					solution.setContent(HTMLTranscoder.transcode(content));
 					solution.setDatetime(new Date());
 					
 					solutionDAO.update(solution);

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
+import com.SVRPlatform.Utils.HTMLTranscoder;
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.SolutionDAO;
 import com.SVRPlatform.dao.SolutionVoteDAO;
@@ -72,7 +73,7 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 		List<Solution> solutions = solutionDAO.getByBugId(bug, fetchSize, firstResult);
 		List<SolutionData> solutionsData = new LinkedList<SolutionData>();
 		//set bestSolutionID
-		if (solutions.size() > 0) {
+		if (solutions.size() > 0 && pageNumber == 1) {
 			bug.setBestSolutionId(solutions.get(0).getSolutionId());
 			bugDAO.update(bug);
 		}
@@ -104,7 +105,7 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 			}
 				
 			solutionData.setSolutionID(solutionID);
-			solutionData.setContent(solution.getContent());
+			solutionData.setContent(HTMLTranscoder.transcode(solution.getContent()));
 			solutionData.setDatetime(solution.getDatetime().toString());
 			solutionData.setRealname(user.getRealName());
 			solutionData.setEmail(user.getEmail());
@@ -147,7 +148,7 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 			}
 				
 			solutionData.setSolutionID(solution.getSolutionId());
-			solutionData.setContent(solution.getContent());
+			solutionData.setContent(HTMLTranscoder.transcode(solution.getContent()));
 			solutionData.setDatetime(solution.getDatetime().toString());
 			solutionData.setRealname(user.getRealName());
 			solutionData.setEmail(user.getEmail());

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.SVRPlatform.Utils.HTMLTranscoder;
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.CommentDAO;
 import com.SVRPlatform.dao.UserDAO;
@@ -52,8 +53,8 @@ public class CommentSubmitServiceImpl implements CommentSubmitService {
 			User user = userDAO.getUserByEmail(email);
 			Comment comment = new Comment();
 			comment.setBug(bug);
-			comment.setCommentTitle(title);
-			comment.setContent(content);
+			comment.setCommentTitle(HTMLTranscoder.transcode(title));
+			comment.setContent(HTMLTranscoder.transcode(content));
 			comment.setDatetime(new Date());
 			comment.setUser(user);
 			

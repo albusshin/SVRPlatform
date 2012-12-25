@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import com.SVRPlatform.Utils.HTMLTranscoder;
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.CommentDAO;
 import com.SVRPlatform.data.BugCommentsData;
@@ -50,8 +51,8 @@ public class CommentsDisplayServiceImpl implements CommentsDisplayService {
 			commentData = new CommentData();
 			user = comment.getUser();
 			
-			commentData.setTitle(comment.getCommentTitle());
-			commentData.setContent(comment.getContent());
+			commentData.setTitle(HTMLTranscoder.transcode(comment.getCommentTitle()));
+			commentData.setContent(HTMLTranscoder.transcode(comment.getContent()));
 			commentData.setDatetime(comment.getDatetime().toString());
 			commentData.setRealname(user.getRealName());
 			commentData.setEmail(user.getEmail());

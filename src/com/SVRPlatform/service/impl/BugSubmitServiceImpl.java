@@ -10,6 +10,7 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
+import com.SVRPlatform.Utils.HTMLTranscoder;
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.SoftwareDAO;
 import com.SVRPlatform.dao.UserDAO;
@@ -86,7 +87,7 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			Software software;
 			if (softwareDAO.getSoftwareByName(softwareName) == null) {
 				software = new Software();
-				software.setName(softwareName);
+				software.setName(HTMLTranscoder.transcode(softwareName));
 				softwareDAO.add(software);
 			}
 			software = (Software)softwareDAO.getSoftwareByName(softwareName);
@@ -130,10 +131,10 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			sc /= 15;
 			
 			bug.setDatetime(new Date());
-			bug.setDescription(description);
-			bug.setVersion(version);
+			bug.setDescription(HTMLTranscoder.transcode(description));
+			bug.setVersion(HTMLTranscoder.transcode(version));
 			bug.setSoftware(software);
-			bug.setBugDigest(bugDigest);
+			bug.setBugDigest(HTMLTranscoder.transcode(bugDigest));
 			bug.setUser(user);
 			bug.setUsabilityImpact(ui);
 			bug.setDataImpact(di);
@@ -141,7 +142,7 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			bug.setAvailabilityImpact(ai);
 			bug.setFrequency(fr);
 			bug.setScore(sc);
-			bug.setLanguage(language);
+			bug.setLanguage(HTMLTranscoder.transcode(language));
 			bug.setOfficialSolutionId(-1);
 			bug.setUp(0);
 			bug.setDown(0);
