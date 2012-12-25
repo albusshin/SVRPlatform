@@ -48,6 +48,18 @@ else
 %>
 	</style>
 	<script type="text/javascript">
+
+		$(document).ready(function(){
+				$('#closeButton').click(function(){
+					$('#wrongmessage').hide(1000);
+					});
+			//if('/${strStat}' === 'wrong')
+				if('${strStat}' === 'wrong'){
+					$('div.message-text').html("${message}");
+					$('#wrongmessage').show(1000);
+				}
+			});
+	
 		function vote(type, id, caller) {
 			var url = 'solutionvote_vote'+type+'?solutionId='+id;
 			
@@ -167,7 +179,7 @@ else
 			<div class="message-inside">
 				<div class="message-text">
 				</div>
-				<a class="dismiss" href="javascript:dismiss();">×</a>
+				<label id="closeButton" class="dismiss">×</label> <!--href="javascript:dismiss();" >×</a>-->
 			</div>
 		</div>
 	</div>
@@ -484,7 +496,7 @@ else
             	Give your solution on bug ${strBugNumber}
             </div>
             <div class="commentssubmit">
-                <form id="commentssubmitform" action="submitSolution" method="post">
+                <form id="commentssubmitform" action="submitSolution_execute" method="post">
                 	<input type="text" value="${strBugNumber}" style="display:none" name="strBugNumber">
                     <table class="commentssubmittable">
                         <tr>

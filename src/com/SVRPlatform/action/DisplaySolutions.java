@@ -144,6 +144,8 @@ public class DisplaySolutions extends ActionSupport implements
 		//System.out.println("strSolutionsAmount == " + strSolutionsAmount);
 		//System.out.println("before return success");
 		request.setAttribute("officialSolution", officialSolution);
+		if(request.getAttribute("message")==null)
+			request.setAttribute("message", null);
 
 		return Constants.SUCCESS;
 	}
