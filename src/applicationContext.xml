@@ -119,6 +119,12 @@
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="solutionVoteDAO" ref="solutionVoteDAO"></property>
 	    </bean>
+	    
+	    <bean id="solutionCommentDisplayService" class="com.SVRPlatform.service.impl.SolutionCommentDisplayServiceImpl">
+	    	<property name="solutionDAO" ref="solutionDAO"></property>
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="solutionCommentDAO" ref="solutionCommentDAO"></property>
+	    </bean>
 	    <!-- *************** -->
 	    
 	    <!-- submit service  -->
@@ -138,6 +144,12 @@
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="bugDAO" ref="bugDAO"></property>
 	    	<property name="softwareDAO" ref="softwareDAO"></property>
+	    </bean>
+	    
+	    <bean id="solutionCommentSubmitService" class="com.SVRPlatform.service.impl.SolutionCommentSubmitServiceImpl">
+	    	<property name="solutionDAO" ref="solutionDAO"></property>
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="solutionCommentDAO" ref="solutionCommentDAO"></property>
 	    </bean>
 	    <!-- *************** -->
 	    <!-- vote service -->
@@ -183,4 +195,7 @@
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     
+    <bean id="solutionCommentDAO" class="com.SVRPlatform.dao.impl.SolutionCommentDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
 </beans> 

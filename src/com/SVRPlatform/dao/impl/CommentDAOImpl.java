@@ -42,7 +42,7 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 //			if(s!=null)
 //				s.close();
 //		}
-		return (List<Comment>) getByUserOrBugId(Comment.class, false, fetchSize, firstResult, 1, bug, user);
+		return (List<Comment>) getByObjects(Comment.class, false, fetchSize, firstResult, 1, bug, user);
 	}
 	
 	/* (non-Javadoc)
@@ -51,7 +51,7 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Comment> getByBugId(Bug bug, int fetchSize, int firstResult){
-		return getByUserOrBugId(Comment.class, false, fetchSize, firstResult, 2, bug);
+		return getByObjects(Comment.class, false, fetchSize, firstResult, 2, bug);
 	}
 	
 	/* (non-Javadoc)
@@ -60,13 +60,13 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Comment> getByUserId(User user, int fetchSize, int firstResult){
-		return getByUserOrBugId(Comment.class, false, fetchSize, firstResult, 3, user);
+		return getByObjects(Comment.class, false, fetchSize, firstResult, 3, user);
 	}
 
 	@Override
 	public long getCountFromOneBug(Bug bug) {
 		// TODO Auto-generated method stub
-		long count = ((Long)getByUserOrBugId(Comment.class, true, -1, -1, 2, bug)
+		long count = ((Long)getByObjects(Comment.class, true, -1, -1, 1, bug)
 							.get(0)).intValue();
 		return count;
 	}
@@ -74,7 +74,7 @@ public class CommentDAOImpl extends BasicCommentAndSolutionDAOImpl implements Co
 	@Override
 	public long getCountFromOneUser(User user) {
 		// TODO Auto-generated method stub
-		long count = ((Long)getByUserOrBugId(Comment.class, true, -1, -1, 2, user)
+		long count = ((Long)getByObjects(Comment.class, true, -1, -1, 1, user)
 				.get(0)).intValue();
 		return count;
 	}
