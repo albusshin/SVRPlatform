@@ -11,7 +11,7 @@ abstract class BasicCommentAndSolutionDAOImpl extends BasicDAOImpl {
 
 	//protected methods
 		@SuppressWarnings("rawtypes")
-		protected List getByUserOrBugId(Class clazz,boolean isCount, int fetchSize, int firstResult, int type, Object... obj){
+		protected List getByObjects(Class clazz,boolean isCount, int fetchSize, int firstResult, int type, Object... obj){
 			Session s = this.sessionFactory.openSession();
 			String str = null;
 			try{
@@ -32,6 +32,7 @@ abstract class BasicCommentAndSolutionDAOImpl extends BasicDAOImpl {
 				case 1: break;
 				case 2: c.setFetchMode("user", FetchMode.JOIN);break;
 				case 3: c.setFetchMode("bug", FetchMode.JOIN);break;
+				case 4: c.setFetchMode("solution", FetchMode.JOIN);break;
 				}
 //				@SuppressWarnings("unchecked")
 //				List<BasicCommentAndSolution> list= c.list();

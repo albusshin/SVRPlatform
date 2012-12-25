@@ -1,7 +1,5 @@
 package Junit.test.Jingxuan;
 
-import static org.junit.Assert.*;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,13 +14,9 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.orm.hibernate4.SessionFactoryUtils;
 import org.springframework.orm.hibernate4.SessionHolder;
-import org.springframework.orm.hibernate4.support.OpenSessionInViewFilter;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.SVRPlatform.Utils.StringEncoder;
-import com.SVRPlatform.action.RetrievePassword;
-import com.SVRPlatform.dao.HashForPasswordRetrieveDAO;
-import com.SVRPlatform.dao.SolutionDAO;
 import com.SVRPlatform.dao.SolutionVoteDAO;
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.dao.impl.BugDAOImpl;
@@ -32,12 +26,13 @@ import com.SVRPlatform.dao.impl.SoftwareDAOImpl;
 import com.SVRPlatform.dao.impl.SolutionDAOImpl;
 import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Comment;
-import com.SVRPlatform.model.Software;
 import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.model.SolutionVote;
 import com.SVRPlatform.model.User;
 import com.SVRPlatform.service.BugWatchService;
 import com.SVRPlatform.service.PasswordRetrieveService;
+import com.SVRPlatform.service.SolutionCommentDisplayService;
+import com.SVRPlatform.service.SolutionCommentSubmitService;
 import com.SVRPlatform.service.SolutionSubmitService;
 import com.SVRPlatform.service.SolutionVoteService;
 import com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl;
@@ -57,6 +52,9 @@ public class TestForHibernate {
 	static SolutionVoteDAO solutionVoteDAO;
 	static BugWatchService bugWatchService;
 	
+	static SolutionCommentSubmitService solutionCommentSubmitService;
+	static SolutionCommentDisplayService solutionCommentDisplayService;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		ctx = new ClassPathXmlApplicationContext( "applicationContext-hibernate.xml", "applicationContext.xml" );
@@ -74,6 +72,8 @@ public class TestForHibernate {
 		solutionVoteService = (SolutionVoteService) ctx.getBean("solutionVoteService");
 		solutionVoteDAO = (SolutionVoteDAO) ctx.getBean("solutionVoteDAO");
 		bugWatchService = (BugWatchService) ctx.getBean("bugWatchService");
+		solutionCommentSubmitService = (SolutionCommentSubmitService) ctx.getBean("solutionCommentSubmitService");
+		solutionCommentDisplayService = (SolutionCommentDisplayService) ctx.getBean("solutionCommentDisplayService");
 	}
 
 	@AfterClass
@@ -222,5 +222,9 @@ public class TestForHibernate {
 		ls = solutionVoteDAO.getSolutionIdFromSolutionList(ls, user);
 		for(SolutionVote s:(List<SolutionVote>)ls)
 			System.out.println(s.getSolution().getSolutionId());
+	}
+	@Test public void testSolutionComment() {
+		solutionCommentSubmitService.commentSubmit(11, "povergoing@gmail.com", "fdsafd");
+		System.out.println(solutionCommentDisplayService.commentsDispalyService(11, 0, 0).getSolutionCommentsData().get(0).getRealname());
 	}
 }

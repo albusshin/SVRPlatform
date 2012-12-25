@@ -36,7 +36,7 @@ public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements S
 	public List<Solution> getByUserIdAndBugId(User user, Bug bug, int fetchSize,
 			int firstResult) {
 		// TODO Auto-generated method stub
-		return (List<Solution>) getByUserOrBugId(Solution.class, false, fetchSize, firstResult, 1, bug, user);
+		return (List<Solution>) getByObjects(Solution.class, false, fetchSize, firstResult, 1, bug, user);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -70,13 +70,13 @@ public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements S
 	@Override
 	public List<Solution> getByUserId(User user, int fetchSize, int firstResult) {
 		// TODO Auto-generated method stub
-		return getByUserOrBugId(Solution.class, false, fetchSize, firstResult, 3, user);
+		return getByObjects(Solution.class, false, fetchSize, firstResult, 3, user);
 	}
 
 	@Override
 	public long getCountFromOneBug(Bug bug) {
 		// TODO Auto-generated method stub
-		long count = ((Long)getByUserOrBugId(Solution.class, true, -1, -1, 2, bug)
+		long count = ((Long)getByObjects(Solution.class, true, -1, -1, 1, bug)
 				.get(0)).intValue();
 		return count;
 	}
@@ -84,7 +84,7 @@ public class SolutionDAOImpl extends BasicCommentAndSolutionDAOImpl implements S
 	@Override
 	public long getCountFromOneUser(User user) {
 		// TODO Auto-generated method stub
-		long count = ((Long)getByUserOrBugId(Solution.class, true, -1, -1, 2, user)
+		long count = ((Long)getByObjects(Solution.class, true, -1, -1, 1, user)
 				.get(0)).intValue();
 		return count;
 	}
