@@ -14,8 +14,8 @@
         <property name="email" type="string">
             <column name="email" length="100" not-null="true" />
         </property>
-        <property name="date" type="date">
-            <column name="date" length="10" />
+        <property name="date" type="timestamp">
+            <column name="date" length="19" />
         </property>
         <property name="validDeadline" type="date">
             <column name="validdeadline" length="10" />
@@ -38,8 +38,8 @@
         <property name="age" type="java.lang.Integer">
             <column name="age" />
         </property>
-        <property name="seen" type="date">
-            <column name="seen" length="10" />
+        <property name="seen" type="timestamp">
+            <column name="seen" length="19" />
         </property>
         <property name="profileViews" type="java.lang.Integer">
             <column name="profileViews" />

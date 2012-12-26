@@ -73,13 +73,13 @@ public class UserProfileServiceImpl implements UserProfileService {
 			userData.setLastSeenDate(user.getSeen().toString().substring(0, 16));
 			userData.setLocation(user.getLocation());
 			
-			userData.setMemberFor(this.formatDate(user.getDate()));
+			userData.setMemberFor(this.formatDate(user.getDate(), false));
 			
 			userData.setProfileViews(user.getProfileViews());
 			userData.setRegisterDate(user.getDate().toString().substring(0, 16));
 			userData.setRealName(user.getRealName());
 			
-			userData.setSeen(this.formatDate(user.getSeen()));
+			userData.setSeen(this.formatDate(user.getSeen(), true));
 			
 			userData.setUserId(user.getUserId());
 			userData.setWebsite(user.getWebsite());
@@ -90,31 +90,36 @@ public class UserProfileServiceImpl implements UserProfileService {
 		}
 	}
 	
-	protected String formatDate(Date date){
+	protected String formatDate(Date date, boolean seen){
 		Calendar pastDate = Calendar.getInstance();
 		pastDate.setTime(date);
 		Calendar nowDate = Calendar.getInstance();
 		nowDate.setTime(new Date());
+		String ret;
 		int years = nowDate.get(Calendar.YEAR) - pastDate.get(Calendar.YEAR);
 		if(years !=0 )
-			return "years:"+years;
+			ret = years + " years";
 		int months = nowDate.get(Calendar.MONTH) - pastDate.get(Calendar.MONTH);
 		if(months != 0)
-			return "months:"+months;
+			ret = months + "months";
 		int weeks = nowDate.get(Calendar.WEEK_OF_YEAR) - pastDate.get(Calendar.WEEK_OF_YEAR);
 		if(weeks != 0)
-			return "weeks:"+weeks;
+			ret = weeks + "weeks";
 		int days = nowDate.get(Calendar.DAY_OF_YEAR) - pastDate.get(Calendar.DAY_OF_YEAR);
 		if(days !=0 )
-			return "days:"+days;
+			ret = days + "days";
 		int hours = nowDate.get(Calendar.HOUR_OF_DAY)- pastDate.get(Calendar.HOUR_OF_DAY);
 		if(hours != 0)
-			return "hours:"+hours;
+			ret = hours + "hours";
 		int minutes = nowDate.get(Calendar.MINUTE) - pastDate.get(Calendar.MINUTE);
 		if(minutes !=0)
-			return "minutes:"+minutes;
+			ret = minutes + "minutes";
 		int seconds = nowDate.get(Calendar.SECOND) - pastDate.get(Calendar.SECOND);
-			return "seconds:"+seconds;
+		ret = seconds + "seconds";
+		if (seen){
+			ret += " ago";
+		}
+		return ret;
 	}
 
 }
