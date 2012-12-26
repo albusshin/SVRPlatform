@@ -69,6 +69,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 			userData.setAge(user.getAge());
 			userData.setCredit(user.getCredit());
 			userData.setEmail(user.getEmail());
+			System.out.println(user.getSeen().toString());
 			userData.setLastSeenDate(user.getSeen().toString().substring(0, 16));
 			userData.setLocation(user.getLocation());
 			
