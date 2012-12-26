@@ -52,6 +52,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 			user.setLocation(location);
 			user.setWebsite(website);
 			user.setRealName(realname);
+			userDAO.update(user);
 			map.put("stats", "OK");
 		}catch(Exception e){
 			map.put("message", e.getMessage());
