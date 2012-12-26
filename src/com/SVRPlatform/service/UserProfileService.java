@@ -23,5 +23,13 @@ public interface UserProfileService {
 	 * @return Map<错误值, 错误信息>
 	 */
 	public Map<String, String> submitUserProfile(UserData userData);
-
+	/**
+	 * 另一个简洁的方法
+	 * @param website
+	 * @param location
+	 * @param realname
+	 * @param age
+	 * @return Map<错误值, 错误信息>
+	 */
+	public Map<String, String> submitUserProfile(String website, String location, String realname, int age);
 }

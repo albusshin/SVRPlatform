@@ -7,6 +7,8 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.SVRPlatform.constants.Constants;
+import com.SVRPlatform.data.UserData;
+import com.SVRPlatform.service.UserProfileService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserProfileDisplayAction extends ActionSupport implements ServletRequestAware,		//sign up~ register
@@ -30,6 +32,12 @@ ServletResponseAware {
 	String strBugUploads;
 	String strSolutions;
 	String strComments;
+	UserData userData = new UserData();
+	UserProfileService userProfileService;
+	public void setUserProfileService(UserProfileService userProfileService) {
+		this.userProfileService = userProfileService;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -87,7 +95,6 @@ ServletResponseAware {
 	}
 
 	public String execute(){
-		
 		return Constants.SUCCESS;
 	}
 	@Override
