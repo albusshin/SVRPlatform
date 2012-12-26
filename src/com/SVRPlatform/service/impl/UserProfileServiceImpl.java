@@ -25,7 +25,6 @@ public class UserProfileServiceImpl implements UserProfileService {
 	public UserData displayUserProfile(String email) {
 		// TODO Auto-generated method stub
 		User user = (User) this.userDAO.getUserByEmail(email);
-		System.out.println("email == " + email);
 		return displayUserProfile(user);
 	}
 
@@ -64,7 +63,6 @@ public class UserProfileServiceImpl implements UserProfileService {
 	
 	protected UserData displayUserProfile(User user){
 		try{
-			System.out.println("user == " + user);
 			UserData userData = new UserData();
 			userData.setAge(user.getAge());
 			userData.setCredit(user.getCredit());
@@ -95,27 +93,44 @@ public class UserProfileServiceImpl implements UserProfileService {
 		pastDate.setTime(date);
 		Calendar nowDate = Calendar.getInstance();
 		nowDate.setTime(new Date());
-		String ret;
+		String ret = null;
 		int years = nowDate.get(Calendar.YEAR) - pastDate.get(Calendar.YEAR);
-		if(years !=0 )
-			ret = years + " years";
-		int months = nowDate.get(Calendar.MONTH) - pastDate.get(Calendar.MONTH);
-		if(months != 0)
-			ret = months + "months";
-		int weeks = nowDate.get(Calendar.WEEK_OF_YEAR) - pastDate.get(Calendar.WEEK_OF_YEAR);
-		if(weeks != 0)
-			ret = weeks + "weeks";
-		int days = nowDate.get(Calendar.DAY_OF_YEAR) - pastDate.get(Calendar.DAY_OF_YEAR);
-		if(days !=0 )
-			ret = days + "days";
-		int hours = nowDate.get(Calendar.HOUR_OF_DAY)- pastDate.get(Calendar.HOUR_OF_DAY);
-		if(hours != 0)
-			ret = hours + "hours";
-		int minutes = nowDate.get(Calendar.MINUTE) - pastDate.get(Calendar.MINUTE);
-		if(minutes !=0)
-			ret = minutes + "minutes";
-		int seconds = nowDate.get(Calendar.SECOND) - pastDate.get(Calendar.SECOND);
-		ret = seconds + "seconds";
+		while (true){
+			if(years !=0 ){
+				ret = years + " years";
+				break;
+			}
+			int months = nowDate.get(Calendar.MONTH) - pastDate.get(Calendar.MONTH);
+			if(months != 0){
+				ret = months + " months";
+				break;
+			}
+			int weeks = nowDate.get(Calendar.WEEK_OF_YEAR) - pastDate.get(Calendar.WEEK_OF_YEAR);
+			if(weeks != 0){
+				ret = weeks + " weeks";
+				break;
+			}
+			int days = nowDate.get(Calendar.DAY_OF_YEAR) - pastDate.get(Calendar.DAY_OF_YEAR);
+			if(days !=0 ){
+				ret = days + " days";
+				break;
+			}
+			int hours = nowDate.get(Calendar.HOUR_OF_DAY)- pastDate.get(Calendar.HOUR_OF_DAY);
+			if(hours != 0){
+				ret = hours + " hours";
+				break;
+			}
+			int minutes = nowDate.get(Calendar.MINUTE) - pastDate.get(Calendar.MINUTE);
+			if(minutes !=0){
+				ret = minutes + " minutes";
+				break;
+			}
+			int seconds = nowDate.get(Calendar.SECOND) - pastDate.get(Calendar.SECOND);
+			if (seconds != 0){
+				ret = seconds + " seconds";
+				break;
+			}
+		}
 		if (seen){
 			ret += " ago";
 		}

@@ -46,7 +46,7 @@
                   <p>Real Name</p>
                   <p>Age</p></td>
                 <td class="userprofiledigestright">
-                	<p id="website"> ${strWebsite}</p>
+                	<p id="website"> ${strWebsite}
                 	<%
                 	String strWebsite = (String) request.getAttribute("strWebsite");
 					System.out.println("strWebsite == " + strWebsite);
@@ -54,8 +54,9 @@
 					String nowUser = VerifyUser.getNowUser(request);
 					System.out.println("nowUser == " + nowUser);
                 	if (nowUser!=null && nowUser.equals(strEmail)){
-                		out.println("&nbsp;&nbsp;&nbsp;&nbsp;");
+                		out.println("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 						out.println("<a align='center' onclick=\"document.getElementById('modifyuserprofile').setAttribute('style', 'display:block')\" class=\"edit-button\" href=\"javascript:;\" >Edit Profile</a>");
+						out.println("</p>");
                 	}
                 	%>
                     <p id="location"> ${strLocation}</p>

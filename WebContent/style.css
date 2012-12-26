@@ -1393,3 +1393,152 @@ td.modifyprofilevalue {
 	color:#fff;
 	padding-top: 10px;
 }
+
+div.mybugs{
+	height:250px;
+}
+div.mybugsrow,div.watchingbugsrow,div.mysolutionsrow{
+	width:700px;
+	clear:both;
+}
+div.bugcard{
+	opacity:0.9;
+	background-image: -moz-linear-gradient(#111111, #222222);
+	background-image: -webkit-linear-gradient(#111111, #111111);
+	background-image: linear-gradient(#111111, #111111);
+	background-repeat: repeat-x;
+	padding-top:10px;
+	padding-bottom::10px;
+	padding-left:25px;
+	padding-right:25px;
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:250px;
+	height:150px;
+	float:left;
+	border: 1px solid #39F;
+	border-radius:4px;
+	box-shadow: 0px 0px 8px #000;
+}
+
+.bugcard a{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-weight:bold;
+	font-size:16px;
+	color:#fff;
+	text-shadow: #CCC 1px 1px 1px;
+}
+.bugcard div.digest{
+	opacity:0.9;
+	height:80px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 4px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 12px;
+	line-height: 1.6;
+	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+	text-shadow: grey 1px 1px 1px;
+	background: #FC9;
+}
+.bugcard a.solutions,a.comments{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-size:12px;
+	font-weight:400;
+	color:#fff;
+	text-shadow:none;
+}
+.bugcard a.solutionsimg{
+	border-bottom:none;
+}
+.bugcard img{
+	height:30px;
+}
+div.watchingbugs{
+	height:420px;
+}
+div.mysolutions{
+	height:250px;
+}
+div.solutioncard{
+	opacity:0.9;
+	background-image: -moz-linear-gradient(#111111, #222222);
+	background-image: -webkit-linear-gradient(#111111, #111111);
+	background-image: linear-gradient(#111111, #111111);
+	background-repeat: repeat-x;
+	padding-top:10px;
+	padding-bottom::10px;
+	padding-left:25px;
+	padding-right:25px;
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:250px;
+	height:140px;
+	float:left;
+	border: 1px solid #39F;
+	border-radius:4px;
+	box-shadow: 0px 0px 8px #000;
+}
+.solutioncard a{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-weight:bold;
+	font-size:16px;
+	color:#fff;
+	text-shadow: #CCC 1px 1px 1px;
+}
+.solutioncard div.digest{
+	margin-top:10px;
+	float:left;
+	width:180px;
+	opacity:0.9;
+	height:80px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 4px;
+	padding-left: 5px;
+	font-size: 12px;
+	line-height: 1.6;
+	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+	text-shadow: grey 1px 1px 1px;
+	background: #fff;
+}
+.solutioncard a.solutionsimg{
+	border-bottom:none;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-size:12px;
+	font-weight:400;
+	color:#fff;
+	text-shadow:none;
+	vertical-align:middle;
+}
+.solutioncard div.imgbar{
+	margin-top:10px;
+	width:60px;
+	float:right;
+}
+.solutioncard img{
+	height:30px;
+}
+div.homepagesubtitle{
+	opacity:0.9;
+	background-image: -moz-linear-gradient(#111111, #222222);
+	background-image: -webkit-linear-gradient(#111111, #111111);
+	background-image: linear-gradient(#111111, #111111);
+	color:#FFF;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 4px;
+	width:200px;
+	height:30px;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-size:16px;
+	font-weight:bold;
+	text-shadow: grey 1px 1px 1px;
+	padding-left:10px;
+	margin-bottom:10px;
+}

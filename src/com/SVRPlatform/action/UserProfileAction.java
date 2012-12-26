@@ -186,6 +186,7 @@ public class UserProfileAction extends ActionSupport implements
 		Map<String, String> map = userProfileService.submitUserProfile(VerifyUser.getNowUserID(request),
 				strWebsite, strLocation, strRealName,
 				(Integer.parseInt(strAge)));
+		request.getSession().setAttribute("realname", strRealName);
 		return Constants.SUCCESS;
 	}
 
