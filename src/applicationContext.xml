@@ -109,6 +109,10 @@
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="hashForPasswordRetrieveDAO" ref="hashForPasswordRetrieveDAO"></property>
 	    </bean>
+	    
+	    <bean id="userProfileService" class="com.SVRPlatform.service.impl.UserProfileServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
+	    </bean>
 	    <!-- ************ -->
 	    
 	    <!-- display service -->
