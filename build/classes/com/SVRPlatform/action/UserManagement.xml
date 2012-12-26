@@ -64,6 +64,10 @@
         	<result>/WEB-INF/notSignedIn.jsp</result>
         </action>
 
+		<action name="userprofile_*" class="userProfileAction" method="{1}">
+			<result name="success">/WEB-INF/userprofile.jsp</result>
+		</action>
+		
         <!-- Add actions here -->
     </package>
 </struts>
