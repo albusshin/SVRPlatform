@@ -1,12 +1,21 @@
 package com.SVRPlatform.action;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+
+import com.SVRPlatform.Utils.VerifyUser;
 import com.SVRPlatform.constants.Constants;
 import com.SVRPlatform.data.SolutionCommentsData;
 import com.SVRPlatform.service.SolutionCommentDisplayService;
 import com.SVRPlatform.service.SolutionCommentSubmitService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SolutionComment extends ActionSupport {
+public class SolutionComment extends ActionSupport implements ServletRequestAware {
 
 	/**
 	 * 
@@ -19,7 +28,21 @@ public class SolutionComment extends ActionSupport {
 	private SolutionCommentsData solutionCommentsData;
 	private String email;
 	private int solutionId;
+	private String content;
+	//for ajax return
+	InputStream inputStream;
+	
+
 	//getters and setters
+	public InputStream getInputStream() {
+		return inputStream;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public SolutionCommentSubmitService getSolutionCommentSubmitService() {
 		return solutionCommentSubmitService;
 	}
@@ -63,8 +86,15 @@ public class SolutionComment extends ActionSupport {
 	}
 	
 	public String submitSolutionComment(){
-		return Constants.SUCCESS;
+		Map<String, String> map = this.solutionCommentSubmitService.commentSubmit(solutionId, email, content);
+		if(map.get("status").equals("success"))
+			inputStream = new ByteArrayInputStream(Constants.SUCCESS.getBytes());
+		else
+			inputStream = new ByteArrayInputStream(Constants.FAIL.getBytes());
+		return "submit";
 	}
-	
-
+	@Override
+	public void setServletRequest(HttpServletRequest request) {
+		this.email = VerifyUser.getNowUser(request);
+	}
 }
