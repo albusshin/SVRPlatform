@@ -25,7 +25,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 	public UserData displayUserProfile(String email) {
 		// TODO Auto-generated method stub
 		User user = (User) this.userDAO.getUserByEmail(email);
-		System.out.println("email == " + email);
+		//System.out.println("email == " + email);
 		return displayUserProfile(user);
 	}
 
@@ -33,6 +33,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 	public UserData displayUserProfile(int userId) {
 		// TODO Auto-generated method stub
 		User user = (User) this.userDAO.getByID(new Integer(userId));
+		//System.out.println("id == " + user);
 		return displayUserProfile(user);
 	}
 
@@ -64,12 +65,12 @@ public class UserProfileServiceImpl implements UserProfileService {
 	
 	protected UserData displayUserProfile(User user){
 		try{
-			System.out.println("user == " + user);
+			//System.out.println("user == " + user);
 			UserData userData = new UserData();
 			userData.setAge(user.getAge());
 			userData.setCredit(user.getCredit());
 			userData.setEmail(user.getEmail());
-			System.out.println(user.getSeen().toString());
+			//System.out.println(user.getSeen().toString());
 			userData.setLastSeenDate(user.getSeen().toString().substring(0, 16));
 			userData.setLocation(user.getLocation());
 			
