@@ -268,7 +268,7 @@ else
 							"<img class=\"commentfooteravatar\" src=\"http://www.gravatar.com/avatar/"+	 hashofficial + "\">"+
 							" <div class=\"commentfooterauthor\">"+
 							"<div class=\"commentfooterauthorname\">"+
-							"<a href=\"#\" class=\"msblack20\">"+officialSolution.getRealname()+"</a>"+
+							"<a href=\"userprofile_display?strEmail="+officialSolution.getEmail()+"\" class=\"msblack20\">"+officialSolution.getRealname()+"</a>"+
 							" </div>"+
 							" <div class=\"commentfooterauthorcredit\">"+
 							" Credits:  "+officialSolution.getCredits()+
@@ -342,7 +342,7 @@ else
 						
 						" <div class=\"commentfooterauthor\">"+
 						"<div class=\"commentfooterauthorname\">"+
-						"<a href=\"#\" class=\"msblack20\">"+solutionData.get(i).getRealname()+"</a>"+
+						"<a href=\"userprofile_display?strEmail="+solutionData.get(i).getEmail()+"\" class=\"msblack20\">"+solutionData.get(i).getRealname()+"</a>"+
 						" </div>"+
 						" <div class=\"commentfooterauthorcredit\">"+
 						" Credits:  "+solutionData.get(i).getCredits()+

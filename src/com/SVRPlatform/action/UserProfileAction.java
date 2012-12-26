@@ -166,6 +166,7 @@ public class UserProfileAction extends ActionSupport implements
 		System.out.println("strEmail == " + strEmail);
 		userData = userProfileService.displayUserProfile(strEmail);
 		strWebsite = userData.getWebsite();
+		System.out.println("strWebsite == " + strWebsite);
 		strProfileViews = userData.getProfileViews() + "";
 		strAge = userData.getAge() + "";
 		strLocation = userData.getLocation();
@@ -175,9 +176,9 @@ public class UserProfileAction extends ActionSupport implements
 		strRealName = userData.getRealName();
 		strSeen = userData.getSeen();
 		strLastSeenDate = userData.getLastSeenDate();
-		strBugUploads = null;
-		strSolutions = null;
-		strComments = null;
+		strBugUploads = "null";
+		strSolutions = "null";
+		strComments = "null";
 		return Constants.SUCCESS;
 	}
 
@@ -185,6 +186,7 @@ public class UserProfileAction extends ActionSupport implements
 		Map<String, String> map = userProfileService.submitUserProfile(VerifyUser.getNowUserID(request),
 				strWebsite, strLocation, strRealName,
 				(Integer.parseInt(strAge)));
+		request.getSession().setAttribute("realname", strRealName);
 		return Constants.SUCCESS;
 	}
 

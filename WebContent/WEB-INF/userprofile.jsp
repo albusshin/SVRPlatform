@@ -1,6 +1,6 @@
 <%@page import="com.SVRPlatform.Utils.VerifyUser"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	import="org.apache.commons.codec.digest.DigestUtils"
+	import="org.apache.commons.codec.digest.DigestUtils,com.SVRPlatform.Utils.*"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -34,7 +34,7 @@
 			if (hash!=null){
 				hash = DigestUtils.md5Hex(hash.trim().toLowerCase());
 			}
-			out.println("<img class=\"userprofiledigestavatar\" src=\"http://www.gravatar.com/avatar/\">"+hash);
+			out.println("<img class=\"userprofiledigestavatar\" src=\"http://www.gravatar.com/avatar/"+hash+"?s=200\">");
         	%>
                 <table class="userprofiledigesttable">
                 <tr>
@@ -46,11 +46,17 @@
                   <p>Real Name</p>
                   <p>Age</p></td>
                 <td class="userprofiledigestright">
-                	<p id="website"> ${strWebsite}</p>
+                	<p id="website"> ${strWebsite}
                 	<%
-                	if (VerifyUser.getNowUser(request).equals(strEmail)){
-                		out.println("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                	String strWebsite = (String) request.getAttribute("strWebsite");
+					System.out.println("strWebsite == " + strWebsite);
+					System.out.println("strEmail == " + strEmail);
+					String nowUser = VerifyUser.getNowUser(request);
+					System.out.println("nowUser == " + nowUser);
+                	if (nowUser!=null && nowUser.equals(strEmail)){
+                		out.println("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 						out.println("<a align='center' onclick=\"document.getElementById('modifyuserprofile').setAttribute('style', 'display:block')\" class=\"edit-button\" href=\"javascript:;\" >Edit Profile</a>");
+						out.println("</p>");
                 	}
                 	%>
                     <p id="location"> ${strLocation}</p>
@@ -118,7 +124,7 @@
         </table>
     </div>
     <div id="modifyuserprofile" style="display:none">
-            	<form id="userprofilemodifyform" action="profile_submit" method="post">
+            	<form id="userprofilemodifyform" action="userprofile_submit?strEmail=${strEmail }" method="post">
                     <table class="modifyuserprofiletable">
                         <tr>
                             <td class="modifyprofiletkey">

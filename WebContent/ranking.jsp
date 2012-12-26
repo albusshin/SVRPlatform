@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Activities - SVRPlatform</title>
+	<title>Ranking - SVRPlatform</title>
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js"></script>
 </head>
@@ -26,15 +26,32 @@
                 <ul>
                 	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp </li>
                     <li><a href="home.jsp"><image src="images/logo.png" width="54px" margin="10px"></image>MY HOME</a></li>
-                    <li><a href="ranking.jsp">RANKING</a></li>
-                    <li><a href="javascript:;">ACTIVITIES</a></li>
+                    <li><a href="javascript:;">RANKING</a></li>
+                    <li><a href="activities.jsp">ACTIVITIES</a></li>
                 </ul>
             </div>
         <hr/>
+		Home page. <br>
+		大家加油编程啊！<br>
+		<a href="TrySubmitBug">上传bug试试。</a><br>
 		<br>
-		<p>目前有如下活动：
-		<p>1. 踢Carry Zhu 两脚
-		<p>2. 踹Carry Zhu 两脚
+		<a href="bugpage?strBugNumber=SVRB-2012-00000023">23号bug。</a><br>
+		<br>
+		<a href="displaycomments?strBugNumber=SVRB-2012-00000023&strNowPage=1">23号bug的comments.</a><br>
+		<br>
+		<a href="displaysolutions?strBugNumber=SVRB-2012-00000023&strNowPage=1#official">23号bug的solutions.</a>
+		<br>
+		<p>你的userID是：
+		<%
+		out.println(VerifyUser.getNowUserID(request));
+		
+		%>
+		</p>
+		<p>你的useremail是：
+		<%
+		
+		out.println(VerifyUser.getNowUser(request));
+		%>
 	</div>
     <jsp:include page="/footer.jsp" flush="true"/>
 </body>

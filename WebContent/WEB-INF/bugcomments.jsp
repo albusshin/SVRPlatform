@@ -112,7 +112,7 @@ else
 			"			src='http://www.gravatar.com/avatar/"+	 hash + "'>"+
 			"		<div class='commentfooterauthor'>"+
 			"			<div class='commentfooterauthorname'>"+
-			"				<a href='#' class='msblack20'>"+commentData.get(i).getRealname()+"</a>"+
+			"				<a href=\"userprofile_display?strEmail="+commentData.get(i).getEmail()+"\" class='msblack20'>"+commentData.get(i).getRealname()+"</a>"+
 			"			</div>"+
 			"			<div class='commentfooterauthorcredit'>Credits: "+ commentData.get(i).getCredits() +"</div>"+
 			"		</div>"+
