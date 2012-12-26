@@ -163,6 +163,7 @@ public class UserProfileAction extends ActionSupport implements
 	}
 
 	public String display() {
+		System.out.println("strEmail == " + strEmail);
 		userData = userProfileService.displayUserProfile(strEmail);
 		strWebsite = userData.getWebsite();
 		strProfileViews = userData.getProfileViews() + "";

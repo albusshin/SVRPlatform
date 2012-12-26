@@ -25,6 +25,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 	public UserData displayUserProfile(String email) {
 		// TODO Auto-generated method stub
 		User user = (User) this.userDAO.getUserByEmail(email);
+		System.out.println("email == " + email);
 		return displayUserProfile(user);
 	}
 
@@ -63,6 +64,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 	
 	protected UserData displayUserProfile(User user){
 		try{
+			System.out.println("user == " + user);
 			UserData userData = new UserData();
 			userData.setAge(user.getAge());
 			userData.setCredit(user.getCredit());
