@@ -11,7 +11,7 @@ import com.SVRPlatform.data.UserData;
 import com.SVRPlatform.service.UserProfileService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class UserProfileDisplayAction extends ActionSupport implements ServletRequestAware,		//sign up~ register
+public class UserProfileAction extends ActionSupport implements ServletRequestAware,		//sign up~ register
 ServletResponseAware {
 	/**
 	 * 
@@ -21,6 +21,10 @@ ServletResponseAware {
 	HttpServletRequest request;
 	String strRealName;
 	String strEmail;
+	public void setStrEmail(String strEmail) {
+		this.strEmail = strEmail;
+	}
+
 	String strWebsite;
 	String strLocation;
 	String strAge;
@@ -95,6 +99,16 @@ ServletResponseAware {
 	}
 
 	public String execute(){
+		userData = userProfileService.displayUserProfile(strEmail);
+		strWebsite = userData.getWebsite();
+		strProfileViews = userData.getProfileViews() + "";
+		strAge = userData.getAge() + "";
+		strCredits = userData.getCredit() + "";
+		strDate = userData.getMemberFor();
+		strRealName = userData.getRealName();
+		strRoughlySeen = userData.getSeen();
+		strSeen = userData.getSeen();
+		
 		return Constants.SUCCESS;
 	}
 	public String submit(){

@@ -8,9 +8,30 @@ public class UserData {
 	private int credit;
 	private String website;
 	private int age;
+	private String location;
 	private String seen;
 	private String memberFor;
 	private int profileViews;
+	private String registerDate;
+	private String lastSeenDate;
+	public String getRegisterDate() {
+		return registerDate;
+	}
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
+	}
+	public String getLastSeenDate() {
+		return lastSeenDate;
+	}
+	public void setLastSeenDate(String lastseenDate) {
+		this.lastSeenDate = lastseenDate;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
 	public int getUserId() {
 		return userId;
 	}
