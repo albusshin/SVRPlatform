@@ -1,5 +1,9 @@
 package Junit.test.Jingxuan;
 
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,6 +28,7 @@ import com.SVRPlatform.dao.impl.CommentDAOImpl;
 import com.SVRPlatform.dao.impl.HashForPasswordRetrieveDAOImpl;
 import com.SVRPlatform.dao.impl.SoftwareDAOImpl;
 import com.SVRPlatform.dao.impl.SolutionDAOImpl;
+import com.SVRPlatform.data.UserData;
 import com.SVRPlatform.model.Bug;
 import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Solution;
@@ -35,6 +40,7 @@ import com.SVRPlatform.service.SolutionCommentDisplayService;
 import com.SVRPlatform.service.SolutionCommentSubmitService;
 import com.SVRPlatform.service.SolutionSubmitService;
 import com.SVRPlatform.service.SolutionVoteService;
+import com.SVRPlatform.service.UserProfileService;
 import com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl;
 
 public class TestForHibernate {
@@ -55,6 +61,8 @@ public class TestForHibernate {
 	static SolutionCommentSubmitService solutionCommentSubmitService;
 	static SolutionCommentDisplayService solutionCommentDisplayService;
 	
+	static UserProfileService userProfileService;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		ctx = new ClassPathXmlApplicationContext( "applicationContext-hibernate.xml", "applicationContext.xml" );
@@ -74,6 +82,7 @@ public class TestForHibernate {
 		bugWatchService = (BugWatchService) ctx.getBean("bugWatchService");
 		solutionCommentSubmitService = (SolutionCommentSubmitService) ctx.getBean("solutionCommentSubmitService");
 		solutionCommentDisplayService = (SolutionCommentDisplayService) ctx.getBean("solutionCommentDisplayService");
+		userProfileService = (UserProfileService) ctx.getBean("userProfileService");
 	}
 
 	@AfterClass
@@ -88,7 +97,13 @@ public class TestForHibernate {
 
 	@Test
 	public void test() {
-		userDAO.add(new User("1234","fdsafdadddd"));
+//		userDAO.add(new User("1234","fdsafdadddd"));
+		userDAO.getByID(new Integer(6));
+		userDAO.getByID(new Integer(6));
+		userDAO.getByID(new Integer(6));
+		userDAO.getByID(new Integer(6));
+		userDAO.getByID(new Integer(6));
+		
 		
 	}
 	@Test public void test3() {
@@ -226,5 +241,15 @@ public class TestForHibernate {
 	@Test public void testSolutionComment() {
 		solutionCommentSubmitService.commentSubmit(11, "povergoing@gmail.com", "fdsafd");
 		System.out.println(solutionCommentDisplayService.commentsDispalyService(11, 0, 0).getSolutionCommentsData().get(0).getRealname());
+	}
+	@Test public void testUserProfileService() throws Exception{
+		UserData userData = userProfileService.displayUserProfile(6);
+		PropertyDescriptor[] ps = Introspector.getBeanInfo(userData.getClass()).getPropertyDescriptors();
+		for(PropertyDescriptor propertyDescriptor:ps){
+				Method getter = propertyDescriptor.getReadMethod();
+				if(getter != null)
+					System.out.println(propertyDescriptor.getName()+ ":" + getter.invoke(userData));
+		}
+		
 	}
 }
