@@ -24,36 +24,15 @@ public class UserProfileServiceImpl implements UserProfileService {
 	@Override
 	public UserData displayUserProfile(String email) {
 		// TODO Auto-generated method stub
-		return null;
+		User user = (User) this.userDAO.getUserByEmail(email);
+		return displayUserProfile(user);
 	}
 
 	@Override
 	public UserData displayUserProfile(int userId) {
 		// TODO Auto-generated method stub
 		User user = (User) this.userDAO.getByID(new Integer(userId));
-		try{
-			UserData userData = new UserData();
-			userData.setAge(user.getAge());
-			userData.setCredit(user.getCredit());
-			userData.setEmail(user.getEmail());
-			userData.setLastSeenDate(user.getSeen().toString().substring(0, 16));
-			userData.setLocation(user.getLocation());
-			
-			userData.setMemberFor(this.formatDate(user.getDate()));
-			
-			userData.setProfileViews(user.getProfileViews());
-			userData.setRegisterDate(user.getDate().toString().substring(0, 16));
-			userData.setRealName(user.getRealName());
-			
-			userData.setSeen(this.formatDate(user.getSeen()));
-			
-			userData.setUserId(user.getUserId());
-			userData.setWebsite(user.getWebsite());
-			return userData;
-		}catch(Exception e){
-			e.printStackTrace();
-			return null;
-		}
+		return displayUserProfile(user);
 	}
 
 	@Override
@@ -79,6 +58,32 @@ public class UserProfileServiceImpl implements UserProfileService {
 			map.put("stats", "failed");
 		}
 		return map;
+	}
+	
+	protected UserData displayUserProfile(User user){
+		try{
+			UserData userData = new UserData();
+			userData.setAge(user.getAge());
+			userData.setCredit(user.getCredit());
+			userData.setEmail(user.getEmail());
+			userData.setLastSeenDate(user.getSeen().toString().substring(0, 16));
+			userData.setLocation(user.getLocation());
+			
+			userData.setMemberFor(this.formatDate(user.getDate()));
+			
+			userData.setProfileViews(user.getProfileViews());
+			userData.setRegisterDate(user.getDate().toString().substring(0, 16));
+			userData.setRealName(user.getRealName());
+			
+			userData.setSeen(this.formatDate(user.getSeen()));
+			
+			userData.setUserId(user.getUserId());
+			userData.setWebsite(user.getWebsite());
+			return userData;
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	protected String formatDate(Date date){
