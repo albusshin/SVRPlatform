@@ -90,6 +90,10 @@
     	<property name="solutionCommentSubmitService" ref="solutionCommentSubmitService"></property>
     	<property name="solutionCommentDisplayService" ref="solutionCommentDisplayService"></property>
     </bean>
+    
+    <bean id="userProfileAction" scope="prototype" class="com.SVRPlatform.action.UserProfileAction">
+    	<property name="userProfileService" ref="userProfileService"></property>
+    </bean>
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
     	<!-- user service -->
