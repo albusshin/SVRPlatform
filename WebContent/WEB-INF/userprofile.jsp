@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>${strRealName} - SVRPlatform</title>
+	<title>${strRealname} - SVRPlatform</title>
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js"></script>
 </head>
@@ -49,7 +49,7 @@
                     <p id="location"> ${strLocation}</p>
                     <p id="email"> ${strEmail}</p>
                     <p id="realname">${strRealname}</p>
-                    <p id="age">19</p>
+                    <p id="age">${strAge }</p>
                     
                 </td>
                 </tr>
