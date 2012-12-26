@@ -97,6 +97,9 @@ ServletResponseAware {
 	public String execute(){
 		return Constants.SUCCESS;
 	}
+	public String submit(){
+		return Constants.SUCCESS;
+	}
 	@Override
 	public void setServletResponse(HttpServletResponse arg0) {
 		// TODO Auto-generated method stub

@@ -31,5 +31,5 @@ public interface UserProfileService {
 	 * @param age
 	 * @return Map<´íÎóÖµ, ´íÎóÐÅÏ¢>
 	 */
-	public Map<String, String> submitUserProfile(String website, String location, String realname, int age);
+	public Map<String, String> submitUserProfile(int userID, String website, String location, String realname, int age);
 }
