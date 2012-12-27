@@ -101,7 +101,8 @@ public class MyHomeServiceImpl implements MyHomeService {
 		ListIterator<Bug> it = bugs.listIterator();
 		Bug bug;
 		BugData bugData;
-		while (it.nextIndex() < bugs.size()/2) {
+		int length = bugs.size()/2 + bugs.size()%2;
+		while (it.hasNext() && it.nextIndex() < length) {
 			bug = it.next();
 			bugData = new BugData();
 			
