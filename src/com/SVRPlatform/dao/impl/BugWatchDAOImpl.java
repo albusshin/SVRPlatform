@@ -67,6 +67,7 @@ public class BugWatchDAOImpl extends BasicDAOImpl implements BugWatchDAO {
 		try{
 			org.hibernate.Criteria c = s.createCriteria(BugWatch.class);
 			c.add(Restrictions.eq("user", user));
+			c.add(Restrictions.eq("voteFlag", new Integer(1)));
 			c.setFetchMode("bug", FetchMode.JOIN);
 			List<Bug> list = new ArrayList<Bug>();
 			List<BugWatch> results = c.list();

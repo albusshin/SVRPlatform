@@ -133,14 +133,14 @@ $(document).ready(function(){
 		data.append('solutionId', solutionId);
 		data.append('content', $('#content'+$(this).attr('id')).val());
 		$.ajax({
-		    url:'submitSolution_edit',
+		    url:'solutioncomments_submitSolutionComment',
 		    type:'POST',
 		    cache: false,
 		    data: data,
 		    contentType: false,    //must declare
 		    processData: false,    //must declare
 		    success:function(data){
-		    	if (data != 'fail') {
+		    	if (data == 'success') {
 		    		showSolutionComment(solutionId);
 		    		$('#content'+solutionId).val('');
 		    	}
@@ -158,11 +158,3 @@ $(document).ready(function(){
 	
 	
 });
-/*
-"<tr class='solutioncomment'>"+
-"<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe'/></td>"+
-"<td class='solutioncommentauthor'>Albus Shin</td>"+
-"<td class='solutioncommentcontent'>"+
-"asfdsadf"+
-"</td>"+
-"</tr>"*/
