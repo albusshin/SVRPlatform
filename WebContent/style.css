@@ -1397,8 +1397,16 @@ td.modifyprofilevalue {
 div.mybugs{
 	height:250px;
 }
-div.mybugsrow,div.watchingbugsrow,div.mysolutionsrow{
-	width:700px;
+div.mybugsrow,div.watchingbugsrow,div.mysolutionsrow,{
+	position:relative;
+	clear:both;
+}
+div#mybugsrow1{
+	left:200px;
+}
+div.anyrowbox{
+	position:relative;
+	width:750px;
 	clear:both;
 }
 div.bugcard{
@@ -1542,3 +1550,22 @@ div.homepagesubtitle{
 	padding-left:10px;
 	margin-bottom:10px;
 }
+div.rightbuttonhomepage{
+	margin-left:5px;
+	opacity:0.9;
+	z-index:7000;
+	height: 0;
+	width: 0;
+	border: 30px solid;
+	border-color: transparent  transparent transparent black;
+	border-radius:2px;
+	float:right;
+}
+div.rightbuttonhomepage:hover{
+	border-color: transparent transparent transparent orange;
+}
+div#mybugsrowrightbutton{
+	position:relative;
+	top:60px;
+	right:60px;
+}	

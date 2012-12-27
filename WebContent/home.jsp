@@ -18,7 +18,13 @@
 		}
 	$(document).ready(function(){
 		loadbackgroundname();
+		$("#mybugsrowrightbutton").click(function(){
+//			$("#mybugsrow1").animate({left:-300}, "slow");
+			$("#mybugsbugcard1").hide(1000);
+			$("#mybugsbugcard3").show(1000);
 	});
+
+});
 	</script>
 </head>
 <body>
@@ -45,8 +51,22 @@
         <hr/>
             <div class="mybugs">
     	<div class="homepagesubtitle">My Bugs</div>
-    	<div class="mybugsrow">
-        	<div class="bugcard">
+	<div class="anyrowbox">
+    	<div class="mybugsrow" id="mybugsrow1">
+        	<div class="bugcard" id="mybugsbugcard1">
+            	<a href="#">SVRB-2012-00000023</a>
+                <div class="digest">
+                This bug is used to do a lot of things
+                    <div class="date">
+                  	Published: 2012-1-1
+                    </div>
+                </div>
+                <a class="comments" href="#">Comments (47)</a>
+                <a class="solutions" href="#">Solutions (3)</a>
+                <a href="#" class="solutionsimg"><img src="images/official.png"/></a>
+                <a href="#" class="solutionsimg"><img src="images/best.png"/></a>
+            </div>
+        	<div class="bugcard" id="mybugsbugcard2">
             	<a href="#">SVRB-2012-00000023</a>
                 <div class="digest">
                 This bug is used to do a lot of things
@@ -59,25 +79,29 @@
                 <a href="#" class="solutionsimg"><img src="images/official.png"/></a>
                 <a href="#" class="solutionsimg"><img src="images/best.png"/></a>
             </div>
-        	<div class="bugcard">
+        	<div class="bugcard" id="mybugsbugcard3" style="display:none">
             	<a href="#">SVRB-2012-00000023</a>
                 <div class="digest">
                 This bug is used to do a lot of things
                     <div class="date">
-                    	Published: 2012-1-1
+                  	Published: 2012-1-1
                     </div>
                 </div>
                 <a class="comments" href="#">Comments (47)</a>
                 <a class="solutions" href="#">Solutions (3)</a>
                 <a href="#" class="solutionsimg"><img src="images/official.png"/></a>
                 <a href="#" class="solutionsimg"><img src="images/best.png"/></a>
-            </div>
      	</div>
+                </div>
+	</div>
+		<div id="mybugsrowrightbutton" class="rightbuttonhomepage">
+		</div>
      </div>
      
     <div class="watchingbugs">
     	<div class="homepagesubtitle">Watching Bugs</div>
-    	<div class="mybugsrow">
+	<div class="anyrowbox">
+    	<div class="watchingbugsrow">
         	<div class="bugcard">
             	<a href="#">SVRB-2012-00000023</a>
                 <div class="digest">
@@ -105,8 +129,9 @@
                 <a href="#" class="solutionsimg"><img src="images/best.png"/></a>
             </div>
      	</div>
-        
-    	<div class="mybugsrow">
+       	</div>
+	<div anyrowbox> 
+    	<div class="watchingbugsrow">
         	<div class="bugcard">
             	<a href="#">SVRB-2012-00000023</a>
                 <div class="digest">
@@ -134,6 +159,7 @@
                 <a href="#" class="solutionsimg"><img src="images/best.png"/></a>
             </div>
      	</div>
+	</div>
      </div>
      <div class="mysolutions">
     	<div class="homepagesubtitle">My Solutions</div>
