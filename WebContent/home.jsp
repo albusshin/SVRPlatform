@@ -18,6 +18,9 @@
 		}
 	$(document).ready(function(){
 		loadbackgroundname();
+		$("#mybugsrowrightbutton").click(function(){
+			$("#mybugsrow1").animate({left:-300}, "slow");
+		});
 	});
 	</script>
 </head>
@@ -45,13 +48,14 @@
         <hr/>
             <div class="mybugs">
     	<div class="homepagesubtitle">My Bugs</div>
-    	<div class="mybugsrow">
+	<div class="anyrowbox">
+    	<div class="mybugsrow" id="mybugsrow1">
         	<div class="bugcard">
             	<a href="#">SVRB-2012-00000023</a>
                 <div class="digest">
                 This bug is used to do a lot of things
                     <div class="date">
-                    	Published: 2012-1-1
+                  	Published: 2012-1-1
                     </div>
                 </div>
                 <a class="comments" href="#">Comments (47)</a>
@@ -73,11 +77,15 @@
                 <a href="#" class="solutionsimg"><img src="images/best.png"/></a>
             </div>
      	</div>
+	</div>
+		<div id="mybugsrowrightbutton" class="rightbuttonhomepage">
+		</div>
      </div>
      
     <div class="watchingbugs">
     	<div class="homepagesubtitle">Watching Bugs</div>
-    	<div class="mybugsrow">
+	<div class="anyrowbox">
+    	<div class="watchingbugsrow">
         	<div class="bugcard">
             	<a href="#">SVRB-2012-00000023</a>
                 <div class="digest">
@@ -105,8 +113,9 @@
                 <a href="#" class="solutionsimg"><img src="images/best.png"/></a>
             </div>
      	</div>
-        
-    	<div class="mybugsrow">
+       	</div>
+	<div anyrowbox> 
+    	<div class="watchingbugsrow">
         	<div class="bugcard">
             	<a href="#">SVRB-2012-00000023</a>
                 <div class="digest">
@@ -134,6 +143,7 @@
                 <a href="#" class="solutionsimg"><img src="images/best.png"/></a>
             </div>
      	</div>
+	</div>
      </div>
      <div class="mysolutions">
     	<div class="homepagesubtitle">My Solutions</div>
