@@ -12,3 +12,5 @@ public interface MyHomeService {
 	public Map<Integer, List<BugData>> getWatchingBugs(int userID);
 	public List<SolutionData> getMySolutions(int userID);
 }
+//BugDAO getByUser(User user )
+//BugWatchDAO getByUser(User user )
