@@ -133,7 +133,7 @@ $(document).ready(function(){
 		data.append('solutionId', solutionId);
 		data.append('content', $('#content'+$(this).attr('id')).val());
 		$.ajax({
-		    url:'solutioncomments_submitSolutionComment',
+		    url:'submitSolution_edit',
 		    type:'POST',
 		    cache: false,
 		    data: data,
@@ -156,25 +156,7 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('textarea[name=\"solutioneditbutton\"]').click(function() {
-		var data = new FormData();
-		data.append('solutionId',$('textarea[name=\"solutionsmodifytext\"]').attr('solutionId'));
-		data.append('content',$('textarea[name=\"solutionsmodifytext\"]').val());
-		$.ajax({
-		    url:'solutionedit',
-		    type:'POST',
-		    cache: false,
-		    data: data,
-		    contentType: false,    //must declare
-		    processData: false,    //must declare
-		    success:function(data){
-	        	alert();
-		    },
-		    error:function(){
-		   		$("#wrongmessage1").attr('style','display:block');
-			}					             
-		});
-	});
+	
 });
 /*
 "<tr class='solutioncomment'>"+

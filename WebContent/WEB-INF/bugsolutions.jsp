@@ -291,7 +291,7 @@ else
             %>
             
             <div id="modifysolution" style="display:none">
-            	<form id="solutionmodifyform" action="" method="post">
+            	<form id="solutionmodifyform" action="submitSolution_edit?strNowPage=${strNowPage} " method="post">
                 	<input type="text" value="${strBugNumber}" style="display:none" name="strBugNumber">
                     <table class="commentssubmittable">
                         <tr>
@@ -300,24 +300,18 @@ else
                             </td>
                             <td class="commentssubmitvalue">
                             <%
-                            out.print("<textarea id=\"commentssubmittext\" name=\"solutionsmodifytext\">");
-                            SolutionData editSolution = null;
+                            out.print("<textarea id=\"commentssubmittext\" name=\"solutionssubmittext\">");
                             for (SolutionData s:solutionData){
                             	if (s.getEmail().equals(VerifyUser.getNowUser(request))){
-                            		editSolution = s;
+                            		out.print(s.getContent());
                             		break;
                             		/*这里需要转义。*/
                             	}
                             }
                             if (officialSolution != null)
 	                            if (officialSolution.getEmail().equals(VerifyUser.getNowUser(request)))
-	                            	editSolution = officialSolution;
-                            if (editSolution != null) {
-                        		out.print(editSolution.getContent());
-                            	out.print("</textarea>");
-                    			out.print("<script>$('textarea[name=\"solutionsmodifytext\"]').attr('solutionId','"+editSolution.getSolutionID()+"')</script>");
-                            }
-                            else out.print("</textarea>");
+	                        		out.print(officialSolution.getContent());
+                            out.print("</textarea>");
                             %>
                             	
                             </td>
@@ -327,7 +321,7 @@ else
                             	
                             </td>
                     	    <td align="right">
-                  			 	<input type="image" name="solutioneditbutton" id="submitbutton" src="images/submitbutton.png" onMouseOver="this.src='images/submitbuttonpressed.png'" onMouseOut="this.src='images/submitbutton.png'">
+                  			 	<input type="image" alt="submit" id="submitbutton" src="images/submitbutton.png" onMouseOver="this.src='images/submitbuttonpressed.png'" onMouseOut="this.src='images/submitbutton.png'">
                             </td>
                         </tr>
                     </table>
