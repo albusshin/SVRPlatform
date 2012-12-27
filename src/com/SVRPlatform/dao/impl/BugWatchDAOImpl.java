@@ -58,4 +58,10 @@ public class BugWatchDAOImpl extends BasicDAOImpl implements BugWatchDAO {
 		}
 	}
 
+	@Override
+	public List<Bug> getByUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

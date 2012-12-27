@@ -9,4 +9,5 @@ import com.SVRPlatform.model.User;
 public interface BugWatchDAO extends basicDAO {
 	public BugWatch getByUserAndBug(User user, Bug bug);
 	public List<BugWatch> getSolutionIdFromSolutionList(List<Bug> bug, User user);
+	public List<Bug> getByUser(User user);
 }
