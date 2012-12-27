@@ -1,5 +1,9 @@
 package com.SVRPlatform.action;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -11,7 +15,7 @@ import com.SVRPlatform.service.SolutionCommentDisplayService;
 import com.SVRPlatform.service.SolutionCommentSubmitService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SolutionComment extends ActionSupport implements ServletRequestAware{
+public class SolutionComment extends ActionSupport implements ServletRequestAware {
 
 	/**
 	 * 
@@ -25,8 +29,14 @@ public class SolutionComment extends ActionSupport implements ServletRequestAwar
 	private String email;
 	private int solutionId;
 	private String content;
+	//for ajax return
+	InputStream inputStream;
 	
+
 	//getters and setters
+	public InputStream getInputStream() {
+		return inputStream;
+	}
 	public String getContent() {
 		return content;
 	}
@@ -67,28 +77,24 @@ public class SolutionComment extends ActionSupport implements ServletRequestAwar
 	}
 	//functions to be executed
 	public String displaySolutionComments(){
-		/*//test input
+		//test input
 		this.solutionId = 11;
 		//test input end
-*/		this.solutionCommentsData = 
+		this.solutionCommentsData = 
 		this.solutionCommentDisplayService.commentsDispalyService(solutionId, 0, 0);
 		return Constants.SUCCESS;
 	}
 	
 	public String submitSolutionComment(){
-		System.out.println("now in submit solution comment method..");
-		System.out.println("solutionId: "+solutionId);
-		System.out.println("email: "+email);
-		System.out.println("content: "+content);
-		this.solutionCommentSubmitService.commentSubmit(solutionId, email, content);
-		
-		return Constants.SUCCESS;
+		Map<String, String> map = this.solutionCommentSubmitService.commentSubmit(solutionId, email, content);
+		if(map.get("status").equals("success"))
+			inputStream = new ByteArrayInputStream(Constants.SUCCESS.getBytes());
+		else
+			inputStream = new ByteArrayInputStream(Constants.FAIL.getBytes());
+		return "submit";
 	}
 	@Override
-	public void setServletRequest(HttpServletRequest arg0) {
-		// TODO Auto-generated method stub
-		this.email = VerifyUser.getNowUser(arg0);
+	public void setServletRequest(HttpServletRequest request) {
+		this.email = VerifyUser.getNowUser(request);
 	}
-	
-
 }

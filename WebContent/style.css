@@ -502,8 +502,9 @@ table.commentssubmittable {
 	margin: auto;
 	font-size: 22px;
 	line-height: 2.0;
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-style: italic;
+	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+	font-variant: small-caps;
+	line-height: 14px;
 }
 
 td.commentssubmitkey {
@@ -1334,7 +1335,6 @@ div#upbar {
 
 
 
-
 #modifysolution{
 	opacity:0.95;
 	position: fixed;
@@ -1350,3 +1350,222 @@ div#upbar {
 	border-radius:4px;
 	box-shadow: 0px 0px 8px #000;
 }
+#modifyuserprofile{
+	opacity:0.95;
+	position: fixed;
+	width:500px;
+	height:500px;
+	background-image: -moz-linear-gradient(#111111, #222222);
+	background-image: -webkit-linear-gradient(#111111, #111111);
+	background-image: linear-gradient(#111111, #111111);
+	background-repeat: repeat-x;
+	top: 300px;
+	z-index: 6999;
+	border: 1px solid #CCC;
+	border-radius:4px;
+	box-shadow: 0px 0px 8px #000;
+}
+.modifyuserprofileinput{
+	border: 1px solid #CCC;
+	margin:20px;
+	padding:5px;
+}
+table.modifyuserprofiletable {
+	padding: 20px;
+	margin: auto;
+	font-size: 22px;
+	line-height: 2.0;
+	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+	color:#FFF;
+	font-variant: small-caps;
+	line-height: 14px;
+}
+
+td.modifyprofiletkey {
+	padding-top: 10px;
+	text-shadow: grey 1px 1px 1px;
+	text-align: left;
+	padding-right: 30px;
+	vertical-align: middle;
+}
+
+td.modifyprofilevalue {
+	color:#fff;
+	padding-top: 10px;
+}
+
+div.mybugs{
+	height:250px;
+}
+div.mybugsrow,div.watchingbugsrow,div.mysolutionsrow,{
+	position:relative;
+	clear:both;
+}
+div#mybugsrow1{
+	left:200px;
+}
+div.anyrowbox{
+	position:relative;
+	width:750px;
+	clear:both;
+}
+div.bugcard{
+	opacity:0.9;
+	background-image: -moz-linear-gradient(#111111, #222222);
+	background-image: -webkit-linear-gradient(#111111, #111111);
+	background-image: linear-gradient(#111111, #111111);
+	background-repeat: repeat-x;
+	padding-top:10px;
+	padding-bottom::10px;
+	padding-left:25px;
+	padding-right:25px;
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:250px;
+	height:150px;
+	float:left;
+	border: 1px solid #39F;
+	border-radius:4px;
+	box-shadow: 0px 0px 8px #000;
+}
+
+.bugcard a{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-weight:bold;
+	font-size:16px;
+	color:#fff;
+	text-shadow: #CCC 1px 1px 1px;
+}
+.bugcard div.digest{
+	opacity:0.9;
+	height:80px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 4px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 12px;
+	line-height: 1.6;
+	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+	text-shadow: grey 1px 1px 1px;
+	background: #FC9;
+}
+.bugcard a.solutions,a.comments{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-size:12px;
+	font-weight:400;
+	color:#fff;
+	text-shadow:none;
+}
+.bugcard a.solutionsimg{
+	border-bottom:none;
+}
+.bugcard img{
+	height:30px;
+}
+div.watchingbugs{
+	height:420px;
+}
+div.mysolutions{
+	height:250px;
+}
+div.solutioncard{
+	opacity:0.9;
+	background-image: -moz-linear-gradient(#111111, #222222);
+	background-image: -webkit-linear-gradient(#111111, #111111);
+	background-image: linear-gradient(#111111, #111111);
+	background-repeat: repeat-x;
+	padding-top:10px;
+	padding-bottom::10px;
+	padding-left:25px;
+	padding-right:25px;
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:250px;
+	height:140px;
+	float:left;
+	border: 1px solid #39F;
+	border-radius:4px;
+	box-shadow: 0px 0px 8px #000;
+}
+.solutioncard a{
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-weight:bold;
+	font-size:16px;
+	color:#fff;
+	text-shadow: #CCC 1px 1px 1px;
+}
+.solutioncard div.digest{
+	margin-top:10px;
+	float:left;
+	width:180px;
+	opacity:0.9;
+	height:80px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 4px;
+	padding-left: 5px;
+	font-size: 12px;
+	line-height: 1.6;
+	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+	text-shadow: grey 1px 1px 1px;
+	background: #fff;
+}
+.solutioncard a.solutionsimg{
+	border-bottom:none;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-size:12px;
+	font-weight:400;
+	color:#fff;
+	text-shadow:none;
+	vertical-align:middle;
+}
+.solutioncard div.imgbar{
+	margin-top:10px;
+	width:60px;
+	float:right;
+}
+.solutioncard img{
+	height:30px;
+}
+div.homepagesubtitle{
+	opacity:0.9;
+	background-image: -moz-linear-gradient(#111111, #222222);
+	background-image: -webkit-linear-gradient(#111111, #111111);
+	background-image: linear-gradient(#111111, #111111);
+	color:#FFF;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 4px;
+	width:200px;
+	height:30px;
+	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
+	font-size:16px;
+	font-weight:bold;
+	text-shadow: grey 1px 1px 1px;
+	padding-left:10px;
+	margin-bottom:10px;
+}
+div.rightbuttonhomepage{
+	margin-left:5px;
+	opacity:0.9;
+	z-index:7000;
+	height: 0;
+	width: 0;
+	border: 30px solid;
+	border-color: transparent  transparent transparent black;
+	border-radius:2px;
+	float:right;
+}
+div.rightbuttonhomepage:hover{
+	border-color: transparent transparent transparent orange;
+}
+div#mybugsrowrightbutton{
+	position:relative;
+	top:60px;
+	right:60px;
+}	

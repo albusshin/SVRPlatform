@@ -90,6 +90,10 @@
     	<property name="solutionCommentSubmitService" ref="solutionCommentSubmitService"></property>
     	<property name="solutionCommentDisplayService" ref="solutionCommentDisplayService"></property>
     </bean>
+    
+    <bean id="userProfileAction" scope="prototype" class="com.SVRPlatform.action.UserProfileAction">
+    	<property name="userProfileService" ref="userProfileService"></property>
+    </bean>
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
     	<!-- user service -->
@@ -104,6 +108,10 @@
 	    <bean id="passwordRetrieveService" class="com.SVRPlatform.service.impl.PasswordRetrieveServiceImpl">
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="hashForPasswordRetrieveDAO" ref="hashForPasswordRetrieveDAO"></property>
+	    </bean>
+	    
+	    <bean id="userProfileService" class="com.SVRPlatform.service.impl.UserProfileServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
 	    </bean>
 	    <!-- ************ -->
 	    

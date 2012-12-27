@@ -1,3 +1,4 @@
+<%@page import="com.SVRPlatform.Utils.VerifyUser"%>
 <%@ page language="java"
 	import="org.apache.commons.codec.digest.DigestUtils"
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
@@ -153,7 +154,7 @@ ${sessionScope.realname}
 				+ "                    <img class='seperator' src='images/seperator.png' align='middle'/>"
 				+ "                    <div id='userbarcredit' onMouseOver=\"document.getElementById('credittipsy').style.display='block'\" onmouseout=\"document.getElementById('credittipsy').style.display='none'\"> "+ request.getSession().getValue("credit") +"</div>"
 				+ "                    <img class='seperator' src='images/seperator.png' align='middle'/>"
-				+ "                    <img id='userbarusericon' src='images/usericon.png' onmouseover=\"this.src='images/usericonpressed.png';document.getElementById('usericontipsy').style.display='block'\" onmouseout=\"this.src='images/usericon.png';document.getElementById('usericontipsy').style.display='none'\""
+				+ "                    <img id='userbarusericon' src='images/usericon.png' onmouseover=\"this.src='images/usericonpressed.png';document.getElementById('usericontipsy').style.display='block'\" onmouseout=\"this.src='images/usericon.png';document.getElementById('usericontipsy').style.display='none'\" onclick=\"window.location.href='userprofile_display?strEmail="+VerifyUser.getNowUser(request)+"';\""
 				+ "                    onclick=\"javascript:;\"/>"
 				+ "                    <img id='userbarwatching' src='images/watching.png' onmouseover=\"this.src='images/watchingpressed.png';document.getElementById('watchingtipsy').style.display='block'\" onmouseout=\"this.src='images/watching.png';document.getElementById('watchingtipsy').style.display='none'\""
 				+ "                    onclick=\"javascript:;\"/>"

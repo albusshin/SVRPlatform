@@ -4,6 +4,7 @@
 <!-- Generated 2012-11-30 16:34:59 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.SVRPlatform.model.Software" table="software" catalog="svrplatform_database">
+        <cache usage="read-write"/>
         <id name="softwareId" type="java.lang.Integer">
             <column name="softwareID" />
             <generator class="identity" />

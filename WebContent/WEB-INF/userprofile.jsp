@@ -1,5 +1,6 @@
+<%@page import="com.SVRPlatform.Utils.VerifyUser"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	import="org.apache.commons.codec.digest.DigestUtils"
+	import="org.apache.commons.codec.digest.DigestUtils,com.SVRPlatform.Utils.*"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -33,7 +34,7 @@
 			if (hash!=null){
 				hash = DigestUtils.md5Hex(hash.trim().toLowerCase());
 			}
-			out.println("<img class=\"userprofiledigestavatar\" src=\"http://www.gravatar.com/avatar/\">"+hash);
+			out.println("<img class=\"userprofiledigestavatar\" src=\"http://www.gravatar.com/avatar/"+hash+"?s=200\">");
         	%>
                 <table class="userprofiledigesttable">
                 <tr>
@@ -45,11 +46,23 @@
                   <p>Real Name</p>
                   <p>Age</p></td>
                 <td class="userprofiledigestright">
-                	<p id="website"> ${strWebsite}</p>
+                	<p id="website"> ${strWebsite}
+                	<%
+                	String strWebsite = (String) request.getAttribute("strWebsite");
+					System.out.println("strWebsite == " + strWebsite);
+					System.out.println("strEmail == " + strEmail);
+					String nowUser = VerifyUser.getNowUser(request);
+					System.out.println("nowUser == " + nowUser);
+                	if (nowUser!=null && nowUser.equals(strEmail)){
+                		out.println("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+						out.println("<a align='center' onclick=\"document.getElementById('modifyuserprofile').setAttribute('style', 'display:block')\" class=\"edit-button\" href=\"javascript:;\" >Edit Profile</a>");
+						out.println("</p>");
+                	}
+                	%>
                     <p id="location"> ${strLocation}</p>
                     <p id="email"> ${strEmail}</p>
-                    <p id="realname">${strRealname}</p>
-                    <p id="age">19</p>
+                    <p id="realname">${strRealName}</p>
+                    <p id="age">${strAge }</p>
                     
                 </td>
                 </tr>
@@ -59,8 +72,8 @@
                 <td class="userprofiledigestmiddle"><p>Member for</p>
                   <p>Seen</p></td>
                 <td class="userprofiledigestright">
-                	<p id="memberfor" title="Joint: ${strDate }">2 days</p>
-                	<p id="seen" title="${strSeen } ">${strRoughlySeen }</p>
+                	<p id="memberfor" title="Joint: ${strRegisterDate }">${strMemberFor }</p>
+                	<p id="seen" title="Last Login: ${strLastSeenDate } ">${strSeen }</p>
                 </td>
                 </tr>
                 <tr>
@@ -110,6 +123,53 @@
             </tr>
         </table>
     </div>
+    <div id="modifyuserprofile" style="display:none">
+            	<form id="userprofilemodifyform" action="userprofile_submit?strEmail=${strEmail }" method="post">
+                    <table class="modifyuserprofiletable">
+                        <tr>
+                            <td class="modifyprofiletkey">
+                            	Website
+                            </td>
+                            <td class="modifyprofilevalue">
+                            	<input class="modifyuserprofileinput" type="text" name="strWebsite" value="${strWebsite }"/>  
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="modifyprofiletkey">
+                            	Location
+                            </td>
+                            <td class="modifyprofilevalue">
+                            	<input class="modifyuserprofileinput" type="text" name="strLocation" value="${strLocation }"/>  
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="modifyprofiletkey">
+                            	Real Name
+                            </td>
+                            <td class="modifyprofilevalue">
+                            	<input class="modifyuserprofileinput" type="text" name="strRealName" value="${strRealName }"/>  
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="modifyprofiletkey">
+                            	Age
+                            </td>
+                            <td class="modifyprofilevalue">
+                            	<input class="modifyuserprofileinput" type="text" name="strAge" value="${strAge }"/>  
+                            </td>
+                        </tr>
+                        <tr>
+                        	<td>&nbsp;
+                            	
+                            </td>
+                    	    <td align="right">
+                  			 	<input type="image" alt="submit" id="submitbutton" src="images/submitbutton.png" onMouseOver="this.src='images/submitbuttonpressed.png'" onMouseOut="this.src='images/submitbutton.png'" onClick="document.getElementById('modifysolution').style='display:block'">
+                            </td>
+                        </tr>
+                    </table>
+                    
+                </form>   
+            </div>
     </div>
     
 	<jsp:include page="/footer.jsp" flush="true" />

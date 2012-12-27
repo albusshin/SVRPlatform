@@ -48,6 +48,11 @@ public class RegisterServiceImpl implements RegisterService{
 			user.setDate(new Date());
 			user.setCredit(0);
 			user.setRealName(email.split("@")[0]);
+			user.setAge(0);
+			user.setSeen(new Date());
+			user.setProfileViews(0);
+			user.setLocation("");
+			user.setWebsite("");
 			userDAO.add(user);
 			
 			response.credit = 0;

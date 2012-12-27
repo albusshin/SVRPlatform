@@ -71,6 +71,7 @@
         
         <action name="solutioncomments_*" class="solutionComment" method="{1}">
         	<result name="success">/WEB-INF/SolutionComments.jsp</result>
+        	<result name="submit" type="stream"/>
         </action>
     </package>
 </struts>
