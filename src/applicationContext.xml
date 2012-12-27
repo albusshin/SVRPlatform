@@ -166,6 +166,7 @@
 	    	<property name="solutionCommentDAO" ref="solutionCommentDAO"></property>
 	    </bean>
 	    <!-- *************** -->
+	    
 	    <!-- vote service -->
 	    <bean id="solutionVoteService" class="com.SVRPlatform.service.impl.SolutionVoteServiceImpl">
 	    	<property name="userDAO" ref="userDAO"></property>
@@ -174,6 +175,16 @@
 	    <bean id="bugWatchService" class="com.SVRPlatform.service.impl.BugWatchServiceImpl">
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="bugDAO" ref="bugDAO"></property>
+	    </bean>
+	    <!-- *************** -->
+	    
+	    <!-- my home service -->
+	    <bean id="myHomeService" class="com.SVRPlatform.service.impl.MyHomeServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="bugDAO" ref="bugDAO"></property>
+	    	<property name="commentDAO" ref="commentDAO"></property>
+	    	<property name="solutionDAO" ref="solutionDAO"></property>
+	    	<property name="bugWatchDAO" ref="bugWatchDAO"></property>
 	    </bean>
 	<!-- ************************************************************************ -->
     <!-- DAOImpls beans definition -->
