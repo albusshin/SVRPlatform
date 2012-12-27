@@ -3,7 +3,6 @@ package com.SVRPlatform.model;
 // Generated 2012-11-30 16:34:58 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -27,11 +26,11 @@ public class User implements java.io.Serializable {
 	private Integer age;
 	private Date seen;
 	private Integer profileViews;
-	private Set solutions = new HashSet(0);
-	private Set hasBugs = new HashSet(0);
-	private Set comments = new HashSet(0);
+//	private Set solutions = new HashSet(0);
+//	private Set hasBugs = new HashSet(0);
+//	private Set comments = new HashSet(0);
 	private Usertype usertype;
-	private Set watchingBugs = new HashSet(0);
+//	private Set watchingBugs = new HashSet(0);
 	
 	private String cookieHash;
 	private Date validDeadline;
@@ -58,11 +57,11 @@ public class User implements java.io.Serializable {
 		this.age = age;
 		this.seen = seen;
 		this.profileViews = profileViews;
-		this.solutions = solutions;
-		this.hasBugs = bugs;
-		this.comments = comments;
+//		this.solutions = solutions;
+//		this.hasBugs = bugs;
+//		this.comments = comments;
 		this.usertype = usertype;
-		this.watchingBugs = watchingBugs;
+//		this.watchingBugs = watchingBugs;
 	}
 
 	public Integer getUserId() {
@@ -153,29 +152,29 @@ public class User implements java.io.Serializable {
 		this.profileViews = profileViews;
 	}
 
-	public Set getSolutions() {
-		return this.solutions;
-	}
-
-	public void setSolutions(Set solutions) {
-		this.solutions = solutions;
-	}
-
-	public Set getHasBugs() {
-		return this.hasBugs;
-	}
-
-	public void setHasBugs(Set hasBugs) {
-		this.hasBugs = hasBugs;
-	}
-
-	public Set getComments() {
-		return this.comments;
-	}
-
-	public void setComments(Set comments) {
-		this.comments = comments;
-	}
+//	public Set getSolutions() {
+//		return this.solutions;
+//	}
+//
+//	public void setSolutions(Set solutions) {
+//		this.solutions = solutions;
+//	}
+//
+//	public Set getHasBugs() {
+//		return this.hasBugs;
+//	}
+//
+//	public void setHasBugs(Set hasBugs) {
+//		this.hasBugs = hasBugs;
+//	}
+//
+//	public Set getComments() {
+//		return this.comments;
+//	}
+//
+//	public void setComments(Set comments) {
+//		this.comments = comments;
+//	}
 
 	public Usertype getUsertype() {
 		return this.usertype;
@@ -185,13 +184,13 @@ public class User implements java.io.Serializable {
 		this.usertype = usertype;
 	}
 
-	public Set getWatchingBugs() {
-		return this.watchingBugs;
-	}
-
-	public void setWatchingBugs(Set watchingBugs) {
-		this.watchingBugs = watchingBugs;
-	}
+//	public Set getWatchingBugs() {
+//		return this.watchingBugs;
+//	}
+//
+//	public void setWatchingBugs(Set watchingBugs) {
+//		this.watchingBugs = watchingBugs;
+//	}
 
 	public String getCookieHash() {
 		return cookieHash;

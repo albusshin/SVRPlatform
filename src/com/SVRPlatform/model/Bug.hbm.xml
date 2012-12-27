@@ -73,14 +73,14 @@
             </key>
             <one-to-many class="com.SVRPlatform.model.Solution" />
         </set-->
-        <set name="users" table="watching" inverse="false" lazy="true" fetch="select">
+        <!--set name="users" table="watching" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="bugID" not-null="true" />
             </key>
             <many-to-many entity-name="com.SVRPlatform.model.User">
                 <column name="userID" not-null="true" />
             </many-to-many>
-        </set>
+        </set-->
         <!-- set name="comments" table="comment" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="bugID" />

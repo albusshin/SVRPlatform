@@ -3,7 +3,6 @@ package com.SVRPlatform.model;
 // Generated 2012-11-30 16:34:58 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -34,7 +33,7 @@ public class Bug implements java.io.Serializable {
 	private Float score;
 	private String language;
 	private String bugNumber;
-	private Ranking ranking;
+	//private Ranking ranking;
 	private Integer up;
 	private Integer down;
 
@@ -54,9 +53,9 @@ public class Bug implements java.io.Serializable {
 		this.down = down;
 	}
 
-	private Set solutions = new HashSet(0);
-	private Set users = new HashSet(0);
-	private Set comments = new HashSet(0);
+//	private Set solutions = new HashSet(0);
+//	private Set users = new HashSet(0);
+//	private Set comments = new HashSet(0);
 
 	public Bug() {
 	}
@@ -84,10 +83,10 @@ public class Bug implements java.io.Serializable {
 		this.score = score;
 		this.language = language;
 		this.bugNumber = bugNumber;
-		this.ranking = ranking;
-		this.solutions = solutions;
-		this.users = users;
-		this.comments = comments;
+		//this.ranking = ranking;
+//		this.solutions = solutions;
+//		this.users = users;
+//		this.comments = comments;
 	}
 
 	public Integer getBugId() {
@@ -234,36 +233,36 @@ public class Bug implements java.io.Serializable {
 		this.bugNumber = bugNumber;
 	}
 
-	public Ranking getRanking() {
-		return this.ranking;
-	}
+//	public Ranking getRanking() {
+//		return this.ranking;
+//	}
+//
+//	public void setRanking(Ranking ranking) {
+//		this.ranking = ranking;
+//	}
 
-	public void setRanking(Ranking ranking) {
-		this.ranking = ranking;
-	}
-
-	public Set getSolutions() {
-		return this.solutions;
-	}
-
-	public void setSolutions(Set solutions) {
-		this.solutions = solutions;
-	}
-
-	public Set getUsers() {
-		return this.users;
-	}
-
-	public void setUsers(Set users) {
-		this.users = users;
-	}
-
-	public Set getComments() {
-		return this.comments;
-	}
-
-	public void setComments(Set comments) {
-		this.comments = comments;
-	}
+//	public Set getSolutions() {
+//		return this.solutions;
+//	}
+//
+//	public void setSolutions(Set solutions) {
+//		this.solutions = solutions;
+//	}
+//
+//	public Set getUsers() {
+//		return this.users;
+//	}
+//
+//	public void setUsers(Set users) {
+//		this.users = users;
+//	}
+//
+//	public Set getComments() {
+//		return this.comments;
+//	}
+//
+//	public void setComments(Set comments) {
+//		this.comments = comments;
+//	}
 
 }
