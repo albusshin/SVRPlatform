@@ -121,6 +121,8 @@ public class DisplaySolutions extends ActionSupport implements
 		if (nowPage == 1) {
 			officialSolution = solutionsDisplayService
 					.officialSolutionDisplayService(userID, strBugNumber);
+			System.out.println(userID);
+			System.out.println(strBugNumber);
 
 			// if no official solution exists
 			// 我改变主意了，所以下面这个注释掉。。

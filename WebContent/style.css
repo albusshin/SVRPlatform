@@ -1344,7 +1344,7 @@ div#upbar {
 	background-image: -webkit-linear-gradient(#eeeeee, #eeeeee);
 	background-image: linear-gradient(#eeeeee, #eeeeee);
 	background-repeat: repeat-x;
-	top: 300px;
+	top: 100px;
 	z-index: 6999;
 	border: 1px solid #CCC;
 	border-radius:4px;

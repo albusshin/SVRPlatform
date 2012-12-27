@@ -117,7 +117,8 @@ public class SubmitSolution extends ActionSupport implements ServletRequestAware
 			return Constants.NOTSIGNEDIN;
 		}
 		String email = (String) request.getSession().getAttribute("email");
-		//System.out.println("Bug number: "+strBugNumber);
+		System.out.println("Bug number: "+strBugNumber);
+		System.out.println("solution content "+ solutionssubmittext);
 		Map<String, String> map = solutionSubmitService.solutionEdit(strBugNumber, email, solutionssubmittext);
 		if (map.get("status").equals("fail")) {
 			message = "There's something wrong with your inputs, please check:\n";

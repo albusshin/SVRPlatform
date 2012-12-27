@@ -77,9 +77,6 @@ public class SolutionComment extends ActionSupport implements ServletRequestAwar
 	}
 	//functions to be executed
 	public String displaySolutionComments(){
-		//test input
-		this.solutionId = 11;
-		//test input end
 		this.solutionCommentsData = 
 		this.solutionCommentDisplayService.commentsDispalyService(solutionId, 0, 0);
 		return Constants.SUCCESS;
