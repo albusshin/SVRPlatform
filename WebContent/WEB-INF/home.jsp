@@ -214,7 +214,12 @@
 						</div>
 						<br>
 						
-						<div id="mybugsrightbutton" class="rightbuttonhomepage">
+						<div id="mybugsrightbutton" class="rightbuttonhomepage"
+						<%
+						if (lsMyBugs.size() < 2)
+							out.print("style='opacity:0'");
+						%>
+						>
 						</div>
 				    </div>
 					</div>
@@ -256,7 +261,12 @@
 							</div>
 							<br>
 							
-							<div id="watchingbugsrightbutton1" class="rightbuttonhomepage">
+							<div id="watchingbugsrightbutton1" class="rightbuttonhomepage"
+						<%
+						if (lsWatchingBugs1.size() < 2)
+							out.print("style='opacity:0'");
+						%>
+						>
 						</div>
 		   			</div>
 				    </div>
@@ -294,7 +304,12 @@
 						<div id="watchingbugsleftbutton2" class="leftbuttonhomepage" style="opacity:0">
 						</div>
 						<br>
-						<div id="watchingbugsrightbutton2" class="rightbuttonhomepage">
+						<div id="watchingbugsrightbutton2" class="rightbuttonhomepage"
+						<%
+						if (lsWatchingBugs2.size() < 2)
+							out.print("style='opacity:0'");
+						%>
+						>
 					</div>
 		    </div>
      </div>
@@ -332,7 +347,12 @@
 					<div id="mysolutionsleftbutton" class="leftbuttonhomepage" style="opacity:0">
 					</div>
 					<br>
-					<div id="mysolutionsrightbutton" class="rightbuttonhomepage">
+					<div id="mysolutionsrightbutton" class="rightbuttonhomepage"
+						<%
+						if (lsMySolutions.size() < 2)
+							out.print("style='opacity:0'");
+						%>
+						>
 				</div>
 	     	</div>
      </div>
