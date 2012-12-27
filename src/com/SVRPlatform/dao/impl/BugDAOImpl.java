@@ -33,6 +33,7 @@ public class BugDAOImpl extends BasicDAOImpl implements BugDAO{
 			if(b==null)
 				return b;
 			b.getUser().getCredit();
+			b.getSoftware().getName();
 			return b;
 		} finally {
 			if(s != null)
