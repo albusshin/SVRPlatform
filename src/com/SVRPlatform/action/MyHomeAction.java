@@ -44,6 +44,9 @@ ServletRequestAware, ServletResponseAware {
 		this.myHomeService = myHomeService;
 	}
 	public String execute(){
+		if (VerifyUser.getNowUser(request) == null){
+			return Constants.FAIL;
+		}
 		int userID = VerifyUser.getNowUserID(request);
 		lsMyBugs = myHomeService.getMyBugs(userID);
 		lsWatchingBugs1 = myHomeService.getWatchingBugs(userID).get(1);

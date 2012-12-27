@@ -43,89 +43,113 @@
 	$(document).ready(function(){
 		loadbackgroundname();
 		$("#mybugsrightbutton").click(function(){
-			$("#mybugsbugcard" + nowmybugsbugcard).hide(1000);
-			$("#mybugsbugcard" + nextmybugsbugcard).show(1000);
+			if (nextmybugsbugcard == (${myBugsAmount }+1)){
+				return;
+			}
+			$("#mybugsbugcard" + nowmybugsbugcard).hide(200);
+			$("#mybugsbugcard" + nextmybugsbugcard).show(200);
 			if (nextmybugsbugcard == ("${myBugsAmount }")){
-				$("#mybugsrightbutton").hide(1000);
+				$("#mybugsrightbutton").animate({opacity:0}, "slow");
 			}
 			nowmybugsbugcard++;
 			nextmybugsbugcard++;
-			$("#mybugsleftbutton").show(1000);
+			$("#mybugsleftbutton").animate({opacity:0.9}, "slow")
 		});
 		$("#mybugsleftbutton").click(function(){
+			if (nowmybugsbugcard == 0){
+				return;
+			}
 			nowmybugsbugcard--;
 			nextmybugsbugcard--;
-			$("#mybugsbugcard" + nowmybugsbugcard).show(1000);
-			$("#mybugsbugcard" + nextmybugsbugcard).hide(1000);
+			$("#mybugsbugcard" + nowmybugsbugcard).show(200);
+			$("#mybugsbugcard" + nextmybugsbugcard).hide(200);
 			if (nowmybugsbugcard == 0){
-				$("#mybugsleftbutton").hide(1000);
+				$("#mybugsleftbutton").animate({opacity:0}, "slow");
 			}
-			$("#mybugsrightbutton").show(1000);
+			$("#mybugsrightbutton").animate({opacity:0.9}, "slow")
 		});
 		
 		
 		$("#watchingbugsrightbutton1").click(function(){
-			$("#watchingbugsbugcard1" + nowwatchingbugsbugcard1).hide(1000);
-			$("#watchingbugsbugcard1" + nextwatchingbugsbugcard1).show(1000);
-			if (nextwatchingbugsbugcard1 == (document.getElementById("watchingbugsamount1").getAttribute("amount"))){
-				$("#watchingbugsrightbutton1").hide(1000);
+			if (nextwatchingbugsbugcard1 == (${watchingBugs1Amount })+1){
+				return;
+			}
+			$("#watchingbugsbugcard1" + nowwatchingbugsbugcard1).hide(200);
+			$("#watchingbugsbugcard1" + nextwatchingbugsbugcard1).show(200);
+			if (nextwatchingbugsbugcard1 == ("${watchingBugs1Amount }")){
+				$("#watchingbugsrightbutton1").animate({opacity:0}, "slow")
 			}
 			nowwatchingbugsbugcard1++;
 			nextwatchingbugsbugcard1++;
-			$("#watchingbugsleftbutton1").show(1000);
+			$("#watchingbugsleftbutton1").animate({opacity:0.9}, "slow")
 		});
 		$("#watchingbugsleftbutton1").click(function(){
+			if (nowwatchingbugsbugcard1 == 0){
+				return;
+			}
 			nowwatchingbugsbugcard1--;
 			nextwatchingbugsbugcard1--;
-			$("#watchingbugsbugcard1" + nowwatchingbugsbugcard1).show(1000);
-			$("#watchingbugsbugcard1" + nextwatchingbugsbugcard1).hide(1000);
+			$("#watchingbugsbugcard1" + nowwatchingbugsbugcard1).show(200);
+			$("#watchingbugsbugcard1" + nextwatchingbugsbugcard1).hide(200);
 			if (nowwatchingbugsbugcard1 == 0){
-				$("#watchingbugsleftbutton1").hide(1000);
+				$("#watchingbugsleftbutton1").animate({opacity:0}, "slow")
 			}
-			$("#watchingbugsrightbutton1").show(1000);
+			$("#watchingbugsrightbutton1").animate({opacity:0.9}, "slow")
 		});
 		
 		
 		$("#watchingbugsrightbutton2").click(function(){
-			$("#watchingbugsbugcard2" + nowwatchingbugsbugcard2).hide(1000);
-			$("#watchingbugsbugcard2" + nextwatchingbugsbugcard2).show(1000);
-			if (nextwatchingbugsbugcard2 == (document.getElementById("watchingbugsamount2").getAttribute("amount"))){
-				$("#watchingbugsrightbutton2").hide(1000);
+			if (nextwatchingbugsbugcard2 == (${watchingBugs2Amount })+1){
+				return;
+			}
+			$("#watchingbugsbugcard2" + nowwatchingbugsbugcard2).hide(200);
+			$("#watchingbugsbugcard2" + nextwatchingbugsbugcard2).show(200);
+			if (nextwatchingbugsbugcard2 == ("${watchingBugs2Amount }")){
+				$("#watchingbugsrightbutton2").animate({opacity:0}, "slow")
 			}
 			nowwatchingbugsbugcard2++;
 			nextwatchingbugsbugcard2++;
-			$("#watchingbugsleftbutton2").show(1000);
+			$("#watchingbugsleftbutton2").animate({opacity:0.9}, "slow")
 		});
 		$("#watchingbugsleftbutton2").click(function(){
+			if (nowwatchingbugsbugcard2 == 0){
+				return;
+			}
 			nowwatchingbugsbugcard2--;
 			nextwatchingbugsbugcard2--;
-			$("#watchingbugsbugcard2" + nowwatchingbugsbugcard2).show(1000);
-			$("#watchingbugsbugcard2" + nextwatchingbugsbugcard2).hide(1000);
+			$("#watchingbugsbugcard2" + nowwatchingbugsbugcard2).show(200);
+			$("#watchingbugsbugcard2" + nextwatchingbugsbugcard2).hide(200);
 			if (nowwatchingbugsbugcard2 == 0){
-				$("#watchingbugsleftbutton2").hide(1000);
+				$("#watchingbugsleftbutton2").animate({opacity:0}, "slow")
 			}
-			$("#watchingbugsrightbutton2").show(1000);
+			$("#watchingbugsrightbutton2").animate({opacity:0.9}, "slow")
 		});
 		
 		$("#mysolutionsrightbutton").click(function(){
-			$("#mysolutionssolutioncard" + nowsolutionssolutioncard).hide(1000);
-			$("#mysolutionssolutioncard" + nextsolutionssolutioncard).show(1000);
-			if (nextsolutionssolutioncard == (document.getElementById("mysolutionsamount").getAttribute("amount"))){
-				$("#mysolutionsrightbutton").hide(1000);
+			if (nextsolutionssolutioncard == (${mySolutionsAmount })+1){
+				return;
+			}
+			$("#mysolutionssolutioncard" + nowsolutionssolutioncard).hide(200);
+			$("#mysolutionssolutioncard" + nextsolutionssolutioncard).show(200);
+			if (nextsolutionssolutioncard == ("${mySolutionsAmount}")){
+				$("#mysolutionsrightbutton").animate({opacity:0}, "slow")
 			}
 			nowsolutionssolutioncard++;
 			nextsolutionssolutioncard++;
-			$("#mysolutionsleftbutton").show(1000);
+			$("#mysolutionsleftbutton").animate({opacity:0.9}, "slow")
 		});
 		$("#mysolutionsleftbutton").click(function(){
+			if (nowsolutionssolutioncard == 0){
+				return;
+			}
 			nowsolutionssolutioncard--;
 			nextsolutionssolutioncard--;
-			$("#mysolutionssolutioncard" + nowsolutionssolutioncard).show(1000);
-			$("#mysolutionssolutioncard" + nextsolutionssolutioncard).hide(1000);
+			$("#mysolutionssolutioncard" + nowsolutionssolutioncard).show(200);
+			$("#mysolutionssolutioncard" + nextsolutionssolutioncard).hide(200);
 			if (nowsolutionssolutioncard == 0){
-				$("#mysolutionsleftbutton").hide(1000);
+				$("#mysolutionsleftbutton").animate({opacity:0}, "slow")
 			}
-			$("#mysolutionsrightbutton").show(1000);
+			$("#mysolutionsrightbutton").animate({opacity:0.9}, "slow")
 		});
 });
 	</script>
@@ -156,8 +180,6 @@
             <div class="mybugs">
 		    	<div class="homepagesubtitle">My Bugs</div>
 					<div class="anyrowbox">
-						<div id="mybugsleftbutton" class="leftbuttonhomepage" style="display:none">
-						</div>
 				    	<div class="mybugsrow">
 					    	<%
 					    	for (int i=0; i<lsMyBugs.size(); i++){
@@ -187,19 +209,19 @@
 					    	}
 					    	%>
 				        </div>
+				    <div class="leftrightbuttonbar">
+						<div id="mybugsleftbutton" class="leftbuttonhomepage" style="opacity:0">
+						</div>
+						<br>
+						
+						<div id="mybugsrightbutton" class="rightbuttonhomepage">
+						</div>
+				    </div>
 					</div>
-					<%
-						if (lsMyBugs.size() > 2){
-							out.println("<div id=\"mybugsrightbutton\" class=\"rightbuttonhomepage\">");
-							out.println("</div>");
-						}
-					%>
      		</div>
     <div class="watchingbugs">
     	<div class="homepagesubtitle">Watching Bugs</div>
 			<div class="anyrowbox">
-				<div id="watchingbugsleftbutton1" class="leftbuttonhomepage" style="display:none">
-				</div>
 		    		<div class="watchingbugsrow" id="watchingbugsrow1">
 		    						<%
 							    	for (int i=0; i<lsWatchingBugs1.size(); i++){
@@ -229,16 +251,16 @@
 							    	}
 							    	%>
 		     		</div>
-		    </div>
-					<%
-						if (lsWatchingBugs1.size() > 2){
-							out.println("<div id=\"watchingbugsrightbutton1\" class=\"rightbuttonhomepage\">");
-							out.println("</div>");
-						}
-					%>
+					    <div class="leftrightbuttonbar">
+							<div id="watchingbugsleftbutton1" class="leftbuttonhomepage" style="opacity:0">
+							</div>
+							<br>
+							
+							<div id="watchingbugsrightbutton1" class="rightbuttonhomepage">
+						</div>
+		   			</div>
+				    </div>
 			<div class="anyrowbox"> 
-				<div id="watchingbugsleftbutton2" class="leftbuttonhomepage" style="display:none">
-				</div>
     				<div class="watchingbugsrow" id="watchingbugsrow2">
 		    						<%
 							    	for (int i=0; i<lsWatchingBugs2.size(); i++){
@@ -268,19 +290,18 @@
 							    	}
 							    	%>
 		     		</div>
+		     		<div class="leftrightbuttonbar">
+						<div id="watchingbugsleftbutton2" class="leftbuttonhomepage" style="opacity:0">
+						</div>
+						<br>
+						<div id="watchingbugsrightbutton2" class="rightbuttonhomepage">
+					</div>
 		    </div>
-					<%
-						if (lsWatchingBugs2.size() > 2){
-							out.println("<div id=\"watchingbugsrightbutton2\" class=\"rightbuttonhomepage\">");
-							out.println("</div>");
-						}
-					%>
      </div>
+					</div>
      <div class="mysolutions">
     	<div class="homepagesubtitle">My Solutions</div>
 	    	<div class="anyrowbox">
-				<div id="mysolutionsleftbutton" class="leftbuttonhomepage" style="display:none">
-				</div>
 			        <div class="mysolutionsrow">
 					<%
 						for (int i=0; i<lsMySolutions.size(); i++){
@@ -306,14 +327,16 @@
 			    		}
 			    	%>
 			        </div>
-					<%
-						if (lsMySolutions.size() > 2){
-							out.println("<div id=\"mysolutionsrightbutton\" class=\"rightbuttonhomepage\">");
-							out.println("</div>");
-						}
-					%>
+					
+		     	<div class="leftrightbuttonbar">
+					<div id="mysolutionsleftbutton" class="leftbuttonhomepage" style="opacity:0">
+					</div>
+					<br>
+					<div id="mysolutionsrightbutton" class="rightbuttonhomepage">
+				</div>
 	     	</div>
      </div>
+	</div>
 	</div>
     <jsp:include page="/footer.jsp" flush="true"/>
 </body>

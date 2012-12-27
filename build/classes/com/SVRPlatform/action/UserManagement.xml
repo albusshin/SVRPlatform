@@ -23,7 +23,7 @@
         </action>
     
          <action name="index" class="index" method="execute">
-        	<result name="LoggedIn" type="redirect" >/home.jsp</result>
+        	<result name="LoggedIn" type="redirect" >myhome</result>
         	<result name="CookieNotFound" >/WEB-INF/index.jsp</result>
         	<result name="NotAuthenticated" type="redirect">/signin.jsp</result>
         </action>
@@ -74,6 +74,7 @@
 		
 		<action name="myhome" class="myHomeAction" method="execute">
 			<result name="success">/WEB-INF/home.jsp</result>
+			<result name="fail">/home.jsp</result>
 		</action>
         <!-- Add actions here -->
     </package>

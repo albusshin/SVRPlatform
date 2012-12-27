@@ -1397,7 +1397,7 @@ td.modifyprofilevalue {
 div.mybugs{
 	height:250px;
 }
-div.mybugsrow,div.watchingbugsrow,div.mysolutionsrow,{
+div.mybugsrow,div.watchingbugsrow,div.mysolutionsrow{
 	position:relative;
 	clear:both;
 }
@@ -1552,37 +1552,41 @@ div.homepagesubtitle{
 	margin-bottom:10px;
 }
 div.rightbuttonhomepage{
+	position:relative;
+	top:0;
 	margin-left:5px;
 	opacity:0.9;
 	z-index:7000;
 	height: 0;
 	width: 0;
 	border: 30px solid;
-	border-color: transparent  transparent transparent black;
-	border-radius:2px;
-	float:right;
-}
-div.leftbuttonhomepage{
-	margin-left:5px;
-	opacity:0.9;
-	z-index:7000;
-	height: 0;
-	width: 0;
-	border: 30px solid;
-	border-color: transparent black transparent transparent;
-	border-radius:2px;
-	float:left;
-}
-div.leftbutonhomepage:hover{
-	border-color: transparent orange transparent transparent;
+	border-color: black  transparent transparent transparent;
+	border-radius:3px;
 }
 div.rightbuttonhomepage:hover{
-	border-color: transparent transparent transparent orange;
+	border-color: orange transparent transparent transparent;
+}
+div.leftbuttonhomepage{
+	position:relative;
+	top:0;
+	margin-left:5px;
+	opacity:0.9;
+	z-index:7000;
+	height: 0;
+	width: 0;
+	border: 30px solid;
+	border-color: transparent transparent black transparent;
+	border-radius:3px;
+}
+div.leftbuttonhomepage:hover{
+	border-color: transparent transparent orange transparent;
 }
 div.leftrightbuttonbar{
+	width:40px;
 	position:relative;
-	top:60px;
-	right:90px;	
+	top:20px;
+	right:30px;
+	float:right;
 }
 /*
 div#mybugsrightbutton,div#mybugsleftbutton{
