@@ -119,8 +119,8 @@ else
             <%
             List<SolutionData> solutionData = (List) request.getAttribute("solutionData");
             SolutionData officialSolution = null;
+			out.println("<a name='official'></a>");
 			if (strNowPage.equals("1")){
-				out.println("<a name='official'></a>");
 				officialSolution = (SolutionData) request.getAttribute("officialSolution");
 				if (officialSolution == null){
 			 			out.println("<div id=\"officialsolutionnotgiven\" class=\"alert-messages\" style=\"display:block\">");

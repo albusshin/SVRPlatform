@@ -1407,7 +1407,7 @@ div#mybugsrow1{
 div.anyrowbox{
 	position:relative;
 	margin-left:50px;
-	width:750px;
+	width:800px;
 	clear:both;
 }
 div.bugcard{
@@ -1579,6 +1579,12 @@ div.leftbutonhomepage:hover{
 div.rightbuttonhomepage:hover{
 	border-color: transparent transparent transparent orange;
 }
+div.leftrightbuttonbar{
+	position:relative;
+	top:60px;
+	right:90px;	
+}
+/*
 div#mybugsrightbutton,div#mybugsleftbutton{
 	position:relative;
 	top:60px;
@@ -1603,3 +1609,4 @@ div#mysolutionsrightbutton,div#mysolutionsleftbutton{
 div#mysolutionsleftbutton{
 	left:0px;
 }
+*/
