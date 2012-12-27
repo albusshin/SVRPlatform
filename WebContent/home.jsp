@@ -19,7 +19,6 @@
 	$(document).ready(function(){
 		loadbackgroundname();
 		$("#mybugsrowrightbutton").click(function(){
-//			$("#mybugsrow1").animate({left:-300}, "slow");
 			$("#mybugsbugcard1").hide(1000);
 			$("#mybugsbugcard3").show(1000);
 	});
@@ -52,6 +51,8 @@
             <div class="mybugs">
     	<div class="homepagesubtitle">My Bugs</div>
 	<div class="anyrowbox">
+		<div id="mybugsleftbutton" class="leftbuttonhomepage">
+		</div>
     	<div class="mybugsrow" id="mybugsrow1">
         	<div class="bugcard" id="mybugsbugcard1">
             	<a href="#">SVRB-2012-00000023</a>
@@ -94,13 +95,15 @@
      	</div>
                 </div>
 	</div>
-		<div id="mybugsrowrightbutton" class="rightbuttonhomepage">
+		<div id="mybugsrightbutton" class="rightbuttonhomepage">
 		</div>
      </div>
      
     <div class="watchingbugs">
     	<div class="homepagesubtitle">Watching Bugs</div>
 	<div class="anyrowbox">
+		<div id="watchingbugsleftbutton1" class="leftbuttonhomepage">
+		</div>
     	<div class="watchingbugsrow">
         	<div class="bugcard">
             	<a href="#">SVRB-2012-00000023</a>
@@ -130,7 +133,12 @@
             </div>
      	</div>
        	</div>
-	<div anyrowbox> 
+       	
+		<div id="watchingbugsrightbutton1" class="rightbuttonhomepage">
+		</div>
+	<div class="anyrowbox"> 
+		<div id="watchingbugsleftbutton2" class="leftbuttonhomepage">
+		</div>
     	<div class="watchingbugsrow">
         	<div class="bugcard">
             	<a href="#">SVRB-2012-00000023</a>
@@ -160,9 +168,14 @@
             </div>
      	</div>
 	</div>
+		<div id="watchingbugsrightbutton2" class="rightbuttonhomepage">
+		</div>
      </div>
      <div class="mysolutions">
     	<div class="homepagesubtitle">My Solutions</div>
+    	<div class="anyrowbox">
+		<div id="watchingbugsleftbutton2" class="leftbuttonhomepage">
+		</div>
         <div class="mysolutionsrow">
         	<div class="solutioncard">
             	<a href="#">SVRB-2012-00000023</a>
@@ -180,6 +193,9 @@
                 </div>
             </div>
         </div>
+		<div id="mysolutionsrightbutton" class="rightbuttonhomepage">
+		</div>
+     </div>
      </div>
 	</div>
     <jsp:include page="/footer.jsp" flush="true"/>

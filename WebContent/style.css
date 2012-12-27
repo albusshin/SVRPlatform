@@ -1406,6 +1406,7 @@ div#mybugsrow1{
 }
 div.anyrowbox{
 	position:relative;
+	margin-left:50px;
 	width:750px;
 	clear:both;
 }
@@ -1561,11 +1562,44 @@ div.rightbuttonhomepage{
 	border-radius:2px;
 	float:right;
 }
+div.leftbuttonhomepage{
+	margin-left:5px;
+	opacity:0.9;
+	z-index:7000;
+	height: 0;
+	width: 0;
+	border: 30px solid;
+	border-color: transparent black transparent transparent;
+	border-radius:2px;
+	float:left;
+}
+div.leftbutonhomepage:hover{
+	border-color: transparent orange transparent transparent;
+}
 div.rightbuttonhomepage:hover{
 	border-color: transparent transparent transparent orange;
 }
-div#mybugsrowrightbutton{
+div#mybugsrightbutton,div#mybugsleftbutton{
 	position:relative;
 	top:60px;
-	right:60px;
-}	
+	right:90px;
+}
+div#mybugsleftbutton{
+	left:0px;
+}
+div#watchingbugsrightbutton1,div#watchingbugsrightbutton2,div#watchingbugsleftbutton1,div#watchingbugsleftbutton2{
+	position:relative;
+	top:60px;
+	right:90px;
+}
+div#watchingbugsleftbutton1,div#watchingbugsleftbutton2{
+	left:0px;
+}
+div#mysolutionsrightbutton,div#mysolutionsleftbutton{
+	position:relative;
+	top:60px;
+	right:90px;
+}
+div#mysolutionsleftbutton{
+	left:0px;
+}
