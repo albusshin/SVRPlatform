@@ -1,6 +1,7 @@
 package com.SVRPlatform.dao.impl;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.FetchMode;
@@ -58,10 +59,25 @@ public class BugWatchDAOImpl extends BasicDAOImpl implements BugWatchDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Bug> getByUser(User user) {
 		// TODO Auto-generated method stub
-		return null;
+		Session s = this.sessionFactory.openSession();
+		try{
+			org.hibernate.Criteria c = s.createCriteria(BugWatch.class);
+			c.add(Restrictions.eq("user", user));
+			c.setFetchMode("bug", FetchMode.JOIN);
+			List<Bug> list = new ArrayList<Bug>();
+			List<BugWatch> results = c.list();
+			for(BugWatch bugWatch: results){
+				list.add(bugWatch.getBug());
+			}
+			return list;
+		}finally {
+			if(s!=null)
+				s.close();
+		}
 	}
 
 }
