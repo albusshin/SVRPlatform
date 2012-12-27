@@ -49,11 +49,11 @@
 			$("#mybugsbugcard" + nowmybugsbugcard).hide(200);
 			$("#mybugsbugcard" + nextmybugsbugcard).show(200);
 			if (nextmybugsbugcard == ("${myBugsAmount }")){
-				$("#mybugsrightbutton").animate({opacity:0}, "slow");
+				$("#mybugsrightbutton").animate({opacity:0}, "fast");
 			}
 			nowmybugsbugcard++;
 			nextmybugsbugcard++;
-			$("#mybugsleftbutton").animate({opacity:0.9}, "slow")
+			$("#mybugsleftbutton").animate({opacity:0.9}, "fast")
 		});
 		$("#mybugsleftbutton").click(function(){
 			if (nowmybugsbugcard == 0){
@@ -64,9 +64,9 @@
 			$("#mybugsbugcard" + nowmybugsbugcard).show(200);
 			$("#mybugsbugcard" + nextmybugsbugcard).hide(200);
 			if (nowmybugsbugcard == 0){
-				$("#mybugsleftbutton").animate({opacity:0}, "slow");
+				$("#mybugsleftbutton").animate({opacity:0}, "fast");
 			}
-			$("#mybugsrightbutton").animate({opacity:0.9}, "slow")
+			$("#mybugsrightbutton").animate({opacity:0.9}, "fast")
 		});
 		
 		
@@ -77,11 +77,11 @@
 			$("#watchingbugsbugcard1" + nowwatchingbugsbugcard1).hide(200);
 			$("#watchingbugsbugcard1" + nextwatchingbugsbugcard1).show(200);
 			if (nextwatchingbugsbugcard1 == ("${watchingBugs1Amount }")){
-				$("#watchingbugsrightbutton1").animate({opacity:0}, "slow")
+				$("#watchingbugsrightbutton1").animate({opacity:0}, "fast")
 			}
 			nowwatchingbugsbugcard1++;
 			nextwatchingbugsbugcard1++;
-			$("#watchingbugsleftbutton1").animate({opacity:0.9}, "slow")
+			$("#watchingbugsleftbutton1").animate({opacity:0.9}, "fast")
 		});
 		$("#watchingbugsleftbutton1").click(function(){
 			if (nowwatchingbugsbugcard1 == 0){
@@ -92,9 +92,9 @@
 			$("#watchingbugsbugcard1" + nowwatchingbugsbugcard1).show(200);
 			$("#watchingbugsbugcard1" + nextwatchingbugsbugcard1).hide(200);
 			if (nowwatchingbugsbugcard1 == 0){
-				$("#watchingbugsleftbutton1").animate({opacity:0}, "slow")
+				$("#watchingbugsleftbutton1").animate({opacity:0}, "fast")
 			}
-			$("#watchingbugsrightbutton1").animate({opacity:0.9}, "slow")
+			$("#watchingbugsrightbutton1").animate({opacity:0.9}, "fast")
 		});
 		
 		
@@ -105,11 +105,11 @@
 			$("#watchingbugsbugcard2" + nowwatchingbugsbugcard2).hide(200);
 			$("#watchingbugsbugcard2" + nextwatchingbugsbugcard2).show(200);
 			if (nextwatchingbugsbugcard2 == ("${watchingBugs2Amount }")){
-				$("#watchingbugsrightbutton2").animate({opacity:0}, "slow")
+				$("#watchingbugsrightbutton2").animate({opacity:0}, "fast")
 			}
 			nowwatchingbugsbugcard2++;
 			nextwatchingbugsbugcard2++;
-			$("#watchingbugsleftbutton2").animate({opacity:0.9}, "slow")
+			$("#watchingbugsleftbutton2").animate({opacity:0.9}, "fast")
 		});
 		$("#watchingbugsleftbutton2").click(function(){
 			if (nowwatchingbugsbugcard2 == 0){
@@ -120,9 +120,9 @@
 			$("#watchingbugsbugcard2" + nowwatchingbugsbugcard2).show(200);
 			$("#watchingbugsbugcard2" + nextwatchingbugsbugcard2).hide(200);
 			if (nowwatchingbugsbugcard2 == 0){
-				$("#watchingbugsleftbutton2").animate({opacity:0}, "slow")
+				$("#watchingbugsleftbutton2").animate({opacity:0}, "fast")
 			}
-			$("#watchingbugsrightbutton2").animate({opacity:0.9}, "slow")
+			$("#watchingbugsrightbutton2").animate({opacity:0.9}, "fast")
 		});
 		
 		$("#mysolutionsrightbutton").click(function(){
@@ -132,11 +132,11 @@
 			$("#mysolutionssolutioncard" + nowsolutionssolutioncard).hide(200);
 			$("#mysolutionssolutioncard" + nextsolutionssolutioncard).show(200);
 			if (nextsolutionssolutioncard == ("${mySolutionsAmount}")){
-				$("#mysolutionsrightbutton").animate({opacity:0}, "slow")
+				$("#mysolutionsrightbutton").animate({opacity:0}, "fast")
 			}
 			nowsolutionssolutioncard++;
 			nextsolutionssolutioncard++;
-			$("#mysolutionsleftbutton").animate({opacity:0.9}, "slow")
+			$("#mysolutionsleftbutton").animate({opacity:0.9}, "fast")
 		});
 		$("#mysolutionsleftbutton").click(function(){
 			if (nowsolutionssolutioncard == 0){
@@ -147,9 +147,9 @@
 			$("#mysolutionssolutioncard" + nowsolutionssolutioncard).show(200);
 			$("#mysolutionssolutioncard" + nextsolutionssolutioncard).hide(200);
 			if (nowsolutionssolutioncard == 0){
-				$("#mysolutionsleftbutton").animate({opacity:0}, "slow")
+				$("#mysolutionsleftbutton").animate({opacity:0}, "fast")
 			}
-			$("#mysolutionsrightbutton").animate({opacity:0.9}, "slow")
+			$("#mysolutionsrightbutton").animate({opacity:0.9}, "fast")
 		});
 });
 	</script>
