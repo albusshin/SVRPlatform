@@ -51,12 +51,12 @@
             </key>
             <one-to-many class="com.SVRPlatform.model.Solution" />
         </set-->
-        <set name="hasBugs" table="bug" inverse="true" lazy="true" fetch="select">
+        <!--set name="hasBugs" table="bug" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="userID" />
             </key>
             <one-to-many class="com.SVRPlatform.model.Bug" />
-        </set>
+        </set-->
         <!-- set name="comments" table="comment" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="userID" />
@@ -64,13 +64,13 @@
             <one-to-many class="com.SVRPlatform.model.Comment" />
         </set-->
         <!-- one-to-one name="usertype" class="com.SVRPlatform.model.Usertype"></one-to-one-->
-        <set name="watchingBugs" table="watching" inverse="true" lazy="true" fetch="select">
+        <!--set name="watchingBugs" table="watching" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="userID" not-null="true" />
             </key>
             <many-to-many entity-name="com.SVRPlatform.model.Bug">
                 <column name="bugID" not-null="true" />
             </many-to-many>
-        </set>
+        </set-->
     </class>
 </hibernate-mapping>

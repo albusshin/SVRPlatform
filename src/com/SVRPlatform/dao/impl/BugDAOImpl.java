@@ -43,31 +43,19 @@ public class BugDAOImpl extends BasicDAOImpl implements BugDAO{
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Bug> getByUser(User user) {
 		// TODO Auto-generated method stub
-		return null;
+		Session s = this.sessionFactory.openSession();
+		try{
+			org.hibernate.Criteria c = s.createCriteria(Bug.class);
+			c.add(Restrictions.eq("user", user));
+			return c.list();
+		}finally {
+			if(s!=null)
+				s.close();
+		}
 	}
-
-//	@Override
-//	public Serializable add(Object obj) {
-//		// TODO Auto-generated method stub
-//		Session s = null;
-//		Transaction tx;
-//		try{
-//			s = sessionFactory.openSession();
-//			tx = s.beginTransaction();
-//			Bug bug = (Bug)obj;
-//			Serializable se = s.save(obj);
-//			String str = bug.getBugNumber() + "-" 
-//							+ String.format("%1$08d", bug.getBugId());
-//			bug.setBugNumber(str);
-//			tx.commit();
-//			return se;
-//		} finally {
-//			if(s != null)
-//				s.close();
-//		}
-//	}
 
 }

@@ -1,6 +1,5 @@
 package Junit.test.Jingxuan;
 
-import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
@@ -21,6 +20,7 @@ import org.springframework.orm.hibernate4.SessionHolder;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.SVRPlatform.Utils.StringEncoder;
+import com.SVRPlatform.dao.BugWatchDAO;
 import com.SVRPlatform.dao.SolutionVoteDAO;
 import com.SVRPlatform.dao.UserDAO;
 import com.SVRPlatform.dao.impl.BugDAOImpl;
@@ -57,6 +57,7 @@ public class TestForHibernate {
 	static SolutionVoteService solutionVoteService;
 	static SolutionVoteDAO solutionVoteDAO;
 	static BugWatchService bugWatchService;
+	static BugWatchDAO bugWatchDAO;
 	
 	static SolutionCommentSubmitService solutionCommentSubmitService;
 	static SolutionCommentDisplayService solutionCommentDisplayService;
@@ -83,6 +84,7 @@ public class TestForHibernate {
 		solutionCommentSubmitService = (SolutionCommentSubmitService) ctx.getBean("solutionCommentSubmitService");
 		solutionCommentDisplayService = (SolutionCommentDisplayService) ctx.getBean("solutionCommentDisplayService");
 		userProfileService = (UserProfileService) ctx.getBean("userProfileService");
+		bugWatchDAO = (BugWatchDAO) ctx.getBean("bugWatchDAO");
 	}
 
 	@AfterClass
@@ -124,9 +126,9 @@ public class TestForHibernate {
 			
 			Bug b2 = new Bug();
 			sb.add(b2);
-			
-			b1.setUsers(su);
-			b2.setUsers(su);
+//			
+//			b1.setUsers(su);
+//			b2.setUsers(su);
 			
 			s =sessionFactory.openSession();
 			tx = s.beginTransaction();
@@ -150,7 +152,7 @@ public class TestForHibernate {
 //		bugDAO.add(b);
 //		System.out.println(((Bug)bugDAO.getByID(3)).getSoftware());
 		//sessionFactory.getCurrentSession().close();
-		Solution so = new Solution();
+//		Solution so = new Solution();
 	}
 	
 	@Test public void testBug() {
@@ -224,6 +226,7 @@ public class TestForHibernate {
 		//solutionVoteService.voteUp(9, "povergoing@gmail.com");
 		bugWatchService.voteUp(23, "povergoing@gmail.com");
 	}
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Test public void testVote3(){
 		Bug bug = new Bug();
 		bug.setBugId(23);
@@ -251,5 +254,33 @@ public class TestForHibernate {
 					System.out.println(propertyDescriptor.getName()+ ":" + getter.invoke(userData));
 		}
 		
+	}
+	@Test public void testhomePage() throws Exception{
+		User user = new User();
+		user.setUserId(6);
+		List<Bug> list = bugDAO.getByUser(user);
+		System.out.println(list.size());
+		for(Bug bug: list){
+			printClassAttributeValues(bug);
+			System.out.println();
+		}
+	}
+	@Test public void testHomePage1() throws Exception{
+		User user = new User();
+		user.setUserId(6);
+		List<Bug> list= bugWatchDAO.getByUser(user);
+		System.out.println(list.size());
+		for(Bug bug: list){
+			printClassAttributeValues(bug);
+			System.out.println();
+		}
+	}
+	static void printClassAttributeValues(Object obj) throws Exception{
+		PropertyDescriptor[] ps = Introspector.getBeanInfo(obj.getClass()).getPropertyDescriptors();
+		for(PropertyDescriptor propertyDescriptor:ps){
+				Method getter = propertyDescriptor.getReadMethod();
+				if(getter != null)
+					System.out.print(propertyDescriptor.getName()+ ":" + getter.invoke(obj)+" | ");
+		}
 	}
 }
