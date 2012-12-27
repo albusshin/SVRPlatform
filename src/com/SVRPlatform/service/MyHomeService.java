@@ -7,7 +7,8 @@ import com.SVRPlatform.data.BugData;
 import com.SVRPlatform.data.SolutionData;
 
 public interface MyHomeService {
-	public List<BugData> getMyBugs();
-	public Map<Integer, List<BugData>> getWatchingBugs();
-	public List<SolutionData> getMySolutions(); 
+	
+	public List<BugData> getMyBugs(int userID);
+	public Map<Integer, List<BugData>> getWatchingBugs(int userID);
+	public List<SolutionData> getMySolutions(int userID);
 }
