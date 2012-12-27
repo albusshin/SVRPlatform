@@ -7,6 +7,7 @@ public class SolutionData {
 	private String datetime;
 	private String realname;
 	private String email;
+	private String bugNumber;
 	private int credits;
 	private int up;
 	private int down;
@@ -79,5 +80,11 @@ public class SolutionData {
 	}
 	public void setVotedDown(boolean votedDown) {
 		this.votedDown = votedDown;
+	}
+	public String getBugNumber() {
+		return bugNumber;
+	}
+	public void setBugNumber(String bugNumber) {
+		this.bugNumber = bugNumber;
 	}
 }

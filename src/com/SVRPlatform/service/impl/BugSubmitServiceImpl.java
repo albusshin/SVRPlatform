@@ -144,6 +144,7 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			bug.setScore(sc);
 			bug.setLanguage(HTMLTranscoder.transcode(language));
 			bug.setOfficialSolutionId(-1);
+			bug.setBestSolutionId(-1);
 			bug.setUp(0);
 			bug.setDown(0);
 			
