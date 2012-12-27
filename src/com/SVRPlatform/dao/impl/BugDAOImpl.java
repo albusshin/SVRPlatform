@@ -1,6 +1,7 @@
 package com.SVRPlatform.dao.impl;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.model.Bug;
+import com.SVRPlatform.model.User;
 @Transactional
 public class BugDAOImpl extends BasicDAOImpl implements BugDAO{
 	
@@ -39,6 +41,12 @@ public class BugDAOImpl extends BasicDAOImpl implements BugDAO{
 			if(s != null)
 				s.close();
 		}
+	}
+
+	@Override
+	public List<Bug> getByUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 //	@Override
