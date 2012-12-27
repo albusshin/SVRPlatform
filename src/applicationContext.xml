@@ -94,6 +94,10 @@
     <bean id="userProfileAction" scope="prototype" class="com.SVRPlatform.action.UserProfileAction">
     	<property name="userProfileService" ref="userProfileService"></property>
     </bean>
+    
+    <bean id="myHomeAction" scope="prototype" class="com.SVRPlatform.action.MyHomeAction">
+        	<property name="myHomeService" ref="myHomeService"></property>
+    </bean>
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
     	<!-- user service -->
