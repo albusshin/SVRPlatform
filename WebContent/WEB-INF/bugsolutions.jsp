@@ -8,17 +8,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>BUG Solutions</title>
 	<link rel="stylesheet" href="style.css" />
-	<script type="text/javascript" src="jquery.min.js">
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-    	  $(".commentsbutton").click(function(){
-    		  var slidedown = $(this).attr("slidedown");
-    		  slidedown="#" + slidedown;
-    	    $(slidedown).slideToggle("slow");
-    	  });
-    	});
-    </script>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="bug.solutions.js"></script>
     <style type="text/css">
     <%
 int solutionsPerPage = 5;
@@ -60,97 +51,6 @@ else
 				}
 			});
 	
-		function vote(type, id, caller) {
-			var url = 'solutionvote_vote'+type+'?solutionId='+id;
-			
-			$.ajax({
-			    url:url,
-			    type:'GET',
-			    cache: false,
-			    contentType: false,    //must declare
-			    processData: false,    //must declare
-			    success:function(data){
-			    	
-			        if (data == "success") {
-					voting = false;
-			        }			        	
-			        else if (data == "creditsnotenough" || data == "alreadyvoted" ||
-			        			data == "owner" || data == "DBerror") {
-			        	if  (type == 'Up')	{
-							setTimeout(function() {
-				        		$(caller).attr('src','images/up.png');
-								$(caller).attr('onmouseover','this.src=\'images/uppressed.png\'');
-								$(caller).attr('onmouseout','this.src=\'images/up.png\'');
-				        		$(caller).next().text(parseInt($(caller).next().text())-1);
-								voting = false;
-							}, 400);
-			        	}
-			        	else {
-							setTimeout(function() {
-				        		$(caller).attr('src','images/down.png');
-								$(caller).attr('onmouseover','this.src=\'images/downpressed.png\'');
-								$(caller).attr('onmouseout','this.src=\'images/down.png\'');
-				        		$(caller).prev().text(parseInt($(caller).prev().text())+1);
-								voting = false;
-							}, 400);
-			        	}
-			        	if  (data == "creditsnotenough") {
-			        		if (type == 'Up') $('div.message-text').html("Vote Up requires 15 credits");
-			        		else $('div.message-text').html("Vote Down requires 125 credits");
-			        	}
-			        	if (data == "alreadyvoted") 
-			        		$('div.message-text').html("Already voted!");
-			        	if (data == "owner")
-			        		$('div.message-text').html("Cannot vote for yourself");
-			        	$('#wrongmessage').attr('style','display:block');
-			        }
-			        else window.location.replace("notSignedIn");
-			    },
-			    error:function(){
-			   		$("#wrongmessage1").attr('style','display:block');
-				}					             
-			});
-		}		
-
-		var voting = false;
-		$(document).ready(function(){
-			$(".leftbarup").click(function() {
-				if (voting) return;
-				voting = true;
-				if ($(this).attr('src') == "images/uppressed.png" || $(this).attr('src') == "images/up.png") {
-					$(this).attr('src','images/upvoted.png');
-					$(this).attr('onmouseover','');
-					$(this).attr('onmouseout','');
-					$(this).next().text(parseInt($(this).next().text())+1);
-				}
-				else {
-					$(this).attr('src','images/up.png');
-					$(this).attr('onmouseover','this.src=\'images/uppressed.png\'');
-					$(this).attr('onmouseout','this.src=\'images/up.png\'');
-					$(this).next().text(parseInt($(this).next().text())-1);
-				}
-				
-				vote('Up', $(this).attr('id'), this);
-			});
-			$(".leftbardown").click(function() {
-				if (voting) return;
-				voting = true;
-				if ($(this).attr('src') == "images/downpressed.png" || $(this).attr('src') == "images/down.png") {
-					$(this).attr('src','images/downvoted.png');
-					$(this).attr('onmouseover','');
-					$(this).attr('onmouseout','');
-					$(this).prev().text(parseInt($(this).prev().text())-1);
-				}
-				else {
-					$(this).attr('src','images/down.png');
-					$(this).attr('onmouseover','this.src=\'images/downpressed.png\'');
-					$(this).attr('onmouseout','this.src=\'images/down.png\'');
-					$(this).prev().text(parseInt($(this).prev().text())+1);
-				}
-				
-				vote('Down', $(this).attr('id'), this);
-			});
-		});
 		$(document).ready(function(){ 
 
 			$('#official').animate({
@@ -218,9 +118,10 @@ else
             </div>
             <%
             List<SolutionData> solutionData = (List) request.getAttribute("solutionData");
+            SolutionData officialSolution = null;
 			if (strNowPage.equals("1")){
 				out.println("<a name='official'></a>");
-				SolutionData officialSolution = (SolutionData) request.getAttribute("officialSolution");
+				officialSolution = (SolutionData) request.getAttribute("officialSolution");
 				if (officialSolution == null){
 			 			out.println("<div id=\"officialsolutionnotgiven\" class=\"alert-messages\" style=\"display:block\">");
 			 			out.println("<div class=\"message\">");
@@ -278,30 +179,34 @@ else
 							{
 									out.println("<div class='solutionbuttons'>");
 									out.println("<a align='center' onclick=\"document.getElementById('modifysolution').setAttribute('style', 'display:block')\" class=\"edit-button\" href=\"#\" >edit</a>");
-									out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+(-1)+"' href='javascript:;'>comments</a>");
+									out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+officialSolution.getSolutionID()+"' href='javascript:;' id='"+officialSolution.getSolutionID()+"'>comments</a>");
 									out.println("</div>");
 							}
 							else{
 								out.println("<div class='solutionbuttons'>");
-								out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+(-1)+"' href='javascript:;'>comments</a>");
+								out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+officialSolution.getSolutionID()+"' href='javascript:;' id='"+officialSolution.getSolutionID()+"'>comments</a>");
 								out.println("</div>");
 							}
 					out.println("</div>"+
 					"</td>"+
 					"</tr>"+
 					"</table>"+
-					"<div id='solutioncommentstable"+(-1)+"' style='display:none'>"+
+					"<div id='solutioncommentstable"+officialSolution.getSolutionID()+"' style='display:none'>"+
 					"<table class='solutioncommentstable'>"+
-					"<tr class='solutioncomment'><td class='solutioncommentcontent'>abcabcabc</td></tr>"+
-					"<tr class='solutioncomment'><td class='solutioncommentcontent'>abcabcabc</td></tr>"+
-					"<tr class='solutioncomment'>"+
-					"<td><img class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe'/></td>"+
-					"<td class='solutioncommentauthor'>Albus Shin</td>"+
-					"<td class='solutioncommentcontent'>"+
-					"asfdsadf"+
-					"</td>"+
-					"</tr>"+
-					"<tr class='solutioncomment'><td class='solutioncommentcontent'>abcabcabc</td></tr>"+
+							"<tr class='solutioncomment'>");
+
+					String makecommentsolutionhash = VerifyUser.getNowUser(request);
+					if (makecommentsolutionhash!=null){
+						makecommentsolutionhash = DigestUtils.md5Hex(makecommentsolutionhash.trim().toLowerCase());
+					}
+		
+			out.println("<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/"+makecommentsolutionhash+"'/></td>"+
+			"<td class='solutioncommentauthor'>"+VerifyUser.getNowUserRealname(request)+"</td>"+
+			"<td class='solutioncommentcontent'>"+
+			"<textarea class='makesolutioncomment' id='content"+officialSolution.getSolutionID()+"'></textarea>"+
+      		"<input class='submitcomment' type=\"image\" style='padding-left:20px;' width='50px' id=\""+officialSolution.getSolutionID()+"\" src=\"images/submiticon.png\" onMouseOver=\"this.src='images/submiticonpressed.png'\" onMouseOut=\"this.src='images/submiticon.png'\"\">"+
+			"</td>"+
+			"</tr>"+
 					"</table>"+
 					"</div>");
 				}
@@ -352,48 +257,20 @@ else
 								{
 										out.println("<div class='solutionbuttons'>");
 										out.println("<a align='center' onclick=\"document.getElementById('modifysolution').setAttribute('style', 'display:block')\" class=\"edit-button\" href=\"#\" >edit</a>");
-										out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+i+"' href='javascript:;'>comments</a>");
+										out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+solutionData.get(i).getSolutionID()+"' href='javascript:;'id='"+solutionData.get(i).getSolutionID()+"'>comments</a>");
 										out.println("</div>");
 								}
 								else{
 									out.println("<div class='solutionbuttons'>");
-									out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+i+"' href='javascript:;'>comments</a>");
+									out.println("<a align='center' class=\"edit-button  commentsbutton\" slidedown='solutioncommentstable"+solutionData.get(i).getSolutionID()+"' href='javascript:;' id='"+solutionData.get(i).getSolutionID()+"'>comments</a>");
 									out.println("</div>");
 								}
 						out.println("</div>"+
 						"</td>"+
 						"</tr>"+
 						"</table>"+
-						"<div id='solutioncommentstable"+i+"' style='display:none'>"+
+						"<div id='solutioncommentstable"+solutionData.get(i).getSolutionID()+"' style='display:none'>"+
 						"<table class='solutioncommentstable'>"+
-								"<tr class='solutioncomment'>"+
-								"<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe'/></td>"+
-								"<td class='solutioncommentauthor'>Albus Shin</td>"+
-						"<td class='solutioncommentcontent'>"+
-						"asfdsadf"+
-						"</td>"+
-						"</tr>"+
-						"<tr class='solutioncomment'>"+
-						"<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe'/></td>"+
-						"<td class='solutioncommentauthor'>Albus Shin</td>"+
-				"<td class='solutioncommentcontent'>"+
-				"asfdsadf"+
-				"</td>"+
-				"</tr>"+
-								"<tr class='solutioncomment'>"+
-								"<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe'/></td>"+
-								"<td class='solutioncommentauthor'>Albus Shin</td>"+
-						"<td class='solutioncommentcontent'>"+
-						"This is really fucking making me laugh.This is really fucking making me laugh.This is really fucking making me laugh.This is really fucking making me laugh.This is really fucking making me laugh.This is really fucking making me laugh.This is really fucking making me laugh.s"+
-						"</td>"+
-						"</tr>"+
-						"<tr class='solutioncomment'>"+
-						"<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/a6dc91974119e1d3ab253c7311e072fe'/></td>"+
-						"<td class='solutioncommentauthor'>Albus Shin</td>"+
-				"<td class='solutioncommentcontent'>"+
-				"asfdsadf"+
-				"</td>"+
-				"</tr>"+
 				"<tr class='solutioncomment'>");
 
 						String makecommentsolutionhash = VerifyUser.getNowUser(request);
@@ -404,10 +281,8 @@ else
 				out.println("<td class='solutioncommentuseravatartd'><img width='60px' class='solutioncommentuseravatar' src='http://www.gravatar.com/avatar/"+makecommentsolutionhash+"'/></td>"+
 				"<td class='solutioncommentauthor'>"+VerifyUser.getNowUserRealname(request)+"</td>"+
 				"<td class='solutioncommentcontent'>"+
-				"<form  action=''>"+
-				"<textarea class='makesolutioncomment' name=''></textarea>"+
-          		"<input type=\"image\" alt=\"submit\" style='padding-left:20px;' width='50px' id=\"submitcomment"+i+"\" src=\"images/submiticon.png\" onMouseOver=\"this.src='images/submiticonpressed.png'\" onMouseOut=\"this.src='images/submiticon.png'\" onClick=\"document.getElementById('modifysolution').style='display:block'\">"+
-				"</form>"+
+				"<textarea class='makesolutioncomment' id='content"+solutionData.get(i).getSolutionID()+"'></textarea>"+
+          		"<input class='submitcomment' type=\"image\" style='padding-left:20px;' width='50px' id=\""+solutionData.get(i).getSolutionID()+"\" src=\"images/submiticon.png\" onMouseOver=\"this.src='images/submiticonpressed.png'\" onMouseOut=\"this.src='images/submiticon.png'\"\">"+
 				"</td>"+
 				"</tr>"+
 				"</table>"+
@@ -426,13 +301,23 @@ else
                             <td class="commentssubmitvalue">
                             <%
                             out.print("<textarea id=\"commentssubmittext\" name=\"solutionsmodifytext\">");
+                            SolutionData editSolution = null;
                             for (SolutionData s:solutionData){
                             	if (s.getEmail().equals(VerifyUser.getNowUser(request))){
-                            		out.print(s.getContent());
+                            		editSolution = s;
+                            		break;
                             		/*这里需要转义。*/
                             	}
                             }
-                            out.print("</textarea>");
+                            if (officialSolution != null)
+	                            if (officialSolution.getEmail().equals(VerifyUser.getNowUser(request)))
+	                            	editSolution = officialSolution;
+                            if (editSolution != null) {
+                        		out.print(editSolution.getContent());
+                            	out.print("</textarea>");
+                    			out.print("<script>$('textarea[name=\"solutionsmodifytext\"]').attr('solutionId','"+editSolution.getSolutionID()+"')</script>");
+                            }
+                            else out.print("</textarea>");
                             %>
                             	
                             </td>
@@ -442,7 +327,7 @@ else
                             	
                             </td>
                     	    <td align="right">
-                  			 	<input type="image" alt="submit" id="submitbutton" src="images/submitbutton.png" onMouseOver="this.src='images/submitbuttonpressed.png'" onMouseOut="this.src='images/submitbutton.png'" onClick="document.getElementById('modifysolution').style='display:block'">
+                  			 	<input type="image" name="solutioneditbutton" id="submitbutton" src="images/submitbutton.png" onMouseOver="this.src='images/submitbuttonpressed.png'" onMouseOut="this.src='images/submitbutton.png'">
                             </td>
                         </tr>
                     </table>
