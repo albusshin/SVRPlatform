@@ -81,7 +81,7 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 		}
 
 		Map<Integer, Integer> voted = new HashMap<Integer, Integer>();
-		if (userID != -1) {
+		if (userID != -1 && solutions.size() > 0) {
 			List<SolutionVote> solutionVotes = solutionVoteDAO.getSolutionIdFromSolutionList(solutions, (User)userDAO.getByID(userID));			
 			for (int i = 0;i < solutionVotes.size();i++)
 				voted.put(solutionVotes.get(i).getSolution().getSolutionId(), solutionVotes.get(i).getVoteFlag());
@@ -117,7 +117,7 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 			solutionData.setBest(false);
 			solutionsData.add(solutionData);
 		}
-		if (pageNumber == 1) 
+		if (pageNumber == 1 && solutionsData.size() > 0) 
 			solutionsData.get(0).setBest(true);
 		
 		bugSolutionsData.setSolutionCount(count);

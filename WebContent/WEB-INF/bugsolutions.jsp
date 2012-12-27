@@ -291,7 +291,7 @@ else
             %>
             
             <div id="modifysolution" style="display:none">
-            	<form id="solutionmodifyform" action="submitSolution_edit" method="post">
+            	<form id="solutionmodifyform" action="submitSolution_edit?strNowPage=${strNowPage} " method="post">
                 	<input type="text" value="${strBugNumber}" style="display:none" name="strBugNumber">
                     <table class="commentssubmittable">
                         <tr>
@@ -321,7 +321,7 @@ else
                             	
                             </td>
                     	    <td align="right">
-                  			 	<input type="image" name="solutioneditbutton" id="submitbutton" src="images/submitbutton.png" onMouseOver="this.src='images/submitbuttonpressed.png'" onMouseOut="this.src='images/submitbutton.png'">
+                  			 	<input type="image" alt="submit" id="submitbutton" src="images/submitbutton.png" onMouseOver="this.src='images/submitbuttonpressed.png'" onMouseOut="this.src='images/submitbutton.png'">
                             </td>
                         </tr>
                     </table>
