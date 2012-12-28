@@ -33,11 +33,7 @@
         <action name="searchbug" class="com.SVRPlatform.action.SearchBug" method="execute">
         	<result name="success" type="chain">bugpage</result>
         </action>
-        
-        <action name="nothing" class="com.SVRPlatform.action.Test" method="execute">
-        	<result name="success">/home.jsp</result>
-        </action>
-        
+             
 		<action name="bugvote_*" class="bugvote" method="{1}">
         	<result name="success" type="stream"></result>
         </action>

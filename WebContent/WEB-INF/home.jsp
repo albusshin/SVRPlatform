@@ -216,7 +216,7 @@
 						
 						<div id="mybugsrightbutton" class="rightbuttonhomepage"
 						<%
-						if (lsMyBugs.size() < 2)
+						if (lsMyBugs.size() <= 2)
 							out.print("style='opacity:0'");
 						%>
 						>
@@ -263,7 +263,7 @@
 							
 							<div id="watchingbugsrightbutton1" class="rightbuttonhomepage"
 						<%
-						if (lsWatchingBugs1.size() < 2)
+						if (lsWatchingBugs1.size() <= 2)
 							out.print("style='opacity:0'");
 						%>
 						>
@@ -306,7 +306,7 @@
 						<br>
 						<div id="watchingbugsrightbutton2" class="rightbuttonhomepage"
 						<%
-						if (lsWatchingBugs2.size() < 2)
+						if (lsWatchingBugs2.size() <= 2)
 							out.print("style='opacity:0'");
 						%>
 						>
@@ -334,9 +334,9 @@
 				                        "</div>"+
 				                    "</div>"+
 				                    "<div class=\"imgbar\">"+
-				                    "<a class=\"solutionsimg\" href=\"bugpage?strBugNumber="+ sd.getBugNumber() +"\"><img src=\"images/uppressed.png\"/>"+sd.getUp()+"</a>"+
+				                    "<a class=\"solutionsimg\" href=\"displaysolutions?strBugNumber="+ sd.getBugNumber() +"strNowPage=1#official\"><img src=\"images/uppressed.png\"/>"+sd.getUp()+"</a>"+
 						            "<br><br>"+
-						            "<a class=\"solutionsimg\" href=\"bugpage?strBugNumber="+ sd.getBugNumber() +"\"><img src=\"images/downpressed.png\"/>"+sd.getDown()+"</a>"+
+						            "<a class=\"solutionsimg\" href=\"displaysolutions?strBugNumber="+ sd.getBugNumber() +"strNowPage=1#official\"><img src=\"images/downpressed.png\"/>"+sd.getDown()+"</a>"+
 						            "</div>"+
 						            "</div>");
 			    		}
@@ -349,7 +349,7 @@
 					<br>
 					<div id="mysolutionsrightbutton" class="rightbuttonhomepage"
 						<%
-						if (lsMySolutions.size() < 2)
+						if (lsMySolutions.size() <= 2)
 							out.print("style='opacity:0'");
 						%>
 						>
