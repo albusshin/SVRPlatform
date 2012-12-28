@@ -4,8 +4,9 @@
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script type="text/javascript">
 	/**
 	 * Albus Shin
@@ -123,12 +124,11 @@
 				+ "        <div id='menu2' class='menu'>"
 				+ "            <ul>"
 				+ "            	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>"
-				+ "                <li><a href='myhome'><image src='images/logowhite.png' width='54px' margin='10px'></image>SVRP HOME</a></li>"
-				+ "                <li><a href='myhome'>Bugs</a></li>"
-				+ "                <li><a href='javascript:;'>Vulnerabilities</a></li>"
-				+ "                <li><a href='javascript:;'>Exploits</a></li>"
-				+ "                <li><a href='javascript:;'>About</a></li>"
-				+ "                <li><a href='javascript:;'>Contact</a></li>"
+				+ "<li><a href='myhome'><image src='images/logowhite.png' width='54px' margin='10px'></image>SVRP HOME</a></li>"
+				+ "<li><a href='ranking.jsp'>Bugs</a></li>"
+				+ "<li><a href='javascript:;'>Vulnerabilities</a></li>"
+				+ "<li><a href='activities.jsp'>Activities</a></li>"
+				+ "<li><a href='about.jsp'>About</a></li>"
 				+ "                <div class='searchinput' align='right'>"
 				+ "                	<form action='searchbug'>"
 				+ "						<input type='search' placeholder='Search' name='strBugNumber'/>"
@@ -151,9 +151,13 @@ ${sessionScope.realname}
 <%
 	out.print("</div>"
 				+ "                    <img class='seperator' src='images/seperator.png' align='middle'/>"
-				+ "                    <div id='userbarcredit' onMouseOver=\"document.getElementById('credittipsy').style.display='block'\" onmouseout=\"document.getElementById('credittipsy').style.display='none'\"> "+ request.getSession().getValue("credit") +"</div>"
+				+ "                    <div id='userbarcredit' onMouseOver=\"document.getElementById('credittipsy').style.display='block'\" onmouseout=\"document.getElementById('credittipsy').style.display='none'\"> "
+				+ request.getSession().getValue("credit")
+				+ "</div>"
 				+ "                    <img class='seperator' src='images/seperator.png' align='middle'/>"
-				+ "                    <img id='userbarusericon' src='images/usericon.png' onmouseover=\"this.src='images/usericonpressed.png';document.getElementById('usericontipsy').style.display='block'\" onmouseout=\"this.src='images/usericon.png';document.getElementById('usericontipsy').style.display='none'\" onclick=\"window.location.href='userprofile_display?strEmail="+VerifyUser.getNowUser(request)+"';\""
+				+ "                    <img id='userbarusericon' src='images/usericon.png' onmouseover=\"this.src='images/usericonpressed.png';document.getElementById('usericontipsy').style.display='block'\" onmouseout=\"this.src='images/usericon.png';document.getElementById('usericontipsy').style.display='none'\" onclick=\"window.location.href='userprofile_display?strEmail="
+				+ VerifyUser.getNowUser(request)
+				+ "';\""
 				+ "                    onclick=\"javascript:;\"/>"
 				+ "                    <img id='userbarwatching' src='images/watching.png' onmouseover=\"this.src='images/watchingpressed.png';document.getElementById('watchingtipsy').style.display='block'\" onmouseout=\"this.src='images/watching.png';document.getElementById('watchingtipsy').style.display='none'\""
 				+ "                    onclick=\"javascript:;\"/>"
