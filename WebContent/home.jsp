@@ -8,23 +8,6 @@
 	<title>Home - SVRPlatform</title>
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript">
-	function loadbackgroundname(){
-			var strallbg = "url(images/sgbg";
-			var ran = parseInt(Math.random()*9 + 1);
-			strallbg += ran;
-			strallbg += ".jpg) left top no-repeat";
-			document.getElementById("content").setAttribute("style","background:"+strallbg+";");
-		}
-	$(document).ready(function(){
-		loadbackgroundname();
-		$("#mybugsrowrightbutton").click(function(){
-			$("#mybugsbugcard1").hide(1000);
-			$("#mybugsbugcard3").show(1000);
-	});
-
-});
-	</script>
 </head>
 <body>
 	<%
@@ -39,7 +22,12 @@
  			<jsp:param name="type" value="<%=str%>"/>
  		</jsp:include>
 	<div id="content">
-	Home page. Comming soon.
+		Hello, Tourist. Please sign in our platform. <br>
+		Here, you can join us watching Gousheng and MB Zhou getting married and divorced again and again, which is a great joy to experience. <br>
+		And you can black Gousheng and black Shaoye for fun. <br>
+		Do not hesitate and <a href="signup.jsp">Join us!</a>	
+		<br><br>
+		OR, you've already had an account on the platform, please don't fuck with me and <a href="signin.jsp">SIGN IN</a>.
 	</div>
     <jsp:include page="/footer.jsp" flush="true"/>
 </body>

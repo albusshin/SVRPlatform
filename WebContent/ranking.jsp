@@ -22,15 +22,6 @@
  			<jsp:param name="type" value="<%=str%>"/>
  		</jsp:include>
 	<div id="content">
-	<div id="menu" class="menu">
-                <ul>
-                	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp </li>
-                    <li><a href="myhome"><image src="images/logo.png" width="54px" margin="10px"></image>MY HOME</a></li>
-                    <li><a href="javascript:;">RANKING</a></li>
-                    <li><a href="activities.jsp">ACTIVITIES</a></li>
-                </ul>
-            </div>
-        <hr/>
 		Home page. <br>
 		大家加油编程啊！<br>
 		<a href="TrySubmitBug">上传bug试试。</a><br>
