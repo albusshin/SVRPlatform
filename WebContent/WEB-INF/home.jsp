@@ -250,7 +250,6 @@
 							<div id="watchingbugsleftbutton1" class="leftbuttonhomepage" style="opacity:0">
 							</div>
 							<br>
-							
 							<div id="watchingbugsrightbutton1" class="rightbuttonhomepage"
 						<%
 						if (lsWatchingBugs1.size() <= 2)
