@@ -324,9 +324,9 @@
 				                        "</div>"+
 				                    "</div>"+
 				                    "<div class=\"imgbar\">"+
-				                    "<a class=\"solutionsimg\" href=\"displaysolutions?strBugNumber="+ sd.getBugNumber() +"strNowPage=1#official\"><img src=\"images/uppressed.png\"/>"+sd.getUp()+"</a>"+
+				                    "<a class=\"solutionsimg\" href=\"displaysolutions?strBugNumber="+ sd.getBugNumber() +"&strNowPage=1#official\"><img src=\"images/uppressed.png\"/>"+sd.getUp()+"</a>"+
 						            "<br><br>"+
-						            "<a class=\"solutionsimg\" href=\"displaysolutions?strBugNumber="+ sd.getBugNumber() +"strNowPage=1#official\"><img src=\"images/downpressed.png\"/>"+sd.getDown()+"</a>"+
+						            "<a class=\"solutionsimg\" href=\"displaysolutions?strBugNumber="+ sd.getBugNumber() +"&strNowPage=1#official\"><img src=\"images/downpressed.png\"/>"+sd.getDown()+"</a>"+
 						            "</div>"+
 						            "</div>");
 			    		}
