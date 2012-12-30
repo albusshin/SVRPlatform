@@ -53,7 +53,7 @@
                     	<label for="password" > Password </label>
                     </td>
                     <td class="submitbugvalue">
-                    	<input id="password" name="password" maxlength="300" tabindex="100"/>
+                    	<input id="password" name="password" type="password" maxlength="300" tabindex="100"/>
                     </td>
 					<td>
 						<input type="image" alt="submit" src="images/submitbutton.png" style="height:50px; padding-top:20px; padding-left:30px" onMouseOver="this.src='images/submitbuttonpressed.png'" onMouseOut="this.src='images/submitbutton.png'">
