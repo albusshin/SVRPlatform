@@ -224,7 +224,7 @@
                     	<label for="description"> Description </label>
                     </td>
                     <td class="submitbugvalue">
-                    	<textarea id="description" name="description" maxlength="300" tabindex="100" class="inputdigestvalue" placeholder="Bug description should be very specific about the bug itself, including software versions, software company, platform of running the software, and so on."></textarea>
+                    	<textarea id="description" name="description" maxlength="5000" tabindex="100" class="inputdigestvalue" placeholder="Bug description should be very specific about the bug itself, including software versions, software company, platform of running the software, and so on."></textarea>
                     </td>
                 </tr>
 
