@@ -36,7 +36,14 @@
     			<prop key="hibernate.cache.use_second_level_cache">true</prop> 
     			<prop key="hibernate.cache.use_query_cache">true</prop> 
     			<!--prop key="hibernate.hbm2ddl.auto">create</prop-->
-    			<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>       
+    			<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+    			<prop key="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</prop>
+			    <prop key="c3p0.max_statements">100</prop>
+			    <prop key="c3p0.maxIdleTimeExcessConnections">3600</prop>
+			    <prop key="c3p0.idleConnectionTestPeriod">3600</prop> 
+			    <prop key="c3p0.maxIdleTime">3600</prop>
+			    <prop key="hibernate.c3p0.validate">true</prop>
+			    <prop key="c3p0.testConnectionOnCheckin">true</prop>       
     		</props>        
     	</property>                  
    		<!-- 映射文件 -->         
