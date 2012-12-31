@@ -34,6 +34,7 @@ abstract class BasicCommentAndSolutionDAOImpl extends BasicDAOImpl {
 				case 3: c.setFetchMode("bug", FetchMode.JOIN);break;
 				case 4: c.setFetchMode("solution", FetchMode.JOIN);break;
 				case 5: c.setFetchMode("vulnerability", FetchMode.JOIN);break;
+				case 6: c.setFetchMode("exploit", FetchMode.JOIN);break;
 				}
 //				@SuppressWarnings("unchecked")
 //				List<BasicCommentAndSolution> list= c.list();
