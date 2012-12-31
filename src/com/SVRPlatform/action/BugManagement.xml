@@ -117,5 +117,10 @@
         <action name="exploitvote_*" class="exploitvote" method="{1}">
         	<result name="success" type="stream"></result>
         </action>
+     
+        <action name="exploitcomments_*" class="exploitComment" method="{1}">
+        	<result name="success">/WEB-INF/ExploitComments.jsp</result>
+        	<result name="submit" type="stream"/>
+        </action>
     </package>
 </struts>
