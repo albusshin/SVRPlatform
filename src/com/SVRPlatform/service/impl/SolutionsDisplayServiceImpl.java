@@ -166,6 +166,7 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 
 	public boolean ifAlreadyGiven(int userID, String bugNumber) {
 		User user = (User) userDAO.getByID(userID);
+		if (user == null)	return false;
 		int bugID = Integer.parseInt(bugNumber.split("-")[2]);
 		Bug bug = (Bug) bugDAO.getByID(bugID);
 		if( solutionDAO.getByUserIdAndBugId(user, bug, -1, -1).size() != 0)

@@ -53,6 +53,14 @@ public class Constants {
 	 * 踩exploit所允许的最小credits
 	 */
 	public static final int MINCREDITSONEXPLOITDOWN = 500;
+	/**
+	 * 顶踩vulnerability所加减的分数
+	 */
+	public static final int BONUSONVULNERABILITYUPORDOWN = 5;
+	/**
+	 * 关注Vulnerability所需最少分数
+	 */
+	public static final int MINCREDITSONVULNERABILITYWATCH = 50;
 	
 	public static final String BUG = "bug";
 	public static final String VULNERABILITY = "vulnerability";
