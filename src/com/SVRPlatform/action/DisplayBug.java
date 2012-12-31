@@ -125,6 +125,7 @@ public class DisplayBug extends ActionSupport implements ServletRequestAware,
 		//System.out.println("DisplayBug.java execute()");
 		//System.out.println("firstly, the strBugNumber == " + strBugNumber);
 		Map<String, String> theMap = bugInfoDisplayService.bugInfoDisplay(nowUser, strBugNumber);
+		strBugNumber = theMap.get("strBugNumber");
 		if (theMap.get("status").equals("fail")){
 			//System.out.println("theMap.get('status') == fail");
 			return Constants.FAIL;
