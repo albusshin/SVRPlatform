@@ -109,5 +109,13 @@
         	<result name="success" type="chain">displayvulnerabilityexploits</result>
          	<result name="fail" type="chain">displayvulnerabilityexploits</result>  
         </action>
+        
+        <action name="vulnerabilitywatch_*" class="vulnerabilitywatch" method="{1}">
+        	<result name="success" type="stream"></result>
+        </action>
+        
+        <action name="exploitvote_*" class="exploitvote" method="{1}">
+        	<result name="success" type="stream"></result>
+        </action>
     </package>
 </struts>
