@@ -9,31 +9,31 @@
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/XRegExp.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/shCore.js"></script>
+<!--  暂时用不到
 <script type="text/javascript" src="/codehighlite/scripts/shBrushAppleScript.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/shBrushAS3.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushBash.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/shBrushColdFusion.js"></script>
+<script type="text/javascript" src="/codehighlite/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="/codehighlite/scripts/shBrushErlang.js"></script>
+<script type="text/javascript" src="/codehighlite/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="/codehighlite/scripts/shBrushJavaFX.js"></script>
+<script type="text/javascript" src="/codehighlite/scripts/shBrushScala.js"></script>
+ -->
+<script type="text/javascript" src="/codehighlite/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="/codehighlite/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="/codehighlite/scripts/shBrushPhp.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/shBrushCpp.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/shBrushCSharp.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/shBrushCss.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/shBrushDelphi.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushDiff.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushErlang.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushGroovy.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushJava.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushJavaFX.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushJScript.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushPerl.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushPhp.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="/codehighlite/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="/codehighlite/scripts/shBrushXml.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/shBrushPython.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/shBrushRuby.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushScala.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushSql.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushVb.js"></script>
-<script type="text/javascript" src="/codehighlite/scripts/shBrushXml.js"></script>
-<!-- 
- -->
+<script type="text/javascript" src="/codehighlite/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="/codehighlite/scripts/shBrushPerl.js"></script>
+<script type="text/javascript" src="/codehighlite/scripts/shBrushJava.js"></script>
 <link href="/codehighlite/styles/shCore.css" rel="stylesheet" type="text/css" />
 <link href="/codehighlite/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
