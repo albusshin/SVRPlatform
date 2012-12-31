@@ -27,11 +27,13 @@
         
         <action name="bugpage" class="bugPage" method="execute">
         	<result name="success">/WEB-INF/bugpage.jsp</result>
-        	<result name="fail">/WEB-INF/bugpageNotFound.jsp</result>
+        	<result name="fail">/WEB-INF/pageNotFound.jsp</result>
         </action>
        	
-        <action name="searchbug" class="com.SVRPlatform.action.SearchBug" method="execute">
-        	<result name="success" type="chain">bugpage</result>
+        <action name="searchsite" class="com.SVRPlatform.action.Search" method="execute">
+        	<result name="bug" type="chain">bugpage</result>
+        	<result name="vulnerability" type="chain">vulnerabilitypage</result>
+        	<result name="fail">/WEB-INF/pageNotFound.jsp</result>
         </action>
          
 		<action name="bugvote_*" class="bugvote" method="{1}">
@@ -80,8 +82,7 @@
 
         <action name="vulnerabilitypage" class="vulnerabilityPage" method="execute">
         	<result name="success">/WEB-INF/vulnerabilitypage.jsp</result>
-        	<result name="fail">/WEB-INF/bugpageNotFound.jsp</result>
-        	<!-- fail needs to be changed -->
+        	<result name="fail">/WEB-INF/pageNotFound.jsp</result>
         </action>
         
         <action name="submitvulnerability" class="submitVulnerability" method="execute">
