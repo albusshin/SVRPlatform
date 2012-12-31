@@ -21,8 +21,11 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 import com.SVRPlatform.Utils.StringEncoder;
 import com.SVRPlatform.dao.BugWatchDAO;
+import com.SVRPlatform.dao.ExploitDAO;
 import com.SVRPlatform.dao.SolutionVoteDAO;
 import com.SVRPlatform.dao.UserDAO;
+import com.SVRPlatform.dao.VulnerabilityDAO;
+import com.SVRPlatform.dao.VulnerabilityWatchDAO;
 import com.SVRPlatform.dao.impl.BugDAOImpl;
 import com.SVRPlatform.dao.impl.CommentDAOImpl;
 import com.SVRPlatform.dao.impl.HashForPasswordRetrieveDAOImpl;
@@ -34,6 +37,7 @@ import com.SVRPlatform.model.Comment;
 import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.model.SolutionVote;
 import com.SVRPlatform.model.User;
+import com.SVRPlatform.model.Vulnerability;
 import com.SVRPlatform.service.BugWatchService;
 import com.SVRPlatform.service.PasswordRetrieveService;
 import com.SVRPlatform.service.SolutionCommentDisplayService;
@@ -64,6 +68,10 @@ public class TestForHibernate {
 	
 	static UserProfileService userProfileService;
 	
+	static VulnerabilityDAO vulnerabilityDAO;
+	static ExploitDAO exploitDAO;
+	static VulnerabilityWatchDAO vulnerabilityWatchDAO;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		ctx = new ClassPathXmlApplicationContext( "applicationContext-hibernate.xml", "applicationContext.xml" );
@@ -85,6 +93,9 @@ public class TestForHibernate {
 		solutionCommentDisplayService = (SolutionCommentDisplayService) ctx.getBean("solutionCommentDisplayService");
 		userProfileService = (UserProfileService) ctx.getBean("userProfileService");
 		bugWatchDAO = (BugWatchDAO) ctx.getBean("bugWatchDAO");
+		vulnerabilityDAO = (VulnerabilityDAO) ctx.getBean("vulnerabilityDAO");
+		exploitDAO = (ExploitDAO) ctx.getBean("exploitDAO");
+		vulnerabilityWatchDAO = (VulnerabilityWatchDAO) ctx.getBean("vulnerabilityWatchDAO");
 	}
 
 	@AfterClass
@@ -282,5 +293,10 @@ public class TestForHibernate {
 				if(getter != null)
 					System.out.print(propertyDescriptor.getName()+ ":" + getter.invoke(obj)+" | ");
 		}
+	}
+	@Test public void testVulnerability(){
+		Vulnerability vul = new Vulnerability();
+		vul.setVulnerabilityDigest("fdsafda");
+		vulnerabilityDAO.add(vul);
 	}
 }
