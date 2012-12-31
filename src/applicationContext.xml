@@ -235,7 +235,7 @@
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     
-    <bean id="eulnerabilityDAO" class="com.SVRPlatform.dao.impl.VulnerabilityDAOImpl">
+    <bean id="vulnerabilityDAO" class="com.SVRPlatform.dao.impl.VulnerabilityDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     

@@ -68,7 +68,7 @@ public class TestForHibernate {
 	
 	static UserProfileService userProfileService;
 	
-	static VulnerabilityDAO vulnerablityDAO;
+	static VulnerabilityDAO vulnerabilityDAO;
 	static ExploitDAO exploitDAO;
 	static VulnerabilityWatchDAO vulnerabilityWatchDAO;
 	
@@ -93,7 +93,7 @@ public class TestForHibernate {
 		solutionCommentDisplayService = (SolutionCommentDisplayService) ctx.getBean("solutionCommentDisplayService");
 		userProfileService = (UserProfileService) ctx.getBean("userProfileService");
 		bugWatchDAO = (BugWatchDAO) ctx.getBean("bugWatchDAO");
-		vulnerablityDAO = (VulnerabilityDAO) ctx.getBean("vulnerablityDAO");
+		vulnerabilityDAO = (VulnerabilityDAO) ctx.getBean("vulnerabilityDAO");
 		exploitDAO = (ExploitDAO) ctx.getBean("exploitDAO");
 		vulnerabilityWatchDAO = (VulnerabilityWatchDAO) ctx.getBean("vulnerabilityWatchDAO");
 	}
@@ -297,6 +297,6 @@ public class TestForHibernate {
 	@Test public void testVulnerability(){
 		Vulnerability vul = new Vulnerability();
 		vul.setVulnerabilityDigest("fdsafda");
-		vulnerablityDAO.add(vul);
+		vulnerabilityDAO.add(vul);
 	}
 }
