@@ -158,6 +158,13 @@
 	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
 	    	<property name="vulnerabilityWatchDAO" ref="vulnerabilityWatchDAO"></property>
 	    </bean>
+	    
+	    <bean id="exploitsDisplayServie" class="com.SVRPlatform.service.impl.ExploitsDisplayServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
+	    	<property name="exploitDAO" ref="exploitDAO"></property>
+	    	<property name="exploitVoteDAO" ref="exploitVoteDAO"></property>
+	    </bean>
 	    <!-- *************** -->
 	    
 	    <!-- submit service  -->
@@ -200,6 +207,10 @@
 	    <bean id="bugWatchService" class="com.SVRPlatform.service.impl.BugWatchServiceImpl">
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="bugDAO" ref="bugDAO"></property>
+	    </bean>
+	    <bean id="exploitVoteService" class="com.SVRPlatform.service.impl.ExploitVoteServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="exploitDAO" ref="exploitDAO"></property>
 	    </bean>
 	    <!-- *************** -->
 	    
@@ -260,4 +271,17 @@
     <bean id="vulnerabilityWatchDAO" class="com.SVRPlatform.dao.impl.VulnerabilityWatchDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+    
+    <bean id="exploitVoteDAO" class="com.SVRPlatform.dao.impl.ExploitVoteDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <bean id="exploitCommentDAO" class="com.SVRPlatform.dao.impl.ExploitCommentDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <bean id="vulnerabilityCommentDAO" class="com.SVRPlatform.dao.impl.VulnerabilityCommentDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
 </beans> 

@@ -41,4 +41,17 @@ public class Constants {
 	 * 踩solution所允许的最小credits
 	 */
 	public static final int MINCREDITSONDOWN = 125;
+	/**
+	 * 顶踩exploit所加减的奖励
+	 */
+	public static final int BONUSONEXPLOITUPORDOWN = 20;
+	/**
+	 * 顶exploit所允许的最小credits
+	 */
+	public static final int MINCREDITSONEXPLOITUP = 100;
+	/**
+	 * 踩exploit所允许的最小credits
+	 */
+	public static final int MINCREDITSONEXPLOITDOWN = 500;
+
 }
