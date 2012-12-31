@@ -176,6 +176,12 @@
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="solutionCommentDAO" ref="solutionCommentDAO"></property>
 	    </bean>
+	    
+	    <bean id="vulnerabilitySubmitService" class="com.SVRPlatform.service.impl.VulnerabilitySubmitServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="softwareDAO" ref="softwareDAO"></property>
+	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
+	    </bean>
 	    <!-- *************** -->
 	    
 	    <!-- vote service -->
