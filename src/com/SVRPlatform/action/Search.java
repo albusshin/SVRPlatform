@@ -9,7 +9,7 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import com.SVRPlatform.constants.Constants;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SearchBug extends ActionSupport implements
+public class Search extends ActionSupport implements
 ServletRequestAware, ServletResponseAware {
 	/**
 	 * 
@@ -17,7 +17,25 @@ ServletRequestAware, ServletResponseAware {
 	private static final long serialVersionUID = 1L;
 	HttpServletRequest request;
 	HttpServletResponse response;
+	String strNumber;
+	public String getStrNumber() {
+		return strNumber;
+	}
+
+	public void setStrNumber(String strNumber) {
+		this.strNumber = strNumber;
+	}
+
 	String strBugNumber;
+	String strVulnerabilityNumber;
+	public String getStrVulnerabilityNumber() {
+		return strVulnerabilityNumber;
+	}
+
+	public void setStrVulnerabilityNumber(String strVulnerabilityNumber) {
+		this.strVulnerabilityNumber = strVulnerabilityNumber;
+	}
+
 	public String getStrBugNumber() {
 		return strBugNumber;
 	}
@@ -39,8 +57,17 @@ ServletRequestAware, ServletResponseAware {
 	}
 
 	public String execute(){
-		//System.out.println("Search Bug Execute");
-		//System.out.println("Now StrbugNumber == " + strBugNumber);
+		System.out.println("Search Execute");
+		System.out.println("Now StrNumber == " + strNumber);
+		System.out.println("strBugNumber.substring(0, 3) == " + strNumber.substring(0, 3));
+		if (strNumber.substring(0, 4).equals("SVRB")){
+			strBugNumber = strNumber;
+			return Constants.BUG;
+		}
+		else if (strNumber.substring(0, 4).equals("SVRV")){
+			strVulnerabilityNumber = strNumber;
+			return Constants.VULNERABILITY;
+		}
 		return Constants.SUCCESS;
 	}
 }

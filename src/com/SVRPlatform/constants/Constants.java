@@ -41,4 +41,8 @@ public class Constants {
 	 * 踩solution所允许的最小credits
 	 */
 	public static final int MINCREDITSONDOWN = 125;
+	
+	
+	public static final String BUG = "bug";
+	public static final String VULNERABILITY = "vulnerability";
 }
