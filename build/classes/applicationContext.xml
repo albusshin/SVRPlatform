@@ -122,6 +122,11 @@
     	<property name="solutionCommentDisplayService" ref="solutionCommentDisplayService"></property>
     </bean>
     
+    <bean id="exploitComment" scope="prototype" class="com.SVRPlatform.action.ExploitComment">
+    	<property name="exploitCommentSubmitService" ref="exploitCommentSubmitService"></property>
+    	<property name="exploitCommentDisplayService" ref="exploitCommentDisplayService"></property>
+    </bean>
+    
     <bean id="userProfileAction" scope="prototype" class="com.SVRPlatform.action.UserProfileAction">
     	<property name="userProfileService" ref="userProfileService"></property>
     </bean>
@@ -193,6 +198,12 @@
  	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
  	    	<property name="vulnerabilityCommentDAO" ref="vulnerabilityCommentDAO"></property>
  	    </bean>
+ 	    
+ 	    <bean id="exploitCommentDisplayService" class="com.SVRPlatform.service.impl.ExploitCommentDisplayServiceImpl">
+ 	    	<property name="exploitDAO" ref="exploitDAO"></property>
+ 	    	<property name="exploitCommentDAO" ref="exploitCommentDAO"></property>
+ 	    	<property name="userDAO" ref="userDAO"></property>
+ 	    </bean>
 	    <!-- *************** -->
 	    
 	    <!-- submit service  -->
@@ -230,6 +241,12 @@
 			<property name="exploitDAO" ref="exploitDAO"></property>
 	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
 	    	<property name="userDAO" ref="userDAO"></property>
+		</bean>
+		
+		<bean id="exploitCommentSubmitService" class="com.SVRPlatform.service.impl.ExploitCommentSubmitServiceImpl">
+			<property name="exploitDAO" ref="exploitDAO"></property>
+ 	    	<property name="exploitCommentDAO" ref="exploitCommentDAO"></property>
+ 	    	<property name="userDAO" ref="userDAO"></property>
 		</bean>
 	    
 	    <!-- *************** -->
