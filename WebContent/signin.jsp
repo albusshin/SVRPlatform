@@ -138,7 +138,6 @@ out.println("<div id='credittipsy' class='tipsy tipsy-n' style='top: 210px; righ
 				<input type="submit" id="signingo" name="submit" value="GO" />
 			</form>
 		</div>
-		<style type="text/css"></style>
     	<div id="footer" align="center">
             <p align="center" style="color:#000">Copyright © www.SVRPlatform.com</p>
             <p> <a class="footer" style="color:#000" href="javascript:;">Terms of Service</a></p>
