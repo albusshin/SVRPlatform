@@ -111,7 +111,13 @@ public class CheckInterceptor implements Interceptor,ServletRequestAware,Servlet
 				emailInSession = null;
 				return invocation.invoke();
 			}
-			else return "FailToSignIn";
+			else {
+				UserHandlers.clearSessionAndCookies(request, response);
+				cookieEmail = null;
+				cookieHash = null;
+				emailInSession = null;
+				return "FailToSignIn";
+			}
 		}
 		return invocation.invoke();
 	}

@@ -15,7 +15,7 @@
     	<property name="solutionVoteDAO" ref="solutionVoteDAO"></property>
     	<property name="bugWatchDAO" ref="bugWatchDAO"></property>
     </bean>
-    <bean id="check" class="com.SVRPlatform.interceptor.CheckInterceptor">
+    <bean id="check" scope="prototype" class="com.SVRPlatform.interceptor.CheckInterceptor">
     	<property name="loginService" ref="loginService"></property>
     </bean>
     <!-- 
