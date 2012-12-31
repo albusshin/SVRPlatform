@@ -235,15 +235,15 @@
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     
-    <bean id="VulnerabilityDAO" class="com.SVRPlatform.dao.impl.VulnerabilityDAOImpl">
+    <bean id="eulnerabilityDAO" class="com.SVRPlatform.dao.impl.VulnerabilityDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     
-    <bean id="ExploitDAO" class="com.SVRPlatform.dao.impl.ExploitDAOImpl">
+    <bean id="exploitDAO" class="com.SVRPlatform.dao.impl.ExploitDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     
-    <bean id="VulnerabilityWatchDAO" class="com.SVRPlatform.dao.impl.VulnerabilityWatchDAOImpl">
+    <bean id="vulnerabilityWatchDAO" class="com.SVRPlatform.dao.impl.VulnerabilityWatchDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 </beans> 
