@@ -15,14 +15,6 @@
 		request.setAttribute("mySolutionsAmount", lsMySolutions.size() - 1);
 		BugData bd;
 		SolutionData sd;
-		
-		
-		
-		
-		
-		
-		
-		
 	%>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Home - SVRPlatform</title>
@@ -330,11 +322,11 @@
 				    		out.println(">"+
 				                	"<a href=\"bugpage?strBugNumber="+ sd.getBugNumber() +"\">"+sd.getBugNumber()+"</a>"+
 				                    "<div class=\"digest\">");
-				    		if (sd.getContent().length() > 70){
-				    			out.print(sd.getContent().substring(0,65) + "   ...");
+				    		if (sd.getRawContent().length() > 70){
+				    			out.print(sd.getRawContent().substring(0,65) + "   ...");
 				    		}
 				    		else{
-				    			out.print(sd.getContent());
+				    			out.print(sd.getRawContent());
 				    		}
 				                   out.println("<div class=\"date\">"+
 				                      	"Published: "+ sd.getDatetime() +
