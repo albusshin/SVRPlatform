@@ -15,6 +15,14 @@
 		request.setAttribute("mySolutionsAmount", lsMySolutions.size() - 1);
 		BugData bd;
 		SolutionData sd;
+		
+		
+		
+		
+		
+		
+		
+		
 	%>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Home - SVRPlatform</title>
