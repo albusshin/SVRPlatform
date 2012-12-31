@@ -105,8 +105,16 @@
     	<property name="solutionVoteService" ref="solutionVoteService"></property>
     </bean>
     
+    <bean id="exploitvote" scope="prototype" class="com.SVRPlatform.action.ExploitVoteAction">
+    	<property name="exploitVoteService" ref="exploitVoteService"></property>
+    </bean>
+    
     <bean id="bugvote" scope="prototype" class="com.SVRPlatform.action.BugVoteAction">
     	<property name="bugWatchService" ref="bugWatchService"></property>
+    </bean>
+    
+    <bean id="vulnerabilitywatch" scope="prototype" class="com.SVRPlatform.action.VulnerabilityWatchAction">
+    	<property name="vulnerabilityWatchService" ref="vulnerabilityWatchService"></property>
     </bean>
     
     <bean id="solutionComment" scope="prototype" class="com.SVRPlatform.action.SolutionComment">
