@@ -523,9 +523,10 @@ td.commentssubmitvalue {
 
 textarea#commentssubmittitle {
 	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+	margin-left:30px;
 	width: 600px;
-	height: 40px;
-	font-size: 20px;
+	height: 30px;
+	font-size: 16px;
 	line-height: 2.0;
 	border-width: 1px;
 	border-style: solid;

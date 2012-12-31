@@ -30,6 +30,14 @@ public class DisplaySolutions extends ActionSupport implements
 	private String strNowPage;
 	private String strStat;
 	private boolean isAlreadyGiven;
+	private String strIsAlreadyGiven;
+	public String getStrIsAlreadyGiven() {
+		return strIsAlreadyGiven;
+	}
+
+	public void setStrIsAlreadyGiven(String strIsAlreadyGiven) {
+		this.strIsAlreadyGiven = strIsAlreadyGiven;
+	}
 
 	public boolean isAlreadyGiven() {
 		return isAlreadyGiven;
@@ -154,6 +162,12 @@ public class DisplaySolutions extends ActionSupport implements
 		solutionData = theData.getSolutionsData();
 		strSolutionsAmount = theData.getSolutionCount() + "";
 		isAlreadyGiven = solutionsDisplayService.ifAlreadyGiven(userID, strBugNumber);
+		if (isAlreadyGiven){
+			strIsAlreadyGiven = "true";
+		}
+		else{
+			strIsAlreadyGiven = "false";
+		}
 		//System.out.println("strSolutionsAmount == " + strSolutionsAmount);
 		//System.out.println("before return success");
 		request.setAttribute("officialSolution", officialSolution);
