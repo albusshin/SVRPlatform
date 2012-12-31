@@ -188,9 +188,14 @@
 					    		}
 					    		out.println(">"+
 					                	"<a href=\"bugpage?strBugNumber="+ bd.getBugNumber() +"\">"+bd.getBugNumber()+"</a>"+
-					                    "<div class=\"digest\">"+
-					                    bd.getDigest()+
-					                        "<div class=\"date\">"+
+					                    "<div class=\"digest\">");
+					    		if (bd.getDigest().length()>70){
+					    			out.print(bd.getDigest().substring(0, 65) + "   ...");
+					    		}
+					    		else{
+					    			out.print(bd.getDigest());
+					    		}
+					                        out.println("<div class=\"date\">"+
 					                      	"Published: "+ bd.getPublishDate() +
 					                        "</div>"+
 					                    "</div>"+
@@ -324,9 +329,14 @@
 				    		}
 				    		out.println(">"+
 				                	"<a href=\"bugpage?strBugNumber="+ sd.getBugNumber() +"\">"+sd.getBugNumber()+"</a>"+
-				                    "<div class=\"digest\">"+
-				                    sd.getContent()+
-				                        "<div class=\"date\">"+
+				                    "<div class=\"digest\">");
+				    		if (sd.getContent().length() > 70){
+				    			out.print(sd.getContent().substring(0,65) + "   ...");
+				    		}
+				    		else{
+				    			out.print(sd.getContent());
+				    		}
+				                   out.println("<div class=\"date\">"+
 				                      	"Published: "+ sd.getDatetime() +
 				                        "</div>"+
 				                    "</div>"+

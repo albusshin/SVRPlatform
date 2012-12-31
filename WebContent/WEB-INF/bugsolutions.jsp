@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="bug.solutions.js"></script>
+	<script type="text/javascript" src="showdown.js"></script>
+	<script type="text/javascript" src="wmd.js"></script>
     <style type="text/css">
     <%
 int solutionsPerPage = 5;
@@ -381,18 +383,14 @@ else
                     <table class="commentssubmittable">
                         <tr>
                             <td class="commentssubmitkey">
-                            	Solution
+                            	&nbsp;
                             </td>
                             <td class="commentssubmitvalue">
-                            	<textarea id="commentssubmittext" name="solutionssubmittext" placeholder="Be aware of following tips:
-                                
-                                1. Give useful solutions;
-                                
-                                2. Provide details and share your research;
-                                
-                                3. Do not make casual comments on this page,
-                                
-                                   Go to COMMENTS page to do so."></textarea>
+								<div id="wmd-editor" class="wmd-panel">
+									<div id="wmd-button-bar"></div>
+	                            	<textarea id="wmd-input" class="commentssubmittext" name="solutionssubmittext" placeholder="Please give useful solutions; provide details and share your research;and do not make casual comments on this page,go to COMMENTS page to do so." ></textarea>
+	                            </div>
+	                            <div id="wmd-preview" class="wmd-panel"></div>
                             </td>
                         </tr>
                         <tr>
