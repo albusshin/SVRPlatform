@@ -259,7 +259,7 @@ Attacklab.wmdBase = function(){
 			style.position = "absolute";
 			style.top = "0";
 			
-			style.zIndex = "1000";
+			style.zIndex = "10000";
 			
 			// Some versions of Konqueror don't support transparent colors
 			// so we make the whole window transparent.
@@ -299,7 +299,7 @@ Attacklab.wmdBase = function(){
 			dialog.style.padding = "10px;";
 			dialog.style.position = "fixed";
 			dialog.style.width = "400px";
-			dialog.style.zIndex = "1001";
+			dialog.style.zIndex = "10001";
 			
 			// The dialog text.
 			var question = doc.createElement("div");

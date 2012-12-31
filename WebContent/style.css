@@ -517,13 +517,16 @@ td.commentssubmitkey {
 
 td.commentssubmitvalue {
 	padding-top: 10px;
+	margin-bottom:20px;
+	padding-bottom:20px;
 }
 
 textarea#commentssubmittitle {
 	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+	margin-left:30px;
 	width: 600px;
-	height: 40px;
-	font-size: 20px;
+	height: 30px;
+	font-size: 16px;
 	line-height: 2.0;
 	border-width: 1px;
 	border-style: solid;
@@ -533,11 +536,11 @@ textarea#commentssubmittitle {
 	line-height: 1.6;
 }
 
-textarea#commentssubmittext {
+textarea.commentssubmittext {
 	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
 	width: 600px;
 	height: 350px;
-	font-size: 20px;
+	font-size: 14px;
 	line-height: 2.0;
 	border-width: 1px;
 	border-style: solid;
@@ -1623,35 +1626,44 @@ div#mysolutionsleftbutton{
 
 .wmd-panel
 {
-	margin-left: 25%;
-	margin-right: 25%;
-	width: 50%;
-	min-width: 500px;
+	margin:auto;
+	width:660px;
 }
 
 #wmd-editor
 {
-	background-color: Aquamarine;
+	background-color: white;
 }
 
 #wmd-button-bar 
 {
-	width: 100%;
-	background-color: Silver; 
+	height: 25px;
+	width: 660px;
+	clear: both;
+	background-color: white;
+	margin: 10px 0px 1px 0px;
 }
 
 #wmd-input 
 { 
-	height: 500px;
-	width: 100%;
-	background-color: Gainsboro;
-	border: 1px solid DarkGray;
+	width: 660px;
+	padding: 3px;
+	height: 200px;
+	line-height: 1.2;
 }
 
-#wmd-preview 
-{ 
-	background-color: LightSkyBlue; 
-}
+#wmd-preview {
+	clear: both;
+	margin-left:10px;
+	border: 2px dotted #CCC;
+	font-family: "微软雅黑", "黑体", "新宋体", "宋体";
+	margin-top:20px;
+	font-variant:normal;
+	font-style:none;
+	font-size: 80%;
+	line-height: 130%;
+	width: 660px;
+};
 
 #wmd-output 
 { 
@@ -1660,13 +1672,10 @@ div#mysolutionsleftbutton{
 
 #wmd-button-row 
 {
-	position: relative; 
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-bottom: 5px;
-	margin-top: 10px;
-	padding: 0px;  
+	position: relative;
+	padding: 0px;
 	height: 20px;
+	margin: 0;
 }
 
 .wmd-spacer
@@ -1674,7 +1683,6 @@ div#mysolutionsleftbutton{
 	width: 1px; 
 	height: 20px; 
 	margin-left: 14px;
-	
 	position: absolute;
 	background-color: Silver;
 	display: inline-block; 
@@ -1724,7 +1732,7 @@ div#mysolutionsleftbutton{
 #wmd-button-bar #wmd-spacer3        {left: 300px;}
 #wmd-button-bar #wmd-undo-button    {left: 325px; background-position: -200px 0;}
 #wmd-button-bar #wmd-redo-button    {left: 350px; background-position: -220px 0;}
-#wmd-button-bar #wmd-help-button    {right: 0px; background-position: -240px 0;}
+#wmd-button-bar #wmd-help-button    {right: 0px; background-position: -240px 0; display:none;}
 
 
 .wmd-prompt-background
@@ -1755,3 +1763,30 @@ div#mysolutionsleftbutton{
 	font-size: 0.8em;
 	font-weight: bold;
 }
+
+.grippie {
+	background-position: 321px -823px;
+	border: 1px solid #DDD;
+	border-width: 0pt 1px 1px;
+	cursor: s-resize;
+	height: 9px;
+	overflow: hidden;
+	background-color: #EEE;
+	margin-right: -8px !important;
+}
+textarea{
+	resize: none;
+}
+
+blockquote {
+	quotes: none;
+	margin-bottom: 10px;
+	padding: 10px 10px 1px 10px;
+	background-color: #EEE;
+}
+
+code {
+	font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+	background-color: #EEE;
+}
+

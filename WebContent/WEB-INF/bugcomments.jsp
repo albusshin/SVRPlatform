@@ -8,9 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>BUG Comments</title>
 <link rel="stylesheet" href="style.css" />
-<script type="text/javascript" src="jquery.min.js">
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="showdown.js"></script>
+<script type="text/javascript" src="wmd.js"></script>
 	
-</script>
+
 <style type="text/css">
 <%
 int commentsPerPage = 5;
@@ -171,16 +173,22 @@ else
 					<input type="text" value="${strBugNumber}" style="display:none" name="strBugNumber">
 					<table class="commentssubmittable">
 						<tr>
-							<td class="commentssubmitkey">Title</td>
+							<td class="commentssubmitkey">&nbsp;</td>
 							<td class="commentssubmitvalue"><textarea
 									id="commentssubmittitle" name="commentssubmittitle" type="text"
 									placeholder="Digest of your comment"></textarea></td>
 						</tr>
 						<tr>
-							<td class="commentssubmitkey">Comment</td>
-							<td class="commentssubmitvalue"><textarea
-									id="commentssubmittext" name="commentssubmittext"
-									placeholder="Say whatever you want except offensive words"></textarea>
+							<td class="commentssubmitkey">&nbsp;</td>
+							<td class="commentssubmitvalue">
+								<div id="wmd-editor" class="wmd-panel">
+								<div id="wmd-button-bar"></div>
+									<textarea
+										id="wmd-input" name="commentssubmittext"
+										placeholder="Say whatever you want except offensive words"
+										class="commentssubmittext"></textarea>
+								</div>
+								<div id="wmd-preview" class="wmd-panel"></div>
 							</td>
 						</tr>
 						<tr>
