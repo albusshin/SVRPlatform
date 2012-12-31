@@ -1400,13 +1400,14 @@ td.modifyprofilevalue {
 div.mybugs{
 	height:250px;
 }
-div.mybugsrow,div.watchingbugsrow,div.mysolutionsrow{
+div.mybugsrow,div.watchingbugsrow,div.mysolutionsrow,div.commentsbugsrow,div.solutionsbugs,div.votingbugs,div.scoresbugs{
 	position:relative;
 	clear:both;
 }
+/*
 div#mybugsrow1{
 	left:200px;
-}
+}*/
 div.anyrowbox{
 	position:relative;
 	margin-left:50px;
@@ -1536,7 +1537,7 @@ div.solutioncard{
 .solutioncard img{
 	height:30px;
 }
-div.homepagesubtitle{
+div.homepagesubtitle, div.bugpagesubtitle{
 	opacity:0.9;
 	background-image: -moz-linear-gradient(#111111, #222222);
 	background-image: -webkit-linear-gradient(#111111, #111111);
@@ -1553,6 +1554,9 @@ div.homepagesubtitle{
 	text-shadow: grey 1px 1px 1px;
 	padding-left:10px;
 	margin-bottom:10px;
+}
+div.bugpagesubtitle{
+	width:350px;
 }
 div.rightbuttonhomepage{
 	position:relative;
@@ -1620,7 +1624,7 @@ div#mysolutionsleftbutton{
 
 
 /*
- wmd.css forked from github.com
+ 	wmd.css forked from github.com
 */
 
 
