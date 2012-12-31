@@ -239,6 +239,10 @@
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="exploitDAO" ref="exploitDAO"></property>
 	    </bean>
+	    <bean id="vulnerabilityWatchService" class="com.SVRPlatform.service.impl.VulnerabilityWatchServiceImpl">
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
+	    </bean>
 	    <!-- *************** -->
 	    
 	    <!-- my home service -->
