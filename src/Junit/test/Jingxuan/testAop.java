@@ -33,34 +33,45 @@ public class testAop {
 	@Test
 	public void test2(){
 		Calendar pastDate = Calendar.getInstance();
-		pastDate.set(2012, 11, 6, 23, 4, 5);
+		pastDate.set(2012, 11, 31, 18, 50, 0);
 		System.out.println(formatDate(pastDate.getTime()));;
 	}
 	protected static String formatDate(Date date){
-		Calendar pastDate = Calendar.getInstance();
-		pastDate.setTime(date);
-		Calendar nowDate = Calendar.getInstance();
-		nowDate.setTime(new Date());
-		int years = nowDate.get(Calendar.YEAR) - pastDate.get(Calendar.YEAR);
-		if(years !=0 )
+		long between = (new Date().getTime() - date.getTime()) / 1000;
+		long minute = 60;
+		long hour = 60 * minute;
+		long day  = 24 * hour;
+		long year = 365 * day;
+		long month = 30 * day;
+		long week = 7 * day;
+		
+		
+		long years = between / year;
+		if(years > 0)
 			return "years:"+years;
-		int months = nowDate.get(Calendar.MONTH) - pastDate.get(Calendar.MONTH);
-		if(months != 0)
+		
+		long months = between / month;
+		if(months > 0)
 			return "months:"+months;
-		int weeks = nowDate.get(Calendar.WEEK_OF_YEAR) - pastDate.get(Calendar.WEEK_OF_YEAR);
-		if(weeks != 0)
+		
+		long weeks = between / week;
+		if(weeks > 0)
 			return "weeks:"+weeks;
-		int days = nowDate.get(Calendar.DAY_OF_YEAR) - pastDate.get(Calendar.DAY_OF_YEAR);
-		if(days !=0 )
+		
+		long days = between / day;
+		if(days > 0)
 			return "days:"+days;
-		int hours = nowDate.get(Calendar.HOUR_OF_DAY)- pastDate.get(Calendar.HOUR_OF_DAY);
-		if(hours != 0)
+		
+		long hours = between / hour;
+		if(hours > 0)
 			return "hours:"+hours;
-		int minutes = nowDate.get(Calendar.MINUTE) - pastDate.get(Calendar.MINUTE);
-		if(minutes !=0)
-			return "minutes:"+minutes;
-		int seconds = nowDate.get(Calendar.SECOND) - pastDate.get(Calendar.SECOND);
-			return "seconds:"+seconds;
+		
+		long minutes = between / minute;
+		if(minutes > 0)
+			return "minutes:" + minutes;
+		
+		return "seconds:"+ between;
+		
 	}
 
 }
