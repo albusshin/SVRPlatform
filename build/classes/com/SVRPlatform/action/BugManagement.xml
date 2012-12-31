@@ -104,5 +104,10 @@
         <action name="displayvulnerabilityexploits" class="displayVulnerabilityExploits" method="execute">
         	<result name="success">/WEB-INF/vulnerabilityexploits.jsp</result>
         </action>
+        
+        <action name="submitVulnerabilityExploit_*" class="submitVulnerabilityExploit" method="{1}">
+        	<result name="success" type="chain">displayvulnerabilityexploits</result>
+         	<result name="fail" type="chain">displayvulnerabilityexploits</result>  
+        </action>
     </package>
 </struts>
