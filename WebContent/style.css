@@ -1064,7 +1064,7 @@ input#signingo[type="submit"]:hover,input#signingo[type="submit"]:focus
 }
 
 /* Style used in the submitbug.html select dropdown */
-select {
+select,.svrvscore{
 	margin-left: 100px;
 	border: thin;
 	color: #666;
@@ -1077,6 +1077,9 @@ select {
 	box-shadow: 1px 1px 11px 330033;
 }
 
+.svrvscore{
+	
+}
 /* Style used in home.html */
 div#userbar {
 	z-index: 7001;
