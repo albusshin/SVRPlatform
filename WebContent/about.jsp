@@ -101,7 +101,7 @@ out.println("<div id='credittipsy' class='tipsy tipsy-n' style='top: 210px; righ
 			background:black;
 			color:white;
 			height:900px">
-			<div  align="center" style="font-size:30px">NBGroup Proudly Presents<br><img src="images/logo.png" width="300px"/><br>www.SVRPlatform.com</div>
+			<div  align="center" style="font-size:30px; font-weight:bold; font-family:Arial">NBGroup Proudly Presents<br><img src="images/logo.png" width="300px"/><br>SVRPlatform</div>
 			<br><br><br>
 			
 			

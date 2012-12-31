@@ -22,11 +22,21 @@
  			<jsp:param name="type" value="<%=str%>"/>
  		</jsp:include>
 	<div id="content">
-        <hr/>
 		<br>
-		<p>目前有如下活动：
-		<p>1. 踢Carry Zhu 两脚
-		<p>2. 踹Carry Zhu 两脚
+		<div class="bugvultext" align="center">
+		<div class="commentstitle" style="font-size:20px; font-weight:bold">
+		
+		SVRPlatform Carnival！！！
+		</div>
+		<br><br><br>
+		<div class="commentstext">
+		Hack this site with your 1337 ability.<br><br>
+		Send your Proof Of Concept email to <a href="mailto:svrplatform@gmail.com">svrplatform@gmail.com</a> to win your prize.<br>
+		<br><br>
+		The NBGroup
+		
+		</div>
+		</div>
 	</div>
     <jsp:include page="/footer.jsp" flush="true"/>
 </body>
