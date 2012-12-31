@@ -168,7 +168,7 @@
  		</jsp:include>
 	<div id="content">
             <div class="mybugs">
-		    	<div class="homepagesubtitle">My Bugs</div>
+		    	<div class="homepagesubtitle">My Bugs  (<%out.print(lsMyBugs.size()); %>)</div>
 					<div class="anyrowbox">
 				    	<div class="mybugsrow">
 					    	<%
@@ -220,7 +220,7 @@
 					</div>
      		</div>
     <div class="watchingbugs">
-    	<div class="homepagesubtitle">Watching Bugs</div>
+    	<div class="homepagesubtitle">Watching Bugs  (<%out.print((lsWatchingBugs1.size()+(lsWatchingBugs2.size()))); %>)</div>
 			<div class="anyrowbox">
 		    		<div class="watchingbugsrow" id="watchingbugsrow1">
 		    						<%
@@ -309,7 +309,7 @@
      </div>
 					</div>
      <div class="mysolutions">
-    	<div class="homepagesubtitle">My Solutions</div>
+    	<div class="homepagesubtitle">My Solutions  (<%out.print(lsMySolutions.size()); %>)</div>
 	    	<div class="anyrowbox">
 			        <div class="mysolutionsrow">
 					<%
