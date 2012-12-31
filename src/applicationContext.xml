@@ -165,6 +165,11 @@
 	    	<property name="exploitDAO" ref="exploitDAO"></property>
 	    	<property name="exploitVoteDAO" ref="exploitVoteDAO"></property>
 	    </bean>
+	    
+	     <bean id="vulnerabilityCommentsDisplayService" class="com.SVRPlatform.service.impl.VulnerabilityCommentsDisplayServiceImpl">
+ 	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
+ 	    	<property name="vulnerabilityCommentDAO" ref="vulnerabilityCommentDAO"></property>
+ 	    </bean>
 	    <!-- *************** -->
 	    
 	    <!-- submit service  -->
@@ -197,6 +202,7 @@
 	    	<property name="softwareDAO" ref="softwareDAO"></property>
 	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
 	    </bean>
+	    
 	    <!-- *************** -->
 	    
 	    <!-- vote service -->

@@ -27,11 +27,13 @@
         
         <action name="bugpage" class="bugPage" method="execute">
         	<result name="success">/WEB-INF/bugpage.jsp</result>
-        	<result name="fail">/WEB-INF/bugpageNotFound.jsp</result>
+        	<result name="fail">/WEB-INF/pageNotFound.jsp</result>
         </action>
        	
-        <action name="searchbug" class="com.SVRPlatform.action.SearchBug" method="execute">
-        	<result name="success" type="chain">bugpage</result>
+        <action name="searchsite" class="com.SVRPlatform.action.Search" method="execute">
+        	<result name="bug" type="chain">bugpage</result>
+        	<result name="vulnerability" type="chain">vulnerabilitypage</result>
+        	<result name="fail">/WEB-INF/pageNotFound.jsp</result>
         </action>
          
 		<action name="bugvote_*" class="bugvote" method="{1}">
@@ -70,6 +72,8 @@
         	<result name="submit" type="stream"/>
         </action>
     </package>
+    
+    
 <!--This is vulnerability region -->
     <package name="Vulnerability" namespace="/" extends="default">
      
@@ -80,13 +84,21 @@
 
         <action name="vulnerabilitypage" class="vulnerabilityPage" method="execute">
         	<result name="success">/WEB-INF/vulnerabilitypage.jsp</result>
-        	<result name="fail">/WEB-INF/bugpageNotFound.jsp</result>
-        	<!-- fail needs to be changed -->
+        	<result name="fail">/WEB-INF/pageNotFound.jsp</result>
         </action>
         
         <action name="submitvulnerability" class="submitVulnerability" method="execute">
 	 		<result name="success" type="chain">vulnerabilitypage</result>
 	 		<result name="fail">/WEB-INF/submitvulnerability.jsp?stat=wrong</result>
+        </action>
+        
+        <action name="displayvulnerabilitycomments" class="displayVulnerabilityComments" method="execute">
+        	<result name="success">/WEB-INF/vulnerabilitycomments.jsp</result>
+        </action>
+        
+        <action name="makeVulnerabilityComment" class="makeVulnerabilityComment" method="execute">
+         	<result name="success" type="chain">displayvulnerabilitycomments</result>
+         	<result name="fail" type="chain">displayvulnerabilitycomments</result>  
         </action>
     </package>
 </struts>
