@@ -66,6 +66,11 @@
     	<property name="commentSubmitService" ref="commentSubmitService"></property>
     </bean>
     
+    <bean id="makeVulnerabilityComment" scope="prototype" class="com.SVRPlatform.action.MakeVulnerabilityComment">
+    	<property name="vulnerabilityCommentSubmitService" ref="vulnerabilityCommentSubmitService"></property>
+    </bean>
+
+    
     <bean id="submitSolution" scope="prototype" class="com.SVRPlatform.action.SubmitSolution">
     	<property name="solutionSubmitService" ref="solutionSubmitService"></property>
     </bean>
@@ -80,6 +85,10 @@
     
     <bean id="displayComments" scope="prototype" class="com.SVRPlatform.action.DisplayComments">
     	<property name="commentsDisplayService" ref="commentsDisplayService"></property>
+    </bean>
+    
+    <bean id="displayVulnerabilityComments" scope="prototype" class="com.SVRPlatform.action.DisplayVulnerabilityComments">
+    	<property name="vulnerabilityCommentsDisplayService" ref="vulnerabilityCommentsDisplayService"></property>
     </bean>
     
     <bean id="displaySolutions" scope="prototype" class="com.SVRPlatform.action.DisplaySolutions">
@@ -158,6 +167,11 @@
 	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
 	    	<property name="vulnerabilityWatchDAO" ref="vulnerabilityWatchDAO"></property>
 	    </bean>
+	    
+	    <bean id="vulnerabilityCommentsDisplayService" class="com.SVRPlatform.service.impl.VulnerabilityCommentsDisplayServiceImpl">
+	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
+	    	<property name="vulnerabilityCommentDAO" ref="vulnerabilityCommentDAO"></property>
+	    </bean>
 	    <!-- *************** -->
 	    
 	    <!-- submit service  -->
@@ -189,6 +203,12 @@
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="softwareDAO" ref="softwareDAO"></property>
 	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
+	    </bean>
+	    
+	    <bean id="vulnerabilityCommentSubmitService" class="com.SVRPlatform.service.impl.VulnerabilityCommentSubmitServiceImpl">
+	    	<property name="vulnerabilityCommentDAO" ref="vulnerabilityCommentDAO"></property>
+	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
+	    	<property name="userDAO" ref="userDAO"></property>
 	    </bean>
 	    <!-- *************** -->
 	    
@@ -250,6 +270,10 @@
     </bean>
     
     <bean id="vulnerabilityDAO" class="com.SVRPlatform.dao.impl.VulnerabilityDAOImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <bean id="vulnerabilityCommentDAO" class="com.SVRPlatform.dao.impl.VulnerabilityCommentDAOImpl">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     

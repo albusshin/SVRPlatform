@@ -89,5 +89,14 @@
 	 		<result name="success" type="chain">vulnerabilitypage</result>
 	 		<result name="fail">/WEB-INF/submitvulnerability.jsp?stat=wrong</result>
         </action>
+        
+        <action name="displayvulnerabilitycomments" class="displayVulnerabilityComments" method="execute">
+        	<result name="success">/WEB-INF/vulnerabilitycomments.jsp</result>
+        </action>
+        
+        <action name="makeVulnerabilityComment" class="makeVulnerabilityComment" method="execute">
+         	<result name="success" type="chain">displayvulnerabilitycomments</result>
+         	<result name="fail" type="chain">displayvulnerabilitycomments</result>  
+        </action>
     </package>
 </struts>
