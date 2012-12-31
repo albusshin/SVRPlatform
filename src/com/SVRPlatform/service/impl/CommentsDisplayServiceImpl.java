@@ -52,7 +52,7 @@ public class CommentsDisplayServiceImpl implements CommentsDisplayService {
 			user = comment.getUser();
 			
 			commentData.setTitle(HTMLTranscoder.transcode(comment.getCommentTitle()));
-			commentData.setContent(HTMLTranscoder.transcode(comment.getContent()));
+			commentData.setContent(comment.getContent());
 			commentData.setDatetime(comment.getDatetime().toString());
 			commentData.setRealname(user.getRealName());
 			commentData.setEmail(user.getEmail());

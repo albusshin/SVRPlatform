@@ -131,7 +131,7 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 			sc /= 15;
 			
 			bug.setDatetime(new Date());
-			bug.setDescription(HTMLTranscoder.transcode(description));
+			bug.setDescription(description);
 			bug.setVersion(HTMLTranscoder.transcode(version));
 			bug.setSoftware(software);
 			bug.setBugDigest(HTMLTranscoder.transcode(bugDigest));

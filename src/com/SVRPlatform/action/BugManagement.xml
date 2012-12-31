@@ -30,7 +30,7 @@
         	<result name="fail">/WEB-INF/bugpageNotFound.jsp</result>
         </action>
         
-        <action name="vulnerabilitypage" class="vulnerabilitypage" method="execute">
+        <action name="vulnerabilitypage" class="vulnerabilityPage" method="execute">
         	<result name="success">/WEB-INF/vulnerability.jsp</result>
         	<result name="fail">/WEB-INF/bugpageNotFound.jsp</result>
         </action>
