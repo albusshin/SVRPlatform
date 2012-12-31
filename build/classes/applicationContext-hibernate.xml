@@ -58,13 +58,16 @@
    				<value>com/SVRPlatform/model/SolutionVote.hbm.xml</value>
    				<value>com/SVRPlatform/model/BugWatch.hbm.xml</value>
    				<value>com/SVRPlatform/model/SolutionComment.hbm.xml</value>
-   				<value>com/SVRPlatform/model/Exploit.hbm.xml</value>
-   				<value>com/SVRPlatform/model/ExploitComment.hbm.xml</value>
-   				<value>com/SVRPlatform/model/ExploitVote.hbm.xml</value>
-   				<value>com/SVRPlatform/model/Vulnerability.hbm.xml</value>
-   				<value>com/SVRPlatform/model/VulnerabilityComment.hbm.xml</value>
-   				<value>com/SVRPlatform/model/VulnerabilitySolution.hbm.xml</value>
-   				<value>com/SVRPlatform/model/VulnerabilityWatch.hbm.xml</value>
+   				<!--value>com/SVRPlatform/model/Exploit.hbm.xml</value-->
+   				<!--value>com/SVRPlatform/model/ExploitComment.hbm.xml</value>
+   				<value>com/SVRPlatform/model/ExploitVote.hbm.xml</value-->
+   				<!--value>com/SVRPlatform/model/Vulnerability.hbm.xml</value-->
+   				<!--value>com/SVRPlatform/model/VulnerabilityComment.hbm.xml</value-->
+   				<!--value>com/SVRPlatform/model/VulnerabilitySolution.hbm.xml</value-->
+   				<!--value>com/SVRPlatform/model/VulnerabilityWatch.hbm.xml</value-->
+   				
+   				
+   				
    				<!-- value>com/SVRPlatform/model/Solution.hbm.xml</value> 
    				<value>com/SVRPlatform/model/Bug.hbm.xml</value>  
    				<value>com/SVRPlatform/model/Comment.hbm.xml</value>
