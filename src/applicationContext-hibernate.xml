@@ -65,6 +65,9 @@
    				<value>com/SVRPlatform/model/VulnerabilityComment.hbm.xml</value>
    				<value>com/SVRPlatform/model/VulnerabilitySolution.hbm.xml</value>
    				<value>com/SVRPlatform/model/VulnerabilityWatch.hbm.xml</value>
+   				
+   				
+   				
    				<!-- value>com/SVRPlatform/model/Solution.hbm.xml</value> 
    				<value>com/SVRPlatform/model/Bug.hbm.xml</value>  
    				<value>com/SVRPlatform/model/Comment.hbm.xml</value>
