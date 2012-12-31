@@ -53,6 +53,8 @@ public class LoginServiceImpl implements LoginService{
 				
 				map.put("cookiehash", hash);
 			}
+			user.setSeen(Calendar.getInstance().getTime());
+			userDAO.update(user);
 			return map;
 		}
 		
@@ -81,6 +83,8 @@ public class LoginServiceImpl implements LoginService{
 			map.put("userID", user.getUserId());
 			map.put("credit", user.getCredit());
 			map.put("realname", user.getRealName());
+			user.setSeen(Calendar.getInstance().getTime());
+			userDAO.update(user);
 			return map;
 		}
 		

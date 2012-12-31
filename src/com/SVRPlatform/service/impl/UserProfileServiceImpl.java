@@ -1,6 +1,5 @@
 package com.SVRPlatform.service.impl;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -67,17 +66,17 @@ public class UserProfileServiceImpl implements UserProfileService {
 			userData.setAge(user.getAge());
 			userData.setCredit(user.getCredit());
 			userData.setEmail(user.getEmail());
-			System.out.println(user.getSeen().toString());
+			//System.out.println(user.getSeen().toString());
 			userData.setLastSeenDate(user.getSeen().toString().substring(0, 16));
 			userData.setLocation(user.getLocation());
 			
-			userData.setMemberFor(this.formatDate(user.getDate(), false));
+			userData.setMemberFor(this.formatDate(user.getDate()));
 			
 			userData.setProfileViews(user.getProfileViews());
 			userData.setRegisterDate(user.getDate().toString().substring(0, 16));
 			userData.setRealName(user.getRealName());
 			
-			userData.setSeen(this.formatDate(user.getSeen(), true));
+			userData.setSeen(this.formatDate(user.getSeen())+ " ago");
 			
 			userData.setUserId(user.getUserId());
 			userData.setWebsite(user.getWebsite());
@@ -88,53 +87,41 @@ public class UserProfileServiceImpl implements UserProfileService {
 		}
 	}
 	
-	protected String formatDate(Date date, boolean seen){
-		Calendar pastDate = Calendar.getInstance();
-		pastDate.setTime(date);
-		Calendar nowDate = Calendar.getInstance();
-		nowDate.setTime(new Date());
-		String ret = null;
-		int years = nowDate.get(Calendar.YEAR) - pastDate.get(Calendar.YEAR);
-		while (true){
-			if(years !=0 ){
-				ret = years + " years";
-				break;
-			}
-			int months = nowDate.get(Calendar.MONTH) - pastDate.get(Calendar.MONTH);
-			if(months != 0){
-				ret = months + " months";
-				break;
-			}
-			int weeks = nowDate.get(Calendar.WEEK_OF_YEAR) - pastDate.get(Calendar.WEEK_OF_YEAR);
-			if(weeks != 0){
-				ret = weeks + " weeks";
-				break;
-			}
-			int days = nowDate.get(Calendar.DAY_OF_YEAR) - pastDate.get(Calendar.DAY_OF_YEAR);
-			if(days !=0 ){
-				ret = days + " days";
-				break;
-			}
-			int hours = nowDate.get(Calendar.HOUR_OF_DAY)- pastDate.get(Calendar.HOUR_OF_DAY);
-			if(hours != 0){
-				ret = hours + " hours";
-				break;
-			}
-			int minutes = nowDate.get(Calendar.MINUTE) - pastDate.get(Calendar.MINUTE);
-			if(minutes !=0){
-				ret = minutes + " minutes";
-				break;
-			}
-			int seconds = nowDate.get(Calendar.SECOND) - pastDate.get(Calendar.SECOND);
-			if (seconds != 0){
-				ret = seconds + " seconds";
-				break;
-			}
-		}
-		if (seen){
-			ret += " ago";
-		}
-		return ret;
+	protected String formatDate(Date date){
+		long between = (new Date().getTime() - date.getTime()) / 1000;
+		long minute = 60;
+		long hour = 60 * minute;
+		long day  = 24 * hour;
+		long year = 365 * day;
+		long month = 30 * day;
+		long week = 7 * day;
+		
+		
+		long years = between / year;
+		if(years > 0)
+			return years + " years";
+		
+		long months = between / month;
+		if(months > 0)
+			return months + " months";
+		
+		long weeks = between / week;
+		if(weeks > 0)
+			return weeks + " weeks";
+		
+		long days = between / day;
+		if(days > 0)
+			return days + " days";
+		
+		long hours = between / hour;
+		if(hours > 0)
+			return hours + " hours";
+		
+		long minutes = between / minute;
+		if(minutes > 0)
+			return minutes + " minutes";
+		
+		return between + " seconds";
 	}
 
 }
