@@ -70,6 +70,10 @@
    		<property name="bugInfoDisplayService" ref="bugInfoDisplayService"></property>
     </bean>
     
+    <bean id="vulnerabilityPage" scope="prototype" class="com.SVRPlatform.action.DisplayVulnerability">
+   		<property name="vulnerabilityDisplayService" ref="vulnerabilityDisplayService"></property>
+    </bean>
+    
     <bean id="displayComments" scope="prototype" class="com.SVRPlatform.action.DisplayComments">
     	<property name="commentsDisplayService" ref="commentsDisplayService"></property>
     </bean>
