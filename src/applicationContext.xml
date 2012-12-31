@@ -14,6 +14,8 @@
     <bean id="creditsLimitationInterceptor" class="com.SVRPlatform.interceptor.CreditsLimitationInterceptor">
     	<property name="solutionVoteDAO" ref="solutionVoteDAO"></property>
     	<property name="bugWatchDAO" ref="bugWatchDAO"></property>
+    	<property name="vulnerabilityWatchDAO" ref="vulnerabilityWatchDAO"></property>
+    	<property name="exploitVoteDAO" ref="exploitVoteDAO"></property>
     </bean>
     <bean id="check" scope="prototype" class="com.SVRPlatform.interceptor.CheckInterceptor">
     	<property name="loginService" ref="loginService"></property>
