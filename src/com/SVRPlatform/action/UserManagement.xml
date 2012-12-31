@@ -74,7 +74,7 @@
 		
 		<action name="myhome" class="myHomeAction" method="execute">
 			<result name="success">/WEB-INF/home.jsp</result>
-			<result name="fail" type="redirect">/WEB-INF/index.jsp</result>
+			<result name="fail">/WEB-INF/index.jsp</result>
 		</action>
         <!-- Add actions here -->
     </package>
