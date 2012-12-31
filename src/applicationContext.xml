@@ -86,6 +86,10 @@
     	<property name="solutionsDisplayService" ref="solutionsDisplayService"></property>
     </bean>
     
+    <bean id="displayVulnerabilityExploits" scope="prototype" class="com.SVRPlatform.action.DisplayVulnerabilityExploits">
+    	<property name="exploitsDisplayService" ref="exploitsDisplayService"></property>
+    </bean>
+    
     <bean id="solutionvote" scope="prototype" class="com.SVRPlatform.action.SolutionVoteAction">
     	<property name="solutionVoteService" ref="solutionVoteService"></property>
     </bean>
