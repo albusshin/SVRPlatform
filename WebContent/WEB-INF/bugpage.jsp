@@ -43,11 +43,11 @@
 							}, 400);
 			        	}
 			        	if  (data == "creditsnotenough") {
-			        		if (type == 'Up') $('div.message-text').html("Vote Up requires 15 credits");
+			        		if (type == 'Up') $('div.message-text').html("Watch requires 15 credits");
 			        		else $('div.message-text').html("Vote Down requires 125 credits");
 			        	}
 			        	if (data == "alreadyvoted") 
-			        		$('div.message-text').html("Already voted!");
+			        		$('div.message-text').html("Already selected!");
 			        	if (data == "owner")
 			        		$('div.message-text').html("Cannot vote for yourself");
 			        	$('#wrongmessage').attr('style','display:block');
