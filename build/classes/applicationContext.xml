@@ -143,6 +143,13 @@
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="solutionCommentDAO" ref="solutionCommentDAO"></property>
 	    </bean>
+	    
+	    <bean id="vulnerabilityDisplayService" class="com.SVRPlatform.service.impl.VulnerabilityDisplayServiceImpl">
+	    	<property name="exploitDAO" ref="exploitDAO"></property>
+	    	<property name="userDAO" ref="userDAO"></property>
+	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
+	    	<property name="vulnerabilityWatchDAO" ref="vulnerabilityWatchDAO"></property>
+	    </bean>
 	    <!-- *************** -->
 	    
 	    <!-- submit service  -->
