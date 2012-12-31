@@ -26,7 +26,7 @@
 		<div class="bugvultext" align="center">
 		<div class="commentstitle" style="font-size:20px; font-weight:bold">
 		
-		SVRPlatform Carnival！！！
+		SVRPlatform HACKING Carnival！！！
 		</div>
 		<br><br><br>
 		<div class="commentstext">

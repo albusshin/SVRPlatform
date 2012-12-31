@@ -123,7 +123,7 @@
 	if (str != null){
 		str = "signedin";
 	}
-	
+	String strScore = (String) request.getAttribute("strScore");
 	%>
  		<jsp:include page="header.jsp" flush="true">
  			<jsp:param name="type" value="<%=str%>"/>
@@ -177,7 +177,16 @@
 		        <table class="bugvultable" align="center">
 		        	<tr>
 		            <td class="tableleft"> SVRB Score: </td>
-		            <td class="score" align="center"> ${strScore } </td>
+		            <td class="score" align="center" style="padding-left:30px;padding-right:30px;">
+		             <%
+		             if (strScore.length()>3) {
+		            	 out.print(strScore.substring(0,3));
+		             }
+		             else{
+		            	 out.print(strScore);
+		             }
+		             %>
+		             </td>
 		            </tr>
 		            <tr>
 		            <td class="tableleft"> Usability Impact: </td>
