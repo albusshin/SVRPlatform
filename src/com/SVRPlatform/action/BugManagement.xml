@@ -29,12 +29,6 @@
         	<result name="success">/WEB-INF/bugpage.jsp</result>
         	<result name="fail">/WEB-INF/bugpageNotFound.jsp</result>
         </action>
-        
-        <action name="vulnerabilitypage" class="vulnerabilityPage" method="execute">
-        	<result name="success">/WEB-INF/vulnerabilitypage.jsp</result>
-        	<result name="fail">/WEB-INF/bugpageNotFound.jsp</result>
-        	<!-- fail needs to be changed -->
-        </action>
        	
         <action name="searchbug" class="com.SVRPlatform.action.SearchBug" method="execute">
         	<result name="success" type="chain">bugpage</result>
@@ -74,6 +68,25 @@
         <action name="solutioncomments_*" class="solutionComment" method="{1}">
         	<result name="success">/WEB-INF/SolutionComments.jsp</result>
         	<result name="submit" type="stream"/>
+        </action>
+    </package>
+<!--This is vulnerability region -->
+    <package name="Vulnerability" namespace="/" extends="default">
+     
+        <action name="trysubmitvulnerability" class="com.SVRPlatform.action.TrySubmitVulnerability" method="execute">
+	 		<result name="success">/WEB-INF/submitvulnerability.jsp</result>
+	 		<result name="fail">/WEB-INF/notSignedIn.jsp</result>
+        </action>
+
+        <action name="vulnerabilitypage" class="vulnerabilityPage" method="execute">
+        	<result name="success">/WEB-INF/vulnerabilitypage.jsp</result>
+        	<result name="fail">/WEB-INF/bugpageNotFound.jsp</result>
+        	<!-- fail needs to be changed -->
+        </action>
+        
+        <action name="submitvulnerability" class="submitVulnerability" method="execute">
+	 		<result name="success" type="chain">vulnerabilitypage</result>
+	 		<result name="fail">/WEB-INF/submitvulnerability.jsp?stat=wrong</result>
         </action>
     </package>
 </struts>

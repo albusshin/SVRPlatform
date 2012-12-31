@@ -1,5 +1,7 @@
 package com.SVRPlatform.data;
 
+import com.SVRPlatform.Utils.HTMLTranscoder;
+
 public class SolutionData {
 
 	private int solutionID;
@@ -23,6 +25,9 @@ public class SolutionData {
 	}
 	public String getContent() {
 		return content;
+	}
+	public String getRawContent() {
+		return HTMLTranscoder.transcode(content);
 	}
 	public void setContent(String content) {
 		this.content = content;
