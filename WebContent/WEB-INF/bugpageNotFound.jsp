@@ -22,7 +22,7 @@
  		</jsp:include>
 <div id="content">
 	<div class="commentstitle" style="padding-top:30px;">
-	The specified bug was not found.
+	The specified Bug or Vulnerability was not found.
 	</div>
 </div>
 
