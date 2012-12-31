@@ -21,6 +21,7 @@ int pagesAmount;
 
 String strNowPage = (String)request.getAttribute("strNowPage");
 int nowPage = Integer.parseInt(strNowPage);
+if (request.getAttribute("officialSolution") != null) solutionsAmount--;
 if (solutionsAmount % solutionsPerPage == 0){
 	pagesAmount = solutionsAmount / solutionsPerPage;
 }
