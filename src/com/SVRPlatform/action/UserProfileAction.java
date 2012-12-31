@@ -1,6 +1,5 @@
 package com.SVRPlatform.action;
 
-import java.util.Calendar;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -182,6 +181,7 @@ public class UserProfileAction extends ActionSupport implements
 		return Constants.SUCCESS;
 	}
 
+	@SuppressWarnings("unused")
 	public String submit() {
 		Map<String, String> map = userProfileService.submitUserProfile(VerifyUser.getNowUserID(request),
 				strWebsite, strLocation, strRealName,
