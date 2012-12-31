@@ -18,9 +18,12 @@ import com.SVRPlatform.model.ExploitVote;
 import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.model.SolutionVote;
 import com.SVRPlatform.model.User;
+import com.SVRPlatform.model.Vulnerability;
+import com.SVRPlatform.model.VulnerabilityWatch;
 import com.SVRPlatform.service.impl.BugWatchServiceImpl;
 import com.SVRPlatform.service.impl.ExploitVoteServiceImpl;
 import com.SVRPlatform.service.impl.SolutionVoteServiceImpl;
+import com.SVRPlatform.service.impl.VulnerabilityWatchServiceImpl;
 
 @Aspect @Component
 public class CreditsLimitationInterceptor {
@@ -272,71 +275,71 @@ public class CreditsLimitationInterceptor {
 		return Constants.CREDITSNOTENOUGH;
 	}
 	
-//	@Pointcut("execution(* com.SVRPlatform.service.impl.VulnerabilityWatchServiceImpl.vote*(..))")
-//	private void vulnerabilityWatchMethod(){}
-//	
-//	@Around("vulnerabilityWatchMethod()")
-//	public Object doBasicProfilingForVulnerabilityWatch(ProceedingJoinPoint pjp) throws Throwable {
-//		String methodName = pjp.getSignature().getName();
-//		VulnerabilityWatchServiceImpl vwsi = (VulnerabilityWatchServiceImpl) pjp.getTarget();
-//		User user = bwsi.getUserDAO().getUserByEmail((String)pjp.getArgs()[1]);
-//		Bug bug = (Bug) bwsi.getBugDAO().getByID(new Integer((int)pjp.getArgs()[0]));
-//		System.out.println(bug.getUser());
-//		System.out.println(user);
-//		if(bug.getUser().getUserId() == user.getUserId()){
-//			////System.out.println("owner");
-//			//message = "You are the owner";
-//			return Constants.OWNER;
-//		}
-//		BugWatch bugWatch = this.bugWatchDAO.getByUserAndBug(user, bug);
-//		if(bugWatch != null){
-//			if(bugWatch.getVoteFlag() == 1 && methodName.equals("voteUp")){
-//				////System.out.println("rowback for up");
-//				//solutionVote.setVoteFlag(0);
-//				bugWatchDAO.delete(bugWatch);
-//				if(bwsi.turnBackUp(bug, true))
-//					return Constants.SUCCESS;
-//				else
-//					return Constants.DBERROR;
-//			}
-//			else if(bugWatch.getVoteFlag() == -1 && methodName.equals("voteDown")){
-////				System.out.println("rollback for down");
-//				//solutionVote.setVoteFlag(0);
-//				bugWatchDAO.delete(bugWatch);
-//				if(bwsi.turnBackUp(bug, false))
-//					return Constants.SUCCESS;
-//				else
-//					return Constants.DBERROR;
-//			}
-//			else{
-//				
-////				System.out.println("getVoteFlat == " + solutionVote.getVoteFlag() + "methodname==" + methodName);
-////				System.out.println("have voted");
-//				//message = "Have voted";
-//				return Constants.ALREADYVOTED;
-//			}
-//		}
-//
-//		if(methodName == "voteUp" && user.getCredit() >= Constants.MINCREDITSONUP){
-//			////System.out.println("vote up");
-//			bugWatch = new BugWatch();
-//			bugWatch.setVoteFlag(new Integer(1));
-//			bugWatch.setUser(user);
-//			bugWatch.setBug(bug);
-//			bugWatchDAO.add(bugWatch);
-//			return pjp.proceed();
-//		}
+	@Pointcut("execution(* com.SVRPlatform.service.impl.VulnerabilityWatchServiceImpl.vote*(..))")
+	private void vulnerabilityWatchMethod(){}
+	
+	@Around("vulnerabilityWatchMethod()")
+	public Object doBasicProfilingForVulnerabilityWatch(ProceedingJoinPoint pjp) throws Throwable {
+		String methodName = pjp.getSignature().getName();
+		VulnerabilityWatchServiceImpl vwsi = (VulnerabilityWatchServiceImpl) pjp.getTarget();
+		User user = vwsi.getUserDAO().getUserByEmail((String)pjp.getArgs()[1]);
+		Vulnerability vulnerability = (Vulnerability) vwsi.getVulnerabilityDAO().getByID(new Integer((int)pjp.getArgs()[0]));
+		System.out.println(vulnerability.getUser());
+		System.out.println(user);
+		if(vulnerability.getUser().getUserId() == user.getUserId()){
+			////System.out.println("owner");
+			//message = "You are the owner";
+			return Constants.OWNER;
+		}
+		VulnerabilityWatch vulnerabilityWatch = this.vulnerabilityWatchDAO.getByUserAndVulnerability(user, vulnerability);
+		if(vulnerabilityWatch != null){
+			if(vulnerabilityWatch.getVoteFlag() == 1 && methodName.equals("voteUp")){
+				////System.out.println("rowback for up");
+				//solutionVote.setVoteFlag(0);
+				bugWatchDAO.delete(vulnerabilityWatch);
+				if(vwsi.turnBackUp(vulnerability, true))
+					return Constants.SUCCESS;
+				else
+					return Constants.DBERROR;
+			}
+			else if(vulnerabilityWatch.getVoteFlag() == -1 && methodName.equals("voteDown")){
+//				System.out.println("rollback for down");
+				//solutionVote.setVoteFlag(0);
+				bugWatchDAO.delete(vulnerabilityWatch);
+				if(vwsi.turnBackUp(vulnerability, false))
+					return Constants.SUCCESS;
+				else
+					return Constants.DBERROR;
+			}
+			else{
+				
+//				System.out.println("getVoteFlat == " + solutionVote.getVoteFlag() + "methodname==" + methodName);
+//				System.out.println("have voted");
+				//message = "Have voted";
+				return Constants.ALREADYVOTED;
+			}
+		}
+
+		if(methodName == "voteUp" && user.getCredit() >= Constants.MINCREDITSONVULNERABILITYWATCH){
+			////System.out.println("vote up");
+			vulnerabilityWatch = new VulnerabilityWatch();
+			vulnerabilityWatch.setVoteFlag(new Integer(1));
+			vulnerabilityWatch.setUser(user);
+			vulnerabilityWatch.setVulnerability(vulnerability);
+			vulnerabilityWatchDAO.add(vulnerabilityWatch);
+			return pjp.proceed();
+		}
 //		else if(methodName == "voteDown" && user.getCredit() >= Constants.MINCREDITSONDOWN){
 //			////System.out.println("vote down");
-//			bugWatch = new BugWatch();
-//			bugWatch.setVoteFlag(new Integer(-1));
-//			bugWatch.setUser(user);
-//			bugWatch.setBug(bug);
-//			bugWatchDAO.add(bugWatch);
+//			vulnerabilityWatch = new VulnerabilityWatch();
+//			vulnerabilityWatch.setVoteFlag(new Integer(-1));
+//			vulnerabilityWatch.setUser(user);
+//			vulnerabilityWatch.setVulnerability(vulnerability);
+//			vulnerabilityWatchDAO.add(vulnerabilityWatch);
 //			return pjp.proceed();
 //		}
-//		////System.out.println("credit is not enough");	
-//		//message = "Credit is not enough";
-//		return Constants.CREDITSNOTENOUGH;
-//	}
+		////System.out.println("credit is not enough");	
+		//message = "Credit is not enough";
+		return Constants.CREDITSNOTENOUGH;
+	}
 }
