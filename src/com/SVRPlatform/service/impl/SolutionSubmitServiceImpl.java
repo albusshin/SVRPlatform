@@ -113,7 +113,7 @@ public class SolutionSubmitServiceImpl implements SolutionSubmitService {
 						return map;
 					}
 					Solution solution = solutions.get(0);
-					solution.setContent(HTMLTranscoder.transcode(content));
+					solution.setContent(content);
 					solution.setDatetime(new Date());
 					
 					solutionDAO.update(solution);

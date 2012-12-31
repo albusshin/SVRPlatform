@@ -54,7 +54,7 @@ public class CommentSubmitServiceImpl implements CommentSubmitService {
 			Comment comment = new Comment();
 			comment.setBug(bug);
 			comment.setCommentTitle(HTMLTranscoder.transcode(title));
-			comment.setContent(HTMLTranscoder.transcode(content));
+			comment.setContent(content);
 			comment.setDatetime(new Date());
 			comment.setUser(user);
 			

@@ -107,7 +107,7 @@ public class SolutionsDisplayServiceImpl implements SolutionsDisplayService {
 			}
 				
 			solutionData.setSolutionID(solutionID);
-			solutionData.setContent(HTMLTranscoder.transcode(solution.getContent()));
+			solutionData.setContent(solution.getContent());
 			solutionData.setDatetime(solution.getDatetime().toString());
 			solutionData.setRealname(user.getRealName());
 			solutionData.setEmail(user.getEmail());
