@@ -58,6 +58,10 @@
     	<property name="bugSubmitService" ref="bugSubmitService"></property>
     </bean>
     
+    <bean id="submitVulnerability" scope="prototype" class="com.SVRPlatform.action.SubmitVulnerability">
+    	<property name="vulnerabilitySubmitService" ref="vulnerabilitySubmitService"></property>
+    </bean>
+    
     <bean id="makeComment" scope="prototype" class="com.SVRPlatform.action.MakeComment">
     	<property name="commentSubmitService" ref="commentSubmitService"></property>
     </bean>
