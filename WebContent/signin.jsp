@@ -140,9 +140,9 @@ out.println("<div id='credittipsy' class='tipsy tipsy-n' style='top: 210px; righ
 		</div>
     	<div id="footer" align="center">
             <p align="center" style="color:#000">Copyright © www.SVRPlatform.com</p>
-            <p> <a class="footer" style="color:#000" href="javascript:;">Terms of Service</a></p>
-            <p> <a class="footer" style="color:#000" href="javascript:;">License of Development</a></p>
-            <p> <a class="footer" style="color:#000" href="javascript:;">Privacy</a></p>
+            <p> <a class="footer" href="/terms.jsp" style="color:#000">Terms of Service</a></p>
+            <p> <a class="footer" href="/license.jsp" style="color:#000">License of Development</a></p>
+            <p> <a class="footer" href="/privacy.jsp" style="color:#000">Privacy</a></p>
         	<img src="images/SVRPlatformPUR.png" width=400px align="middle"/>
     	</div>
 </body>
