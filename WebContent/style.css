@@ -1138,7 +1138,7 @@ img.seperator {
 	margin-right: 5px;
 }
 
-img#userbarwatching,img#userbarlogout,img#userbarusericon,img#signupicon,img#signinicon
+img#userbarvulnerability,img#userbarbug,img#userbarwatching,img#userbarlogout,img#userbarusericon,img#signupicon,img#signinicon
 	{
 	float: left;
 	margin-left: 20px;

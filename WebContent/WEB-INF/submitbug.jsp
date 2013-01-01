@@ -143,7 +143,7 @@
                     	<label for="digest" > Digest </label>
                     </td>
                     <td class="submitbugvalue">
-                    	<textarea id="digest" name="digest" maxlength="300" tabindex="100" class="inputdigestvalue" placeholder="Bug digest should include software name, version and the symptom when it's triggered."></textarea>
+                    	<textarea id="digest" name="digest" maxlength="500" tabindex="100" class="inputdigestvalue" placeholder="Bug digest should include software name, version and the symptom when it's triggered."></textarea>
                     </td>
 	    </tr>
 	    <tr>

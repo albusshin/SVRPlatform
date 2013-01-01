@@ -35,7 +35,7 @@
 <script type="text/javascript" src="/codehighlite/scripts/shBrushPerl.js"></script>
 <script type="text/javascript" src="/codehighlite/scripts/shBrushJava.js"></script>
 <link href="/codehighlite/styles/shCore.css" rel="stylesheet" type="text/css" />
-<link href="/codehighlite/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+<link href="/codehighlite/styles/shThemeDjango.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 	/**
 	 * Albus Shin
@@ -137,11 +137,15 @@
 				+ "<div class='tipsy-arrow tipsy-arrow-n'></div>"
 				+ "<div class='tipsy-inner'>My Profile</div>"
 				+ "</div>"
-				+ "<div id='watchingtipsy' class='tipsy tipsy-n' style='top: 210px; right: 166px; visibility:visible; display:none; opacity:0.8; '>"
+				+ "<div id='bugtipsy' class='tipsy tipsy-n' style='top: 210px; right: 150px; visibility:visible; display:none; opacity:0.8; '>"
 				+ "<div class='tipsy-arrow tipsy-arrow-n'></div>"
-				+ "<div class='tipsy-inner'>My watching bugs</div>"
+				+ "<div class='tipsy-inner'>Submit bug information</div>"
 				+ "</div>"
-				+ "<div id='logouttipsy' class='tipsy tipsy-n' style='top: 210px; right: 128px; visibility:visible; display:none; opacity:0.8; '>"
+				+ "<div id='vulnerabilitytipsy' class='tipsy tipsy-n' style='top: 210px; right: 53px; visibility:visible; display:none; opacity:0.8; '>"
+				+ "<div class='tipsy-arrow tipsy-arrow-n'></div>"
+				+ "<div class='tipsy-inner'>Submit vulnerability information</div>"
+				+ "</div>"
+				+ "<div id='logouttipsy' class='tipsy tipsy-n' style='top: 210px; right: 60px; visibility:visible; display:none; opacity:0.8; '>"
 				+ "	<div class='tipsy-arrow tipsy-arrow-n'></div>"
 				+ "	<div class='tipsy-inner'>Log out</div>"
 				+ "</div>"
@@ -185,12 +189,14 @@ ${sessionScope.realname}
 				+ request.getSession().getValue("credit")
 				+ "</div>"
 				+ "                    <img class='seperator' src='images/seperator.png' align='middle'/>"
-				+ "                    <img id='userbarusericon' src='images/usericon.png' onmouseover=\"this.src='images/usericonpressed.png';document.getElementById('usericontipsy').style.display='block'\" onmouseout=\"this.src='images/usericon.png';document.getElementById('usericontipsy').style.display='none'\" onclick=\"window.location.href='userprofile_display?strEmail="
+				+ "                    <img id='userbarusericon' src='images/usericon.png' onmouseover=\"this.src='images/usericonpressed.png';document.getElementById('usericontipsy').style.display='block'\" onmouseout=\"this.src='images/usericon.png';document.getElementById('usericontipsy').style.display='none'\" "
+				+						"onclick=\"window.location.href='userprofile_display?strEmail="
 				+ VerifyUser.getNowUser(request)
-				+ "';\""
-				+ "                    onclick=\"javascript:;\"/>"
-				+ "                    <img id='userbarwatching' src='images/watching.png' onmouseover=\"this.src='images/watchingpressed.png';document.getElementById('watchingtipsy').style.display='block'\" onmouseout=\"this.src='images/watching.png';document.getElementById('watchingtipsy').style.display='none'\""
-				+ "                    onclick=\"javascript:;\"/>"
+				+ "';\"/>"
+				+ "                    <img id='userbarbug' src='images/uploadbug.png' onmouseover=\"this.src='images/uploadbugpressed.png';document.getElementById('bugtipsy').style.display='block'\" onmouseout=\"this.src='images/uploadbug.png';document.getElementById('bugtipsy').style.display='none'\""
+				+ "                    onclick=\"window.location.href='TrySubmitBug'\"/>"
+				+ "                    <img id='userbarvulnerability' src='images/uploadvulnerability.png' onmouseover=\"this.src='images/uploadvulnerabilitypressed.png';document.getElementById('vulnerabilitytipsy').style.display='block'\" onmouseout=\"this.src='images/uploadvulnerability.png';document.getElementById('vulnerabilitytipsy').style.display='none'\""
+				+ "                    onclick=\"window.location.href='trysubmitvulnerability'\"/>"
 				+ "                    <img id='userbarlogout' src='images/logout.png' onmouseover=\"this.src='images/logoutpressed.png';document.getElementById('logouttipsy').style.display='block'\" onmouseout=\"this.src='images/logout.png';document.getElementById('logouttipsy').style.display='none'\""
 				+ "                    onclick=\"window.location.href='Logout'\"/>"
 				+ "                </div>" + "        </div>"
