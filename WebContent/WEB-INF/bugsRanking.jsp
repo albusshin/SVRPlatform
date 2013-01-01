@@ -324,7 +324,7 @@
 
 
      <div class="commentsbugs">
-    	<div class="bugpagesubtitle">Bugs Ranked By Amount of Solutions (<%out.print(lsCommentsBugsRanked.size()); %>)</div>
+    	<div class="bugpagesubtitle">Bugs Ranked By Amount of Comments (<%out.print(lsCommentsBugsRanked.size()); %>)</div>
 			<div class="anyrowbox"> 
     				<div class="commentsbugsrow" >
 		    						<%

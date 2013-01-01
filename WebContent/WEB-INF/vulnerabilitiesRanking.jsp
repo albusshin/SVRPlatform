@@ -191,7 +191,7 @@
 					    			out.print("style='display:none'");
 					    		}
 					    		out.println(">"+
-					                	"<a href=\"bugpage?strBugNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
+					                	"<a href=\"vulnerabilitypage?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
 					                    "<div class=\"digest\">");
 					    		if (bd.getDigest().length()>70){
 					    			out.print(bd.getDigest().substring(0, 65) + "   ...");
@@ -203,11 +203,11 @@
 					                      	"Published: "+ bd.getPublishDate() +
 					                        "</div>"+
 					                    "</div>"+
-					                    "<a class=\"comments\" href=\"displaycomments?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
+					                    "<a class=\"comments\" href=\"displayvulnerabilitycomments?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
 					                    "&nbsp;&nbsp;"+
-					                    "<a class=\"solutions\" href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Exploits ("+ bd.getExploitsCount() +")</a>");
+					                    "<a class=\"solutions\" href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Exploits ("+ bd.getExploitsCount() +")</a>");
 					    		if (bd.isHasBest()){
-					    			out.println("<a href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
+					    			out.println("<a href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
 					    		}
 					            out.println("</div>");
 					    	}
@@ -240,18 +240,18 @@
 							    			out.print("style='display:none'");
 							    		}
 							    		out.println(">"+
-							                	"<a href=\"bugpage?strBugNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
+							                	"<a href=\"vulnerabilitypage?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
 							                    "<div class=\"digest\">"+
 							                    bd.getDigest()+
 							                        "<div class=\"date\">"+
 							                      	"Published: "+ bd.getPublishDate() +
 							                        "</div>"+
 							                    "</div>"+
-							                    "<a class=\"comments\" href=\"displaycomments?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
+							                    "<a class=\"comments\" href=\"displayvulnerabilitycomments?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
 									                    "&nbsp;&nbsp;"+
-							                    "<a class=\"solutions\" href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Exploits ("+ bd.getExploitsCount() +")</a>");
+							                    "<a class=\"solutions\" href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Exploits ("+ bd.getExploitsCount() +")</a>");
 							    		if (bd.isHasBest()){
-							    			out.println("<a href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
+							    			out.println("<a href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
 							    		}
 							            out.println("</div>");
 							    	}
@@ -283,18 +283,18 @@
 							    			out.print("style='display:none'");
 							    		}
 							    		out.println(">"+
-							                	"<a href=\"bugpage?strBugNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
+							                	"<a href=\"vulnerabilitypage?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
 							                    "<div class=\"digest\">"+
 							                    bd.getDigest()+
 							                        "<div class=\"date\">"+
 							                      	"Published: "+ bd.getPublishDate() +
 							                        "</div>"+
 							                    "</div>"+
-							                    "<a class=\"comments\" href=\"displaycomments?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
+							                    "<a class=\"comments\" href=\"displayvulnerabilitycomments?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
 									                    "&nbsp;&nbsp;"+
-							                    "<a class=\"solutions\" href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Exploits ("+ bd.getExploitsCount() +")</a>");
+							                    "<a class=\"solutions\" href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Exploits ("+ bd.getExploitsCount() +")</a>");
 							    		if (bd.isHasBest()){
-							    			out.println("<a href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
+							    			out.println("<a href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
 							    		}
 							            out.println("</div>");
 							    	}
@@ -317,7 +317,7 @@
 
 
      <div class="commentsbugs">
-    	<div class="bugpagesubtitle">Vulnerabilities Ranked By Amount of Solutions (<%out.print(lsCommentsBugsRanked.size()); %>)</div>
+    	<div class="bugpagesubtitle">Vulnerabilities Ranked By Amount of Comments (<%out.print(lsCommentsBugsRanked.size()); %>)</div>
 			<div class="anyrowbox"> 
     				<div class="commentsbugsrow" >
 		    						<%
@@ -328,18 +328,18 @@
 							    			out.print("style='display:none'");
 							    		}
 							    		out.println(">"+
-							                	"<a href=\"bugpage?strBugNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
+							                	"<a href=\"vulnerabilitypage?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
 							                    "<div class=\"digest\">"+
 							                    bd.getDigest()+
 							                        "<div class=\"date\">"+
 							                      	"Published: "+ bd.getPublishDate() +
 							                        "</div>"+
 							                    "</div>"+
-							                    "<a class=\"comments\" href=\"displaycomments?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
+							                    "<a class=\"comments\" href=\"displayvulnerabilitycomments?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
 									                    "&nbsp;&nbsp;"+
-							                    "<a class=\"solutions\" href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Exploits ("+ bd.getExploitsCount() +")</a>");
+							                    "<a class=\"solutions\" href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Exploits ("+ bd.getExploitsCount() +")</a>");
 							    		if (bd.isHasBest()){
-							    			out.println("<a href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
+							    			out.println("<a href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
 							    		}
 							            out.println("</div>");
 							    	}
