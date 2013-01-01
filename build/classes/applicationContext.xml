@@ -281,6 +281,10 @@
 	    	<property name="commentDAO" ref="commentDAO"></property>
 	    	<property name="solutionDAO" ref="solutionDAO"></property>
 	    	<property name="bugWatchDAO" ref="bugWatchDAO"></property>
+	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
+	    	<property name="vulnerabilityCommentDAO" ref="vulnerabilityCommentDAO"></property>
+	    	<property name="exploitDAO" ref="exploitDAO"></property>
+	    	<property name="vulnerabilityWatchDAO" ref="vulnerabilityWatchDAO"></property>
 	    </bean>
 	<!-- ************************************************************************ -->
     <!-- DAOImpls beans definition -->
