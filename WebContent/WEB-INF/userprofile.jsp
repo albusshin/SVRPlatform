@@ -94,7 +94,8 @@
                 	Credits
                 </td>
                 <td>
-                	Bug Uploads
+                	<!--  Bug Uploads-->
+                	&nbsp;
                 </td>
             </tr>
             <tr class="userprofiledetailscontent">
@@ -102,9 +103,11 @@
                 	<p id="creditsamount">Credits: ${strCredits }</p>
                 </td>
                 <td id="buguploads">
-                	${strBugUploads }
+                	<!--${strBugUploads }-->
+                	&nbsp;
                 </td>
             </tr>
+            <!--
         	<tr class="userprofiledetailstitle">
             	<td>
                 	Solutions
@@ -121,6 +124,7 @@
                 	${strComments }
                 </td>
             </tr>
+            -->
         </table>
     </div>
     <div id="modifyuserprofile" style="display:none">
