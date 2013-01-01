@@ -30,13 +30,13 @@ ServletRequestAware{
 //		//System.out.println("Inside CheckingHash.java execute");
 		HttpSession session = request.getSession();
 		String hash = request.getParameter("hash");
+		String username = request.getParameter("username");
 		//System.out.println("hash == " + hash);
-		email = passwordRetrieveService.checkHashValue(hash);
+		if(username == passwordRetrieveService.checkHashValue(hash)){
 		//System.out.println("Checked email = " + email);
-		
-		session.setAttribute("email", email);
-		if (email != null)
+			session.setAttribute("email", username);
 			return SUCCESS;
+		}
 		return FAIL;
 	}
 
