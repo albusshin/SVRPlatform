@@ -170,8 +170,8 @@
 			<div id="menu" class="menu">
                 <ul>
                 	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
-                    <li><a href="">BUGS</a></li>
-                    <li><a href="">VULNERABILITIES</a></li>
+                    <li><a href="/myhomeBugs">BUGS</a></li>
+                    <li><a href="/myhomeVulnerabilities">VULNERABILITIES</a></li>
                 </ul>
             </div>
             <hr/>
@@ -187,7 +187,7 @@
 					    			out.print("style='display:none'");
 					    		}
 					    		out.println(">"+
-					                	"<a href=\"bugpage?strBugNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
+					                	"<a href=\"vulnerabilitypage?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
 					                    "<div class=\"digest\">");
 					    		if (bd.getDigest().length()>70){
 					    			out.print(bd.getDigest().substring(0, 65) + "   ...");
@@ -199,11 +199,11 @@
 					                      	"Published: "+ bd.getPublishDate() +
 					                        "</div>"+
 					                    "</div>"+
-					                    "<a class=\"comments\" href=\"displaycomments?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
+					                    "<a class=\"comments\" href=\"displayvulnerabilitycomments?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
 					                    "&nbsp;&nbsp;"+
-					                    "<a class=\"solutions\" href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Solutions ("+ bd.getExploitsCount() +")</a>");
+					                    "<a class=\"solutions\" href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Exploits ("+ bd.getExploitsCount() +")</a>");
 					    		if (bd.isHasBest()){
-					    			out.println("<a href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
+					    			out.println("<a href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#best\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
 					    		}
 					            out.println("</div>");
 					    	}
@@ -236,18 +236,18 @@
 							    			out.print("style='display:none'");
 							    		}
 							    		out.println(">"+
-							                	"<a href=\"bugpage?strBugNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
+							                	"<a href=\"vulnerabilitypage?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
 							                    "<div class=\"digest\">"+
 							                    bd.getDigest()+
 							                        "<div class=\"date\">"+
 							                      	"Published: "+ bd.getPublishDate() +
 							                        "</div>"+
 							                    "</div>"+
-							                    "<a class=\"comments\" href=\"displaycomments?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
+							                    "<a class=\"comments\" href=\"displayvulnerabilitycomments?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
 									                    "&nbsp;&nbsp;"+
-							                    "<a class=\"solutions\" href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Solutions ("+ bd.getExploitsCount() +")</a>");
+							                    "<a class=\"solutions\" href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Exploits ("+ bd.getExploitsCount() +")</a>");
 							    		if (bd.isHasBest()){
-							    			out.println("<a href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
+							    			out.println("<a href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
 							    		}
 							            out.println("</div>");
 							    	}
@@ -276,18 +276,18 @@
 							    			out.print("style='display:none'");
 							    		}
 							    		out.println(">"+
-							                	"<a href=\"bugpage?strBugNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
+							                	"<a href=\"vulnerabilitypage?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"\">"+bd.getVulnerabilityNumber()+"</a>"+
 							                    "<div class=\"digest\">"+
 							                    bd.getDigest()+
 							                        "<div class=\"date\">"+
 							                      	"Published: "+ bd.getPublishDate() +
 							                        "</div>"+
 							                    "</div>"+
-							                    "<a class=\"comments\" href=\"displaycomments?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
+							                    "<a class=\"comments\" href=\"displayvulnerabilitycomments?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Comments ("+ bd.getCommentsCount() +")</a>"+
 									                    "&nbsp;&nbsp;"+
-							                    "<a class=\"solutions\" href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Solutions ("+ bd.getExploitsCount() +")</a>");
+							                    "<a class=\"solutions\" href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1\">Exploits ("+ bd.getExploitsCount() +")</a>");
 							    		if (bd.isHasBest()){
-							    			out.println("<a href=\"displaysolutions?strBugNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
+							    			out.println("<a href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ bd.getVulnerabilityNumber() +"&strNowPage=1#official\" class=\"solutionsimg\"><img src=\"images/best.png\"/></a>");
 							    		}
 							            out.println("</div>");
 							    	}
@@ -319,7 +319,7 @@
 				    			out.print("style='display:none'");
 				    		}
 				    		out.println(">"+
-				                	"<a href=\"bugpage?strBugNumber="+ sd.getVulnerabilityNumber() +"\">"+sd.getVulnerabilityNumber()+"</a>"+
+				                	"<a href=\"vulnerabilitypage?strVulnerabilityNumber="+ sd.getVulnerabilityNumber() +"\">"+sd.getVulnerabilityNumber()+"</a>"+
 				                    "<div class=\"digest\">");
 				    		if (sd.getRawContent().length() > 70){
 				    			out.print(sd.getRawContent().substring(0,65) + "   ...");
@@ -332,9 +332,9 @@
 				                        "</div>"+
 				                    "</div>"+
 				                    "<div class=\"imgbar\">"+
-				                    "<a class=\"solutionsimg\" href=\"displaysolutions?strBugNumber="+ sd.getVulnerabilityNumber() +"&strNowPage=1#official\"><img src=\"images/uppressed.png\"/>"+sd.getUp()+"</a>"+
+				                    "<a class=\"solutionsimg\" href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ sd.getVulnerabilityNumber() +"&strNowPage=1#official\"><img src=\"images/uppressed.png\"/>"+sd.getUp()+"</a>"+
 						            "<br><br>"+
-						            "<a class=\"solutionsimg\" href=\"displaysolutions?strBugNumber="+ sd.getVulnerabilityNumber() +"&strNowPage=1#official\"><img src=\"images/downpressed.png\"/>"+sd.getDown()+"</a>"+
+						            "<a class=\"solutionsimg\" href=\"displayvulnerabilityexploits?strVulnerabilityNumber="+ sd.getVulnerabilityNumber() +"&strNowPage=1#official\"><img src=\"images/downpressed.png\"/>"+sd.getDown()+"</a>"+
 						            "</div>"+
 						            "</div>");
 			    		}

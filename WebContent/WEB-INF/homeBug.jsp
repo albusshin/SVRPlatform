@@ -170,8 +170,8 @@
 			<div id="menu" class="menu">
                 <ul>
                 	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
-                    <li><a href="">BUGS</a></li>
-                    <li><a href="">VULNERABILITIES</a></li>
+                    <li><a href="/myhomeBugs">BUGS</a></li>
+                    <li><a href="/myhomeVulnerabilities">VULNERABILITIES</a></li>
                 </ul>
             </div>
             <hr/>

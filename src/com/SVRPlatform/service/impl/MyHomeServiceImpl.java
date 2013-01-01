@@ -219,7 +219,7 @@ public class MyHomeServiceImpl implements MyHomeService {
 			vulnerability = it.next();
 			vulnerabilityData = new VulnerabilityData();
 			
-			vulnerabilityData.setHasBest(exploitDAO.getByVulnerability(vulnerability, 1, 0).get(0) != null);
+			vulnerabilityData.setHasBest(exploitDAO.getByVulnerability(vulnerability, 1, 0).size() > 0);
 			vulnerabilityData.setVulnerabilityNumber(vulnerability.getVulnerabilityNumber());
 			vulnerabilityData.setCommentsCount((int)vulnerabilityCommentDAO.getCountFromOneVulnerability(vulnerability));
 			vulnerabilityData.setDigest(vulnerability.getVulnerabilityDigest());
@@ -247,7 +247,7 @@ public class MyHomeServiceImpl implements MyHomeService {
 			vulnerability = it.next();
 			vulnerabilityData = new VulnerabilityData();
 			
-			vulnerabilityData.setHasBest(exploitDAO.getByVulnerability(vulnerability, 1, 0).get(0) != null);
+			vulnerabilityData.setHasBest(exploitDAO.getByVulnerability(vulnerability, 1, 0).size() > 0);
 			vulnerabilityData.setVulnerabilityNumber(vulnerability.getVulnerabilityNumber());
 			vulnerabilityData.setCommentsCount((int)vulnerabilityCommentDAO.getCountFromOneVulnerability(vulnerability));
 			vulnerabilityData.setDigest(vulnerability.getVulnerabilityDigest());
@@ -262,7 +262,7 @@ public class MyHomeServiceImpl implements MyHomeService {
 			vulnerability = it.next();
 			vulnerabilityData = new VulnerabilityData();
 			
-			vulnerabilityData.setHasBest(exploitDAO.getByVulnerability(vulnerability, 1, 0).get(0) != null);
+			vulnerabilityData.setHasBest(exploitDAO.getByVulnerability(vulnerability, 1, 0).size() > 0);
 			vulnerabilityData.setVulnerabilityNumber(vulnerability.getVulnerabilityNumber());
 			vulnerabilityData.setCommentsCount((int)vulnerabilityCommentDAO.getCountFromOneVulnerability(vulnerability));
 			vulnerabilityData.setDigest(vulnerability.getVulnerabilityDigest());
