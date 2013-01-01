@@ -11,7 +11,9 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import com.SVRPlatform.Utils.VerifyUser;
 import com.SVRPlatform.constants.Constants;
 import com.SVRPlatform.data.BugData;
+import com.SVRPlatform.data.ExploitData;
 import com.SVRPlatform.data.SolutionData;
+import com.SVRPlatform.data.VulnerabilityData;
 import com.SVRPlatform.service.MyHomeService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -24,20 +26,21 @@ ServletRequestAware, ServletResponseAware {
 	HttpServletRequest request;
 	HttpServletResponse response;
 	MyHomeService myHomeService;
-	List<BugData> lsMyBugs;
-	List<BugData> lsWatchingBugs1;
-	List<BugData> lsWatchingBugs2;
-	List<SolutionData> lsMySolutions;
-	public List<BugData> getLsMyBugs() {
+	List<VulnerabilityData> lsMyBugs;
+	List<VulnerabilityData> lsWatchingBugs1;
+	List<VulnerabilityData> lsWatchingBugs2;
+	List<ExploitData> lsMySolutions;
+	
+	public List<VulnerabilityData> getLsMyBugs() {
 		return lsMyBugs;
 	}
-	public List<BugData> getLsWatchingBugs1() {
+	public List<VulnerabilityData> getLsWatchingBugs1() {
 		return lsWatchingBugs1;
 	}
-	public List<BugData> getLsWatchingBugs2() {
+	public List<VulnerabilityData> getLsWatchingBugs2() {
 		return lsWatchingBugs2;
 	}
-	public List<SolutionData> getLsMySolutions() {
+	public List<ExploitData> getLsMySolutions() {
 		return lsMySolutions;
 	}
 	public void setMyHomeService(MyHomeService myHomeService) {
@@ -48,10 +51,10 @@ ServletRequestAware, ServletResponseAware {
 			return Constants.FAIL;
 		}
 		int userID = VerifyUser.getNowUserID(request);
-		lsMyBugs = myHomeService.getMyVulnerabilities(userID);
-		lsWatchingBugs1 = myHomeService.getWatchingBugs(userID).get(1);
-		lsWatchingBugs2 = myHomeService.getWatchingBugs(userID).get(2);
-		lsMySolutions = myHomeService.getMySolutions(userID);
+		lsMyBugs = myHomeService.getMyVulnerabilitys(userID);
+		lsWatchingBugs1 = myHomeService.getWatchingVulnerabilitys(userID).get(1);
+		lsWatchingBugs2 = myHomeService.getWatchingVulnerabilitys(userID).get(2);
+		lsMySolutions = myHomeService.getMyExploits(userID);
 		return Constants.SUCCESS;
 	}
 	@Override
