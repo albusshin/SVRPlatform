@@ -64,7 +64,7 @@
     	<property name="myHomeService" ref="myHomeService"></property>
     </bean>
     
-    <bean id="myHomeVulnerabilitiesAction" scope="prototype" class="com.SVRPlatform.action.MyHomeVulnerabilitiesAction">
+    <bean id="myhomeVulnerabilitiesAction" scope="prototype" class="com.SVRPlatform.action.MyHomeVulnerabilitiesAction">
         	<property name="myHomeService" ref="myHomeService"></property>
     </bean>
     <bean id="submitVulnerability" scope="prototype" class="com.SVRPlatform.action.SubmitVulnerability">

@@ -774,7 +774,7 @@ div#footer a {
 
 /** 1st example **/
 #menu {
-	background: #fff;
+	background:transparent;
 }
 
 #menu ul li a {
