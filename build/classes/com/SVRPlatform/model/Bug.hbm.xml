@@ -69,9 +69,12 @@
         <property name="points" type="java.lang.Integer"
         			formula="up-down">
         </property>
-       	<!--property name="solutionCount" type="java.long.Integer"
-       				formula="select count * from solution where this.bugid = bugid">
-       	</property-->
+       	<property name="solutionCount" type="int"
+       				formula="(select count(so.solutionID) from solution so where so.bugid = bugID)">
+       	</property>
+       	<property name="commentCount" type="int"
+       				formula="(select count(co.commentID) from comment co where co.bugid = bugID)">
+       	</property>
         <!-- one-to-one name="ranking" class="com.SVRPlatform.model.Ranking"></one-to-one-->
         <!-- set name="solutions" table="solution" inverse="true" lazy="true" fetch="select">
             <key>

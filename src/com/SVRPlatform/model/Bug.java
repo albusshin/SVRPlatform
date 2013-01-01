@@ -37,7 +37,8 @@ public class Bug implements java.io.Serializable {
 	private Integer up;
 	private Integer down;
 	private Integer points;
-//	private Integer solutionCount;
+	private int solutionCount;
+	private int commentCount;
 
 	public Integer getUp() {
 		return up;
@@ -243,13 +244,22 @@ public class Bug implements java.io.Serializable {
 		this.points = points;
 	}
 
-//	public int getSolutionCount() {
-//		return solutionCount;
-//	}
-//
-//	public void setSolutionCount(int solutionCount) {
-//		this.solutionCount = solutionCount;
-//	}
+	public int getSolutionCount() {
+		return solutionCount;
+	}
+
+	public void setSolutionCount(int solutionCount) {
+		this.solutionCount = solutionCount;
+	}
+
+	public int getCommentCount() {
+		return commentCount;
+	}
+
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
+	}
+
 
 //	public Ranking getRanking() {
 //		return this.ranking;
