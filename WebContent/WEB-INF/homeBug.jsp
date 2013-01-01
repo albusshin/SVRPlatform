@@ -167,6 +167,14 @@
  			<jsp:param name="type" value="<%=str%>"/>
  		</jsp:include>
 	<div id="content">
+			<div id="menu" class="menu">
+                <ul>
+                	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+                    <li><a href="">BUGS</a></li>
+                    <li><a href="">VULNERABILITIES</a></li>
+                </ul>
+            </div>
+            <hr/>
             <div class="mybugs">
 		    	<div class="homepagesubtitle">My Bugs  (<%out.print(lsMyBugs.size()); %>)</div>
 					<div class="anyrowbox">

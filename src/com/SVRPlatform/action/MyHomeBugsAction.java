@@ -15,7 +15,7 @@ import com.SVRPlatform.data.SolutionData;
 import com.SVRPlatform.service.MyHomeService;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class MyHomeAction extends ActionSupport implements
+public class MyHomeBugsAction extends ActionSupport implements
 ServletRequestAware, ServletResponseAware {
 	/**
 	 * 
