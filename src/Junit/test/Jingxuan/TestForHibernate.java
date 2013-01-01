@@ -3,6 +3,7 @@ package Junit.test.Jingxuan;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +21,7 @@ import org.springframework.orm.hibernate4.SessionHolder;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.SVRPlatform.Utils.StringEncoder;
+import com.SVRPlatform.constants.Constants;
 import com.SVRPlatform.dao.BugWatchDAO;
 import com.SVRPlatform.dao.ExploitDAO;
 import com.SVRPlatform.dao.SolutionVoteDAO;
@@ -166,10 +168,19 @@ public class TestForHibernate {
 //		Solution so = new Solution();
 	}
 	
-	@Test public void testBug() {
-		Bug b = new Bug();
-		bugDAO.add(b);
+	@Test public void testBug() throws Exception {
+//		Calendar cal = Calendar.getInstance();
+//		cal.set(2012, 11, 15, 0, 0);
+//		List<Bug> list  = bugDAO.getOrderedBug(cal.getTime(), Calendar.getInstance().getTime(), Constants.ORDERBYSCORE);
+//		System.out.println(list.size());
+//		for(Bug bug: list){
+//			//printClassAttributeValues(bug);
+//			//System.out.println();
+//			System.out.println(bug.getPoints()+" "+bug.getScore());
+//		}
+		Bug bug  = (Bug) bugDAO.getByID(new Integer(23));
 		
+		System.out.println(bug.getSolutionCount());
 	}
 	
 	@Test public void testAddComment(){

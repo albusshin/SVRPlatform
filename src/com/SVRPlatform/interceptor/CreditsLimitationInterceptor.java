@@ -215,7 +215,7 @@ public class CreditsLimitationInterceptor {
 	@Around("exploitVoteMethod()")
 	public Object doBasicProfilingForExploitVote(ProceedingJoinPoint pjp) throws Throwable {
 		String methodName = pjp.getSignature().getName();
-		System.out.println("checking  ----------------------");
+		//System.out.println("checking  ----------------------");
 		ExploitVoteServiceImpl evsi = (ExploitVoteServiceImpl) pjp.getTarget();
 		User user = evsi.getUserDAO().getUserByEmail((String)pjp.getArgs()[1]);
 		Exploit exploit = (Exploit) evsi.getExploitDAO().getByID(new Integer((int)pjp.getArgs()[0]));
@@ -225,6 +225,7 @@ public class CreditsLimitationInterceptor {
 			return Constants.OWNER;
 		}
 		ExploitVote exploitVote = this.getExploitVoteDAO().getByUserAndExploit(user, exploit);
+		//System.out.println(exploitVote);
 		if(exploitVote != null){
 			if(exploitVote.getVoteFlag() == 1 && methodName.equals("voteUp")){
 				////System.out.println("rowback for up");
