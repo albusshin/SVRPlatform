@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
+
+import com.SVRPlatform.Utils.StringEncoder;
 import com.SVRPlatform.service.PasswordRetrieveService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -25,16 +27,18 @@ ServletRequestAware{
 		this.passwordRetrieveService = passwordRetrieveService;
 	}
 
-	String email = null;
+	private String email = null;
 	public String execute() {
 //		//System.out.println("Inside CheckingHash.java execute");
 		HttpSession session = request.getSession();
 		String hash = request.getParameter("hash");
-		String username = request.getParameter("username");
+		String ehash = request.getParameter("ehash");
 		//System.out.println("hash == " + hash);
-		if(username == passwordRetrieveService.checkHashValue(hash)){
-		//System.out.println("Checked email = " + email);
-			session.setAttribute("email", username);
+		email = passwordRetrieveService.checkHashValue(hash);
+		String ehash1 = StringEncoder.EncoderByMd5(email);
+		if(ehash.compareTo(ehash1) == 0){
+			System.out.println("Checked email = " + email);
+			session.setAttribute("email", email);
 			return SUCCESS;
 		}
 		return FAIL;

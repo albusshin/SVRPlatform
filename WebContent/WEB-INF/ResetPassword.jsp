@@ -7,22 +7,33 @@
 	<title>Retrieve Password - SVRPlatform</title>
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js"></script>
-</head>
-<body>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#closeButton').click(function(){
+			$('#wrongmessage').hide(1000);
+			});
+		if('${message}' != ''){
+			$('div.message-text').html("${message}");
+			$('#wrongmessage').show(1000);
+		}
+	});
+	</script>
 	<style type="text/css">
-		input#email {
+		input#password {
+				color:black;
 				font-family: "微软雅黑", "黑体", "新宋体", "宋体";
 				width: 500px;
-				font-size: 22px;
+				font-size: 16px;
 				line-height: 2.0;
 				border-width: 1px;
 				border-style: solid;
 				border-radius: 11px;
-				border-color: #ccc;
-				padding: 5px;
+				padding: 5px 5px 5px 5px;
 				line-height: 1.6;
 		}
-		</style>
+	</style>
+</head>
+<body>	
 	<%
 	
 	String str = (String) session.getAttribute("email");
@@ -31,6 +42,15 @@
 	}
 	
 	%>
+	<div id="wrongmessage" class="alert-messages" style="display:none">
+		<div class="message">
+			<div class="message-inside">
+				<div class="message-text">
+				</div>
+				<label id="closeButton" class="dismiss">×</label>
+			</div>
+		</div>
+	</div>
  		<jsp:include page="header.jsp" flush="true">
  			<jsp:param name="type" value="<%=str%>"/>
  		</jsp:include>
@@ -49,8 +69,8 @@
 		<form id="retrieve" action="ResetPassword" method="post">
 			<table class="submitbugtable">
                 <tr>
-                	<td class="submitbugkey">
-                    	<label for="password" > Password </label>
+                	<td class="submitbugkey" style="padding:30px">
+                    	<label for="password" >Password</label>
                     </td>
                     <td class="submitbugvalue">
                     	<input id="password" name="password" type="password" maxlength="300" tabindex="100"/>

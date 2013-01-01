@@ -18,10 +18,12 @@ ServletRequestAware, ServletResponseAware {
 	private static final long serialVersionUID = 1L;
 	String password;
 	public static final String FAIL = "fail";
-	public static final String PASSWORD_TOO_SHORT = "passwordTooShort";
-	public static final String PASSWORD_AGAINST_RULE = "passwordAgainstRule";
+//	public static final String PASSWORD_TOO_SHORT = "passwordTooShort";
+//	public static final String PASSWORD_AGAINST_RULE = "passwordAgainstRule";
+	private String message;
 	private HttpServletRequest request;
 	private PasswordRetrieveService passwordRetrieveService;
+	private String email;
 
 
 	public void setPasswordRetrieveService(
@@ -36,29 +38,38 @@ ServletRequestAware, ServletResponseAware {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getMessage(){
+		return this.message;
+	}
 
-	String email;
 	public String execute() {
 		HttpSession session = request.getSession();
 		email = (String) session.getAttribute("email");
-		System.out.println("this.email = " + this.email);
-		if(email == null)
+		System.out.println("this.email = " + email);
+		if(email == null){
+			message="Too long time, please reclick the url in your email.";
 			return FAIL;
+		}
 		Response theResponse = passwordRetrieveService.updatePassword(email, password);
-		System.out.println("after updatePassword");
+		//System.out.println("after updatePassword");
 		
 		if (theResponse.password == Response.Password.password_ok){
-			System.out.println("before return success");
+			//System.out.println("before return success");
+			session.removeAttribute("email");
 			return SUCCESS;
 		}
 		else if (theResponse.password == Response.Password.password_too_short){
-			System.out.println("password too short");
-			return PASSWORD_TOO_SHORT;
+			//System.out.println("password too short");
+			message = "password too short";
+			return FAIL;
 		}
 		else if (theResponse.password == Response.Password.password_against_rule){
-			System.out.println("password against rule");
-			return PASSWORD_AGAINST_RULE;
+			//System.out.println("password against rule");
+			message = "password against rule";
+			return FAIL;
 		}
+		message = "Error, please retry.";
 		return FAIL;
 	}
 	@Override
