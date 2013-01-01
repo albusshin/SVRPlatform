@@ -167,6 +167,16 @@
  			<jsp:param name="type" value="<%=str%>"/>
  		</jsp:include>
 	<div id="content">
+			<div id="menu" class="menu">
+                <ul>
+                	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+                    <li><a href="/bugsRanking?timeType=5">Today</a></li>
+                    <li><a href="/bugsRanking?timeType=7">This Week</a></li>
+                    <li><a href="/bugsRanking?timeType=6">This Month</a></li>
+                    <li><a href="/bugsRanking?timeType=8">This Year</a></li>
+                </ul>
+            </div>
+            <hr/>
             <div class="scoresbugs">
 		    	<div class="bugpagesubtitle">Bugs Ranked By Score  (<%out.print(lsScoreBugsRanked.size()); %>)</div>
 					<div class="anyrowbox">

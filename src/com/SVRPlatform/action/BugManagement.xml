@@ -40,6 +40,11 @@
         	<result name="success" type="stream"></result>
         </action>
         <!-- Add actions here -->
+        
+        <action name="bugsRanking" class="bugsRanking" method="execute">
+        	<result name="success">/WEB-INF/bugsRanknig.jsp</result>
+        	<result name="fail">/WEB-INF/pageNotFound.jsp</result>
+        </action>
     </package>
     
 <!--This is comment region -->    

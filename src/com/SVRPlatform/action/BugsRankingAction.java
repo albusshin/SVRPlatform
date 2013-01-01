@@ -13,6 +13,7 @@ import com.SVRPlatform.constants.Constants;
 import com.SVRPlatform.data.BugData;
 import com.SVRPlatform.data.SolutionData;
 import com.SVRPlatform.service.MyHomeService;
+import com.SVRPlatform.service.RankingService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BugsRankingAction extends ActionSupport implements
@@ -27,7 +28,15 @@ ServletRequestAware, ServletResponseAware {
 	List<BugData> lsVotingBugsRanked;
 	List<BugData> lsSolutionsBugsRanked;
 	List<BugData> lsCommentsBugsRanked;
-	
+	int timeType;
+	public int getTimeType() {
+		return timeType;
+	}
+	public void setTimeType(int timeType) {
+		this.timeType = timeType;
+	}
+
+	RankingService rankingService;
 	public List<BugData> getLsScoreBugsRanked() {
 		return lsScoreBugsRanked;
 	}
@@ -41,14 +50,10 @@ ServletRequestAware, ServletResponseAware {
 		return lsCommentsBugsRanked;
 	}
 	public String execute(){
-		if (VerifyUser.getNowUser(request) == null){
-			return Constants.FAIL;
-		}
-		int userID = VerifyUser.getNowUserID(request);
-		lsScoreBugsRanked = myHomeService.getMyBugs(userID);
-		lsWatchingBugs1 = myHomeService.getWatchingBugs(userID).get(1);
-		lsWatchingBugs2 = myHomeService.getWatchingBugs(userID).get(2);
-		lsMySolutions = myHomeService.getMySolutions(userID);
+		lsScoreBugsRanked = rankingService.bugRanking(timeType, Constants.ORDERBYSCORE);
+		lsVotingBugsRanked = rankingService.bugRanking(timeType, Constants.ORDERBYUP_DOWN);
+		lsSolutionsBugsRanked = rankingService.bugRanking(timeType, Constants.ORDERBYSOLUTIONCOUNT);
+		lsCommentsBugsRanked = rankingService.bugRanking(timeType, Constants.ORDERBYCOMMENTCOUNT);
 		return Constants.SUCCESS;
 	}
 	@Override
