@@ -42,7 +42,7 @@
         <!-- Add actions here -->
         
         <action name="bugsRanking" class="bugsRanking" method="execute">
-        	<result name="success">/WEB-INF/bugsRanknig.jsp</result>
+        	<result name="success">/WEB-INF/bugsRanking.jsp</result>
         	<result name="fail">/WEB-INF/pageNotFound.jsp</result>
         </action>
     </package>
@@ -126,6 +126,11 @@
         <action name="exploitcomments_*" class="exploitComment" method="{1}">
         	<result name="success">/WEB-INF/ExploitComments.jsp</result>
         	<result name="submit" type="stream"/>
+        </action>
+        
+        <action name="vulnerabilitiesRanking" class="vulnerabilitiesRanking" method="execute">
+        	<result name="success">/WEB-INF/vulnerabilitiesRanking.jsp</result>
+        	<result name="fail">/WEB-INF/pageNotFound.jsp</result>
         </action>
     </package>
 </struts>

@@ -141,6 +141,10 @@
     <bean id="bugsRanking" scope="prototype" class="com.SVRPlatform.action.BugsRankingAction">
     	<property name="rankingService" ref="rankingService"></property>
     </bean>
+    
+    <bean id="vulnerabilitiesRanking" scope="prototype" class="com.SVRPlatform.action.VulnerabilitiesRankingAction">
+    	<property name="rankingService" ref="rankingService"></property>
+    </bean>
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
     	<!-- user service -->
