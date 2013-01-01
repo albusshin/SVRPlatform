@@ -4,6 +4,36 @@ public class Constants {
 	public static final String FAIL = "fail";
 	public static final String SUCCESS = "success";
 	public static final String NOTSIGNEDIN = "notsignedin";
+	
+	/**
+	 *按时间段筛选 
+	 */
+	public static final int DAY = 5;
+	public static final int MONTH = 6;
+	public static final int WEEK = 7;
+	public static final int YEAR = 8;
+	
+	/**
+	 * 按comment count排序
+	 */
+	public static final int ORDERBYCOMMENTCOUNT = 3;
+	
+	/**
+	 * 按solution count排序
+	 */
+	public static final int ORDERBYSOLUTIONCOUNT = 4;
+	
+	/**
+	 * 按score排序
+	 */
+	public static final int ORDERBYSCORE = 1;
+	
+	/**
+	 * 按up-down排序
+	 */
+	public static final int ORDERBYUP_DOWN = 2;  
+	
+	
 	/**
 	 * 错误：
 	 * 你是这个solution的Owner
