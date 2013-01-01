@@ -66,7 +66,7 @@ public class BugSubmitServiceImpl implements BugSubmitService{
 		
 		if (bugDigest.compareTo("") == 0) 
 			map.put("bugDigest", "empty");
-		else if (bugDigest.length() > 256)
+		else if (bugDigest.length() > 500)
 			map.put("bugDigest", "tooLong");
 		else map.put("bugDigest", "OK");
 		

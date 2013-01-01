@@ -274,7 +274,7 @@
 	    </bean>
 	    <!-- *************** -->
 	    
-	    <!-- my home service -->
+	    <!-- other service -->
 	    <bean id="myHomeService" class="com.SVRPlatform.service.impl.MyHomeServiceImpl">
 	    	<property name="userDAO" ref="userDAO"></property>
 	    	<property name="bugDAO" ref="bugDAO"></property>
@@ -285,6 +285,15 @@
 	    	<property name="vulnerabilityCommentDAO" ref="vulnerabilityCommentDAO"></property>
 	    	<property name="exploitDAO" ref="exploitDAO"></property>
 	    	<property name="vulnerabilityWatchDAO" ref="vulnerabilityWatchDAO"></property>
+	    </bean>
+	    
+	    <bean id="rankingService" class="com.SVRPlatform.service.impl.RankingServiceImpl">
+	    	<property name="bugDAO" ref="bugDAO"></property>
+	    	<property name="commentDAO" ref="commentDAO"></property>
+	    	<property name="solutionDAO" ref="solutionDAO"></property>
+	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
+	    	<property name="vulnerabilityCommentDAO" ref="vulnerabilityCommentDAO"></property>
+	    	<property name="exploitDAO" ref="exploitDAO"></property>
 	    </bean>
 	<!-- ************************************************************************ -->
     <!-- DAOImpls beans definition -->
