@@ -128,4 +128,29 @@ public class RankingServiceImpl implements RankingService {
 		
 		return vulnerabilitysData;
 	}
+
+	public VulnerabilityDAO getVulnerabilityDAO() {
+		return vulnerabilityDAO;
+	}
+
+	public void setVulnerabilityDAO(VulnerabilityDAO vulnerabilityDAO) {
+		this.vulnerabilityDAO = vulnerabilityDAO;
+	}
+
+	public VulnerabilityCommentDAO getVulnerabilityCommentDAO() {
+		return vulnerabilityCommentDAO;
+	}
+
+	public void setVulnerabilityCommentDAO(
+			VulnerabilityCommentDAO vulnerabilityCommentDAO) {
+		this.vulnerabilityCommentDAO = vulnerabilityCommentDAO;
+	}
+
+	public ExploitDAO getExploitDAO() {
+		return exploitDAO;
+	}
+
+	public void setExploitDAO(ExploitDAO exploitDAO) {
+		this.exploitDAO = exploitDAO;
+	}
 }

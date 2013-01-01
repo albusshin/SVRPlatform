@@ -50,10 +50,8 @@
         </action>
         
 		<action name="ResetPassword" class="resetPassword" method="execute">
-        	<result name="success" type="redirect">/index</result>
-        	<result name="passwordTooShort">/WEB-INF/ResetPassword.jsp</result>
-        	<result name="passwordAgainstRule">/WEB-INF/ResetPassword.jsp</result>
-        	<result name="fail" type="redirect">/WEB-INF/error.jsp</result>
+        	<result name="success" type="redirect">/signin.jsp</result>
+        	<result name="fail">/WEB-INF/ResetPassword.jsp</result>
         </action>
         
 		<action name="Logout" class="com.SVRPlatform.action.Logout" method="execute">
