@@ -60,6 +60,13 @@
     	<property name="bugSubmitService" ref="bugSubmitService"></property>
     </bean>
     
+    <bean id="myhomeBugsAction" scope="prototype" class="com.SVRPlatform.action.MyHomeBugsAction">
+    	<property name="myHomeService" ref="myHomeService"></property>
+    </bean>
+    
+    <bean id="myhomeVulnerabilitiesAction" scope="prototype" class="com.SVRPlatform.action.MyHomeVulnerabilitiesAction">
+        	<property name="myHomeService" ref="myHomeService"></property>
+    </bean>
     <bean id="submitVulnerability" scope="prototype" class="com.SVRPlatform.action.SubmitVulnerability">
     	<property name="vulnerabilitySubmitService" ref="vulnerabilitySubmitService"></property>
     </bean>
@@ -131,9 +138,6 @@
     	<property name="userProfileService" ref="userProfileService"></property>
     </bean>
     
-    <bean id="myHomeAction" scope="prototype" class="com.SVRPlatform.action.MyHomeAction">
-        	<property name="myHomeService" ref="myHomeService"></property>
-    </bean>
 	<!-- ************************************************************************ -->
     <!-- ServiceImpls beans definition -->
     	<!-- user service -->
@@ -277,6 +281,10 @@
 	    	<property name="commentDAO" ref="commentDAO"></property>
 	    	<property name="solutionDAO" ref="solutionDAO"></property>
 	    	<property name="bugWatchDAO" ref="bugWatchDAO"></property>
+	    	<property name="vulnerabilityDAO" ref="vulnerabilityDAO"></property>
+	    	<property name="vulnerabilityCommentDAO" ref="vulnerabilityCommentDAO"></property>
+	    	<property name="exploitDAO" ref="exploitDAO"></property>
+	    	<property name="vulnerabilityWatchDAO" ref="vulnerabilityWatchDAO"></property>
 	    </bean>
 	<!-- ************************************************************************ -->
     <!-- DAOImpls beans definition -->

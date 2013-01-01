@@ -9,13 +9,21 @@ import java.util.Map;
 import com.SVRPlatform.dao.BugDAO;
 import com.SVRPlatform.dao.BugWatchDAO;
 import com.SVRPlatform.dao.CommentDAO;
+import com.SVRPlatform.dao.ExploitDAO;
 import com.SVRPlatform.dao.SolutionDAO;
 import com.SVRPlatform.dao.UserDAO;
+import com.SVRPlatform.dao.VulnerabilityCommentDAO;
+import com.SVRPlatform.dao.VulnerabilityDAO;
+import com.SVRPlatform.dao.VulnerabilityWatchDAO;
 import com.SVRPlatform.data.BugData;
+import com.SVRPlatform.data.ExploitData;
 import com.SVRPlatform.data.SolutionData;
+import com.SVRPlatform.data.VulnerabilityData;
 import com.SVRPlatform.model.Bug;
+import com.SVRPlatform.model.Exploit;
 import com.SVRPlatform.model.Solution;
 import com.SVRPlatform.model.User;
+import com.SVRPlatform.model.Vulnerability;
 import com.SVRPlatform.service.MyHomeService;
 
 public class MyHomeServiceImpl implements MyHomeService {
@@ -24,6 +32,44 @@ public class MyHomeServiceImpl implements MyHomeService {
 	private BugWatchDAO bugWatchDAO;
 	private CommentDAO commentDAO;
 	private SolutionDAO solutionDAO;
+	
+	private VulnerabilityDAO vulnerabilityDAO;
+	private VulnerabilityCommentDAO vulnerabilityCommentDAO;
+	private VulnerabilityWatchDAO vulnerabilityWatchDAO;
+	private ExploitDAO exploitDAO;
+	
+	public VulnerabilityDAO getVulnerabilityDAO() {
+		return vulnerabilityDAO;
+	}
+
+	public void setVulnerabilityDAO(VulnerabilityDAO vulnerabilityDAO) {
+		this.vulnerabilityDAO = vulnerabilityDAO;
+	}
+
+	public VulnerabilityCommentDAO getVulnerabilityCommentDAO() {
+		return vulnerabilityCommentDAO;
+	}
+
+	public void setVulnerabilityCommentDAO(
+			VulnerabilityCommentDAO vulnerabilityCommentDAO) {
+		this.vulnerabilityCommentDAO = vulnerabilityCommentDAO;
+	}
+
+	public VulnerabilityWatchDAO getVulnerabilityWatchDAO() {
+		return vulnerabilityWatchDAO;
+	}
+
+	public void setVulnerabilityWatchDAO(VulnerabilityWatchDAO vulnerabilityWatchDAO) {
+		this.vulnerabilityWatchDAO = vulnerabilityWatchDAO;
+	}
+
+	public ExploitDAO getExploitDAO() {
+		return exploitDAO;
+	}
+
+	public void setExploitDAO(ExploitDAO exploitDAO) {
+		this.exploitDAO = exploitDAO;
+	}
 
 	public UserDAO getUserDAO() {
 		return userDAO;
@@ -158,5 +204,98 @@ public class MyHomeServiceImpl implements MyHomeService {
 		}
 		
 		return solutionsData;
+	}
+
+	public List<VulnerabilityData> getMyVulnerabilitys(int userID) {
+		if (userID == -1 ) return null;
+		User user = (User) userDAO.getByID(userID);
+		List<Vulnerability> vulnerabilitys = vulnerabilityDAO.getByUser(user);
+		List<VulnerabilityData> vulnerabilitysData = new LinkedList<VulnerabilityData>();
+		
+		ListIterator<Vulnerability> it = vulnerabilitys.listIterator();
+		Vulnerability vulnerability;
+		VulnerabilityData vulnerabilityData;
+		while (it.hasNext()) {
+			vulnerability = it.next();
+			vulnerabilityData = new VulnerabilityData();
+			
+			vulnerabilityData.setHasBest(exploitDAO.getByVulnerability(vulnerability, 1, 0).size() > 0);
+			vulnerabilityData.setVulnerabilityNumber(vulnerability.getVulnerabilityNumber());
+			vulnerabilityData.setCommentsCount((int)vulnerabilityCommentDAO.getCountFromOneVulnerability(vulnerability));
+			vulnerabilityData.setDigest(vulnerability.getVulnerabilityDigest());
+			vulnerabilityData.setPublishDate(vulnerability.getDatetime().toString());
+			vulnerabilityData.setExploitsCount((int)exploitDAO.getCountFromOneVulnerability(vulnerability));
+			vulnerabilitysData.add(vulnerabilityData);
+		}
+		
+		return vulnerabilitysData;
+	}
+
+	public Map<Integer, List<VulnerabilityData>> getWatchingVulnerabilitys(
+			int userID) {
+		if (userID == -1 ) return null;
+		User user = (User) userDAO.getByID(userID);
+		List<Vulnerability> vulnerabilitys = vulnerabilityWatchDAO.getByUser(user);
+		Map<Integer, List<VulnerabilityData>> vulnerabilitysDataLists = new HashMap<Integer, List<VulnerabilityData>>();
+		
+		List<VulnerabilityData> vulnerabilitysData = new LinkedList<VulnerabilityData>();	
+		ListIterator<Vulnerability> it = vulnerabilitys.listIterator();
+		Vulnerability vulnerability;
+		VulnerabilityData vulnerabilityData;
+		int length = vulnerabilitys.size()/2 + vulnerabilitys.size()%2;
+		while (it.hasNext() && it.nextIndex() < length) {
+			vulnerability = it.next();
+			vulnerabilityData = new VulnerabilityData();
+			
+			vulnerabilityData.setHasBest(exploitDAO.getByVulnerability(vulnerability, 1, 0).size() > 0);
+			vulnerabilityData.setVulnerabilityNumber(vulnerability.getVulnerabilityNumber());
+			vulnerabilityData.setCommentsCount((int)vulnerabilityCommentDAO.getCountFromOneVulnerability(vulnerability));
+			vulnerabilityData.setDigest(vulnerability.getVulnerabilityDigest());
+			vulnerabilityData.setPublishDate(vulnerability.getDatetime().toString());
+			vulnerabilityData.setExploitsCount((int)exploitDAO.getCountFromOneVulnerability(vulnerability));
+			vulnerabilitysData.add(vulnerabilityData);
+		}
+		vulnerabilitysDataLists.put(1, vulnerabilitysData);
+		
+		vulnerabilitysData = new LinkedList<VulnerabilityData>();
+		while (it.hasNext()) {
+			vulnerability = it.next();
+			vulnerabilityData = new VulnerabilityData();
+			
+			vulnerabilityData.setHasBest(exploitDAO.getByVulnerability(vulnerability, 1, 0).size() > 0);
+			vulnerabilityData.setVulnerabilityNumber(vulnerability.getVulnerabilityNumber());
+			vulnerabilityData.setCommentsCount((int)vulnerabilityCommentDAO.getCountFromOneVulnerability(vulnerability));
+			vulnerabilityData.setDigest(vulnerability.getVulnerabilityDigest());
+			vulnerabilityData.setPublishDate(vulnerability.getDatetime().toString());
+			vulnerabilityData.setExploitsCount((int)exploitDAO.getCountFromOneVulnerability(vulnerability));
+			vulnerabilitysData.add(vulnerabilityData);
+		}
+		vulnerabilitysDataLists.put(2, vulnerabilitysData);
+		
+		return vulnerabilitysDataLists;
+	}
+
+	public List<ExploitData> getMyExploits(int userID) {
+		if (userID == -1 ) return null;
+		User user = (User) userDAO.getByID(userID);
+		List<Exploit> exploits = exploitDAO.getByUser(user, -1, -1);
+		List<ExploitData> exploitsData = new LinkedList<ExploitData>();
+		
+		ListIterator<Exploit> it = exploits.listIterator();
+		Exploit exploit;
+		ExploitData exploitData;
+		while (it.hasNext()) {
+			exploit = it.next();
+			exploitData = new ExploitData();
+			
+			exploitData.setVulnerabilityNumber(exploit.getVulnerability().getVulnerabilityNumber());
+			exploitData.setDatetime(exploit.getDatetime().toString());
+			exploitData.setUp(exploit.getUp());
+			exploitData.setDown(exploit.getDown());
+			exploitData.setContent(exploit.getContent());
+			exploitsData.add(exploitData);
+		}
+		
+		return exploitsData;
 	}
 }
