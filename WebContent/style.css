@@ -1361,6 +1361,8 @@ div#upbar {
 	position: fixed;
 	top:25%;
 	left:25%;
+	right:25%;
+	margin:auto;	
 	width:500px;
 	height:500px;
 	background-image: -moz-linear-gradient(#111111, #222222);
