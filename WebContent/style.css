@@ -1400,10 +1400,10 @@ td.modifyprofilevalue {
 	padding-top: 10px;
 }
 
-div.mybugs{
+div.mybugs,div.scoresbugs,div.votingbugs,div.solutionsbugs,div.commentsbugs{
 	height:250px;
 }
-div.mybugsrow,div.watchingbugsrow,div.mysolutionsrow,div.commentsbugsrow,div.solutionsbugs,div.votingbugs,div.scoresbugs{
+div.mybugsrow,div.watchingbugsrow,div.mysolutionsrow,div.commentsbugsrow,div.solutionsbugsrow,div.votingbugsrow,div.scoresbugsrow{
 	position:relative;
 	clear:both;
 }
@@ -1549,7 +1549,7 @@ div.homepagesubtitle, div.bugpagesubtitle{
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 4px;
-	width:200px;
+	width:700px;
 	height:30px;
 	font-family:"微软雅黑", "黑体", "新宋体", "宋体";
 	font-size:16px;
@@ -1557,9 +1557,6 @@ div.homepagesubtitle, div.bugpagesubtitle{
 	text-shadow: grey 1px 1px 1px;
 	padding-left:10px;
 	margin-bottom:10px;
-}
-div.bugpagesubtitle{
-	width:350px;
 }
 div.rightbuttonhomepage{
 	position:relative;

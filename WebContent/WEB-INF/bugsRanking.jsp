@@ -17,7 +17,7 @@
 		BugData bd;
 	%>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Home - SVRPlatform</title>
+	<title>Bugs Ranking - SVRPlatform</title>
 	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript">
@@ -71,12 +71,12 @@
 		
 		
 		$("#votingbugsrightbutton").click(function(){
-			if (nextvotingbugsbugcard == (${lsVotingBugsRanked })+1){
+			if (nextvotingbugsbugcard == (${lsVotingBugsRankedAmount })+1){
 				return;
 			}
 			$("#votingbugsbugcard" + nowvotingbugsbugcard).hide(200);
 			$("#votingbugsbugcard" + nextvotingbugsbugcard).show(200);
-			if (nextvotingbugsbugcard == ("${lsVotingBugsRanked }")){
+			if (nextvotingbugsbugcard == ("${lsVotingBugsRankedAmount }")){
 				$("#votingbugsrightbutton").animate({opacity:0}, "fast")
 			}
 			nowvotingbugsbugcard++;
@@ -99,12 +99,12 @@
 		
 		
 		$("#solutionsbugsrightbutton").click(function(){
-			if (nextsolutionsbugsbugcard == (${lsSolutionsBugsRanked })+1){
+			if (nextsolutionsbugsbugcard == (${lsSolutionsBugsRankedAmount })+1){
 				return;
 			}
 			$("#solutionsbugsbugcard" + nowsolutionsbugsbugcard).hide(200);
 			$("#solutionsbugsbugcard" + nextsolutionsbugsbugcard).show(200);
-			if (nextsolutionsbugsbugcard == ("${lsSolutionsBugsRanked }")){
+			if (nextsolutionsbugsbugcard == ("${lsSolutionsBugsRankedAmount }")){
 				$("#solutionsbugsrightbutton").animate({opacity:0}, "fast")
 			}
 			nowsolutionsbugsbugcard++;
@@ -126,12 +126,12 @@
 		});
 		
 		$("#commentsbugsrightbutton").click(function(){
-			if (nextcommentsbugsbugcard == (${lsCommentsBugsRanked })+1){
+			if (nextcommentsbugsbugcard == (${lsCommentsBugsRankedAmount })+1){
 				return;
 			}
-			$("#mycommentsbugsbugcard" + nowcommentsbugsbugcard).hide(200);
-			$("#mycommentsbugsbugcard" + nextcommentsbugsbugcard).show(200);
-			if (nextcommentsbugsbugcard == ("${lsCommentsBugsRanked}")){
+			$("#commentsbugsbugcard" + nowcommentsbugsbugcard).hide(200);
+			$("#commentsbugsbugcard" + nextcommentsbugsbugcard).show(200);
+			if (nextcommentsbugsbugcard == ("${lsCommentsBugsRankedAmount}")){
 				$("#commentsbugsrightbutton").animate({opacity:0}, "fast")
 			}
 			nowcommentsbugsbugcard++;
@@ -144,8 +144,8 @@
 			}
 			nowcommentsbugsbugcard--;
 			nextcommentsbugsbugcard--;
-			$("#mycommentsbugsbugcard" + nowcommentsbugsbugcard).show(200);
-			$("#mycommentsbugsbugcard" + nextcommentsbugsbugcard).hide(200);
+			$("#commentsbugsbugcard" + nowcommentsbugsbugcard).show(200);
+			$("#commentsbugsbugcard" + nextcommentsbugsbugcard).hide(200);
 			if (nowcommentsbugsbugcard == 0){
 				$("#commentsbugsleftbutton").animate({opacity:0}, "fast")
 			}
@@ -167,6 +167,16 @@
  			<jsp:param name="type" value="<%=str%>"/>
  		</jsp:include>
 	<div id="content">
+			<div id="menu" class="menu">
+                <ul>
+                	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+                    <li><a href="/bugsRanking?timeType=5">Today</a></li>
+                    <li><a href="/bugsRanking?timeType=7">This Week</a></li>
+                    <li><a href="/bugsRanking?timeType=6">This Month</a></li>
+                    <li><a href="/bugsRanking?timeType=8">This Year</a></li>
+                </ul>
+            </div>
+            <hr/>
             <div class="scoresbugs">
 		    	<div class="bugpagesubtitle">Bugs Ranked By Score  (<%out.print(lsScoreBugsRanked.size()); %>)</div>
 					<div class="anyrowbox">
