@@ -1359,13 +1359,14 @@ div#upbar {
 #modifyuserprofile{
 	opacity:0.95;
 	position: fixed;
+	top:25%;
+	left:25%;
 	width:500px;
 	height:500px;
 	background-image: -moz-linear-gradient(#111111, #222222);
 	background-image: -webkit-linear-gradient(#111111, #111111);
 	background-image: linear-gradient(#111111, #111111);
 	background-repeat: repeat-x;
-	top: 300px;
 	z-index: 6999;
 	border: 1px solid #CCC;
 	border-radius:4px;
